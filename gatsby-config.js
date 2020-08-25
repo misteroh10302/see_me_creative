@@ -1,11 +1,18 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Typescript Jest Default Starter`,
+    title: `See Me`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@denningk`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `ralvgwmdsf6z`,
+        accessToken: `h0-0NY-h1c805I_V3oA63X7qZcW4kbbv0ZSGLZcIHA0`,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
