@@ -7,13 +7,14 @@ import { theme } from "../styled/theme"
 import { FullHeight } from '../styled/layoutStyles'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { Link } from "gatsby"
 
 import BackgroundMedia from "../components/UI/backgroundMedia/backgroundMedia"
 import Section from "../components/section"
 
 import { BackgroundImage, OurWorkWrapper } from "../styled/layoutStyles"
 
-
+import { mySlug } from '../utils.js'
 const OurWork = () => (
   <StaticQuery
     query={OurWorkQuery}
@@ -28,10 +29,10 @@ const OurWork = () => (
                 <OurWorkWrapper>
                     {projects && projects.map((project,i) => {
                         return (
-                            <div>
+                            <Link  to={`/project/${mySlug(project.title)}`}>
                                 <h2>{project.title}</h2>
                                 <Img fluid={project.backgroundMedia.fluid} />
-                            </div>
+                            </Link>
                         )
                     })}
                 </OurWorkWrapper>
