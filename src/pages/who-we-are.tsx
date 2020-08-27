@@ -3,7 +3,7 @@ import { ThemeProvider } from "styled-components"
 import { StaticQuery, graphql } from "gatsby"
 
 import { theme } from "../styled/theme"
-import { FullHeight } from '../styled/layoutStyles'
+import { FullHeight, ProjectCollectionWrapper } from '../styled/layoutStyles'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
@@ -21,14 +21,14 @@ const WhoWeArePage = () => (
             <Layout>
               <SEO title="Who We Are" />
               {nodes && 
-                <>  
+                <ProjectCollectionWrapper>  
                     <FullHeight className="full-">
                         <BackgroundMedia title={nodes[0].title} fluid={nodes[0].backgroundMedia.fluid}/>
                     </FullHeight>
                     {whoWeAreContent && whoWeAreContent.map((section,i) => {
                         return <Section title={section.title} bgm={section.backgroundMedia} content={section}/>
                     })}
-                </>
+                </ProjectCollectionWrapper>
            
               }
             </Layout>

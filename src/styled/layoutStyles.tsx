@@ -90,6 +90,36 @@ export const ProjectWrapper = styled.section`
   min-height: 100vh;
   width: 100%;
   padding: ${props => props.theme.padding.sectionVertical} ${props => props.theme.padding.desktop};
+  h1.title {
+    background-color: ${props => props.theme.colors.green};
+    display: inline-block;
+    padding-left: 3rem;
+    padding-right: 1rem;
+    position: relative;
+    left: -3rem;
+    margin-bottom: 0;
+  }
+  h2.subtitle {
+    color: black;
+    font-family: ${props => props.theme.font.serif}, serif;
+    font-size: ${props => props.theme.heading1.fontSize};
+    letter-spacing: ${props => props.theme.heading1.letterSpacing};
+    font-weight: 100;
+    margin: 2rem 0;
+  }
+  small {
+    display: block;
+    font-size: 1.6rem;
+    font-family: "Roboto", sans-serif;
+    color: black;
+    text-transform: capitalize;
+    margin-bottom: 2rem;
+  }
+`
+
+export const ProjectCollectionWrapper = styled.div`
+  background-color: black;
+
 `
 
 export const SectionWrapper = styled.section`
@@ -164,7 +194,6 @@ export const LayoutWrapper = styled.div`
         margin: 2rem 0;
     }
     h2 {
-        color: white;
         font-family: ${props => props.theme.font.serif}, serif;
         font-size: ${props => props.theme.heading2.fontSize};
         letter-spacing: ${props => props.theme.heading2.letterSpacing};

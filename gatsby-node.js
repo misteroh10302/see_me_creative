@@ -17,8 +17,12 @@ exports.createPages = async function ({ actions, graphql }) {
             nodes {
               title
               tags
-              bodyContent {
-                json
+              subTitle
+              postContent {
+                id
+                content {
+                  json
+                }
               }
               backgroundMedia {
                 fluid {
@@ -34,7 +38,7 @@ exports.createPages = async function ({ actions, graphql }) {
         }
       `)
 
-
+  console.log(projects)
   projects.data.allContentfulProjectTemplateOne.nodes.forEach(edge => {
     const slug = edge;
     const parsedSlug = mySlug(slug.title.toLowerCase());
