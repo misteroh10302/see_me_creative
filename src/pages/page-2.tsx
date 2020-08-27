@@ -4,18 +4,25 @@ import { ThemeProvider } from "styled-components"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-
+import { FullHeight, ProjectWrapper, BackgroundImage } from '../styled/layoutStyles'
 import { theme } from "../styled/theme"
 
 
 const SecondPage = (data) => {
-  const { slug } = data.pageContext;
+  const { slug, content } = data.pageContext;
+  const { backgroundMedia } = content;
   return(
     <ThemeProvider theme={theme}>
       <Layout>
         <SEO title={slug} />
-        <h1>{slug}</h1>
-        <Link to="/">Go back to the homepage</Link>
+        <FullHeight>
+          <BackgroundImage backgroundImage={backgroundMedia.fluid.src} >
+          </BackgroundImage>
+        </FullHeight>
+        <ProjectWrapper>
+          <h1>{slug}</h1>
+          <Link to="/">Go back to the homepage</Link>
+        </ProjectWrapper>
       </Layout>
     </ThemeProvider>
   )

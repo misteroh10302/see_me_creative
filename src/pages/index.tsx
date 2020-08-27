@@ -19,7 +19,9 @@ const IndexPage = () => (
             <Layout>
               <SEO title="Home" />
               {homepageContent && homepageContent.map((section,i) => {
+                
                   if (section.__typename === "ContentfulBackgroundMedia") {
+                    console.log(section.media.fluid)
                     return <BackgroundMedia title={section.title} fluid={section.media.fluid}/>
                   } else if (section.__typename === "ContentfulSection") {
                     return <Section title={section.title} bgm={section.backgroundMedia} content={section}/>

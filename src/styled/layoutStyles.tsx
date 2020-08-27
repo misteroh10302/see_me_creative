@@ -54,6 +54,14 @@ export const FullHeight = styled.div`
   }
 `;
 
+export const HalfHeight = styled.div`
+  min-height: 70vh;
+  .gatsby-image-wrapper {
+    overflow: visible !important;
+    position: initial !important;
+  }
+`;
+
 export const BackgroundImage = styled.section`
   min-height: 100vh;
   background: ${props => `url(${props.backgroundImage}) no-repeat center`};
@@ -76,7 +84,13 @@ export const OurWorkWrapper = styled.div`
   }
   ${grid}
 `;
-
+export const ProjectWrapper = styled.section`
+  background: ${props => `url(${props.backgroundImage}) no-repeat center`};
+  background-size: cover;
+  min-height: 100vh;
+  width: 100%;
+  padding: ${props => props.theme.padding.sectionVertical} ${props => props.theme.padding.desktop};
+`
 
 export const SectionWrapper = styled.section`
   background: ${props => `url(${props.backgroundImage}) no-repeat center`};
@@ -141,6 +155,14 @@ export const SectionWrapper = styled.section`
 `
 
 export const LayoutWrapper = styled.div`
+   h1 {
+        color: black;
+        font-family: ${props => props.theme.font.serif}, serif;
+        font-size: ${props => props.theme.projectHeader.fontSize};
+        letter-spacing: ${props => props.theme.projectHeader.letterSpacing};
+        font-weight: 100;
+        margin: 2rem 0;
+    }
     h2 {
         color: white;
         font-family: ${props => props.theme.font.serif}, serif;

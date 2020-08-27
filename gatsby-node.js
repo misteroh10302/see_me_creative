@@ -6,33 +6,46 @@
 
 // You can delete this file if you're not using it
 const mySlug = (str) => {
-    return str.trim().split(' ').join('-').toLowerCase();
+  return str.trim().split(' ').join('-').toLowerCase();
 }
 
 exports.createPages = async function ({ actions, graphql }) {
 
-    let projects = await graphql(`
+  let projects = await graphql(`
       {
         allContentfulProjectTemplateOne {
             nodes {
               title
+              tags
+              bodyContent {
+                json
+              }
+              backgroundMedia {
+                fluid {
+                  sizes
+                  aspectRatio
+                  base64
+                  src
+                  srcSet
+                }
+              }
             }
           }
         }
       `)
 
 
+  projects.data.allContentfulProjectTemplateOne.nodes.forEach(edge => {
+    const slug = edge;
+    const parsedSlug = mySlug(slug.title.toLowerCase());
 
-    projects.data.allContentfulProjectTemplateOne.nodes.forEach(edge => {
-        const slug = edge;
-        const parsedSlug = mySlug(slug.title.toLowerCase());
-        console.log('/project/', parsedSlug)
-        actions.createPage({
-            path: '/project/' + parsedSlug,
-            component: require.resolve(`./src/pages/page-2.tsx`),
-            context: {
-                slug: slug.title
-            },
-        })
+    actions.createPage({
+      path: '/project/' + parsedSlug,
+      component: require.resolve(`./src/pages/page-2.tsx`),
+      context: {
+        slug: slug.title,
+        content: edge
+      },
     })
+  })
 }

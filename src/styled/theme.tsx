@@ -31,5 +31,10 @@ export const theme = {
     fontSize: "2rem",
     letterSpacing: "-.37px",
     lineHeight: "3.6rem"
+    },
+    projectHeader: {
+        fontSize: "3.6rem",
+        letterSpacing: "-.66px",
+        lineHeight: "44rem"
     }
 };
