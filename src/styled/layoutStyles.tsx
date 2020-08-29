@@ -80,7 +80,10 @@ export const OurWorkWrapper = styled.div`
   padding: ${props => props.theme.padding.sectionVertical} 0;
   > div {
     color: white;
-    
+  }
+  a {
+    color: white;
+    text-decoration: none;
   }
   ${grid}
 `;
@@ -107,6 +110,7 @@ export const ProjectWrapper = styled.section`
     font-weight: 100;
     margin: 2rem 0;
   }
+ 
   small {
     display: block;
     font-size: 1.6rem;

@@ -9,6 +9,7 @@ import SEO from "../components/seo"
 import BackgroundMedia from "../components/UI/backgroundMedia/backgroundMedia"
 import Section from "../components/section"
 
+
 const IndexPage = () => (
   <StaticQuery
     query={homepageQuery}
@@ -18,8 +19,9 @@ const IndexPage = () => (
           <ThemeProvider theme={theme}>
             <Layout>
               <SEO title="Home" />
+           
               {homepageContent && homepageContent.map((section,i) => {
-                
+
                   if (section.__typename === "ContentfulBackgroundMedia") {
                     console.log(section.media.fluid)
                     return <BackgroundMedia title={section.title} fluid={section.media.fluid}/>
