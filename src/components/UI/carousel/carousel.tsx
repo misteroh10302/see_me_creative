@@ -97,7 +97,7 @@ const MyCarousel = (props: CarouselProps) => {
           {projects && projects.map((project,i) => {
               return (
                 <div> 
-                  <img src={project.backgroundMedia.fluid.src} /> 
+                  <img src={project.thumbnailMedia.fluid.src} /> 
                   <h4>{project.title}</h4>
                         <p>{project.tags.join(', ')}</p>
                 </div>

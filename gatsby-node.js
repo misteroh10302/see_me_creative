@@ -19,12 +19,27 @@ exports.createPages = async function ({ actions, graphql }) {
               tags
               subTitle
               postContent {
-                id
-                content {
-                  json
+                ... on ContentfulImageGallery {
+                  id
+                }
+                ... on ContentfulTextArea {
+                  id
+                  content {
+                    id
+                    json
+                  }
                 }
               }
               backgroundMedia {
+                fluid {
+                  sizes
+                  aspectRatio
+                  base64
+                  src
+                  srcSet
+                }
+              }
+              thumbnailMedia {
                 fluid {
                   sizes
                   aspectRatio
@@ -38,7 +53,7 @@ exports.createPages = async function ({ actions, graphql }) {
         }
       `)
 
-  console.log(projects)
+  console.log({ projects })
   projects.data.allContentfulProjectTemplateOne.nodes.forEach(edge => {
     const slug = edge;
     const parsedSlug = mySlug(slug.title.toLowerCase());

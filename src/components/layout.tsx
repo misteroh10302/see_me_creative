@@ -29,9 +29,6 @@ const Layout = (props: LayoutProps) => (
         <Header siteTitle={data.site.siteMetadata.title} />
         <div>
           <main>{props.children}</main>
-          <FooterWrapper>
-           
-          </FooterWrapper>
         </div>
       </LayoutWrapper>
     )}

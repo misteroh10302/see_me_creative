@@ -18,6 +18,7 @@ export const TextAreaWrapper = styled.div`
 const TextArea = (props: TextAreaProps) => {
   const data = props.content.content;
   const dataAsHtml = documentToReactComponents(data.json)
+  
   return (
     <TextAreaWrapper>
       {dataAsHtml}

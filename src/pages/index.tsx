@@ -8,13 +8,15 @@ import SEO from "../components/seo"
 
 import BackgroundMedia from "../components/UI/backgroundMedia/backgroundMedia"
 import Section from "../components/section"
+import Footer from "../components/UI/footer/footer"
 
 
 const IndexPage = () => (
   <StaticQuery
     query={homepageQuery}
     render={data => {
-        const { homepageContent } = data.contentfulHomepage; 
+        const { homepageContent, footer, footerBackground } = data.contentfulHomepage; 
+       
         return (
           <ThemeProvider theme={theme}>
             <Layout>
@@ -29,6 +31,7 @@ const IndexPage = () => (
                     return <Section title={section.title} bgm={section.backgroundMedia} content={section}/>
                   }
               })}
+              <Footer content={footer} bgm={footerBackground}/>
             </Layout>
           </ThemeProvider>
         )
@@ -42,6 +45,20 @@ const homepageQuery = graphql`
   query MyQuery {
     contentfulHomepage {
       id
+      footer {
+        content {
+          json
+        }
+        buttons {
+          buttonText
+          link
+        }
+      }
+      footerBackground {
+        fluid {
+          ...GatsbyContentfulFluid
+        }
+      }
       homepageContent {
         ... on ContentfulBackgroundMedia {
           id
@@ -90,6 +107,11 @@ const homepageQuery = graphql`
                 title
                 tags
                 backgroundMedia {
+                  fluid {
+                    ...GatsbyContentfulFluid
+                  }
+                }
+                thumbnailMedia {
                   fluid {
                     ...GatsbyContentfulFluid
                   }

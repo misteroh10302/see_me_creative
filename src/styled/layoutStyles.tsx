@@ -25,8 +25,8 @@ export const Button = styled.a`
     outline: 0;
     color: black;
     border: 0;
-    padding: 2rem 0rem;
-    margin: 2rem auto;
+    padding: 1.5rem 0rem;
+    margin: 1rem auto;
     display: block;
     text-transform: uppercase;
     cursor: pointer;

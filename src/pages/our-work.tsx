@@ -11,6 +11,7 @@ import { Link } from "gatsby"
 
 import BackgroundMedia from "../components/UI/backgroundMedia/backgroundMedia"
 import Section from "../components/section"
+import Footer from "../components/UI/footer/footer"
 
 import { BackgroundImage, OurWorkWrapper } from "../styled/layoutStyles"
 
@@ -21,6 +22,7 @@ const OurWork = () => (
     render={data => {
         const { nodes } = data.allContentfulOurWork;
         const { projects } = nodes[0]
+        console.log(nodes)
         return (
           <ThemeProvider theme={theme}>
             <Layout>
@@ -37,6 +39,7 @@ const OurWork = () => (
                     })}
                 </OurWorkWrapper>
             </BackgroundImage>
+            <Footer content={nodes[0].footer} bgm={nodes[0].footerBackground}/>
             </Layout>
           </ThemeProvider>
         )
@@ -49,22 +52,36 @@ const OurWork = () => (
 const OurWorkQuery = graphql`
     query OurWorkQuery {
         allContentfulOurWork {
-        nodes {
-            projects {
-            title
-            backgroundMedia {
-                fluid {
-                    ...GatsbyContentfulFluid
+            nodes {
+                projects {
+                    title
+                    backgroundMedia {
+                        fluid {
+                            ...GatsbyContentfulFluid
+                        }
+                    }
+                }
+                title
+                backgroundMedia {
+                    fluid {
+                        ...GatsbyContentfulFluid
+                    }
+                }
+                footer {
+                    content {
+                      json
+                    }
+                    buttons {
+                        link
+                        buttonText
+                    }
+                  }
+                footerBackground {
+                    fluid {
+                        ...GatsbyContentfulFluid
+                    }
                 }
             }
-            }
-            title
-            backgroundMedia {
-                fluid {
-                    ...GatsbyContentfulFluid
-                }
-            }
-        }
         }
     }
 `
