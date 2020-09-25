@@ -119,6 +119,51 @@ export const ProjectWrapper = styled.section`
     text-transform: capitalize;
     margin-bottom: 2rem;
   }
+  section.post-content {
+    p {
+      margin-bottom: 2rem;
+      text-align: left;
+      font-family: "Roboto", sans-serif;
+      font-size: 1.4rem;
+      font-weight: lighter;
+      letter-spacing: 0;
+      line-height: 2.2rem;
+      b {
+        font-family: ${props => props.theme.font.serif}, serif;
+        font-size: 2rem;
+        letter-spacing: -.035rem;
+        font-weight: 500;
+        text-rendering: optimizeLegibility;
+      }
+    }
+    div.gallery {
+      margin: 3rem 0;
+      img {
+        margin: 2rem 0;
+        display: inline-block;
+        width: 100%;
+      }
+    }
+    .video-content {
+      margin: 8rem 0 6rem;
+    }
+    .video-inner {
+      position: relative;
+      padding-bottom: 56.25%; /*16:9*/
+      height: 0;
+      overflow: hidden;
+      iframe {
+          position: absolute;
+          top:0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          video {
+            width: 100%;
+          }
+      }
+    }
+  }
 `
 
 export const ProjectCollectionWrapper = styled.div`
@@ -166,23 +211,27 @@ export const SectionWrapper = styled.section`
         b {
           display: block;
           line-height: 1.6rem;
+          text-transform: uppercase;
+          letter-spacing: 1px;
         }
         i {
           font-style: initial;
         }
       }
-      p:first-child {
-        margin-bottom: 6rem;
-      }
+      
       p:nth-child(n+2) {
         font-size: 1.4rem;
         font-family: "Roboto", sans-serif;
       }
-      p:nth-child(2n) {
+      p:nth-child(even) {
         text-align: left;
       }
-      p:nth-child(3n) {
+      p:nth-child(odd) {
         text-align: right;
+      }
+      p:nth-child(1){
+        margin-bottom: 6rem;
+        text-align: center;
       }
     }
   }

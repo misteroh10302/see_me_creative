@@ -2,6 +2,7 @@ import { Link } from "gatsby"
 import * as React from "react"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import styled from "styled-components"
+import Fade from 'react-reveal/Fade';
 
 export const TextAreaWrapper = styled.div`
   padding: 3rem;
@@ -21,7 +22,7 @@ const TextArea = (props: TextAreaProps) => {
   
   return (
     <TextAreaWrapper>
-      {dataAsHtml}
+      <Fade top cascade>{dataAsHtml} </Fade>
     </TextAreaWrapper>
   )
 }

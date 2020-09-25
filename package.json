@@ -26,6 +26,7 @@
     "react-helmet": "^5.2.1",
     "react-image-gallery": "^1.0.8",
     "react-responsive-carousel": "^3.2.9",
+    "react-reveal": "^1.2.2",
     "styled-components": "^5.1.1"
   },
   "devDependencies": {

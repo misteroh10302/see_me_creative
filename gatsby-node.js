@@ -21,7 +21,28 @@ exports.createPages = async function ({ actions, graphql }) {
               postContent {
                 ... on ContentfulImageGallery {
                   id
+                  images {
+                    fluid {
+                      sizes
+                      aspectRatio
+                      base64
+                      src
+                      srcSet
+                    }
+                  }
                 }
+                ... on ContentfulVideoGallery {
+                  id
+                  content {
+                    json
+                  }
+                  videos {
+                    file {
+                      url
+                    }
+                  }
+                }
+              
                 ... on ContentfulTextArea {
                   id
                   content {
