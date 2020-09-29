@@ -18,6 +18,24 @@ exports.createPages = async function ({ actions, graphql }) {
               title
               tags
               subTitle
+              footer {
+                content {
+                  json
+                }
+                buttons {
+                    link
+                    buttonText
+                }
+              }
+              footerBackground {
+                fluid {
+                  base64
+                  tracedSVG
+                  srcWebp
+                  srcSetWebp
+                  src
+                }
+              }
               postContent {
                 ... on ContentfulImageGallery {
                   id

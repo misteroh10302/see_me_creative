@@ -9,6 +9,7 @@ import SEO from "../components/seo"
 
 import BackgroundMedia from "../components/UI/backgroundMedia/backgroundMedia"
 import Section from "../components/section"
+import Footer from "../components/UI/footer/footer"
 
 const WhoWeArePage = () => (
   <StaticQuery
@@ -31,6 +32,7 @@ const WhoWeArePage = () => (
                 </ProjectCollectionWrapper>
            
               }
+                 <Footer content={nodes[0].footer} bgm={nodes[0].footerBackground}/>
             </Layout>
           </ThemeProvider>
         )
@@ -53,6 +55,20 @@ const whoWeAreQuery = graphql`
               srcSetWebp
             }
           }
+          footer {
+              content {
+                json
+              }
+              buttons {
+                  link
+                  buttonText
+              }
+            }
+          footerBackground {
+              fluid {
+                  ...GatsbyContentfulFluid
+              }
+          }
           whoWeAreContent {
             title
             backgroundMedia {
@@ -65,6 +81,21 @@ const whoWeAreQuery = graphql`
                 id
                 content {
                   json
+                }
+              }
+              ... on ContentfulImageGallery {
+                id
+                content {
+                  json
+                }
+                title
+                images {
+                  fluid {
+                    base64
+                    tracedSVG
+                    srcWebp
+                    srcSetWebp
+                  }
                 }
               }
             }

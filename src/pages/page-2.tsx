@@ -8,15 +8,15 @@ import Img from "gatsby-image"
 import { FullHeight, ProjectWrapper, BackgroundImage } from '../styled/layoutStyles'
 import { theme } from "../styled/theme"
 import TextArea from "../components/UI/textArea/textArea"
+import Footer from "../components/UI/footer/footer"
 
 
 const SecondPage = (data) => {
   const { slug, content } = data.pageContext;
   const { backgroundMedia, subTitle, title, tags, postContent } = content;
-  console.log(postContent)
   return(
     <ThemeProvider theme={theme}>
-      <Layout>
+      <Layout >
         <SEO title={slug} />
         <FullHeight>
           <BackgroundImage backgroundImage={backgroundMedia.fluid.src} >
@@ -39,9 +39,8 @@ const SecondPage = (data) => {
                         <iframe
                           src={content.videos[0].file.url}
                           title={'My Video'}
-                          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                          allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
                           frameBorder="0"
-                          autoPlay="false"
                           webkitallowfullscreen="true"
                           mozallowfullscreen="true"
                           allowFullScreen
@@ -66,6 +65,9 @@ const SecondPage = (data) => {
           }       
           <Link to="/">Go back to the homepage</Link>
         </ProjectWrapper>
+        {content.footer && 
+          <Footer content={content.footer} bgm={content.footerBackground}/> 
+        }
       </Layout>
     </ThemeProvider>
   )

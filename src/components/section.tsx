@@ -5,6 +5,7 @@ import * as React from "react"
 import { SectionWrapper, Button } from "../styled/layoutStyles"
 import TextArea from "./UI/textArea/textArea"
 import Carousel from './UI/carousel/carousel'
+import ImageAndText from './UI/imageandtext/imageAndText'
 
 const cleanTitle = (str) => {
     return str.replace(/ /g, '-').toLowerCase();
@@ -23,6 +24,10 @@ const Section = (props: SectionProps) => {
                     return <Carousel content={content}/>
                 } else if (content.__typename === "ContentfulProjectCarousel") {
                     return <Carousel content={content}/>
+                } else if (content.__typename === "ContentfulImageGallery") {
+                    return  (
+                        <ImageAndText content={content} />
+                    )
                 }
             })}
         </SectionWrapper>

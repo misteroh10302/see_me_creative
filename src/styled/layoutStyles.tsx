@@ -177,6 +177,12 @@ export const SectionWrapper = styled.section`
   min-height: 100vh;
   width: 100%;
   padding: ${props => props.theme.padding.sectionVertical} ${props => props.theme.padding.desktop};
+  @media screen and (min-width: 850px) {
+      * {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+    }
   &.about-, &.about {
     
     p {
@@ -234,6 +240,7 @@ export const SectionWrapper = styled.section`
         text-align: center;
       }
     }
+    
   }
 `
 
@@ -267,4 +274,11 @@ export const LayoutWrapper = styled.div`
         margin-bottom: 5rem;
     }
 
+    .our-work {
+      background-color: black;
+      section > div {
+        max-width: 850px;
+        margin: 0 auto;
+      }
+    }
 `;

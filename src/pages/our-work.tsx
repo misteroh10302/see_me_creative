@@ -22,10 +22,11 @@ const OurWork = () => (
     render={data => {
         const { nodes } = data.allContentfulOurWork;
         const { projects } = nodes[0]
-        console.log(nodes)
         return (
           <ThemeProvider theme={theme}>
             <Layout>
+            <div className="our-work">
+
               <SEO title="Our Work" />
               <BackgroundImage backgroundImage={nodes[0].backgroundMedia.fluid.src}>
                 <OurWorkWrapper>
@@ -40,7 +41,9 @@ const OurWork = () => (
                 </OurWorkWrapper>
             </BackgroundImage>
             <Footer content={nodes[0].footer} bgm={nodes[0].footerBackground}/>
+            </div>
             </Layout>
+            
           </ThemeProvider>
         )
     }
