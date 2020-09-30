@@ -1,5 +1,5 @@
-import { Link } from "gatsby"
 import * as React from "react"
+import uuid from 'react-uuid'
 
 
 import { SectionWrapper, Button } from "../styled/layoutStyles"
@@ -14,20 +14,18 @@ const cleanTitle = (str) => {
 const Section = (props: SectionProps) => {
     const { content,title } = props.content;
     return (
-        <SectionWrapper className={cleanTitle(title)} backgroundImage={props.bgm.file.url}>
+        <SectionWrapper className={cleanTitle(title)} backgroundImage={props.bgm ? props.bgm.file.url : ""}>
             {content && content.map((content,i) =>{
                 if (content.__typename === "ContentfulTextArea") {
-                    return <TextArea content={content}/>;
+                    return <TextArea key={uuid()} content={content}/>;
                 } else if (content.__typename === "ContentfulButton") {
-                    return <Button href={content.link}>{content.buttonText}</Button>
+                    return <Button key={uuid()} href={content.link}>{content.buttonText}</Button>
                 } else if (content.__typename === "ContentfulCarousel") {
-                    return <Carousel content={content}/>
+                    return <Carousel key={uuid()} content={content}/>
                 } else if (content.__typename === "ContentfulProjectCarousel") {
-                    return <Carousel content={content}/>
+                    return <Carousel key={uuid()} content={content}/>
                 } else if (content.__typename === "ContentfulImageGallery") {
-                    return  (
-                        <ImageAndText content={content} />
-                    )
+                    return <ImageAndText key={uuid()} content={content} />
                 }
             })}
         </SectionWrapper>

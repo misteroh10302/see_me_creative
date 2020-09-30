@@ -5,7 +5,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Img from "gatsby-image"
 
-import { FullHeight, ProjectWrapper, BackgroundImage } from '../styled/layoutStyles'
+import { FullHeight, ProjectWrapper, BackgroundImage, GalleryWrapper } from '../styled/layoutStyles'
 import { theme } from "../styled/theme"
 import TextArea from "../components/UI/textArea/textArea"
 import Footer from "../components/UI/footer/footer"
@@ -53,17 +53,16 @@ const SecondPage = (data) => {
                   return <TextArea content={content}/>
                 } else if (content.images) {
                   return (
-                    <div className="gallery">
+                    <GalleryWrapper className="gallery">
                       {content.images.map((img,i) => {
                         return <Img fluid={img.fluid} />
                       })}
-                    </div>
+                    </GalleryWrapper>
                   )
                 }
               })}
             </section>
           }       
-          <Link to="/">Go back to the homepage</Link>
         </ProjectWrapper>
         {content.footer && 
           <Footer content={content.footer} bgm={content.footerBackground}/> 

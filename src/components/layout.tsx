@@ -27,7 +27,7 @@ const Layout = (props: LayoutProps) => (
     render={data => (
       <LayoutWrapper>
         <Header siteTitle={data.site.siteMetadata.title} />
-        <div>
+        <div className={data.site.siteMetadata.title}>
           <main>{props.children}</main>
         </div>
       </LayoutWrapper>

@@ -1,19 +1,22 @@
-import { Link } from "gatsby"
 import * as React from "react"
 import { FooterWrapper } from "./footerWrapper"
-import TextArea  from '../textArea/textArea'
+import TextArea from "../textArea/textArea"
 import { Button } from "../../../styled/layoutStyles"
+import uuid from "react-uuid"
 
 const Footer = (props: FooterProps) => {
-   return ( 
+  return (
     <FooterWrapper background={props.bgm.fluid.src}>
-        <TextArea content={props.content}/>
-        {props.content.buttons.map((button,i) => {
-                return <Button href={button.link}>{button.buttonText}</Button>
-            })
-        }
+      <TextArea content={props.content} />
+      {props.content.buttons.map((button, i) => {
+        return (
+          <Button key={uuid()} href={button.link}>
+            {button.buttonText}
+          </Button>
+        )
+      })}
     </FooterWrapper>
-   )
+  )
 }
 
 interface FooterProps {
@@ -25,7 +28,7 @@ interface FooterProps {
 Footer.defaultProps = {
   siteTitle: ``,
   content: {},
-  bgm: ''
+  bgm: "",
 }
 
 export default Footer

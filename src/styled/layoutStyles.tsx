@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { device } from './theme';
 
 /* Layout Helpers
 ----------------------------- */
@@ -40,6 +41,10 @@ export const Button = styled.a`
     &:hover {
       background-color: black;
       color: white;
+    }
+    @media  ${device.tablet} {
+      max-width: 300px;
+      margin: 2rem auto;
     }
 `
 
@@ -178,13 +183,12 @@ export const SectionWrapper = styled.section`
   width: 100%;
   padding: ${props => props.theme.padding.sectionVertical} ${props => props.theme.padding.desktop};
   @media screen and (min-width: 850px) {
-      * {
+      > div {
         max-width: 900px;
         margin: 0 auto;
       }
     }
   &.about-, &.about {
-    
     p {
       color: black;
     }
@@ -204,24 +208,70 @@ export const SectionWrapper = styled.section`
     color: white;
   }
   &.who-we-are-content-info {
-   
     p { 
       color: black;
-
     }
   }
   &.our-perspective {
     color: white;
+    background-color: blue;
+    position: relative;
+    div.images-2 {
+      position: absolute;
+      top: 3rem;
+      right: 0;
+      left: 0;
+      margin: 0 auto;
+      z-index: 0;
+      h1 {
+        display: none;
+      }
+      img {
+        width: 80%;
+        display: block;
+        margin: 0 auto;
+      }
+      img:nth-child(1) {
+        @media ${device.tablet} {
+          display:block;
+          margin: 0 auto;
+          top: 50%;
+          position: relative;
+          transform: translateY(50%);
+        }
+      }
+      img:nth-child(2) {
+        position: relative;
+        top: -2rem;
+        @media ${device.tablet} {
+          position: absolute;
+          top: 13rem;
+          width: 500px;
+          left: -10rem;
+        }
+      }
+    }
     > div {
+      z-index: 1;
+      position: relative;
       p {
+        
         b {
           display: block;
           line-height: 1.6rem;
           text-transform: uppercase;
           letter-spacing: 1px;
+          @media  ${device.tablet} {
+            font-size: 1.8rem;
+            line-height: 2.2rem;
+          }
         }
         i {
           font-style: initial;
+          @media  ${device.tablet} {
+            font-size: 1.8rem;
+            line-height: 2.2rem;
+          }
         }
       }
       
@@ -243,7 +293,17 @@ export const SectionWrapper = styled.section`
     
   }
 `
-
+export const GalleryWrapper = styled.div`
+  display: grid;
+  @media ${device.laptop} {
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    gap: 3.2rem;
+    div:nth-child(n+3) {
+      grid-column: 1/3;
+    }
+  }
+`
 export const LayoutWrapper = styled.div`
    h1 {
         color: black;
@@ -252,6 +312,7 @@ export const LayoutWrapper = styled.div`
         letter-spacing: ${props => props.theme.projectHeader.letterSpacing};
         font-weight: 100;
         margin: 2rem 0;
+        
     }
     h2 {
         font-family: ${props => props.theme.font.serif}, serif;
@@ -269,9 +330,16 @@ export const LayoutWrapper = styled.div`
     }
     p {
         font-family: ${props => props.theme.font.sans}, serif;
-        font-size: ${props => props.theme.tags.fontSize};
+        font-size: ${props => props.theme.p.fontSize};
+        line-height: ${props => props.theme.p.lineHeight};
+        letter-spacing:  ${props => props.theme.p.letterSpacing};
         font-weight: 100;
         margin-bottom: 5rem;
+        @media  ${device.laptop} {
+          font-size: 4.8rem;
+          line-height: 5rem;
+          letter-spacing:  .-75px;
+        }
     }
 
     .our-work {

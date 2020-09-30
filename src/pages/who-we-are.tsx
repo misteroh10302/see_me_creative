@@ -95,6 +95,7 @@ const whoWeAreQuery = graphql`
                     tracedSVG
                     srcWebp
                     srcSetWebp
+                    src
                   }
                 }
               }

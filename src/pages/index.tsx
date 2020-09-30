@@ -18,7 +18,7 @@ const IndexPage = () => (
         const { homepageContent, footer, footerBackground } = data.contentfulHomepage; 
         return (
           <ThemeProvider theme={theme}>
-            <Layout>
+            <Layout page="home">
               <SEO title="Home" />
               {homepageContent && homepageContent.map((section,i) => {
                   if (section.__typename === "ContentfulBackgroundMedia") {
@@ -111,6 +111,18 @@ const homepageQuery = graphql`
                   fluid {
                     ...GatsbyContentfulFluid
                   }
+                }
+              }
+            }
+            ... on ContentfulImageGallery {
+              id
+              title
+              images {
+                sizes {
+                  src
+                }
+                fluid {
+                  ...GatsbyContentfulFluid
                 }
               }
             }

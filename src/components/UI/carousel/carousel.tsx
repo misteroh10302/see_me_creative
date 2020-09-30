@@ -2,6 +2,7 @@ import { Link } from "gatsby"
 import * as React from "react"
 import { useState } from "react"
 import Img from "gatsby-image"
+import uuid from 'react-uuid'
 
 import { CarouselWrapper } from "./CarouselWrapper"
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -72,7 +73,7 @@ const MyCarousel = (props: CarouselProps) => {
           showStatus={true} 
           swipeScrollTolerance={5} swipeable={true} showThumbs={false}>
           {carouselMedia && carouselMedia.map((image,i) => {
-              return  <div> <img src={image.fluid.src} /> </div>
+              return  <div key={uuid()}> <img src={image.fluid.src} /> </div>
           })}
           </Carousel>
         </CarouselWrapper>
@@ -96,7 +97,7 @@ const MyCarousel = (props: CarouselProps) => {
           showThumbs={false}>
           {projects && projects.map((project,i) => {
               return (
-                <div> 
+                <div key={uuid()}> 
                   <img src={project.thumbnailMedia.fluid.src} /> 
                   <h4>{project.title}</h4>
                         <p>{project.tags.join(', ')}</p>
