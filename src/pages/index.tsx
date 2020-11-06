@@ -10,32 +10,45 @@ import BackgroundMedia from "../components/UI/backgroundMedia/backgroundMedia"
 import Section from "../components/section"
 import Footer from "../components/UI/footer/footer"
 
-
 const IndexPage = () => (
   <StaticQuery
     query={homepageQuery}
     render={data => {
-        const { homepageContent, footer, footerBackground } = data.contentfulHomepage; 
-        return (
-          <ThemeProvider theme={theme}>
-            <Layout page="home">
-              <SEO title="Home" />
-              {homepageContent && homepageContent.map((section,i) => {
-                  if (section.__typename === "ContentfulBackgroundMedia") {
-                    return <BackgroundMedia title={section.title} fluid={section.media.fluid}/>
-                  } else if (section.__typename === "ContentfulSection") {
-                    return <Section title={section.title} bgm={section.backgroundMedia} content={section}/>
-                  }
+      const {
+        homepageContent,
+        footer,
+        footerBackground,
+      } = data.contentfulHomepage
+      return (
+        <ThemeProvider theme={theme}>
+          <Layout page="home">
+            <SEO title="Home" />
+            {homepageContent &&
+              homepageContent.map((section, i) => {
+                if (section.__typename === "ContentfulBackgroundMedia") {
+                  return (
+                    <BackgroundMedia
+                      title={section.title}
+                      fluid={section.media.fluid}
+                    />
+                  )
+                } else if (section.__typename === "ContentfulSection") {
+                  return (
+                    <Section
+                      title={section.title}
+                      bgm={section.backgroundMedia}
+                      content={section}
+                    />
+                  )
+                }
               })}
-              <Footer content={footer} bgm={footerBackground}/>
-            </Layout>
-          </ThemeProvider>
-        )
-    }
-  }/>
+            <Footer content={footer} bgm={footerBackground} />
+          </Layout>
+        </ThemeProvider>
+      )
+    }}
+  />
 )
-
-
 
 const homepageQuery = graphql`
   query MyQuery {
@@ -131,6 +144,5 @@ const homepageQuery = graphql`
       }
     }
   }
-
 `
 export default IndexPage

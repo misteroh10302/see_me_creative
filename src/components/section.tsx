@@ -1,7 +1,5 @@
 import * as React from "react"
 import uuid from 'react-uuid'
-
-
 import { SectionWrapper, Button } from "../styled/layoutStyles"
 import TextArea from "./UI/textArea/textArea"
 import Carousel from './UI/carousel/carousel'

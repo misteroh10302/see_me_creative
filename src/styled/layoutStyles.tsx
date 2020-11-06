@@ -38,9 +38,11 @@ export const Button = styled.a`
     font-size: 1.2rem;
     letter-spacing: 1px;
     text-decoration: none;
+    border: 1px solid transparent;
     &:hover {
       background-color: black;
       color: white;
+      border: 1px solid white;
     }
     @media  ${device.tablet} {
       max-width: 300px;
@@ -182,11 +184,25 @@ export const SectionWrapper = styled.section`
   min-height: 100vh;
   width: 100%;
   padding: ${props => props.theme.padding.sectionVertical} ${props => props.theme.padding.desktop};
+  &.projects {
+    padding:8rem 0;
+  }
+  transition: 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
+  .fadeInUp {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
   @media screen and (min-width: 850px) {
       > div {
-        max-width: 900px;
+
         margin: 0 auto;
       }
+      &.about-, &.our-perspective, &.who-we-are{
+        >div {
+          max-width: 900px;
+        }
+      }
+    
     }
   &.about-, &.about {
     p {
@@ -349,4 +365,140 @@ export const LayoutWrapper = styled.div`
         margin: 0 auto;
       }
     }
+`;
+
+
+export const SwiperWrapper = styled.div`
+  :root {
+    --swiper-theme-color: #{$themeColor};
+  }
+  .swiper-container {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    z-index: 1;
+  }
+  .swiper-container-vertical > .swiper-wrapper {
+    flex-direction: column;
+  }
+  .swiper-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    transition-property: transform;
+    box-sizing: content-box;
+  }
+  .swiper-container-android .swiper-slide,
+  .swiper-wrapper {
+    transform: translate3d(0px, 0, 0);
+  }
+  .swiper-container-multirow > .swiper-wrapper {
+    flex-wrap: wrap;
+  }
+  .swiper-container-multirow-column > .swiper-wrapper {
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+  .swiper-container-free-mode > .swiper-wrapper {
+    transition-timing-function: ease-out;
+    margin: 0 auto;
+  }
+  .swiper-slide {
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition-property: transform;
+  }
+  .swiper-slide-invisible-blank {
+    visibility: hidden;
+  }
+  /* Auto Height */
+  .swiper-container-autoheight {
+    &,
+    .swiper-slide {
+      height: auto;
+    }
+
+    .swiper-wrapper {
+      align-items: flex-start;
+      transition-property: transform, height;
+    }
+  }
+
+  /* 3D Effects */
+  .swiper-container-3d {
+    perspective: 1200px;
+    .swiper-wrapper,
+    .swiper-slide,
+    .swiper-slide-shadow-left,
+    .swiper-slide-shadow-right,
+    .swiper-slide-shadow-top,
+    .swiper-slide-shadow-bottom,
+    .swiper-cube-shadow {
+      transform-style: preserve-3d;
+    }
+    .swiper-slide-shadow-left,
+    .swiper-slide-shadow-right,
+    .swiper-slide-shadow-top,
+    .swiper-slide-shadow-bottom {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 10;
+    }
+    .swiper-slide-shadow-left {
+      background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    }
+    .swiper-slide-shadow-right {
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    }
+    .swiper-slide-shadow-top {
+      background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    }
+    .swiper-slide-shadow-bottom {
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    }
+  }
+
+  /* CSS Mode */
+  .swiper-container-css-mode {
+    > .swiper-wrapper {
+      overflow: auto;
+      scrollbar-width: none; /* For Firefox */
+      -ms-overflow-style: none; /* For Internet Explorer and Edge */
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+    > .swiper-wrapper > .swiper-slide {
+      scroll-snap-align: start start;
+    }
+  }
+  .swiper-container-horizontal.swiper-container-css-mode {
+    > .swiper-wrapper {
+      scroll-snap-type: x mandatory;
+    }
+  }
+  .swiper-container-vertical.swiper-container-css-mode {
+    > .swiper-wrapper {
+      scroll-snap-type: y mandatory;
+    }
+  }
+  .swiper-slide {
+    /* min-height: 100vh; */
+    text-align: center;
+  }
+  p {
+    color: white;
+    font-size: 1.3rem;
+  }
 `;

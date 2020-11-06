@@ -31,6 +31,11 @@ export const CarouselWrapper = styled.div`
            background-color: #00000026;
         }
     }
+    .carousel-slider {
+        .slider-wrapper {
+            margin-bottom: 6rem;
+        }
+    }
     .carousel .slide {
         background-color: transparent;
     }
