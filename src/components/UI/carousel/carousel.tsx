@@ -71,7 +71,7 @@ const MyCarousel = (props: CarouselProps) => {
                                                 }}
                         /> 
                       <h4>{project.title}</h4>
-                      <p>{project.tags.join(', ')}</p>
+                      <p>{project.tags && project.tags.join(', ')}</p>
                   </div>
                 )
             })}

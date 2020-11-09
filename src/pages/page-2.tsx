@@ -13,7 +13,12 @@ import Footer from "../components/UI/footer/footer"
 
 const SecondPage = (data) => {
   const { slug, content } = data.pageContext;
-  const { backgroundMedia, subTitle, title, tags, postContent } = content;
+  if (!content) return <div>No Content</div>
+  const subTitle = content.subTitle || null;
+  const title = content.title || null;
+  const tags = content.tags || null;
+  const postContent = content.postContent || null;
+  const backgroundMedia = content.backgroundMedia || null;
   return(
     <ThemeProvider theme={theme}>
       <Layout >
@@ -25,7 +30,7 @@ const SecondPage = (data) => {
         <ProjectWrapper>
           <h1 className="title">{title}</h1>
           <h2 className="subtitle">{subTitle}</h2>
-          <small>{tags.join(', ')}</small>
+          <small>{tags && tags.join(', ')}</small>
           {postContent &&
             <section className="post-content">
               {postContent.map((content,i) => {
