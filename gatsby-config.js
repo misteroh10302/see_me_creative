@@ -1,10 +1,11 @@
 module.exports = {
   siteMetadata: {
-    title: `See Me`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    title: `See Me Creative`,
+    description: `See Me Creative.`,
     author: `@denningk`,
   },
   plugins: [
+    `gatsby-plugin-netlify`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-contentful`,
@@ -35,6 +36,12 @@ module.exports = {
       },
     },
     `gatsby-plugin-typescript`,
+    {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {
+        // Add any options here
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
