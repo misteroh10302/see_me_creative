@@ -7,9 +7,13 @@ export const FooterWrapper = styled.nav`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  > div {
-      p {
-          margin-bottom: 1rem;
-      }
+
+  p{
+    color: ${props => props.textColor === "light" ? "white" : "black"};
   }
-`;
+  > div {
+    p {
+      margin-bottom: 1rem;
+    }
+  }
+`

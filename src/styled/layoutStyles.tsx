@@ -1,55 +1,54 @@
 import styled from "styled-components"
-import { device } from './theme';
+import { device } from "./theme"
 
 /* Layout Helpers
 ----------------------------- */
-const vertialAlign =  `
+const vertialAlign = `
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-`;
+`
 
-const grid =  `
+const grid = `
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
-`;
+`
 
 /* Buttons
 ----------------------------- */
 export const Button = styled.a`
-    max-width: 80%;
-    width: 100%;
-    border-radius: 40px;
-    background-color: white;
-    outline: 0;
-    color: black;
-    border: 0;
-    padding: 1.5rem 0rem;
-    margin: 1rem auto;
-    display: block;
-    text-transform: uppercase;
-    cursor: pointer;
-    text-align: center;
-    transition: 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
-    font-family: "Roboto", sans-serif;
-    font-weight: 500;
-    font-size: 1.2rem;
-    letter-spacing: 1px;
-    text-decoration: none;
-    border: 1px solid transparent;
-    &:hover {
-      background-color: black;
-      color: white;
-      border: 1px solid white;
-    }
-    @media  ${device.tablet} {
-      max-width: 300px;
-      margin: 2rem auto;
-    }
+  max-width: 80%;
+  width: 100%;
+  border-radius: 40px;
+  background-color: white;
+  outline: 0;
+  color: black;
+  border: 0;
+  padding: 1.5rem 0rem;
+  margin: 1rem auto;
+  display: block;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-align: center;
+  transition: 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  text-decoration: none;
+  border: 1px solid transparent;
+  &:hover {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+  }
+  @media ${device.tablet} {
+    max-width: 300px;
+    margin: 2rem auto;
+  }
 `
-
 
 /* Layout Wrappers
 ----------------------------- */
@@ -59,7 +58,7 @@ export const FullHeight = styled.div`
     overflow: visible !important;
     position: initial !important;
   }
-`;
+`
 
 export const HalfHeight = styled.div`
   min-height: 70vh;
@@ -67,21 +66,21 @@ export const HalfHeight = styled.div`
     overflow: visible !important;
     position: initial !important;
   }
-`;
+`
 
 export const BackgroundImage = styled.section`
   min-height: 100vh;
   background: ${props => `url(${props.backgroundImage}) no-repeat center`};
   background-size: cover;
-  padding: ${props => props.theme.padding.sectionVertical} ${props => props.theme.padding.desktop};
-`;
-
+  padding: ${props => props.theme.padding.sectionVertical}
+    ${props => props.theme.padding.desktop};
+`
 
 export const FooterWrapper = styled.footer`
   min-height: 100vh;
   ${vertialAlign}
   background-color: ${props => props.theme.colors.green};
-`;
+`
 
 export const OurWorkWrapper = styled.div`
   padding: ${props => props.theme.padding.sectionVertical} 0;
@@ -93,13 +92,20 @@ export const OurWorkWrapper = styled.div`
     text-decoration: none;
   }
   ${grid}
-`;
+`
 export const ProjectWrapper = styled.section`
   background: ${props => `url(${props.backgroundImage}) no-repeat center`};
   background-size: cover;
   min-height: 100vh;
   width: 100%;
-  padding: ${props => props.theme.padding.sectionVertical} ${props => props.theme.padding.desktop};
+  padding: ${props => props.theme.padding.sectionVertical}
+    ${props => props.theme.padding.desktop};
+  header {
+    @media ${device.tablet} {
+      max-width: 840px;
+      margin: 0 auto;
+    }
+  }
   h1.title {
     background-color: ${props => props.theme.colors.green};
     display: inline-block;
@@ -117,7 +123,7 @@ export const ProjectWrapper = styled.section`
     font-weight: 100;
     margin: 2rem 0;
   }
- 
+
   small {
     display: block;
     font-size: 1.6rem;
@@ -138,7 +144,7 @@ export const ProjectWrapper = styled.section`
       b {
         font-family: ${props => props.theme.font.serif}, serif;
         font-size: 2rem;
-        letter-spacing: -.035rem;
+        letter-spacing: -0.035rem;
         font-weight: 500;
         text-rendering: optimizeLegibility;
       }
@@ -160,14 +166,23 @@ export const ProjectWrapper = styled.section`
       height: 0;
       overflow: hidden;
       iframe {
-          position: absolute;
-          top:0;
-          left: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        video {
           width: 100%;
-          height: 100%;
-          video {
-            width: 100%;
-          }
+        }
+      }
+    }
+    @media ${device.tablet} {
+      > div {
+        h3,
+        p {
+          max-width: 840px;
+          margin: 1rem auto;
+        }
       }
     }
   }
@@ -175,7 +190,6 @@ export const ProjectWrapper = styled.section`
 
 export const ProjectCollectionWrapper = styled.div`
   background-color: black;
-
 `
 
 export const SectionWrapper = styled.section`
@@ -183,47 +197,75 @@ export const SectionWrapper = styled.section`
   background-size: cover;
   min-height: 100vh;
   width: 100%;
-  padding: ${props => props.theme.padding.sectionVertical} ${props => props.theme.padding.desktop};
+  padding: ${props => props.theme.padding.sectionVertical}
+    ${props => props.theme.padding.desktop};
   &.projects {
-    padding:8rem 0;
+    padding: 8rem 0;
   }
-
   @media screen and (min-width: 850px) {
-      > div {
-
-        margin: 0 auto;
-      }
-      &.about-, &.our-perspective, &.who-we-are{
-        >div {
-          max-width: 900px;
-        }
-      }
-    
+    > div {
+      margin: 0 auto;
     }
-  &.about-, &.about {
+    &.about-,
+    &.our-perspective,
+    &.who-we-are {
+      > div {
+        max-width: 900px;
+      }
+    }
+  }
+  &.about-,
+  &.about {
     p {
       color: black;
     }
   }
   &.who-we-are-content-info {
-     p  {
-     text-align: left;
-     margin: 3rem 0;
-   }
+    p {
+      text-align: left;
+      margin: 3rem 0;
+      color: black;
+    }
+
+    .image-and-text {
+      > div {
+        padding-top: 0;
+      }
+      p {
+        font-family: "Roboto", sans-serif;
+        font-size: 1.4rem;
+        line-height: 2.2rem;
+        margin-bottom: 0;
+        letter-spacing: 0;
+      }
+    }
     b {
       display: block;
       line-height: 6rem;
+    }
+    @media ${device.tablet} {
+      p {
+        text-align: center;
+      }
+      div:first-child {
+        max-width: 840px;
+      }
+      .image-and-text {
+        display: inline-block;
+        width: 50%;
+        padding: 3rem;
+        box-sizing: border-box;
+        p {
+          text-align: left;
+        }
+      }
     }
   }
   &.who-we-are {
     ${vertialAlign}
     color: white;
   }
-  &.who-we-are-content-info {
-    p { 
-      color: black;
-    }
-  }
+
   &.our-perspective {
     color: white;
     background-color: blue;
@@ -245,7 +287,7 @@ export const SectionWrapper = styled.section`
       }
       img:nth-child(1) {
         @media ${device.tablet} {
-          display:block;
+          display: block;
           margin: 0 auto;
           top: 50%;
           position: relative;
@@ -267,27 +309,26 @@ export const SectionWrapper = styled.section`
       z-index: 1;
       position: relative;
       p {
-        
         b {
           display: block;
           line-height: 1.6rem;
           text-transform: uppercase;
           letter-spacing: 1px;
-          @media  ${device.tablet} {
+          @media ${device.tablet} {
             font-size: 1.8rem;
             line-height: 2.2rem;
           }
         }
         i {
           font-style: initial;
-          @media  ${device.tablet} {
+          @media ${device.tablet} {
             font-size: 1.8rem;
             line-height: 2.2rem;
           }
         }
       }
-      
-      p:nth-child(n+2) {
+
+      p:nth-child(n + 2) {
         font-size: 1.4rem;
         font-family: "Roboto", sans-serif;
       }
@@ -297,12 +338,11 @@ export const SectionWrapper = styled.section`
       p:nth-child(odd) {
         text-align: right;
       }
-      p:nth-child(1){
+      p:nth-child(1) {
         margin-bottom: 6rem;
         text-align: center;
       }
     }
-    
   }
 `
 export const GalleryWrapper = styled.div`
@@ -311,58 +351,56 @@ export const GalleryWrapper = styled.div`
     grid-template-columns: 1fr 1fr;
     justify-content: center;
     gap: 3.2rem;
-    div:nth-child(n+3) {
+    div:nth-child(n + 3) {
       grid-column: 1/3;
     }
   }
 `
 export const LayoutWrapper = styled.div`
-   h1 {
-        color: black;
-        font-family: ${props => props.theme.font.serif}, serif;
-        font-size: ${props => props.theme.projectHeader.fontSize};
-        letter-spacing: ${props => props.theme.projectHeader.letterSpacing};
-        font-weight: 100;
-        margin: 2rem 0;
-        
+  h1 {
+    color: black;
+    font-family: ${props => props.theme.font.serif}, serif;
+    font-size: ${props => props.theme.projectHeader.fontSize};
+    letter-spacing: ${props => props.theme.projectHeader.letterSpacing};
+    font-weight: 100;
+    margin: 2rem 0;
+  }
+  h2 {
+    font-family: ${props => props.theme.font.serif}, serif;
+    font-size: ${props => props.theme.heading2.fontSize};
+    letter-spacing: ${props => props.theme.heading2.letterSpacing};
+    font-weight: 100;
+    margin: 2rem 0;
+  }
+  h4 {
+    color: white;
+    font-family: ${props => props.theme.font.serif}, serif;
+    font-size: ${props => props.theme.heading1.fontSize};
+    font-weight: 100;
+    margin: 2rem 0;
+  }
+  p {
+    font-family: ${props => props.theme.font.sans}, serif;
+    font-size: ${props => props.theme.p.fontSize};
+    line-height: ${props => props.theme.p.lineHeight};
+    letter-spacing: ${props => props.theme.p.letterSpacing};
+    font-weight: 100;
+    margin-bottom: 5rem;
+    @media ${device.laptop} {
+      font-size: 4.8rem;
+      line-height: 5rem;
+      letter-spacing: .-75px;
     }
-    h2 {
-        font-family: ${props => props.theme.font.serif}, serif;
-        font-size: ${props => props.theme.heading2.fontSize};
-        letter-spacing: ${props => props.theme.heading2.letterSpacing};
-        font-weight: 100;
-        margin: 2rem 0;
-    }
-    h4 {
-        color: white;
-        font-family: ${props => props.theme.font.serif}, serif;
-        font-size: ${props => props.theme.heading1.fontSize};
-        font-weight: 100;
-        margin: 2rem 0;
-    }
-    p {
-        font-family: ${props => props.theme.font.sans}, serif;
-        font-size: ${props => props.theme.p.fontSize};
-        line-height: ${props => props.theme.p.lineHeight};
-        letter-spacing:  ${props => props.theme.p.letterSpacing};
-        font-weight: 100;
-        margin-bottom: 5rem;
-        @media  ${device.laptop} {
-          font-size: 4.8rem;
-          line-height: 5rem;
-          letter-spacing:  .-75px;
-        }
-    }
+  }
 
-    .our-work {
-      background-color: black;
-      section > div {
-        max-width: 850px;
-        margin: 0 auto;
-      }
+  .our-work {
+    background-color: black;
+    section > div {
+      max-width: 850px;
+      margin: 0 auto;
     }
-`;
-
+  }
+`
 
 export const SwiperWrapper = styled.div`
   :root {
@@ -452,16 +490,32 @@ export const SwiperWrapper = styled.div`
       z-index: 10;
     }
     .swiper-slide-shadow-left {
-      background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+      background-image: linear-gradient(
+        to left,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0)
+      );
     }
     .swiper-slide-shadow-right {
-      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+      background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0)
+      );
     }
     .swiper-slide-shadow-top {
-      background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+      background-image: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0)
+      );
     }
     .swiper-slide-shadow-bottom {
-      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+      background-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0)
+      );
     }
   }
 
@@ -497,4 +551,4 @@ export const SwiperWrapper = styled.div`
     color: white;
     font-size: 1.3rem;
   }
-`;
+`

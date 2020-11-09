@@ -1,7 +1,6 @@
 import * as React from "react"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import styled from "styled-components"
-import Fade from "react-reveal/Fade"
 import Reveal from 'react-reveal/Reveal';
 
 import uuid from 'react-uuid'
@@ -15,7 +14,7 @@ export const TextAreaWrapper = styled.div`
   > * {
     opacity: 0;
     transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-    transform: translateY(20px);
+    transform: translateY(60px);
   }
   .fadeInUp {
     transform: translateY(0px);
@@ -30,7 +29,6 @@ const TextArea = (props: TextAreaProps) => {
     <TextAreaWrapper>
       <>
         {dataAsHtml.map((data, i) => {
-          console.log(data)
           return (
             <Reveal key={uuid(i)} effect="fadeInUp">
               {data}

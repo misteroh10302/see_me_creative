@@ -22,15 +22,17 @@ const SecondPage = (data) => {
   return(
     <ThemeProvider theme={theme}>
       <Layout >
-        <SEO title={slug} />
+        <SEO title={`Project ${slug}`} />
         <FullHeight>
           <BackgroundImage backgroundImage={backgroundMedia.fluid.src} >
           </BackgroundImage>
         </FullHeight>
         <ProjectWrapper>
-          <h1 className="title">{title}</h1>
-          <h2 className="subtitle">{subTitle}</h2>
-          <small>{tags && tags.join(', ')}</small>
+          <header>
+            <h1 className="title">{title}</h1>
+            <h2 className="subtitle">{subTitle}</h2>
+            <small>{tags && tags.join(', ')}</small>
+          </header>
           {postContent &&
             <section className="post-content">
               {postContent.map((content,i) => {

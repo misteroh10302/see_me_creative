@@ -4,10 +4,8 @@ import { SectionWrapper, Button } from "../styled/layoutStyles"
 import TextArea from "./UI/textArea/textArea"
 import Carousel from './UI/carousel/carousel'
 import ImageAndText from './UI/imageandtext/imageAndText'
+import { cleanTitle } from '../utils.js'
 
-const cleanTitle = (str) => {
-    return str.replace(/ /g, '-').toLowerCase();
-}
 
 const Section = (props: SectionProps) => {
     const { content,title } = props.content;
@@ -23,7 +21,7 @@ const Section = (props: SectionProps) => {
                 } else if (content.__typename === "ContentfulProjectCarousel") {
                     return <Carousel key={uuid()} content={content}/>
                 } else if (content.__typename === "ContentfulImageGallery") {
-                    return <ImageAndText key={uuid()} content={content} />
+                    return <ImageAndText title={title} key={uuid()} content={content} />
                 }
             })}
         </SectionWrapper>

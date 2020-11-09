@@ -6,14 +6,12 @@ import uuid from "react-uuid"
 
 const Footer = (props: FooterProps) => {
   return (
-    <FooterWrapper background={props.bgm.fluid.src}>
+    <FooterWrapper textColor={props.textColor} background={props.bgm.fluid.src}>
       <TextArea content={props.content} />
-      {props.content.buttons.map((button, i) => {
-        return (
-          <Button key={uuid()} href={button.link}>
+      {props.content.buttons.map(button => {
+        return <Button key={uuid()} href={button.link}>
             {button.buttonText}
           </Button>
-        )
       })}
     </FooterWrapper>
   )
@@ -22,13 +20,19 @@ const Footer = (props: FooterProps) => {
 interface FooterProps {
   siteTitle?: string
   content?: object
-  bgm: string
+  bgm: {
+    fluid: {
+      src: string
+    }
+  }
+  textColor: string
 }
 
 Footer.defaultProps = {
   siteTitle: ``,
   content: {},
-  bgm: "",
+  bgm: {},
+  textColor: "dark"
 }
 
 export default Footer
