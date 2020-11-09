@@ -187,11 +187,7 @@ export const SectionWrapper = styled.section`
   &.projects {
     padding:8rem 0;
   }
-  transition: 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
-  .fadeInUp {
-    transform: translateY(-10px);
-    opacity: 1;
-  }
+
   @media screen and (min-width: 850px) {
       > div {
 
