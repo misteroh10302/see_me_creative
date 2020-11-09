@@ -2,7 +2,7 @@ import * as React from "react"
 import Img from "gatsby-image"
 import uuid from 'react-uuid'
 
-import { BackgroundMediaWrapper } from "./BackgroundMediaStyled.tsx"
+import { BackgroundMediaWrapper } from "./backgroundMediaStyled"
 
 const BackgroundMedia = (props: BackgroundMediaProps) => {
   return (

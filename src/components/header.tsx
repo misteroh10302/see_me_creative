@@ -1,7 +1,7 @@
-import { Link } from "gatsby"
 import * as React from "react"
 
-import  Navigation  from "./UI/navigation/Navigation"
+// eslint-disable-next-line prettier/prettier
+import  Navigation  from "./UI/navigation/navigation"
 
 const Header = (props: HeaderProps) => (
   <header>
