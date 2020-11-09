@@ -5,63 +5,49 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Img from "gatsby-image"
 
-import { FullHeight, ProjectWrapper, BackgroundImage, GalleryWrapper } from '../styled/layoutStyles'
+import {
+  FullHeight,
+  ProjectWrapper,
+  BackgroundImage,
+  GalleryWrapper,
+} from "../styled/layoutStyles"
 import { theme } from "../styled/theme"
 import TextArea from "../components/UI/textArea/textArea"
 import Footer from "../components/UI/footer/footer"
+import VideoContent from "../components/UI/videoContent/videoContent"
 
-
-const SecondPage = (data) => {
-  const { slug, content } = data.pageContext;
+const SecondPage = data => {
+  const { slug, content } = data.pageContext
   if (!content) return <div>No Content</div>
-  const subTitle = content.subTitle || null;
-  const title = content.title || null;
-  const tags = content.tags || null;
-  const postContent = content.postContent || null;
-  const backgroundMedia = content.backgroundMedia || null;
-  return(
+  const subTitle = content.subTitle || null
+  const title = content.title || null
+  const tags = content.tags || null
+  const postContent = content.postContent || null
+  const backgroundMedia = content.backgroundMedia || null
+  return (
     <ThemeProvider theme={theme}>
-      <Layout >
+      <Layout>
         <SEO title={`Project ${slug}`} />
         <FullHeight>
-          <BackgroundImage backgroundImage={backgroundMedia.fluid.src} >
-          </BackgroundImage>
+          <BackgroundImage
+            backgroundImage={backgroundMedia.fluid.src}
+          ></BackgroundImage>
         </FullHeight>
         <ProjectWrapper>
           <header>
             <h1 className="title">{title}</h1>
             <h2 className="subtitle">{subTitle}</h2>
-            <small>{tags && tags.join(', ')}</small>
+            <small>{tags && tags.join(", ")}</small>
           </header>
-          {postContent &&
+          {postContent && (
             <section className="post-content">
-              {postContent.map((content,i) => {
-                if (content.videos) {
-                  return (
-                    <div className="video-content">
-                      <p>
-                        <b>Watch Now</b>
-                      </p>
-                      <div className="video-inner">
-                        <iframe
-                          src={content.videos[0].file.url}
-                          title={'My Video'}
-                          allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-                          frameBorder="0"
-                          webkitallowfullscreen="true"
-                          mozallowfullscreen="true"
-                          allowFullScreen
-                        />
-                      </div>
-                    </div>
-                  )
-                }
-                else if (content.content) {
-                  return <TextArea content={content}/>
-                } else if (content.images) {
+              {postContent.map((content, i) => {
+                if (content.videos) return <VideoContent content={content} />
+                else if (content.content) return <TextArea content={content} />
+                else if (content.images) {
                   return (
                     <GalleryWrapper className="gallery">
-                      {content.images.map((img,i) => {
+                      {content.images.map((img, i) => {
                         return <Img fluid={img.fluid} />
                       })}
                     </GalleryWrapper>
@@ -69,11 +55,11 @@ const SecondPage = (data) => {
                 }
               })}
             </section>
-          }       
+          )}
         </ProjectWrapper>
-        {content.footer && 
-          <Footer content={content.footer} bgm={content.footerBackground}/> 
-        }
+        {content.footer && (
+          <Footer content={content.footer} bgm={content.footerBackground} />
+        )}
       </Layout>
     </ThemeProvider>
   )

@@ -149,6 +149,9 @@ export const ProjectWrapper = styled.section`
         text-rendering: optimizeLegibility;
       }
     }
+    b {
+      display: block;
+    }
     div.gallery {
       margin: 3rem 0;
       img {
@@ -162,26 +165,44 @@ export const ProjectWrapper = styled.section`
     }
     .video-inner {
       position: relative;
-      padding-bottom: 56.25%; /*16:9*/
+      padding-bottom: 50.25%; /*16:9*/
       height: 0;
       overflow: hidden;
-      iframe {
+      video {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        video {
-          width: 100%;
-        }
+        object-fit:cover;
       }
     }
     @media ${device.tablet} {
+      .text-area {
+        width: 50%;
+        display: inline-block;
+        vertical-align: top;
+        &:nth-child(even) {
+          p {
+            max-width: calc(780px/2);
+            margin-right: auto;
+            margin-left: initial;
+          }
+        }
+        &:nth-child(odd) {
+          p {
+            max-width: calc(780px/2);
+            margin-left: auto;
+            margin-right: initial;
+          }
+        }
+      }
       > div {
         h3,
         p {
           max-width: 840px;
           margin: 1rem auto;
+          padding:0;
         }
       }
     }

@@ -7,7 +7,12 @@ const Navigation = (props: NavigationProps) => (
   <NavigationWrapper>
     <h1 style={{ margin: 0 }}>
       <Link to="/">
-        <img className="logo" src={"/logo.svg"} alt="See Me Creative Logo" />
+        <img
+          width="124"
+          className="logo"
+          src={"/logo.svg"}
+          alt="See Me Creative Logo"
+        />
         <hr />
       </Link>
     </h1>

@@ -26,7 +26,7 @@ const TextArea = (props: TextAreaProps) => {
   const data = props.content.content
   const dataAsHtml = documentToReactComponents(data.json)
   return (
-    <TextAreaWrapper>
+    <TextAreaWrapper className="text-area">
       <>
         {dataAsHtml.map((data, i) => {
           return (
