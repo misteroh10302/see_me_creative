@@ -4,7 +4,7 @@ import { useState } from "react"
 import uuid from 'react-uuid'
 import Img from "gatsby-image"
 
-import { CarouselWrapper } from "./CarouselWrapper"
+import { CarouselWrapper } from "./CarouselWrapper.tsx"
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import Swiper from 'react-id-swiper';
