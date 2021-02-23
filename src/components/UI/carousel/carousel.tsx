@@ -8,11 +8,14 @@ import "react-responsive-carousel/lib/styles/carousel.min.css" // requires a loa
 import { Carousel } from "react-responsive-carousel"
 import Swiper from "react-id-swiper"
 import { SwiperWrapper } from "../../../styled/layoutStyles"
+import Masonry from 'react-masonry-css'
 
 const MyCarousel = (props: CarouselProps) => {
   if (props.content.__typename === "ContentfulCarousel") {
     const { carouselMedia } = props.content
     return (
+
+ 
       <CarouselWrapper>
         <Carousel
           emulateTouch={true}
@@ -55,27 +58,49 @@ const MyCarousel = (props: CarouselProps) => {
     }
 
     return (
-      <SwiperWrapper className="projects-wrap">
-        <Swiper {...params}>
-          {projects &&
+      <Masonry
+      breakpointCols={3}
+      className="my-masonry-grid"
+      columnClassName="my-masonry-grid_column">
+      {projects &&
             projects.map((project, i) => {
               return (
                 <div key={uuid()}>
                   <Img
                     fluid={project.thumbnailMedia.fluid}
-                    objectFit="cover"
-                    objectPosition="top center"
-                    style={{
-                      maxHeight: "70vh",
-                    }}
+                    objectFit="contain"
+                    // objectPosition="top center"
+                    // style={{
+                    //   maxHeight: "70vh",
+                    // }}
                   />
                   <h4>{project.title}</h4>
                   <p>{project.tags && project.tags.join(", ")}</p>
                 </div>
               )
             })}
-        </Swiper>
-      </SwiperWrapper>
+    </Masonry>
+      // <SwiperWrapper className="projects-wrap">
+      //   <Swiper {...params}>
+      //     {projects &&
+      //       projects.map((project, i) => {
+      //         return (
+      //           <div key={uuid()}>
+      //             <Img
+      //               fluid={project.thumbnailMedia.fluid}
+      //               objectFit="cover"
+      //               objectPosition="top center"
+      //               style={{
+      //                 maxHeight: "70vh",
+      //               }}
+      //             />
+      //             <h4>{project.title}</h4>
+      //             <p>{project.tags && project.tags.join(", ")}</p>
+      //           </div>
+      //         )
+      //       })}
+      //   </Swiper>
+      // </SwiperWrapper>
     )
   }
 }

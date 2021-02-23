@@ -29,6 +29,7 @@
     "react-helmet": "^5.2.1",
     "react-id-swiper": "^4.0.0",
     "react-image-gallery": "^1.0.8",
+    "react-masonry-css": "^1.0.14",
     "react-responsive-carousel": "^3.2.9",
     "react-reveal": "^1.2.2",
     "react-uuid": "^1.0.2",

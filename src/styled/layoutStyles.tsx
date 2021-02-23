@@ -214,7 +214,7 @@ export const ProjectCollectionWrapper = styled.div`
 `
 
 export const SectionWrapper = styled.section`
-  background: ${props => `url(${props.backgroundImage}) no-repeat center`};
+  background: black ${props => `url(${props.backgroundImage}) no-repeat center`} ;
   background-size: cover;
   min-height: 100vh;
   width: 100%;
@@ -235,10 +235,13 @@ export const SectionWrapper = styled.section`
       }
     }
   }
+  &.about- {
+    min-height: initial;
+  }
   &.about-,
   &.about {
     p {
-      color: black;
+      color: white;
     }
   }
   &.who-we-are-content-info {

@@ -102,14 +102,7 @@ const homepageQuery = graphql`
                 json
               }
             }
-            ... on ContentfulCarousel {
-              id
-              carouselMedia {
-                fluid {
-                  ...GatsbyContentfulFluid
-                }
-              }
-            }
+        
             ... on ContentfulProjectCarousel {
               id
               projects {
@@ -146,3 +139,13 @@ const homepageQuery = graphql`
   }
 `
 export default IndexPage
+
+
+// ... on ContentfulCarousel {
+//   id
+//   carouselMedia {
+//     fluid {
+//       ...GatsbyContentfulFluid
+//     }
+//   }
+// }
