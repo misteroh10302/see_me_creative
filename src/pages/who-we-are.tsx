@@ -21,6 +21,10 @@ const whoWeAreQuery = graphql`
           fluid {
             ...GatsbyContentfulFluid
           }
+          file {
+            url
+            contentType
+          }
         }
         footer {
           content {
@@ -41,6 +45,7 @@ const whoWeAreQuery = graphql`
           backgroundMedia {
             file {
               url
+              contentType
             }
           }
           content {
@@ -85,6 +90,7 @@ const WhoWeArePage = () => (
                   <BackgroundMedia
                     title={nodes[0].title}
                     fluid={nodes[0].backgroundMedia.fluid}
+                    file={nodes[0].backgroundMedia.file}
                   />
                 </FullHeight>
                 {whoWeAreContent &&
@@ -100,7 +106,10 @@ const WhoWeArePage = () => (
                   })}
               </ProjectCollectionWrapper>
             )}
-            <Footer content={nodes[0].footer} bgm={nodes[0].footerBackground} />
+            <Footer 
+            textColor="light"
+            content={nodes[0].footer} 
+            bgm={nodes[0].footerBackground} />
           </Layout>
         </ThemeProvider>
       )

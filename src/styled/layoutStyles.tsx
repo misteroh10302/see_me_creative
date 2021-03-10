@@ -22,10 +22,10 @@ export const Button = styled.a`
   max-width: 80%;
   width: 100%;
   border-radius: 40px;
-  background-color: white;
+  background-color: transparent;
   outline: 0;
-  color: black;
-  border: 0;
+  color: white;
+  border: 1px solid white;
   padding: 1.5rem 0rem;
   margin: 1rem auto;
   display: block;
@@ -38,10 +38,9 @@ export const Button = styled.a`
   font-size: 1.2rem;
   letter-spacing: 1px;
   text-decoration: none;
-  border: 1px solid transparent;
   &:hover {
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
     border: 1px solid white;
   }
   @media ${device.tablet} {
@@ -223,6 +222,7 @@ export const SectionWrapper = styled.section`
   &.projects {
     padding: 8rem 0;
   }
+
   @media screen and (min-width: 850px) {
     > div {
       margin: 0 auto;
@@ -230,6 +230,7 @@ export const SectionWrapper = styled.section`
     &.about-,
     &.our-perspective,
     &.who-we-are {
+
       > div {
         max-width: 900px;
       }
@@ -248,7 +249,18 @@ export const SectionWrapper = styled.section`
     p {
       text-align: left;
       margin: 3rem 0;
-      color: black;
+      color: white;
+    }
+
+    h1 {
+      color: white;
+    }
+
+    .text-area {
+      p {
+        font-size: 4.2rem;
+        line-height: 4.8rem;
+      }
     }
 
     .image-and-text {
@@ -288,6 +300,14 @@ export const SectionWrapper = styled.section`
   &.who-we-are {
     ${vertialAlign}
     color: white;
+    a,button {
+      background-color: white;
+      color: black;
+      &:hover {
+        background-color: transparent;
+        color: white;
+      }
+    }
   }
 
   &.our-perspective {
@@ -415,6 +435,11 @@ export const LayoutWrapper = styled.div`
       line-height: 5rem;
       letter-spacing: .-75px;
     }
+  }
+
+  video {
+    object-fit: cover;
+    object-position: center;
   }
 
   .our-work {

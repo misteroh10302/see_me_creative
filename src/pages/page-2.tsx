@@ -5,13 +5,14 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Img from "gatsby-image"
 
+import { theme } from "../styled/theme"
 import {
   FullHeight,
   ProjectWrapper,
   BackgroundImage,
   GalleryWrapper,
 } from "../styled/layoutStyles"
-import { theme } from "../styled/theme"
+import BackgroundMedia from "../components/UI/backgroundMedia/backgroundMedia"
 import TextArea from "../components/UI/textArea/textArea"
 import Footer from "../components/UI/footer/footer"
 import VideoContent from "../components/UI/videoContent/videoContent"
@@ -23,15 +24,26 @@ const SecondPage = data => {
   const title = content.title || null
   const tags = content.tags || null
   const postContent = content.postContent || null
-  const backgroundMedia = content.backgroundMedia || null
+  const backgroundMedia = content.backgroundMedia || null;
+  console.log(backgroundMedia)
   return (
     <ThemeProvider theme={theme}>
       <Layout>
         <SEO title={`Project ${slug}`} />
         <FullHeight>
-          <BackgroundImage
-            backgroundImage={backgroundMedia.fluid.src}
-          ></BackgroundImage>
+   
+          {backgroundMedia.file.contentType &&
+          backgroundMedia.file.contentType.includes("video") ? (
+          <BackgroundMedia
+          title={backgroundMedia.title}
+          fluid={backgroundMedia.fluid}
+          file={backgroundMedia.file}
+        /> ) : 
+        <BackgroundImage
+        backgroundImage={backgroundMedia.fluid.src}
+      ></BackgroundImage>
+        }
+
         </FullHeight>
         <ProjectWrapper>
           <header>

@@ -8,7 +8,7 @@ export const FooterWrapper = styled.nav`
   flex-direction: column;
   justify-content: center;
 
-  p{
+  p {
     color: ${props => props.textColor === "light" ? "white" : "black"};
   }
   > div {

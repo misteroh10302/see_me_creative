@@ -30,6 +30,7 @@ const IndexPage = () => (
                     <BackgroundMedia
                       title={section.title}
                       fluid={section.media.fluid}
+                      file={section.media.file}
                     />
                   )
                 } else if (section.__typename === "ContentfulSection") {
@@ -42,7 +43,7 @@ const IndexPage = () => (
                   )
                 }
               })}
-            <Footer content={footer} bgm={footerBackground} />
+            <Footer textColor="light" content={footer} bgm={footerBackground} />
           </Layout>
         </ThemeProvider>
       )

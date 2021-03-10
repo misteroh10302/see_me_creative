@@ -10,7 +10,6 @@ import { Link } from "gatsby"
 import uuid from "react-uuid"
 
 import Footer from "../components/UI/footer/footer"
-
 import { BackgroundImage, OurWorkWrapper } from "../styled/layoutStyles"
 
 const OurWorkQuery = graphql`
@@ -29,6 +28,10 @@ const OurWorkQuery = graphql`
         backgroundMedia {
           fluid {
             ...GatsbyContentfulFluid
+          }
+          file {
+            url
+            contentType
           }
         }
         footer {

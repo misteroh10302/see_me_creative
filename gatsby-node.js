@@ -80,6 +80,10 @@ exports.createPages = async function ({ actions, graphql }) {
               src
               srcSet
             }
+            file {
+              contentType
+              url
+            }
           }
           thumbnailMedia {
             fluid {
