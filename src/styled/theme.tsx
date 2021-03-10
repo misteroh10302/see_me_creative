@@ -12,7 +12,9 @@ export const theme = {
        desktop: "3rem"
    },
    colors: {
-       green: "#92fe3b"
+       green: "#92fe3b",
+       orange: "#F18923",
+       yellow: "#F1CC23"
    },
    p: {
        fontSize: "3rem",

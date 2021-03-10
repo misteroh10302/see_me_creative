@@ -11,6 +11,7 @@ import {
   ProjectWrapper,
   BackgroundImage,
   GalleryWrapper,
+  H1
 } from "../styled/layoutStyles"
 import BackgroundMedia from "../components/UI/backgroundMedia/backgroundMedia"
 import TextArea from "../components/UI/textArea/textArea"
@@ -25,7 +26,6 @@ const SecondPage = data => {
   const tags = content.tags || null
   const postContent = content.postContent || null
   const backgroundMedia = content.backgroundMedia || null;
-  console.log(backgroundMedia)
   return (
     <ThemeProvider theme={theme}>
       <Layout>
@@ -47,7 +47,7 @@ const SecondPage = data => {
         </FullHeight>
         <ProjectWrapper>
           <header>
-            <h1 className="title">{title}</h1>
+            <H1 highlight={content.highlightColor && content.highlightColor[0] || false} className="title">{title}</H1>
             <h2 className="subtitle">{subTitle}</h2>
             <small>{tags && tags.join(", ")}</small>
           </header>

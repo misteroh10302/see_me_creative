@@ -92,6 +92,8 @@ export const OurWorkWrapper = styled.div`
   }
   ${grid}
 `
+
+
 export const ProjectWrapper = styled.section`
   background: ${props => `url(${props.backgroundImage}) no-repeat center`};
   background-size: cover;
@@ -105,15 +107,7 @@ export const ProjectWrapper = styled.section`
       margin: 0 auto;
     }
   }
-  h1.title {
-    background-color: ${props => props.theme.colors.green};
-    display: inline-block;
-    padding-left: 3rem;
-    padding-right: 1rem;
-    position: relative;
-    left: -3rem;
-    margin-bottom: 0;
-  }
+
   h2.subtitle {
     color: black;
     font-family: ${props => props.theme.font.serif}, serif;
@@ -221,6 +215,7 @@ export const SectionWrapper = styled.section`
     ${props => props.theme.padding.desktop};
   &.projects {
     padding: 8rem 0;
+    position: relative;
   }
 
   @media screen and (min-width: 850px) {
@@ -401,6 +396,9 @@ export const GalleryWrapper = styled.div`
   }
 `
 export const LayoutWrapper = styled.div`
+  html,body {
+    overflow-x: hidden;
+  }
   h1 {
     color: black;
     font-family: ${props => props.theme.font.serif}, serif;
@@ -601,3 +599,19 @@ export const SwiperWrapper = styled.div`
     font-size: 1.3rem;
   }
 `
+
+// ================================
+// HEADINGS
+// ================================
+
+export const H1 = styled.h1`
+  &.title {
+      background-color: ${props => props.highlight ? props.theme.colors[props.highlight] : props.theme.colors.green};
+      display: inline-block;
+      padding-left: 3rem;
+      padding-right: 1rem;
+      position: relative;
+      left: -3rem;
+      margin-bottom: 0;
+    }
+`;

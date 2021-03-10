@@ -21,6 +21,7 @@ exports.createPages = async function ({ actions, graphql }) {
           title
           tags
           subTitle
+          highlightColor
           footer {
             content {
               json
