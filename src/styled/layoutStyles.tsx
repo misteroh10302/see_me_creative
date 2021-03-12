@@ -91,6 +91,9 @@ export const OurWorkWrapper = styled.div`
     text-decoration: none;
   }
   ${grid}
+  @media ${device.laptop} {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 `
 
 
@@ -249,13 +252,26 @@ export const SectionWrapper = styled.section`
 
     h1 {
       color: white;
+      padding: 0 3rem;
+      @media ${device.laptop} {
+        padding: 3rem 0rem 0 20rem;
+      }
     }
 
     .text-area {
       p {
-        font-size: 4.2rem;
-        line-height: 4.8rem;
+        font-size: 3.6rem;
+        line-height: 4.2rem;
+        letter-spacing: -0.66px;
       }
+      @media ${device.laptop} {
+        p {
+          font-size: 4.2rem;
+          line-height: 4.8rem;
+        }
+      }
+      
+
     }
 
     .image-and-text {
@@ -268,6 +284,9 @@ export const SectionWrapper = styled.section`
         line-height: 2.2rem;
         margin-bottom: 0;
         letter-spacing: 0;
+        @media ${device.laptop} {
+          padding: 0rem 0rem 0 17rem;
+        }
       }
     }
     b {
@@ -443,7 +462,7 @@ export const LayoutWrapper = styled.div`
   .our-work {
     background-color: black;
     section > div {
-      max-width: 850px;
+      max-width: 1220px;
       margin: 0 auto;
     }
   }
