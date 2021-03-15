@@ -6,7 +6,7 @@ import uuid from "react-uuid"
 
 const Footer = (props: FooterProps) => {
   return (
-    <FooterWrapper textColor={props.textColor} background={props.bgm.fluid.src}>
+    <FooterWrapper textColor={props.textColor} background={props.bgm ? props.bgm.fluid.src : ""}>
       <TextArea content={props.content} />
       {props.content.buttons.map(button => {
         return <Button key={uuid()} href={button.link}>

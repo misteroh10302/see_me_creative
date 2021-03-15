@@ -21,7 +21,7 @@ const navStyles = {
 export const NavLeftnavRight = styled.div`
   display: none;
   a {
-    color: white;
+    color: ${props => props.scrolled ? "black" : "white"};
     font-size: 1.5rem;
     text-transform: uppercase;
     display: inline-block;
@@ -29,8 +29,9 @@ export const NavLeftnavRight = styled.div`
     font-family: "Roboto", sans-serif;
     font-weight: bolder;
     letter-spacing: .025em;
+    transition: color 250ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
     &:visited {
-      color: white;
+      color: ${props => props.scrolled ? "black" : "white"};
     }
     @media ${device.mobileL} {
       margin: 4rem 4rem;
@@ -101,9 +102,21 @@ const MobileNavItems = styled.div`
 
 const Navigation = (props: NavigationProps) => {
   const [open, setOpen] = useState(false);
+  const [scrollTop, setScrollPost] = useState(0);
 
+  React.useEffect(() => {
+    const onScroll = e => {
+      if (window.location.pathname.includes("project")) {
+        setScrollPost(e.target.documentElement.scrollTop);
+      }
+    };
+
+    window.addEventListener("scroll", onScroll);
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [scrollTop]);
   return (  
-    <NavigationWrapper open={open} style={navStyles}>
+    <NavigationWrapper open={open} scrolled={scrollTop > window.innerHeight ? true : false} style={navStyles}>
       <HamburgerButton open={open} onClick={() => setOpen(!open)}>
         <span></span>
         <span></span>
@@ -123,7 +136,7 @@ const Navigation = (props: NavigationProps) => {
           @seemecreative
         </Link>
       </MobileNavItems>
-      <NavLeftnavRight className="nav-left">
+      <NavLeftnavRight scrolled={scrollTop > window.innerHeight ? true : false} className="nav-left">
         <Link to="/who-we-are">
           About
         </Link>
@@ -142,7 +155,7 @@ const Navigation = (props: NavigationProps) => {
           <hr />
         </Link>
       </h1>
-      <NavLeftnavRight className="nav-right">
+      <NavLeftnavRight scrolled={scrollTop > window.innerHeight ? true : false} className="nav-right">
         <Link to="/contact">
           Contact
         </Link>

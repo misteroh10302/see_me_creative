@@ -10,6 +10,15 @@ export const FooterWrapper = styled.nav`
 
   p {
     color: ${props => props.textColor === "light" ? "white" : "black"};
+    
+  }
+  a {
+      color: ${props => props.textColor === "light" ? "white" : "black"};
+      border:  1px solid ${props => props.textColor === "light" ? "white" : "black"};
+      &:hover {
+        background-color: ${props => props.textColor === "light" ? "white" : "black"};
+        color: ${props => props.textColor === "light" ? "black" : "white"};
+      }
   }
   > div {
     p {

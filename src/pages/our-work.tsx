@@ -13,6 +13,7 @@ import { mySlug } from "../utils.js"
 
 import Footer from "../components/UI/footer/footer"
 import { BackgroundImage, OurWorkWrapper } from "../styled/layoutStyles"
+import BackgroundMedia from '../components/UI/backgroundMedia/backgroundMedia';
 
 const OurWorkQuery = graphql`
   query OurWorkQuery {
@@ -23,6 +24,10 @@ const OurWorkQuery = graphql`
           backgroundMedia {
             fluid {
               ...GatsbyContentfulFluid
+            }
+            file {
+              url
+              contentType
             }
           }
         }
@@ -62,8 +67,8 @@ const OurWork = () => {
     <StaticQuery
       query={OurWorkQuery}
       render={data => {
-        const { nodes } = data.allContentfulOurWork
-        const { projects } = nodes[0]
+        const { nodes } = data.allContentfulOurWork;
+        const { projects } = nodes[0];
         return (
           <ThemeProvider theme={theme}>
             <Layout>
@@ -75,6 +80,7 @@ const OurWork = () => {
                   <OurWorkWrapper>
                     {projects &&
                       projects.map((project, i) => {
+
                         if (i < numberOfPosts) {
                           return (
                             <Link
@@ -82,7 +88,17 @@ const OurWork = () => {
                               to={`/project/${mySlug(project.title)}`}
                             >
                               <h2>{project.title}</h2>
-                              <Img fluid={project.backgroundMedia.fluid} />
+                              {project.backgroundMedia.file.contentType.includes("video")
+                              ? 
+                                <>
+                                      <video width="100%" height="100%" muted autoPlay>
+                                        <source src={project.backgroundMedia.file.url} type="video/mp4"/>
+                                        Your browser does not support the video tag.
+                                      </video>
+                                </>
+                               :
+                                <Img fluid={project.backgroundMedia.fluid} />
+                              }
                             </Link>
                           )
                         }
@@ -90,7 +106,7 @@ const OurWork = () => {
                   </OurWorkWrapper>
                 </BackgroundImage>
                 <Footer
-                  textColor="light"
+                  textColor="dark"
                   content={nodes[0].footer}
                   bgm={nodes[0].footerBackground}
                 />

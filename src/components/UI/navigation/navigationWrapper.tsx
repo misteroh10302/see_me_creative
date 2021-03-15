@@ -7,6 +7,8 @@ export const NavigationWrapper = styled.nav`
   width: 100%;
   padding: 2rem;
   z-index: ${props => props.theme.zIndex.high};
+  background-color: ${props => props.scrolled ? "white" : "transparent"};
+  transition:  250ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
   a {
     color: ${props => props.theme.colors.green};
     text-decoration: none;
