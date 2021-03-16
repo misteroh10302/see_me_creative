@@ -118,7 +118,7 @@ const Navigation = (props: NavigationProps) => {
     }
   }, [scrollTop]);
   return (  
-    <NavigationWrapper open={open} scrolled={scrollTop > window.innerHeight ? true : false} style={navStyles}>
+    <NavigationWrapper open={open} scrolled={window !== "undefined" && scrollTop > window.innerHeight ? true : false} style={navStyles}>
       <HamburgerButton open={open} onClick={() => setOpen(!open)}>
         <span></span>
         <span></span>
@@ -138,7 +138,7 @@ const Navigation = (props: NavigationProps) => {
           @seemecreative
         </Link>
       </MobileNavItems>
-      <NavLeftnavRight scrolled={scrollTop > window.innerHeight ? true : false} className="nav-left">
+      <NavLeftnavRight scrolled={window !== "undefined" &&  scrollTop > window.innerHeight ? true : false} className="nav-left">
         <Link to="/who-we-are">
           About
         </Link>
@@ -157,7 +157,7 @@ const Navigation = (props: NavigationProps) => {
           <hr />
         </Link>
       </h1>
-      <NavLeftnavRight scrolled={scrollTop > window.innerHeight ? true : false} className="nav-right">
+      <NavLeftnavRight scrolled={window !== "undefined" &&  scrollTop > window.innerHeight ? true : false} className="nav-right">
         <Link to="/contact">
           Contact
         </Link>
