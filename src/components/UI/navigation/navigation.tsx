@@ -105,15 +105,17 @@ const Navigation = (props: NavigationProps) => {
   const [scrollTop, setScrollPost] = useState(0);
 
   React.useEffect(() => {
-    const onScroll = e => {
-      if (window.location.pathname.includes("project")) {
-        setScrollPost(e.target.documentElement.scrollTop);
-      }
-    };
+      if (typeof window !== `undefined`) {
+      const onScroll = e => {
+        if (window.location.pathname.includes("project")) {
+          setScrollPost(e.target.documentElement.scrollTop);
+        }
+      };
 
-    window.addEventListener("scroll", onScroll);
+      window.addEventListener("scroll", onScroll);
 
-    return () => window.removeEventListener("scroll", onScroll);
+      return () => window.removeEventListener("scroll", onScroll);
+    }
   }, [scrollTop]);
   return (  
     <NavigationWrapper open={open} scrolled={scrollTop > window.innerHeight ? true : false} style={navStyles}>
