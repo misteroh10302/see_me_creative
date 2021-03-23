@@ -6,7 +6,6 @@ import Carousel from './UI/carousel/carousel'
 import ImageAndText from './UI/imageandtext/imageAndText'
 import { cleanTitle } from '../utils.js'
 
-
 const Section = (props: SectionProps) => {
     const { content,title } = props.content;
     return (

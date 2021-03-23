@@ -4,6 +4,7 @@ import { ThemeProvider } from "styled-components"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Img from "gatsby-image"
+import { mySlug } from '../utils.js'
 
 import { theme } from "../styled/theme"
 import {
@@ -11,6 +12,7 @@ import {
   ProjectWrapper,
   BackgroundImage,
   GalleryWrapper,
+  SingleGalleryWrapper,
   H1
 } from "../styled/layoutStyles"
 import BackgroundMedia from "../components/UI/backgroundMedia/backgroundMedia"
@@ -20,12 +22,14 @@ import VideoContent from "../components/UI/videoContent/videoContent"
 
 const SecondPage = data => {
   const { slug, content } = data.pageContext
+  console.log(content)
   if (!content) return <div>No Content</div>
   const subTitle = content.subTitle || null
   const title = content.title || null
   const tags = content.tags || null
   const postContent = content.postContent || null
-  const backgroundMedia = content.backgroundMedia || null;
+  const backgroundMedia = content.backgroundMedia || null
+  const highlightColor = content.highlightColor || false
   return (
     <ThemeProvider theme={theme}>
       <Layout>
@@ -47,22 +51,52 @@ const SecondPage = data => {
         </FullHeight>
         <ProjectWrapper>
           <header>
-            <H1 highlight={content.highlightColor && content.highlightColor[0] || false} className="title">{title}</H1>
+            <H1 highlight={highlightColor && highlightColor[0] || false} className="title">{title}</H1>
             <h2 className="subtitle">{subTitle}</h2>
             <small>{tags && tags.join(", ")}</small>
           </header>
           {postContent && (
             <section className="post-content">
               {postContent.map((content, i) => {
-                if (content.videos) return <VideoContent content={content} />
+                if (content.videos) return <VideoContent highlight={highlightColor && highlightColor[0] || false} content={content} />
                 else if (content.content) return <TextArea content={content} />
                 else if (content.images) {
                   return (
-                    <GalleryWrapper className="gallery">
+                    <SingleGalleryWrapper className="gallery">
                       {content.images.map((img, i) => {
-                        return <Img fluid={img.fluid} />
+                        let orientation;
+                        let { aspectRatio } = img.fluid;
+                        if (aspectRatio >= 1.2) orientation = "landscape";
+                        if (aspectRatio <= 0.8) orientation = "portrait";
+                        if (aspectRatio > 0.8 && aspectRatio < 1.2) orientation = "square";
+                        return <Img 
+                          fluid={img.fluid} 
+                          className={orientation}
+                          />
                       })}
+                    </SingleGalleryWrapper>
+                  )
+                }
+                else if (content.imageLeft) {
+                  return (
+                    <GalleryWrapper className="gallery">
+                      <Img 
+                          fluid={content.imageLeft.fluid} 
+                          />
+                          <Img 
+                        fluid={content.imageRight.fluid} 
+                        />
                     </GalleryWrapper>
+                  )
+                }
+                else if (content.mainImage) {
+                  return (
+                    <SingleGalleryWrapper>
+                      <Img 
+                          fluid={content.mainImage.fluid} 
+                          className={mySlug(content.imageSize)}
+                          />
+                    </SingleGalleryWrapper>
                   )
                 }
               })}

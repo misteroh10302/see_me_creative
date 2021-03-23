@@ -5,7 +5,6 @@ import styled from "styled-components"
 
 import { NavigationWrapper } from "./navigationWrapper"
 import {theme, device } from "../../../styled/theme"
-import { relative } from "path"
 
 const navStyles = {
   position: "fixed",

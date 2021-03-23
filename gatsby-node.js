@@ -72,6 +72,41 @@ exports.createPages = async function ({ actions, graphql }) {
                 json
               }
             }
+            ... on ContentfulSingleImage {
+              id
+              title
+              imageSize
+              mainImage {
+                fluid {
+                  sizes
+                  aspectRatio
+                  base64
+                  src
+                  srcSet
+                }
+              }
+            }
+            ... on ContentfulTwoColumnImageGrid {
+              id
+              imageLeft {
+                fluid {
+                  sizes
+                  aspectRatio
+                  base64
+                  src
+                  srcSet
+                }
+              }
+              imageRight {
+                fluid {
+                  sizes
+                  aspectRatio
+                  base64
+                  src
+                  srcSet
+                }
+              }
+            }
           }
           backgroundMedia {
             fluid {

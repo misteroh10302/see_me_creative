@@ -242,6 +242,15 @@ export const SectionWrapper = styled.section`
     p {
       color: white;
     }
+    a {
+
+      &:visited {
+        color: white;
+        &:hover {
+          color: black;
+        }
+      }
+    }
   }
   &.who-we-are-content-info {
     p {
@@ -412,6 +421,25 @@ export const GalleryWrapper = styled.div`
     div:nth-child(n + 3) {
       grid-column: 1/3;
     }
+  }
+`
+
+export const SingleGalleryWrapper = styled.div`
+    margin: 3rem 0;
+  @media ${device.tablet} {
+    margin: 10rem 0;
+  .landscape {
+    max-width: 50vw;
+    margin: 0 auto;
+  }
+  .portrait {
+    max-width: 80vw;
+    margin: 0 auto;
+  }
+  .small {
+    max-width: 780px;
+    margin: 4rem auto;
+  }
   }
 `
 export const LayoutWrapper = styled.div`
