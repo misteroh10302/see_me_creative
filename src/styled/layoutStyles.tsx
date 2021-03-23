@@ -96,7 +96,6 @@ export const OurWorkWrapper = styled.div`
   }
 `
 
-
 export const ProjectWrapper = styled.section`
   background: ${props => `url(${props.backgroundImage}) no-repeat center`};
   background-size: cover;
@@ -170,7 +169,7 @@ export const ProjectWrapper = styled.section`
         left: 0;
         width: 100%;
         height: 100%;
-        object-fit:cover;
+        object-fit: cover;
       }
     }
     @media ${device.tablet} {
@@ -180,14 +179,14 @@ export const ProjectWrapper = styled.section`
         vertical-align: top;
         &:nth-child(even) {
           p {
-            max-width: calc(780px/2);
+            max-width: calc(780px / 2);
             margin-right: auto;
             margin-left: initial;
           }
         }
         &:nth-child(odd) {
           p {
-            max-width: calc(780px/2);
+            max-width: calc(780px / 2);
             margin-left: auto;
             margin-right: initial;
           }
@@ -198,7 +197,7 @@ export const ProjectWrapper = styled.section`
         p {
           max-width: 840px;
           margin: 1rem auto;
-          padding:0;
+          padding: 0;
         }
       }
     }
@@ -210,7 +209,7 @@ export const ProjectCollectionWrapper = styled.div`
 `
 
 export const SectionWrapper = styled.section`
-  background: black ${props => `url(${props.backgroundImage}) no-repeat center`} ;
+  background: black ${props => `url(${props.backgroundImage}) no-repeat center`};
   background-size: cover;
   min-height: 100vh;
   width: 100%;
@@ -228,7 +227,6 @@ export const SectionWrapper = styled.section`
     &.about-,
     &.our-perspective,
     &.who-we-are {
-
       > div {
         max-width: 900px;
       }
@@ -243,7 +241,6 @@ export const SectionWrapper = styled.section`
       color: white;
     }
     a {
-
       &:visited {
         color: white;
         &:hover {
@@ -279,8 +276,6 @@ export const SectionWrapper = styled.section`
           line-height: 4.8rem;
         }
       }
-      
-
     }
 
     .image-and-text {
@@ -323,7 +318,8 @@ export const SectionWrapper = styled.section`
   &.who-we-are {
     ${vertialAlign}
     color: white;
-    a,button {
+    a,
+    button {
       background-color: white;
       color: black;
       &:hover {
@@ -337,6 +333,23 @@ export const SectionWrapper = styled.section`
     color: white;
     background-color: blue;
     position: relative;
+    h1 {
+      text-align: center;
+      color: white;
+      margin: 10rem 0;
+    }
+    div.image {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      transform: translateY(-50%);
+      z-index: 0;
+      h1 {
+        display: none;
+      }
+    }
     div.images-2 {
       position: absolute;
       top: 3rem;
@@ -352,7 +365,7 @@ export const SectionWrapper = styled.section`
         display: block;
         margin: 0 auto;
       }
-      img:nth-child(1) {
+      img:nth-child(0) {
         @media ${device.tablet} {
           display: block;
           margin: 0 auto;
@@ -361,7 +374,7 @@ export const SectionWrapper = styled.section`
           transform: translateY(50%);
         }
       }
-      img:nth-child(2) {
+      img:nth-child(1) {
         position: relative;
         top: -2rem;
         @media ${device.tablet} {
@@ -373,9 +386,11 @@ export const SectionWrapper = styled.section`
       }
     }
     > div {
-      z-index: 1;
+      z-index: 5;
       position: relative;
       p {
+        margin-bottom: 0;
+        font-family: "Roboto",sans-serif; 
         b {
           display: block;
           line-height: 1.6rem;
@@ -399,15 +414,11 @@ export const SectionWrapper = styled.section`
         font-size: 1.4rem;
         font-family: "Roboto", sans-serif;
       }
-      p:nth-child(even) {
+      p:nth-child(odd) {
         text-align: left;
       }
-      p:nth-child(odd) {
+      p:nth-child(even) {
         text-align: right;
-      }
-      p:nth-child(1) {
-        margin-bottom: 6rem;
-        text-align: center;
       }
     }
   }
@@ -425,25 +436,26 @@ export const GalleryWrapper = styled.div`
 `
 
 export const SingleGalleryWrapper = styled.div`
-    margin: 3rem 0;
+  margin: 3rem 0;
   @media ${device.tablet} {
     margin: 10rem 0;
-  .landscape {
-    max-width: 50vw;
-    margin: 0 auto;
-  }
-  .portrait {
-    max-width: 80vw;
-    margin: 0 auto;
-  }
-  .small {
-    max-width: 780px;
-    margin: 4rem auto;
-  }
+    .landscape {
+      max-width: 50vw;
+      margin: 0 auto;
+    }
+    .portrait {
+      max-width: 80vw;
+      margin: 0 auto;
+    }
+    .small {
+      max-width: 780px;
+      margin: 4rem auto;
+    }
   }
 `
 export const LayoutWrapper = styled.div`
-  html,body {
+  html,
+  body {
     overflow-x: hidden;
   }
   h1 {
@@ -653,12 +665,15 @@ export const SwiperWrapper = styled.div`
 
 export const H1 = styled.h1`
   &.title {
-      background-color: ${props => props.highlight ? props.theme.colors[props.highlight] : props.theme.colors.green};
-      display: inline-block;
-      padding-left: 3rem;
-      padding-right: 1rem;
-      position: relative;
-      left: -3rem;
-      margin-bottom: 0;
-    }
-`;
+    background-color: ${props =>
+      props.highlight
+        ? props.theme.colors[props.highlight]
+        : props.theme.colors.green};
+    display: inline-block;
+    padding-left: 3rem;
+    padding-right: 1rem;
+    position: relative;
+    left: -3rem;
+    margin-bottom: 0;
+  }
+`
