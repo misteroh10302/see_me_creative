@@ -20,6 +20,7 @@ export const NavigationWrapper = styled.nav`
     width: 124px;
     display: inline-block;
     margin-top: 4rem;
+    filter: saturate(0) brightness(100);
   }
   hr {
     outline: 0;

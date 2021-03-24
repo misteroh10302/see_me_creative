@@ -89,7 +89,7 @@ const MobileNavItems = styled.div`
     color: white;
     font-size: 3rem;
     line-height: 4rem;
-    font-family: ${theme.font.sans};
+    font-family: ${theme.font.serif};
     text-transform: uppercase;
     font-weight: bolder;
     letter-spacing: .25rem;
@@ -153,7 +153,6 @@ const Navigation = (props: NavigationProps) => {
             src={"/logo.svg"}
             alt="See Me Creative Logo"
           />
-          <hr />
         </Link>
       </h1>
       <NavLeftnavRight scrolled={typeof window !== "undefined" &&  scrollTop > window.innerHeight ? true : false} className="nav-right">

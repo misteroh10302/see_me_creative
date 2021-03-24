@@ -4,9 +4,6 @@ import { VideoContentWrapper } from "./videoContentWrapper"
 const VideoContent = (props: VideoContentProps) => {
   return (
     <VideoContentWrapper highlight={props.highlight} className="video-content">
-    <p>
-      <b>Watch Now</b>
-    </p>
     <div className="video-inner">
         <video width="320" height="240" controls>
           <source src={props.content.videos[0].file.url} type="video/mp4"/>

@@ -89,6 +89,7 @@ export const OurWorkWrapper = styled.div`
   a {
     color: white;
     text-decoration: none;
+    min-height: 514px;
   }
   ${grid}
   @media ${device.laptop} {

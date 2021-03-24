@@ -106,7 +106,7 @@ const OurWork = () => {
                   </OurWorkWrapper>
                 </BackgroundImage>
                 <Footer
-                  textColor="dark"
+                  textColor="light"
                   content={nodes[0].footer}
                   bgm={nodes[0].footerBackground}
                 />
