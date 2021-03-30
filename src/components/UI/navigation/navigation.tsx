@@ -6,21 +6,10 @@ import styled from "styled-components"
 import { NavigationWrapper } from "./navigationWrapper"
 import {theme, device } from "../../../styled/theme"
 
-const navStyles = {
-  position: "fixed",
-  top: "0px",
-  textAlign: "center",
-  width: "100%",
-  padding: "2rem",
-  zIndex: 1000,
-  display: "flex",
-  justifyContent: "space-around"
-}
-
 export const NavLeftnavRight = styled.div`
   display: none;
   a {
-    color: ${props => props.scrolled ? "black" : "white"};
+    color: ${props => props.scrolled && props.currentPage.includes("project") ? "black" : "white"};
     font-size: 1.5rem;
     text-transform: uppercase;
     display: inline-block;
@@ -30,7 +19,7 @@ export const NavLeftnavRight = styled.div`
     letter-spacing: .025em;
     transition: color 250ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
     &:visited {
-      color: ${props => props.scrolled ? "black" : "white"};
+      color: ${props => props.scrolled && props.currentPage.includes("project") ? "black" : "white"};
     }
     @media ${device.mobileL} {
       margin: 4rem 4rem;
@@ -101,14 +90,26 @@ const MobileNavItems = styled.div`
 
 const Navigation = (props: NavigationProps) => {
   const [open, setOpen] = useState(false);
-  const [scrollTop, setScrollPost] = useState(0);
+  const [scrollTop, setScrollPost] = useState({
+    current: 0,
+    previous: 0
+  });
+  const [scrollDirection, setScrollDirection] = useState("down")
 
   React.useEffect(() => {
       if (typeof window !== `undefined`) {
       const onScroll = e => {
-        if (window.location.pathname.includes("project")) {
-          setScrollPost(e.target.documentElement.scrollTop);
-        }
+          setScrollPost({
+            previous: scrollTop.current,
+            current: e.target.documentElement.scrollTop
+          });
+
+          if (scrollTop.current < scrollTop.previous) {
+            setScrollDirection("up")
+          } else {
+            setScrollDirection("down");
+          }
+          
       };
 
       window.addEventListener("scroll", onScroll);
@@ -116,8 +117,14 @@ const Navigation = (props: NavigationProps) => {
       return () => window.removeEventListener("scroll", onScroll);
     }
   }, [scrollTop]);
+
   return (  
-    <NavigationWrapper open={open} scrolled={typeof window !== "undefined" && scrollTop > window.innerHeight ? true : false} style={navStyles}>
+    <NavigationWrapper 
+      open={open} 
+      hide={scrollTop.current} 
+      currentPage={typeof window !== "undefined" && window.location.href}
+      scrollDirection={scrollDirection}
+      scrolled={typeof window !== "undefined" && scrollTop.current > 50 ? true : false}>
       <HamburgerButton open={open} onClick={() => setOpen(!open)}>
         <span></span>
         <span></span>
@@ -137,7 +144,10 @@ const Navigation = (props: NavigationProps) => {
           @seemecreative
         </Link>
       </MobileNavItems>
-      <NavLeftnavRight scrolled={typeof window !== "undefined" &&  scrollTop > window.innerHeight ? true : false} className="nav-left">
+      <NavLeftnavRight 
+            currentPage={typeof window !== "undefined" && window.location.href}
+
+      scrolled={typeof window !== "undefined" &&  scrollTop.current > 50 ? true : false} className="nav-left">
         <Link to="/who-we-are">
           About
         </Link>
@@ -155,7 +165,10 @@ const Navigation = (props: NavigationProps) => {
           />
         </Link>
       </h1>
-      <NavLeftnavRight scrolled={typeof window !== "undefined" &&  scrollTop > window.innerHeight ? true : false} className="nav-right">
+      <NavLeftnavRight
+            currentPage={typeof window !== "undefined" && window.location.href}
+ 
+      scrolled={typeof window !== "undefined" &&  scrollTop.current > 50 ? true : false} className="nav-right">
         <Link to="/contact">
           Contact
         </Link>

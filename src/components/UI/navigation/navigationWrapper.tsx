@@ -2,13 +2,15 @@ import styled from "styled-components"
 
 export const NavigationWrapper = styled.nav`
   position: fixed;
-  top: 0;
+  top: ${props => props.hide < 50 || props.scrollDirection === "up" ? 0 : '-190px'};
   text-align: center;
   width: 100%;
   padding: 2rem;
   z-index: ${props => props.theme.zIndex.high};
-  background-color: ${props => props.scrolled ? "white" : "transparent"};
-  transition:  250ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background-color: ${props => props.scrolled && props.currentPage.includes("project") ? "white" : "transparent"};
+  transition: 400ms cubic-bezier(0, 0, 0.71, 0.79);
+  display: flex;
+  justify-content: space-around;
   a {
     color: ${props => props.theme.colors.green};
     text-decoration: none;
@@ -20,7 +22,7 @@ export const NavigationWrapper = styled.nav`
     width: 124px;
     display: inline-block;
     margin-top: 4rem;
-    filter: saturate(0) brightness(100);
+    filter: ${props => props.scrolled && props.currentPage.includes("project") ? "saturate(0) brightness(0)" : "saturate(0) brightness(100)"} 
   }
   hr {
     outline: 0;
