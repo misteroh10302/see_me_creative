@@ -83,6 +83,7 @@ export const FooterWrapper = styled.footer`
 
 export const OurWorkWrapper = styled.div`
   padding: ${props => props.theme.padding.sectionVertical} 0;
+  max-width: 1400px;
   > div {
     color: white;
   }
@@ -491,7 +492,7 @@ export const LayoutWrapper = styled.div`
     @media ${device.laptop} {
       font-size: 4.8rem;
       line-height: 5rem;
-      letter-spacing: .-75px;
+      letter-spacing: 0.-75px;
     }
   }
 
@@ -503,8 +504,13 @@ export const LayoutWrapper = styled.div`
   .our-work {
     background-color: black;
     section > div {
-      max-width: 1220px;
+      max-width: calc(100%);
+      width: calc(100%);
       margin: 0 auto;
+      @media ${device.tablet} {
+        max-width: calc(1400px - 8rem);
+        width: calc(100% - 8rem);
+      }
     }
   }
 `

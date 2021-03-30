@@ -26,6 +26,7 @@ export const NavLeftnavRight = styled.div`
     }
   }
  
+
   @media ${device.tablet} {
      display: block;
   }
@@ -144,6 +145,7 @@ const Navigation = (props: NavigationProps) => {
           @seemecreative
         </Link>
       </MobileNavItems>
+      <div className="main-navigation">
       <NavLeftnavRight 
             currentPage={typeof window !== "undefined" && window.location.href}
 
@@ -176,6 +178,7 @@ const Navigation = (props: NavigationProps) => {
           @seemecreative
         </Link>
       </NavLeftnavRight>
+      </div>
     </NavigationWrapper>
   )
 }

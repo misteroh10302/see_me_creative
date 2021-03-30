@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { device } from "../../../styled/theme"
 
 export const NavigationWrapper = styled.nav`
   position: fixed;
@@ -30,5 +31,14 @@ export const NavigationWrapper = styled.nav`
     width: 4rem;
     background-color: white;
     margin: .5rem auto;
+  }
+  .main-navigation {
+    max-width: 1400px;
+    display:flex;
+    justify-content: center;
+    width: 100%;
+    @media ${device.tablet} {
+      justify-content: space-between;
+    }
   }
 `;
