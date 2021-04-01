@@ -13,7 +13,8 @@ import {
   BackgroundImage,
   GalleryWrapper,
   SingleGalleryWrapper,
-  H1
+  H1,
+  TwoColumnWrapper
 } from "../styled/layoutStyles"
 import BackgroundMedia from "../components/UI/backgroundMedia/backgroundMedia"
 import TextArea from "../components/UI/textArea/textArea"
@@ -61,18 +62,18 @@ const SecondPage = data => {
                 else if (content.content) return <TextArea content={content} />
                 else if (content.childContentfulTwoColumnTextLeftColRichTextNode) {
                   return (
-                    <div className="post-text-wrapper">
+                    <TwoColumnWrapper className="post-text-wrapper">
                       <TextArea content={{content: content.childContentfulTwoColumnTextLeftColRichTextNode}} />
                       <TextArea content={{content: content.childContentfulTwoColumnTextRightColRichTextNode}} />
-                    </div>
+                    </TwoColumnWrapper>
                   )
                 }
                 else if (content.childContentfulSingleColumnTextSingleColumnTextRichTextNode) {
                   return (
-                    <div className="post-text-wrapper">
+                    <TwoColumnWrapper className="post-text-wrapper">
                       <TextArea content={{content: content.childContentfulSingleColumnTextSingleColumnTextRichTextNode}} />
                       <div></div>
-                    </div>
+                    </TwoColumnWrapper>
                   )
                 }
                 else if (content.images) {

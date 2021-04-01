@@ -182,25 +182,7 @@ export const ProjectWrapper = styled.section`
       }
     }
     @media ${device.tablet} {
-      .text-area {
-        width: 50%;
-        display: inline-block;
-        vertical-align: top;
-        /* &:nth-child(even) {
-          p {
-            max-width: calc(780px / 2);
-            margin-right: auto;
-            margin-left: initial;
-          }
-        }
-        &:nth-child(odd) {
-          p {
-            max-width: calc(780px / 2);
-            margin-left: auto;
-            margin-right: initial;
-          }
-        } */
-      }
+ 
       > div {
         h3,
         p {
@@ -268,9 +250,10 @@ export const SectionWrapper = styled.section`
 
     h1 {
       color: white;
-      padding: 0 3rem;
+      padding: 0 0rem;
+      margin-bottom: 1rem;
       @media ${device.laptop} {
-        padding: 3rem 0rem 0 20rem;
+        padding: 3rem 0rem 0 17rem;
       }
     }
 
@@ -434,6 +417,15 @@ export const SectionWrapper = styled.section`
     }
   }
 `
+export const TwoColumnWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  @media ${device.tablet} {
+    grid-template-columns: 1fr 1fr;
+  }
+`;
+
 export const GalleryWrapper = styled.div`
   display: grid;
   @media ${device.laptop} {

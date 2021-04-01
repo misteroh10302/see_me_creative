@@ -2,7 +2,6 @@ import * as React from "react"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import styled from "styled-components"
 import Reveal from 'react-reveal/Reveal';
-
 import uuid from 'react-uuid'
 
 export const TextAreaWrapper = styled.div`
