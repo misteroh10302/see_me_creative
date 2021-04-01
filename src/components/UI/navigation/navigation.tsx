@@ -21,7 +21,10 @@ export const NavLeftnavRight = styled.div`
     &:visited {
       color: ${props => props.scrolled && props.currentPage.includes("project") ? "black" : "white"};
     }
-    @media ${device.mobileL} {
+    @media ${device.mobileM} {
+      margin: 4rem 2rem;
+    }
+    @media ${device.desktop} {
       margin: 4rem 4rem;
     }
   }
