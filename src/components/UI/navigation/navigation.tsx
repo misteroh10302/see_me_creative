@@ -49,6 +49,7 @@ const HamburgerButton = styled.button`
     margin: 2px 0;
     display: block;
     background-color: white;
+    background-color: ${props => !props.open && props.scrolled && props.currentPage.includes("project") ? "black" : "white"};
     transition: .25s ease-in-out;
     &:nth-child(1) {
       transform: ${props => props.open ? "translateY(3px) rotate(45deg)" : "block"};
@@ -126,7 +127,11 @@ const Navigation = (props: NavigationProps) => {
       currentPage={typeof window !== "undefined" && window.location.href}
       scrollDirection={scrollDirection}
       scrolled={typeof window !== "undefined" && scrollTop.current > 50 ? true : false}>
-      <HamburgerButton open={open} onClick={() => setOpen(!open)}>
+      <HamburgerButton 
+        scrolled={typeof window !== "undefined" && scrollTop.current > 50 ? true : false}
+        currentPage={typeof window !== "undefined" && window.location.href}
+        open={open} 
+        onClick={() => setOpen(!open)}>
         <span></span>
         <span></span>
         <span></span>
