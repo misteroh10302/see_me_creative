@@ -86,6 +86,21 @@ exports.createPages = async function ({ actions, graphql }) {
                 }
               }
             }
+            ... on ContentfulTwoColumnText {
+              id
+              childContentfulTwoColumnTextLeftColRichTextNode {
+                json
+              }
+              childContentfulTwoColumnTextRightColRichTextNode {
+                json
+              }
+            }
+            ... on ContentfulSingleColumnText {
+              id
+              childContentfulSingleColumnTextSingleColumnTextRichTextNode {
+                json
+              }
+            }
             ... on ContentfulTwoColumnImageGrid {
               id
               imageLeft {

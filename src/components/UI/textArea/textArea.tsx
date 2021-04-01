@@ -6,7 +6,7 @@ import Reveal from 'react-reveal/Reveal';
 import uuid from 'react-uuid'
 
 export const TextAreaWrapper = styled.div`
-  padding: 3rem;
+  padding: 2rem 0rem 1rem;
   p {
     text-align: center;
     font-family: ${props => props.theme.font.serif}, serif;

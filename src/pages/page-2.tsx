@@ -22,7 +22,6 @@ import VideoContent from "../components/UI/videoContent/videoContent"
 
 const SecondPage = data => {
   const { slug, content } = data.pageContext
-  console.log(content)
   if (!content) return <div>No Content</div>
   const subTitle = content.subTitle || null
   const title = content.title || null
@@ -60,6 +59,22 @@ const SecondPage = data => {
               {postContent.map((content, i) => {
                 if (content.videos) return <VideoContent highlight={highlightColor && highlightColor[0] || false} content={content} />
                 else if (content.content) return <TextArea content={content} />
+                else if (content.childContentfulTwoColumnTextLeftColRichTextNode) {
+                  return (
+                    <div className="post-text-wrapper">
+                      <TextArea content={{content: content.childContentfulTwoColumnTextLeftColRichTextNode}} />
+                      <TextArea content={{content: content.childContentfulTwoColumnTextRightColRichTextNode}} />
+                    </div>
+                  )
+                }
+                else if (content.childContentfulSingleColumnTextSingleColumnTextRichTextNode) {
+                  return (
+                    <div className="post-text-wrapper">
+                      <TextArea content={{content: content.childContentfulSingleColumnTextSingleColumnTextRichTextNode}} />
+                      <div></div>
+                    </div>
+                  )
+                }
                 else if (content.images) {
                   return (
                     <SingleGalleryWrapper className="gallery">
