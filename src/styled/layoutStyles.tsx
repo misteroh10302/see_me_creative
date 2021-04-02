@@ -332,6 +332,11 @@ export const SectionWrapper = styled.section`
       text-align: center;
       color: white;
       margin: 10rem 0;
+      position: relative;
+      z-index: 2;
+      font-weight: 100;
+      letter-spacing: .75px;
+      font-family: 'Times NR Condensed',serif;
     }
     div.image {
       position: absolute;
@@ -405,14 +410,21 @@ export const SectionWrapper = styled.section`
         }
       }
 
-      p:nth-child(n + 2) {
+      p {
         font-size: 1.4rem;
         font-family: "Roboto", sans-serif;
       }
-      p:nth-child(odd) {
+      .our-perspective-0,
+      .our-perspective-4,
+      .our-perspective-10,
+      .our-perspective-14
+       {
         text-align: left;
       }
-      p:nth-child(even) {
+      .our-perspective-2,
+      .our-perspective-5,
+      .our-perspective-6,
+      .our-perspective-12 {
         text-align: right;
       }
     }

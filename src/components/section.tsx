@@ -12,7 +12,7 @@ const Section = (props: SectionProps) => {
         <SectionWrapper className={cleanTitle(title)} backgroundImage={props.bgm ? props.bgm.file.url : ""}>
             {content && content.map((content,i) =>{
                 if (content.__typename === "ContentfulTextArea") {
-                    return <TextArea key={uuid()} content={content}/>;
+                    return <TextArea key={uuid()} title={cleanTitle(title)} content={content}/>;
                 } else if (content.__typename === "ContentfulButton") {
                     return <Button key={uuid()} href={content.link}>{content.buttonText}</Button>
                 } else if (content.__typename === "ContentfulCarousel") {
