@@ -136,7 +136,7 @@ exports.createPages = async function ({ actions, graphql }) {
               url
             }
           }
-          backgroundMobileMedia {
+          backgroundMediaMobile {
             fluid {
               sizes
               aspectRatio
