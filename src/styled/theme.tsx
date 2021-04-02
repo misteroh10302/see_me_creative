@@ -25,17 +25,17 @@ export const theme = {
        fontSize: "1.5rem"
    },
    heading1: {
-       fontSize: "3rem",
+       fontSize: "4rem",
        letterSpacing: "-.55px",
-       lineHeight: "3.6rem"
+       lineHeight: "4.6rem"
    },
    heading2: {
-    fontSize: "2rem",
+    fontSize: "3rem",
     letterSpacing: "-.37px",
     lineHeight: "3.6rem"
     },
     projectHeader: {
-        fontSize: "3.6rem",
+        fontSize: "4.6rem",
         letterSpacing: "-.66px",
         lineHeight: "44rem"
     }, size: {

@@ -4,6 +4,7 @@ import TextArea from "../textArea/textArea"
 import { Button } from "../../../styled/layoutStyles"
 import uuid from "react-uuid"
 
+
 const Footer = (props: FooterProps) => {
   return (
     <FooterWrapper textColor={props.textColor} background={props.bgm ? props.bgm.fluid.src : ""}>

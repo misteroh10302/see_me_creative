@@ -105,11 +105,12 @@ export const ProjectWrapper = styled.section`
   min-height: 100vh;
   width: 100%;
   padding: ${props => props.theme.padding.sectionVertical}
-    ${props => props.theme.padding.desktop};
+    0;
   header {
     @media ${device.tablet} {
       max-width: 840px;
       margin: 0 auto;
+      margin-bottom: 10rem;
     }
   }
 
@@ -124,27 +125,33 @@ export const ProjectWrapper = styled.section`
 
   small {
     display: block;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-family: "Roboto", sans-serif;
     color: black;
     text-transform: capitalize;
     margin-bottom: 2rem;
+    font-weight: 300;
   }
   section.post-content {
     .post-text-wrapper {
       @media ${device.tablet} {
         max-width: 840px;
-        margin: 0 auto;
+        margin-left:  auto;
+        margin-right: auto;
       }
     }
+    
     p {
       margin-bottom: 0rem;
       text-align: left;
       font-family: "Roboto", sans-serif;
       font-size: 1.4rem;
-      font-weight: lighter;
+      font-weight: 100;
       letter-spacing: 0;
       line-height: 2.2rem;
+      u {
+        text-decoration: none;
+      }
       b {
         font-family: ${props => props.theme.font.serif}, serif;
         font-size: 2rem;
@@ -158,7 +165,6 @@ export const ProjectWrapper = styled.section`
       display: block;
     }
     div.gallery {
-      margin: 3rem 0;
       img {
         margin: 2rem 0;
         display: inline-block;
@@ -190,6 +196,13 @@ export const ProjectWrapper = styled.section`
           max-width: 840px;
           margin: 0rem auto;
           padding: 0;
+          font-size: 1.6rem;
+          line-height: 2.4rem;
+          font-weight: 300;
+          b {
+            font-size: 3rem;
+            line-height: 3.2rem;
+          }
         }
        
       }
@@ -209,7 +222,7 @@ export const SectionWrapper = styled.section`
   padding: ${props => props.theme.padding.sectionVertical}
     ${props => props.theme.padding.desktop};
   &.projects {
-    padding: 8rem 0;
+    padding: 10rem 0;
     position: relative;
   }
 
@@ -433,8 +446,9 @@ export const SectionWrapper = styled.section`
 export const TwoColumnWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 3.2rem;
   @media ${device.tablet} {
+    margin: 10rem 0;
     grid-template-columns: 1fr 1fr;
   }
 `;
@@ -445,6 +459,7 @@ export const GalleryWrapper = styled.div`
     grid-template-columns: 1fr 1fr;
     justify-content: center;
     gap: 3.2rem;
+    margin: 10rem 0;
     div:nth-child(n + 3) {
       grid-column: 1/3;
     }

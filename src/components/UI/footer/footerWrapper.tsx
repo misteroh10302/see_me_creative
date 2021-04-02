@@ -7,10 +7,15 @@ export const FooterWrapper = styled.nav`
   display: flex;
   flex-direction: column;
   justify-content: center;
-
+  position: relative;
+  .mesh {
+    position: absolute;
+    bottom: -100%;
+    width: 100%;
+  }
   p {
     color: ${props => props.textColor === "light" ? "white" : "black"};
-    
+    font-weight: 400;
   }
   a {
       color: ${props => props.textColor === "light" ? "white" : "black"};

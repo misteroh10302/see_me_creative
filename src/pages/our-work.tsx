@@ -5,6 +5,7 @@ import { StaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 
 import { theme } from "../styled/theme"
+import ReactPlayer from "react-player"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { Link } from "gatsby"
@@ -90,11 +91,13 @@ const OurWork = () => {
                               <h2>{project.title}</h2>
                               {project.backgroundMedia.file.contentType.includes("video")
                               ? 
-                                <>
-                                      <video width="100%" height="100%" muted autoPlay>
-                                        <source src={project.backgroundMedia.file.url} type="video/mp4"/>
-                                        Your browser does not support the video tag.
-                                      </video>
+                                <> 
+                                
+                                    <ReactPlayer
+                                    controls={false}
+                                    light={false}
+                                    url={project.backgroundMedia.file.url}
+                                  />
                                 </>
                                :
                                 <Img fluid={project.backgroundMedia.fluid} />
