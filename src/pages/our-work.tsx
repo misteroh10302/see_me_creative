@@ -31,6 +31,15 @@ const OurWorkQuery = graphql`
               contentType
             }
           }
+          thumbnailMedia {
+            fluid {
+              ...GatsbyContentfulFluid
+            }
+            file {
+              url
+              contentType
+            }
+          }
         }
         title
         backgroundMedia {
@@ -87,20 +96,23 @@ const OurWork = () => {
                             <Link
                               key={uuid()}
                               to={`/project/${mySlug(project.title)}`}
+                              style={{height: "600px" }}
                             >
                               <h2>{project.title}</h2>
-                              {project.backgroundMedia.file.contentType.includes("video")
+                              {project.thumbnailMedia.file.contentType.includes("video")
                               ? 
                                 <> 
                                 
-                                    <ReactPlayer
+                                  <ReactPlayer
                                     controls={false}
                                     light={false}
-                                    url={project.backgroundMedia.file.url}
+                                    url={project.thumbnailMedia.file.url}
                                   />
                                 </>
                                :
-                                <Img fluid={project.backgroundMedia.fluid} />
+                                <Img 
+                                  fluid={project.thumbnailMedia.fluid} 
+                                  style={{height: "600px" }}/>
                               }
                             </Link>
                           )

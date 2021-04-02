@@ -136,6 +136,19 @@ exports.createPages = async function ({ actions, graphql }) {
               url
             }
           }
+          backgroundMobileMedia {
+            fluid {
+              sizes
+              aspectRatio
+              base64
+              src
+              srcSet
+            }
+            file {
+              contentType
+              url
+            }
+          }
           thumbnailMedia {
             fluid {
               sizes

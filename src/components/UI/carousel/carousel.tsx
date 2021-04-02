@@ -103,11 +103,11 @@ const MyCarousel = (props: CarouselProps) => {
               projects.map((project, i) => {
                 if (i < numberOfPosts.number) {
                   return (
-                    <Link to={`/project/${mySlug(project.title)}`} key={uuid()}>
-                      {project.backgroundMedia.file.contentType.includes("video") ?
+                    <Link  to={`/project/${mySlug(project.title)}`} key={uuid()}>
+                      {project.thumbnailMedia.file.contentType.includes("video") ?
                          <>
                          <video width="100%" height="700px" muted autoPlay>
-                           <source src={project.backgroundMedia.file.url} type="video/mp4"/>
+                           <source src={project.thumbnailMedia.file.url} type="video/mp4"/>
                            Your browser does not support the video tag.
                          </video>
                       </> :
@@ -115,6 +115,7 @@ const MyCarousel = (props: CarouselProps) => {
                       <Img
                         fluid={project.thumbnailMedia.fluid}
                         objectFit="contain"
+                        style={{minHeight: "600px" }}
                       />
                     }
                       <h4>{project.title}</h4>
@@ -129,27 +130,6 @@ const MyCarousel = (props: CarouselProps) => {
         </Button>
       </BackgroundFade>
       </>
-      // <SwiperWrapper className="projects-wrap">
-      //   <Swiper {...params}>
-      //     {projects &&
-      //       projects.map((project, i) => {
-      //         return (
-      //           <div key={uuid()}>
-      //             <Img
-      //               fluid={project.thumbnailMedia.fluid}
-      //               objectFit="cover"
-      //               objectPosition="top center"
-      //               style={{
-      //                 maxHeight: "70vh",
-      //               }}
-      //             />
-      //             <h4>{project.title}</h4>
-      //             <p>{project.tags && project.tags.join(", ")}</p>
-      //           </div>
-      //         )
-      //       })}
-      //   </Swiper>
-      // </SwiperWrapper>
     )
   }
 }
