@@ -103,7 +103,7 @@ const homepageQuery = graphql`
                 json
               }
             }
-        
+
             ... on ContentfulProjectCarousel {
               id
               projects {
@@ -113,10 +113,18 @@ const homepageQuery = graphql`
                   fluid {
                     ...GatsbyContentfulFluid
                   }
+                  file {
+                    url
+                    contentType
+                  }
                 }
                 thumbnailMedia {
                   fluid {
                     ...GatsbyContentfulFluid
+                  }
+                  file {
+                    url
+                    contentType
                   }
                 }
               }

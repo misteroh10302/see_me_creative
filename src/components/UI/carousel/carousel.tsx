@@ -25,7 +25,7 @@ const BackgroundFade = styled.div`
 
 const MyCarousel = (props: CarouselProps) => {
   const [numberOfPosts, setNumberOPosts] = useState({
-    number: 3,
+    number: 6,
     buttonText: "MORE"  
   });
   
@@ -34,7 +34,7 @@ const MyCarousel = (props: CarouselProps) => {
       window.location = "/our-work"
     } else {
       setNumberOPosts({
-        number: 6,
+        number: 9,
         buttonText: "SEE ALL WORK",
       })
     }
@@ -104,12 +104,20 @@ const MyCarousel = (props: CarouselProps) => {
                 if (i < numberOfPosts.number) {
                   return (
                     <Link to={`/project/${mySlug(project.title)}`} key={uuid()}>
+                      {project.backgroundMedia.file.contentType.includes("video") ?
+                         <>
+                         <video width="100%" height="700px" muted autoPlay>
+                           <source src={project.backgroundMedia.file.url} type="video/mp4"/>
+                           Your browser does not support the video tag.
+                         </video>
+                      </> :
+                      
                       <Img
                         fluid={project.thumbnailMedia.fluid}
                         objectFit="contain"
                       />
+                    }
                       <h4>{project.title}</h4>
-                      {/* <p>{project.tags && project.tags.join(", ")}</p> */}
                     </Link>
                   )
                 }
