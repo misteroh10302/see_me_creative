@@ -39,19 +39,24 @@ const SecondPage = data => {
       <Layout>
         <SEO title={`Project ${slug}`} />
         <FullHeight>
-          <div className="video-background">
-          <iframe
-            background={true}
-            autoPlay
-            muted={true}
-            frameborder="0" 
-            webkitallowfullscreen 
-            mozallowfullscreen 
-            allowfullscreen
-            src={`https://player.vimeo.com/video/${headerDesktopVimeoVideoId}?embedparameter=value&autoplay=1&loop=1&muted=1&controls=false`}
-          />
-</div>
-          {/* {backgroundMedia.file.contentType &&
+          <div className="video-background"
+              style={{
+                backgroundImage: `url(https://vumbnail.com/${headerDesktopVimeoVideoId}.jpg)`,
+                backgroundSize: "cover"
+              }}
+            >
+            <iframe
+              background={true}
+              autoPlay
+              muted={true}
+              frameborder="0" 
+              webkitallowfullscreen 
+              mozallowfullscreen 
+              allowfullscreen
+              src={`https://player.vimeo.com/video/${headerDesktopVimeoVideoId}?embedparameter=value&autoplay=1&loop=1&muted=1&controls=false`}
+            />
+  </div>
+            {/* {backgroundMedia.file.contentType &&
           backgroundMedia.file.contentType.includes("video") ? (
           <BackgroundMedia
           title={backgroundMedia.title}

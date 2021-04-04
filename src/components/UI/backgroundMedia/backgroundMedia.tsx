@@ -5,7 +5,6 @@ import uuid from "react-uuid"
 import { BackgroundMediaWrapper } from "./backgroundMediaStyled"
 
 const BackgroundMedia = (props: BackgroundMediaProps) => {
-  console.log(props)
   return (
     <BackgroundMediaWrapper key={uuid()}>
       {props.vimeoId ? 
@@ -18,7 +17,7 @@ const BackgroundMedia = (props: BackgroundMediaProps) => {
            webkitallowfullscreen 
            mozallowfullscreen 
            allowfullscreen
-           src={`https://player.vimeo.com/video/${props.vimeoId}?embedparameter=value&autoplay=1&loop=1&muted=1&controls=false`}
+           src={`https://player.vimeo.com/video/${props.vimeoId}?embedparameter=value&autoplay=1&loop=1&muted=1&controls=false&transparent=false`}
          />
 </div>
       
