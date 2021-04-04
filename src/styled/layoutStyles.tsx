@@ -261,9 +261,10 @@ export const SectionWrapper = styled.section`
   &.who-we-are-content-info {
     p {
       text-align: left;
-      margin: 3rem 0;
+      margin: 0rem 0;
       color: white;
       font-weight: 300;
+   
     }
 
     h1 {
@@ -296,10 +297,10 @@ export const SectionWrapper = styled.section`
       }
       p {
         font-family: "Roboto", sans-serif;
-        font-size: 1.4rem;
-        line-height: 2.2rem;
         margin-bottom: 0;
         letter-spacing: 0;
+        font-size: 1.6rem;
+        line-height: 2.4rem;
         @media ${device.laptop} {
           padding: 0rem 0rem 0 17rem;
         }
@@ -405,9 +406,12 @@ export const SectionWrapper = styled.section`
     > div {
       z-index: 5;
       position: relative;
+      font-size: 1.6rem;
+
       p {
         margin-bottom: 0;
         font-family: "Roboto",sans-serif; 
+        font-weight: 300;
         b {
           display: block;
           line-height: 1.6rem;
@@ -428,8 +432,21 @@ export const SectionWrapper = styled.section`
       }
 
       p {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
+        letter-spacing: -.15px;
         font-family: "Roboto", sans-serif;
+        font-weight: 300;
+        line-height: 2.5rem;
+        
+      }
+      .our-perspective-p {
+        opacity: 0.5 !important;
+        :hover {
+          opacity: 1 !important;
+        }
+      }
+      .our-perspective-image {
+        filter: sepia(100) hue-rotate(185deg);
       }
       .our-perspective-0,
       .our-perspective-4,
@@ -459,7 +476,7 @@ export const TwoColumnWrapper = styled.div`
 
 export const GalleryWrapper = styled.div`
   display: grid;
-  grid-template-rows: 90vh;
+  gap: 3.2rem;
   @media ${device.laptop} {
     grid-template-columns: 1fr 1fr;
     justify-content: center;

@@ -1,4 +1,5 @@
 import * as React from "react"
+import {useState} from "react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import styled from "styled-components"
 import Reveal from 'react-reveal/Reveal';
@@ -47,6 +48,7 @@ export const TextAreaWrapper = styled.div`
 `
 
 const TextArea = (props: TextAreaProps) => {
+  const [hovered, setHovered] = useState(false);
   const data = props.content.content;
   const title = props.title;
   const dataAsHtml = documentToReactComponents(data.json)
@@ -57,27 +59,40 @@ const TextArea = (props: TextAreaProps) => {
           {data.json.content.map((data, i) => {
             if (data.nodeType === "paragraph") {
               return (
-                <Reveal key={uuid(i)} effect="fadeInUp">
-                  <p className={`our-perspective-${i}`}>
+                // <Reveal 
+                //   key={uuid(i)} effect="fadeInUp">
+                  <p
+                   key={uuid(i)}
+                    onMouseOver={()=> setHovered(true)} 
+                    onMouseOut={()=> setHovered(false)} 
+                    className={`our-perspective-p our-perspective-${i}`}>
                     <b>{data.content[0].value}</b>
                     {data.content[1] && data.content[1].value}
                   </p>
-                </Reveal>
+                // </Reveal>
               )
             } else if (data.nodeType === "heading-1") {
+              const isHovered = hovered ? 0 : 1;
               return (
-                <Reveal key={uuid(i)} effect="fadeInUp">
-                  <h1>
+                // <Reveal key={uuid(i)} effect="fadeInUp">
+                  <h1 
+                    style={{
+                      opacity: isHovered
+                    }}
+                  >
                     {data.content[0].value}
                   </h1>
-                </Reveal>
+                // </Reveal>
               )
             }
             else {
               return (
                   <Reveal key={uuid(i)} effect="fadeInUp">
                     <div className="our-perspective-image">
-                        <img   style={{ maxHeight: "550px"}} src={data.data.target.fields.file["en-US"].url} />
+                        <img 
+                          style={{ 
+                              maxHeight: "550px"
+                            }} src={data.data.target.fields.file["en-US"].url} />
                         {/* <Img 
                           objectFit="cover"
                           style={{ maxHeight: "350px"}}

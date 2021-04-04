@@ -33,7 +33,7 @@ exports.createPages = async function ({ actions, graphql }) {
             }
           }
           footerBackground {
-            fluid(maxWidth: 1600, maxHeight: 800) {
+            fluid(maxWidth: 1600) {
               tracedSVG
               srcWebp
               srcSetWebp
@@ -53,7 +53,7 @@ exports.createPages = async function ({ actions, graphql }) {
               title
               imageSize
               mainImage {
-                fluid(maxWidth: 1600, maxHeight: 800) {
+                fluid(maxWidth: 1600) {
                   sizes
                   aspectRatio
                   src
@@ -79,7 +79,7 @@ exports.createPages = async function ({ actions, graphql }) {
             ... on ContentfulTwoColumnImageGrid {
               id
               imageLeft {
-                fluid(maxWidth: 1600, maxHeight: 800) {
+                fluid(maxWidth: 1600) {
                   sizes
                   aspectRatio
                   src
@@ -87,7 +87,7 @@ exports.createPages = async function ({ actions, graphql }) {
                 }
               }
               imageRight {
-                fluid(maxWidth: 1600, maxHeight: 800) {
+                fluid(maxWidth: 1600) {
                   sizes
                   aspectRatio
                   src
@@ -97,7 +97,7 @@ exports.createPages = async function ({ actions, graphql }) {
             }
           }
           backgroundMediaMobile {
-            fluid(maxWidth: 1600, maxHeight: 800) {
+            fluid(maxWidth: 1600) {
               sizes
               aspectRatio
               src
@@ -105,7 +105,7 @@ exports.createPages = async function ({ actions, graphql }) {
             }
           }
           thumbnailMedia {
-            fluid(maxWidth: 1600, maxHeight: 800) {
+            fluid(maxWidth: 1600) {
               sizes
               aspectRatio
               src
