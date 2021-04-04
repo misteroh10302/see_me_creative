@@ -11,13 +11,13 @@ import "react-responsive-carousel/lib/styles/carousel.min.css" // requires a loa
 import { Carousel } from "react-responsive-carousel"
 import Swiper from "react-id-swiper"
 import { SwiperWrapper } from "../../../styled/layoutStyles"
-import Masonry from 'react-masonry-css'
-import { Button } from "../../../styled/layoutStyles";
+import Masonry from "react-masonry-css"
+import { Button } from "../../../styled/layoutStyles"
 
 const BackgroundFade = styled.div`
   width: 100%;
   /* transform: translateY(-100%); */
-  background-image: linear-gradient(transparent,black);
+  background-image: linear-gradient(transparent, black);
   padding: 10rem;
   position: absolute;
   bottom: 0;
@@ -25,26 +25,24 @@ const BackgroundFade = styled.div`
 
 const MyCarousel = (props: CarouselProps) => {
   const [numberOfPosts, setNumberOPosts] = useState({
-    number: 6,
-    buttonText: "MORE"  
-  });
-  
+    number: 3,
+    buttonText: "MORE",
+  })
+
   const updateMorePosts = () => {
     if (numberOfPosts.buttonText === "SEE ALL WORK") {
       window.location = "/our-work"
     } else {
       setNumberOPosts({
-        number: 9,
+        number: 6,
         buttonText: "SEE ALL WORK",
       })
     }
-   
   }
 
   if (props.content.__typename === "ContentfulCarousel") {
     const { carouselMedia } = props.content
     return (
-
       <CarouselWrapper>
         <Carousel
           emulateTouch={true}
@@ -90,45 +88,49 @@ const MyCarousel = (props: CarouselProps) => {
       default: 3,
       1100: 1,
       700: 1,
-      500: 1
-    };
+      500: 1,
+    }
 
     return (
       <>
         <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className="my-masonry-grid"
-        columnClassName="my-masonry-grid_column">
-        {projects &&
-              projects.map((project, i) => {
-                if (i < numberOfPosts.number) {
-                  return (
-                    <Link  to={`/project/${mySlug(project.title)}`} key={uuid()}>
-                      {project.thumbnailMedia.file.contentType.includes("video") ?
-                         <>
-                         <video width="100%" height="700px" muted autoPlay>
-                           <source src={project.thumbnailMedia.file.url} type="video/mp4"/>
-                           Your browser does not support the video tag.
-                         </video>
-                      </> :
-                      
+          breakpointCols={breakpointColumnsObj}
+          className="my-masonry-grid"
+          columnClassName="my-masonry-grid_column"
+        >
+          {projects &&
+            projects.map((project, i) => {
+              if (i < numberOfPosts.number) {
+                return (
+                  <Link to={`/project/${mySlug(project.title)}`} key={uuid()}>
+                    {project.thumbnailMedia.file.contentType.includes(
+                      "video"
+                    ) ? (
+                      <>
+                        <video width="100%" height="700px" muted autoPlay>
+                          <source
+                            src={project.thumbnailMedia.file.url}
+                            type="video/mp4"
+                          />
+                          Your browser does not support the video tag.
+                        </video>
+                      </>
+                    ) : (
                       <Img
                         fluid={project.thumbnailMedia.fluid}
                         objectFit="contain"
-                        style={{minHeight: "600px" }}
+                        style={{ minHeight: "600px" }}
                       />
-                    }
-                      <h4>{project.title}</h4>
-                    </Link>
-                  )
-                }
-              })}
-      </Masonry>
-      <BackgroundFade>
-        <Button onClick={updateMorePosts}>
-          {numberOfPosts.buttonText}
-        </Button>
-      </BackgroundFade>
+                    )}
+                    <h4>{project.title}</h4>
+                  </Link>
+                )
+              }
+            })}
+        </Masonry>
+        <BackgroundFade>
+          <Button onClick={updateMorePosts}>{numberOfPosts.buttonText}</Button>
+        </BackgroundFade>
       </>
     )
   }

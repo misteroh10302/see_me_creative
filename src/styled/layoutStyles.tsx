@@ -446,6 +446,7 @@ export const SectionWrapper = styled.section`
 export const TwoColumnWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
+  grid-template-rows: 50vh;
   gap: 3.2rem;
   @media ${device.tablet} {
     margin: 10rem 0;
@@ -455,6 +456,7 @@ export const TwoColumnWrapper = styled.div`
 
 export const GalleryWrapper = styled.div`
   display: grid;
+  grid-template-rows: 90vh;
   @media ${device.laptop} {
     grid-template-columns: 1fr 1fr;
     justify-content: center;
@@ -468,6 +470,7 @@ export const GalleryWrapper = styled.div`
 
 export const SingleGalleryWrapper = styled.div`
   margin: 3rem 0;
+ 
   @media ${device.tablet} {
     margin: 10rem 0;
     .landscape {

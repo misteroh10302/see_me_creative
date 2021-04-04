@@ -20,6 +20,7 @@ const IndexPage = () => (
         footer,
         footerBackground,
       } = data.contentfulHomepage
+    
       return (
         <ThemeProvider theme={theme}>
           <Layout page="home">
@@ -32,6 +33,7 @@ const IndexPage = () => (
                       title={section.title}
                       fluid={section.media.fluid}
                       file={section.media.file}
+                      vimeoId={section.vimeoId}
                       key={uuid()}
                     />
                   )
@@ -75,12 +77,12 @@ const homepageQuery = graphql`
       homepageContent {
         ... on ContentfulBackgroundMedia {
           id
+          vimeoId
           media {
-            fluid {
+            fluid(maxWidth: 200, maxHeight: 500) {
               ...GatsbyContentfulFluid
             }
             file {
-              url
               fileName
               contentType
             }
@@ -113,20 +115,18 @@ const homepageQuery = graphql`
                 title
                 tags
                 backgroundMedia {
-                  fluid {
+                  fluid(maxWidth: 200) {
                     ...GatsbyContentfulFluid
                   }
                   file {
-                    url
                     contentType
                   }
                 }
                 thumbnailMedia {
-                  fluid {
+                  fluid(maxWidth: 200) {
                     ...GatsbyContentfulFluid
                   }
                   file {
-                    url
                     contentType
                   }
                 }
@@ -139,7 +139,7 @@ const homepageQuery = graphql`
                 sizes {
                   src
                 }
-                fluid {
+                fluid(maxWidth: 200, maxHeight: 500) {
                   ...GatsbyContentfulFluid
                 }
               }
@@ -151,13 +151,3 @@ const homepageQuery = graphql`
   }
 `
 export default IndexPage
-
-
-// ... on ContentfulCarousel {
-//   id
-//   carouselMedia {
-//     fluid {
-//       ...GatsbyContentfulFluid
-//     }
-//   }
-// }

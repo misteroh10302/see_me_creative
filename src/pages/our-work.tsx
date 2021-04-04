@@ -22,33 +22,16 @@ const OurWorkQuery = graphql`
       nodes {
         projects {
           title
-          backgroundMedia {
-            fluid {
-              ...GatsbyContentfulFluid
-            }
-            file {
-              url
-              contentType
-            }
-          }
           thumbnailMedia {
-            fluid {
+            fluid(maxWidth: 200, maxHeight: 500){
               ...GatsbyContentfulFluid
-            }
-            file {
-              url
-              contentType
             }
           }
         }
         title
         backgroundMedia {
-          fluid {
+          fluid(maxWidth: 200, maxHeight: 500){
             ...GatsbyContentfulFluid
-          }
-          file {
-            url
-            contentType
           }
         }
         footer {
@@ -99,21 +82,11 @@ const OurWork = () => {
                               style={{height: "600px" }}
                             >
                               <h2>{project.title}</h2>
-                              {project.thumbnailMedia.file.contentType.includes("video")
-                              ? 
-                                <> 
-                                
-                                  <ReactPlayer
-                                    controls={false}
-                                    light={false}
-                                    url={project.thumbnailMedia.file.url}
-                                  />
-                                </>
-                               :
+                            
                                 <Img 
                                   fluid={project.thumbnailMedia.fluid} 
                                   style={{height: "600px" }}/>
-                              }
+                              
                             </Link>
                           )
                         }
