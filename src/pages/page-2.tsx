@@ -31,6 +31,7 @@ const SecondPage = data => {
   const postContent = content.postContent || null
   const backgroundMedia = content.backgroundMedia || null
   const highlightColor = content.highlightColor || false
+  console.log(content)
   const headerDesktopVimeoVideoId =
     content.headerDesktopVimeoVideoId || "336487034"
   return (
