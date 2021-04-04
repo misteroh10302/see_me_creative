@@ -9,6 +9,7 @@ import SEO from "../components/seo"
 import BackgroundMedia from "../components/UI/backgroundMedia/backgroundMedia"
 import Section from "../components/section"
 import Footer from "../components/UI/footer/footer"
+import uuid from "react-uuid"
 
 const IndexPage = () => (
   <StaticQuery
@@ -31,6 +32,7 @@ const IndexPage = () => (
                       title={section.title}
                       fluid={section.media.fluid}
                       file={section.media.file}
+                      key={uuid()}
                     />
                   )
                 } else if (section.__typename === "ContentfulSection") {
@@ -39,6 +41,7 @@ const IndexPage = () => (
                       title={section.title}
                       bgm={section.backgroundMedia}
                       content={section}
+                      key={uuid()}
                     />
                   )
                 }

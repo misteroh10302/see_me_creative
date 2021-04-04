@@ -33,7 +33,6 @@ exports.createPages = async function ({ actions, graphql }) {
           }
           footerBackground {
             fluid {
-              base64
               tracedSVG
               srcWebp
               srcSetWebp
@@ -41,18 +40,6 @@ exports.createPages = async function ({ actions, graphql }) {
             }
           }
           postContent {
-            ... on ContentfulImageGallery {
-              id
-              images {
-                fluid {
-                  sizes
-                  aspectRatio
-                  base64
-                  src
-                  srcSet
-                }
-              }
-            }
             ... on ContentfulVideoGallery {
               id
               content {
@@ -80,7 +67,6 @@ exports.createPages = async function ({ actions, graphql }) {
                 fluid {
                   sizes
                   aspectRatio
-                  base64
                   src
                   srcSet
                 }
@@ -107,7 +93,6 @@ exports.createPages = async function ({ actions, graphql }) {
                 fluid {
                   sizes
                   aspectRatio
-                  base64
                   src
                   srcSet
                 }
@@ -116,7 +101,6 @@ exports.createPages = async function ({ actions, graphql }) {
                 fluid {
                   sizes
                   aspectRatio
-                  base64
                   src
                   srcSet
                 }
@@ -127,7 +111,6 @@ exports.createPages = async function ({ actions, graphql }) {
             fluid {
               sizes
               aspectRatio
-              base64
               src
               srcSet
             }
@@ -140,7 +123,6 @@ exports.createPages = async function ({ actions, graphql }) {
             fluid {
               sizes
               aspectRatio
-              base64
               src
               srcSet
             }
@@ -153,7 +135,6 @@ exports.createPages = async function ({ actions, graphql }) {
             fluid {
               sizes
               aspectRatio
-              base64
               src
               srcSet
             }

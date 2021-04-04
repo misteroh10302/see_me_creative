@@ -8,8 +8,8 @@ const BackgroundMedia = (props: BackgroundMediaProps) => {
   return (
     <BackgroundMediaWrapper key={uuid()}>
       {props.file.contentType && props.file.contentType.includes("video") ? (
-        <div>
-        <video autoPlay muted="true" style={{width: "100vw", height: "100vh"}} width="800">
+        <div  key={uuid()}>
+        <video autoPlay muted={true} style={{width: "100vw", height: "100vh"}} width="800">
           <source src={props.file.url}
                   type="video/mp4" />
           Sorry, your browser doesn't support embedded videos.
