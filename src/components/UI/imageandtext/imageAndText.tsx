@@ -14,7 +14,7 @@ const ImageAndText = (props: ImageAndTextProps) => {
     >
       {content.images.map((image, i: number) => {
         return (
-          <Fade key={uuid()}>
+          <Fade key={uuid()} effect="fadeInUp">
             <Img 
               objectFit="cover"
               style={{ maxHeight: title ? "380px": "initial" }}
@@ -24,7 +24,7 @@ const ImageAndText = (props: ImageAndTextProps) => {
         )
       })}
       {content.title && (
-        <Fade bottom>
+        <Fade effect="fadeInUp">
           <h1>{content.title}</h1>
         </Fade>
       )}

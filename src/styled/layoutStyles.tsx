@@ -94,6 +94,7 @@ export const OurWorkWrapper = styled.div`
     overflow: hidden;
   }
   ${grid}
+  grid-template-columns: 1fr;
   @media ${device.laptop} {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
@@ -105,12 +106,15 @@ export const ProjectWrapper = styled.section`
   min-height: 100vh;
   width: 100%;
   padding: ${props => props.theme.padding.sectionVertical}
-    0;
+    3rem;
+
   header {
     @media ${device.tablet} {
       max-width: 840px;
       margin: 0 auto;
       margin-bottom: 10rem;
+      padding-left:0;
+      padding-right:0;
     }
   }
 
@@ -146,7 +150,7 @@ export const ProjectWrapper = styled.section`
       text-align: left;
       font-family: "Roboto", sans-serif;
       font-size: 1.4rem;
-      font-weight: 100;
+      font-weight: 300;
       letter-spacing: 0;
       line-height: 2.2rem;
       u {
@@ -166,7 +170,6 @@ export const ProjectWrapper = styled.section`
     }
     div.gallery {
       img {
-        margin: 2rem 0;
         display: inline-block;
         width: 100%;
       }
@@ -260,6 +263,7 @@ export const SectionWrapper = styled.section`
       text-align: left;
       margin: 3rem 0;
       color: white;
+      font-weight: 300;
     }
 
     h1 {
@@ -446,7 +450,6 @@ export const SectionWrapper = styled.section`
 export const TwoColumnWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 50vh;
   gap: 3.2rem;
   @media ${device.tablet} {
     margin: 10rem 0;

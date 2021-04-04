@@ -31,7 +31,6 @@ const SecondPage = data => {
   const postContent = content.postContent || null
   const backgroundMedia = content.backgroundMedia || null
   const highlightColor = content.highlightColor || false
-  console.log(content)
   const headerDesktopVimeoVideoId =
     content.headerDesktopVimeoVideoId || "336487034"
   return (
@@ -133,15 +132,15 @@ const SecondPage = data => {
                         if (aspectRatio <= 0.8) orientation = "portrait"
                         if (aspectRatio > 0.8 && aspectRatio < 1.2)
                           orientation = "square"
-                        return <Img fluid={img.fluid} className={orientation} />
+                        return <Img backgroundColor="#eeeeee" fluid={img.fluid} className={orientation} />
                       })}
                     </SingleGalleryWrapper>
                   )
                 } else if (content.imageLeft) {
                   return (
                     <GalleryWrapper className="gallery">
-                      <Img fluid={content.imageLeft.fluid} />
-                      <Img fluid={content.imageRight.fluid} />
+                      <Img backgroundColor="#eeeeee" fluid={content.imageLeft.fluid} />
+                      <Img backgroundColor="#eeeeee" fluid={content.imageRight.fluid} />
                     </GalleryWrapper>
                   )
                 } else if (content.mainImage) {
@@ -150,6 +149,7 @@ const SecondPage = data => {
                       <Img
                         fluid={content.mainImage.fluid}
                         className={mySlug(content.imageSize)}
+                        backgroundColor="#eeeeee"
                       />
                     </SingleGalleryWrapper>
                   )
