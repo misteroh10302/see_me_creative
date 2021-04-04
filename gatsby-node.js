@@ -22,6 +22,7 @@ exports.createPages = async function ({ actions, graphql }) {
           tags
           subTitle
           highlightColor
+          headerDesktopVimeoVideoId
           footer {
             content {
               json
@@ -107,28 +108,13 @@ exports.createPages = async function ({ actions, graphql }) {
               }
             }
           }
-          backgroundMedia {
-            fluid {
-              sizes
-              aspectRatio
-              src
-              srcSet
-            }
-            file {
-              contentType
-              url
-            }
-          }
+         
           backgroundMediaMobile {
             fluid {
               sizes
               aspectRatio
               src
               srcSet
-            }
-            file {
-              contentType
-              url
             }
           }
           thumbnailMedia {
