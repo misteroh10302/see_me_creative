@@ -45,7 +45,7 @@ export const Button = styled.a`
   }
   @media ${device.tablet} {
     max-width: 300px;
-    margin: 2rem auto;
+    margin: 2rem auto 0;
   }
 `
 
@@ -225,7 +225,7 @@ export const SectionWrapper = styled.section`
   padding: ${props => props.theme.padding.sectionVertical}
     ${props => props.theme.padding.desktop};
   &.projects {
-    padding: 10rem 0;
+    padding: 0em 0 5rem;
     position: relative;
   }
 
