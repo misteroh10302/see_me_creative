@@ -5,28 +5,33 @@ import uuid from "react-uuid"
 import { BackgroundMediaWrapper } from "./backgroundMediaStyled"
 
 const BackgroundMedia = (props: BackgroundMediaProps) => {
+  const { position } = props
   return (
-    <BackgroundMediaWrapper key={uuid()}>
-      {props.vimeoId ? 
-         <div className="video-background">
-         <iframe
-           background={true}
-           autoPlay
-           muted={true}
-           frameborder="0" 
-           webkitallowfullscreen 
-           mozallowfullscreen 
-           allowfullscreen
-           src={`https://player.vimeo.com/video/${props.vimeoId}?embedparameter=value&autoplay=1&loop=1&muted=1&controls=false&transparent=false`}
-         />
-</div>
-      
-      : props.file.contentType && props.file.contentType.includes("video") ? (
-        <div  key={uuid()}>
-        <video autoPlay muted={true} style={{width: "100vw", height: "100vh"}} width="800">
-          <source src={props.file.url}
-                  type="video/mp4" />
-          Sorry, your browser doesn't support embedded videos.
+    <BackgroundMediaWrapper position={position} key={uuid()}>
+      {props.vimeoId ? (
+        <div className="video-background">
+          <iframe
+            background={true}
+            autoPlay
+            muted={true}
+            frameBorder="0"
+            webkitallowfullscreen
+            mozallowfullscreen
+            allowFullScreen
+            src={`https://player.vimeo.com/video/${props.vimeoId}?embedparameter=value&autoplay=1&loop=1&muted=1&controls=false&transparent=false`}
+          />
+        </div>
+      ) : props.file.contentType && props.file.contentType.includes("video") ? (
+        <div key={uuid()}>
+          <video
+            autoPlay
+            muted={true}
+            style={{ width: "100vw", height: "100vh" }}
+            width="800"
+            loop={true}
+          >
+            <source src={props.file.url} type="video/mp4" />
+            Sorry, your browser doesn't support embedded videos.
           </video>
         </div>
       ) : (
@@ -41,11 +46,13 @@ const BackgroundMedia = (props: BackgroundMediaProps) => {
 interface BackgroundMediaProps {
   fluid?: object
   file?: object
+  position?: string
 }
 
 BackgroundMedia.defaultProps = {
   fluid: {},
   file: {},
+  position: "relative",
 }
 
 export default BackgroundMedia

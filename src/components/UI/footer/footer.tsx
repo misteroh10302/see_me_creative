@@ -1,13 +1,17 @@
 import * as React from "react"
+
+import uuid from "react-uuid"
+
 import { FooterWrapper } from "./footerWrapper"
 import TextArea from "../textArea/textArea"
 import { Button } from "../../../styled/layoutStyles"
-import uuid from "react-uuid"
+import BackgroundMedia from '../backgroundMedia/backgroundMedia'
 
 
 const Footer = (props: FooterProps) => {
   return (
-    <FooterWrapper textColor={props.textColor} background={props.bgm ? props.bgm.fluid.src : ""}>
+    <FooterWrapper textColor={props.textColor} background={props.bgm.fluid ? props.bgm.fluid.src : ""}>
+      {props.bgm.file.contentType.includes('video') && <BackgroundMedia position="absolute" file={props.bgm.file}/>}
       <TextArea content={props.content} />
       {props.content.buttons.map(button => {
         return <Button key={uuid()} href={button.link}>

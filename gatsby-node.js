@@ -48,6 +48,11 @@ exports.createPages = async function ({ actions, graphql }) {
                 json
               }
             }
+            ... on ContentfulVideoGallery {
+              id
+              vimeoId
+              title
+            }
             ... on ContentfulSingleImage {
               id
               title

@@ -88,6 +88,13 @@ const SecondPage = data => {
                       content={content}
                     />
                   )
+                  else if (content.vimeoId)
+                  return (
+                    <VideoContent
+                      highlight={(highlightColor && highlightColor[0]) || false}
+                      content={content}
+                    />
+                  )
                 else if (content.content) return <TextArea content={content} />
                 else if (
                   content.childContentfulTwoColumnTextLeftColRichTextNode

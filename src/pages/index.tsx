@@ -20,7 +20,6 @@ const IndexPage = () => (
         footer,
         footerBackground,
       } = data.contentfulHomepage
-    
       return (
         <ThemeProvider theme={theme}>
           <Layout page="home">
@@ -48,7 +47,10 @@ const IndexPage = () => (
                   )
                 }
               })}
-            <Footer textColor="light" content={footer} bgm={footerBackground} />
+            <Footer 
+              textColor="light" 
+              content={footer} 
+              bgm={footerBackground} />
           </Layout>
         </ThemeProvider>
       )
@@ -70,6 +72,10 @@ const homepageQuery = graphql`
         }
       }
       footerBackground {
+        file {
+          contentType
+          url
+        }
         fluid {
           ...GatsbyContentfulFluid
         }

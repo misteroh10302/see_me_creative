@@ -4,6 +4,34 @@ import ReactPlayer from "react-player"
 
 const VideoContent = (props: VideoContentProps) => {
   const image = <img src="http://simpleicon.com/wp-content/uploads/play1.png" />;
+  const url = `https://player.vimeo.com/video/${props.content.vimeoId}`
+  if (props.content.vimeoId) {
+    return (
+      <VideoContentWrapper highlight={props.highlight} className="video-content">
+        <div className="video-inner">
+        <ReactPlayer
+          url={url}
+          config={{
+            vimeo: {
+              playerVars: { showinfo: 1 }
+            }
+          }}
+        />
+          <iframe
+           background={false}
+           muted={true}
+           frameborder="0" 
+           webkitallowfullscreen 
+           mozallowfullscreen 
+           allowfullscreen
+           width="100%"
+           src={`https://player.vimeo.com/video/${props.content.vimeoId}`}
+         />
+       </div>
+      </VideoContentWrapper>
+    )
+  }
+
   return (
     <VideoContentWrapper highlight={props.highlight} className="video-content">
       <div className="video-inner">
@@ -13,11 +41,6 @@ const VideoContent = (props: VideoContentProps) => {
           playIcon={image}
           url={props.content.videos[0].file.url}
         />
-
-        {/* <video width="320" height="240" controls>
-          <source src={props.content.videos[0].file.url} type="video/mp4"/>
-          Your browser does not support the video tag.
-        </video> */}
       </div>
     </VideoContentWrapper>
   )

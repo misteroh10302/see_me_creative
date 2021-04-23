@@ -38,6 +38,7 @@ export const Button = styled.a`
   font-size: 1.2rem;
   letter-spacing: 1px;
   text-decoration: none;
+  position: relative;
   &:hover {
     background-color: white;
     color: black;
@@ -591,8 +592,8 @@ export const LayoutWrapper = styled.div`
       width: calc(100%);
       margin: 0 auto;
       @media ${device.tablet} {
-        max-width: calc(1400px - 8rem);
-        width: calc(100% - 8rem);
+        max-width: calc(1400px - 3rem);
+        width: calc(100% - 3rem);
       }
     }
   }
