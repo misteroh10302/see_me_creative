@@ -11,7 +11,7 @@ import BackgroundMedia from '../backgroundMedia/backgroundMedia'
 const Footer = (props: FooterProps) => {
   return (
     <FooterWrapper textColor={props.textColor} background={props.bgm.fluid ? props.bgm.fluid.src : ""}>
-      {props.bgm.file.contentType.includes('video') && <BackgroundMedia position="absolute" file={props.bgm.file}/>}
+      {props.bgm.file && props.bgm.file.contentType.includes('video') && <BackgroundMedia position="absolute" file={props.bgm.file}/>}
       <TextArea content={props.content} />
       {props.content.buttons.map(button => {
         return <Button key={uuid()} href={button.link}>

@@ -142,6 +142,10 @@ const homepageQuery = graphql`
               id
               title
               images {
+                file {
+                  contentType
+                  url
+                }
                 sizes {
                   src
                 }

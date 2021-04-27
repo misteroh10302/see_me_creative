@@ -30,6 +30,10 @@ const OurWorkQuery = graphql`
         }
         title
         backgroundMedia {
+          file {
+            url
+            contentType
+          }
           fluid(maxWidth: 200, maxHeight: 500){
             ...GatsbyContentfulFluid
           }
@@ -44,6 +48,10 @@ const OurWorkQuery = graphql`
           }
         }
         footerBackground {
+          file {
+            contentType
+            url
+          }
           fluid {
             ...GatsbyContentfulFluid
           }
@@ -68,7 +76,7 @@ const OurWork = () => {
               <div className="our-work">
                 <SEO title="Our Work" />
                 <BackgroundImage
-                  backgroundImage={nodes[0].backgroundMedia.fluid.src}
+                  backgroundImage={nodes[0].backgroundMedia.fluid && nodes[0].backgroundMedia.fluid.src}
                 >
                   <OurWorkWrapper>
                     {projects &&

@@ -5,7 +5,8 @@ import uuid from "react-uuid"
 import { BackgroundMediaWrapper } from "./backgroundMediaStyled"
 
 const BackgroundMedia = (props: BackgroundMediaProps) => {
-  const { position } = props
+  const { position } = props;
+ 
   return (
     <BackgroundMediaWrapper position={position} key={uuid()}>
       {props.vimeoId ? (

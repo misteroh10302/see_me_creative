@@ -36,6 +36,10 @@ const whoWeAreQuery = graphql`
           }
         }
         footerBackground {
+          file {
+            contentType
+            url
+          }
           fluid {
             ...GatsbyContentfulFluid
           }
@@ -80,6 +84,7 @@ const WhoWeArePage = () => (
     render={data => {
       const { nodes } = data.allContentfulWhoWeArePage
       const { whoWeAreContent } = nodes[0]
+     
       return (
         <ThemeProvider theme={theme}>
           <Layout>

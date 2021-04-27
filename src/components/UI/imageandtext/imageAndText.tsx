@@ -3,9 +3,11 @@ import TextArea from "../textArea/textArea"
 import Fade from "react-reveal/Fade"
 import uuid from "react-uuid"
 import Img from "gatsby-image"
+import ReactPlayer from "react-player"
 
 const ImageAndText = (props: ImageAndTextProps) => {
   const { content, title } = props
+
   return (
     <div
       className={`image image-and-text ${content.images &&
@@ -13,6 +15,18 @@ const ImageAndText = (props: ImageAndTextProps) => {
         `images-2`}`}
     >
       {content.images.map((image, i: number) => {
+        if (image.file.contentType.includes("video")) {
+          return <ReactPlayer 
+            style={{
+              margin: "0 auto"
+            }}
+            loop={true}
+            playing={true}
+            playsinline
+            width={"800px"} 
+            height={"500px"} 
+            url={image.file.url} />
+        }
         return (
           <Fade key={uuid()} effect="fadeInUp">
             <Img 

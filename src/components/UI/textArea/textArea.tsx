@@ -33,7 +33,7 @@ export const TextAreaWrapper = styled.div`
   }
   .our-perspective-image {
     position:  absolute;
-    top: 45%;
+    top: 50%;
     left: 0;
     right: 0;
     margin: 0 auto;
