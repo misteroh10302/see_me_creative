@@ -15,7 +15,7 @@ const ImageAndText = (props: ImageAndTextProps) => {
         `images-2`}`}
     >
       {content.images.map((image, i: number) => {
-        if (image.file.contentType.includes("video")) {
+        if (image.file && image.file.contentType.includes("video")) {
           return <ReactPlayer 
             style={{
               margin: "0 auto"

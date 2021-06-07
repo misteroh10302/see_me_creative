@@ -33,6 +33,7 @@ const SecondPage = data => {
   const highlightColor = content.highlightColor || false
   const headerDesktopVimeoVideoId =
     content.headerDesktopVimeoVideoId || "336487034"
+
   return (
     <ThemeProvider theme={theme}>
       <Layout>
@@ -165,7 +166,7 @@ const SecondPage = data => {
             </section>
           )}
         </ProjectWrapper>
-        {content.footer && (
+        {content.footer && content.footerBackground && (
           <Footer content={content.footer} bgm={content.footerBackground} />
         )}
       </Layout>

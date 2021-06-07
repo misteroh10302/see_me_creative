@@ -39,6 +39,10 @@ exports.createPages = async function ({ actions, graphql }) {
               srcSetWebp
               src
             }
+            file {
+              contentType 
+              url
+            }
           }
           postContent {
             ... on ContentfulTextArea {
