@@ -1,7 +1,7 @@
 {
   "name": "see-me-creative",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "See Me Creative",
   "version": "0.1.0",
   "author": "Keith Denning <keithdenning1@gmail.com>",
   "dependencies": {
@@ -23,6 +23,7 @@
     "gatsby-source-contentful": "^2.3.38",
     "gatsby-source-filesystem": "^2.0.37",
     "gatsby-transformer-sharp": "^2.1.19",
+    "gsap": "^3.6.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

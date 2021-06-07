@@ -4,15 +4,18 @@ import { SectionWrapper, Button } from "../styled/layoutStyles"
 import TextArea from "./UI/textArea/textArea"
 import Carousel from './UI/carousel/carousel'
 import ImageAndText from './UI/imageandtext/imageAndText'
+import AnimatedText from './UI/animatedText';
 import { cleanTitle } from '../utils.js'
 
 const Section = (props: SectionProps) => {
     const { content,title } = props.content;
+    const theCleanTitle = cleanTitle(title);
     return (
-        <SectionWrapper className={cleanTitle(title)} backgroundImage={props.bgm ? props.bgm.file.url : ""}>
+        <SectionWrapper className={theCleanTitle} backgroundImage={props.bgm ? props.bgm.file.url : ""}>
+            {theCleanTitle === "who-we-are" && <AnimatedText />}
             {content && content.map((content,i) =>{
                 if (content.__typename === "ContentfulTextArea") {
-                    return <TextArea key={uuid()} title={cleanTitle(title)} content={content}/>;
+                    return <TextArea key={uuid()} title={theCleanTitle} content={content}/>;
                 } else if (content.__typename === "ContentfulButton") {
                     return <Button key={uuid()} href={content.link}>{content.buttonText}</Button>
                 } else if (content.__typename === "ContentfulCarousel") {
@@ -27,7 +30,7 @@ const Section = (props: SectionProps) => {
     )
 }
 
-interface Section {
+interface SectionProps {
   content: any[]
   title: string
   bgm: object

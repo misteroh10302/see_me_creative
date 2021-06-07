@@ -235,8 +235,8 @@ export const SectionWrapper = styled.section`
       margin: 0 auto;
     }
     &.about-,
-    &.our-perspective,
-    &.who-we-are {
+    &.our-perspective
+    {
       > div {
         max-width: 900px;
       }
@@ -260,6 +260,8 @@ export const SectionWrapper = styled.section`
     }
   }
   &.who-we-are-content-info {
+    position: relative;
+  z-index: 99;
     p {
       text-align: left;
       margin: 0rem 0;
@@ -347,6 +349,7 @@ export const SectionWrapper = styled.section`
     color: white;
     background-color: blue;
     position: relative;
+    z-index: 99;
     h1 {
       text-align: center;
       color: white;
@@ -441,10 +444,10 @@ export const SectionWrapper = styled.section`
         
       }
       .our-perspective-p {
-        opacity: 0.5 !important;
-        :hover {
+        opacity: 1 !important;
+        /* :hover {
           opacity: 1 !important;
-        }
+        } */
       }
       .our-perspective-image {
         filter: sepia(100) hue-rotate(185deg);

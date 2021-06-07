@@ -25,7 +25,7 @@ const BackgroundFade = styled.div`
 
 const MyCarousel = (props: CarouselProps) => {
   const [numberOfPosts, setNumberOPosts] = useState({
-    number: 3,
+    number: 6,
     buttonText: "MORE",
   })
 
@@ -71,19 +71,6 @@ const MyCarousel = (props: CarouselProps) => {
   } else {
     const { projects } = props.content
 
-    const params = {
-      slidesPerView: 2,
-      spaceBetween: 30,
-      centeredSlides: true,
-      loop: true,
-      loopFillGroupWithBlank: true,
-      grabCursor: true,
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-    }
-
     const breakpointColumnsObj = {
       default: 3,
       1100: 1,
@@ -118,8 +105,8 @@ const MyCarousel = (props: CarouselProps) => {
                     ) : (
                       <Img
                         fluid={project.thumbnailMedia.fluid}
-                        objectFit="contain"
-                        style={{ minHeight: "600px" }}
+                        objectFit="cover"
+                        style={{ maxHeight: "550px" }}
                       />
                     )}
                     <h4>{project.title}</h4>

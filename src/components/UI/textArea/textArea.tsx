@@ -16,8 +16,8 @@ export const TextAreaWrapper = styled.div`
     cursor: pointer;
     &:hover {
       + .our-perspective-image {
-        opacity: 1;
-        visibility: visible;
+        /* opacity: 1;
+        visibility: visible; */
         /* height: initial; */
       }
     }
@@ -39,7 +39,6 @@ export const TextAreaWrapper = styled.div`
     margin: 0 auto;
     opacity: 0;
     visibility: hidden;
-    /* height: 0; */
     z-index: 0;
     text-align: center;
     transform: translateY(-50%);
@@ -63,8 +62,8 @@ const TextArea = (props: TextAreaProps) => {
                 //   key={uuid(i)} effect="fadeInUp">
                   <p
                    key={uuid(i)}
-                    onMouseOver={()=> setHovered(true)} 
-                    onMouseOut={()=> setHovered(false)} 
+                    // onMouseOver={()=> setHovered(true)} 
+                    // onMouseOut={()=> setHovered(false)} 
                     className={`our-perspective-p our-perspective-${i}`}>
                     <b>{data.content[0].value}</b>
                     {data.content[1] && data.content[1].value}
