@@ -63,8 +63,8 @@ const Navigation = (props: NavigationProps) => {
       <MobileNavItems open={open}>
         <Link to="/who-we-are">About</Link>
         <Link to="/our-work">Our Work</Link>
-        <Link to="/contact">Contact</Link>
-        <Link to="/instagram">@seemecreative</Link>
+        <a target="_blank" href="mailto:seemecreative@gmail.com">Contact</a>
+        <a target="_blank" href="https://www.instagram.com/see.me.creative">Social</a>
       </MobileNavItems>
       <div className="main-navigation">
         <NavLeftnavRight
@@ -98,8 +98,8 @@ const Navigation = (props: NavigationProps) => {
           }
           className="nav-right"
         >
-          <Link to="/contact">Contact</Link>
-          <Link to="/instagram">@seemecreative</Link>
+          <a target="_blank" href="mailto:seemecreative@gmail.com">Contact</a>
+          <a target="_blank" href="https://www.instagram.com/see.me.creative">Social</a>
         </NavLeftnavRight>
       </div>
     </NavigationWrapper>

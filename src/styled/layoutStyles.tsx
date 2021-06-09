@@ -94,11 +94,11 @@ export const OurWorkWrapper = styled.div`
     min-height: 514px;
     overflow: hidden;
   }
-  ${grid}
+  /* ${grid}
   grid-template-columns: 1fr;
   @media ${device.laptop} {
     grid-template-columns: 1fr 1fr 1fr 1fr;
-  }
+  } */
 `
 
 export const ProjectWrapper = styled.section`
@@ -593,11 +593,7 @@ export const LayoutWrapper = styled.div`
     section > div {
       max-width: calc(100%);
       width: calc(100%);
-      margin: 0 auto;
-      @media ${device.tablet} {
-        max-width: calc(1400px - 3rem);
-        width: calc(100% - 3rem);
-      }
+      
     }
   }
 `
