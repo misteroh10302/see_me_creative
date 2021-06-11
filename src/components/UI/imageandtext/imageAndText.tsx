@@ -16,16 +16,23 @@ const ImageAndText = (props: ImageAndTextProps) => {
     >
       {content.images.map((image, i: number) => {
         if (image.file && image.file.contentType.includes("video")) {
-          return <ReactPlayer 
-            style={{
-              margin: "0 auto"
-            }}
-            loop={true}
-            playing={true}
-            playsinline
-            width={"800px"} 
-            height={"500px"} 
-            url={image.file.url} />
+          return (
+            <>
+              <ReactPlayer 
+              style={{
+                margin: "0 auto"
+              }}
+              loop={true}
+              playing={true}
+              playsinline
+              width={"800px"} 
+              height={"500px"} 
+              url={[
+                {src: image.file.url, type: 'video/mp4'}
+              ]}
+            />
+            </>
+          )
         }
         return (
           <Fade key={uuid()} effect="fadeInUp">

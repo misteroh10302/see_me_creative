@@ -347,7 +347,7 @@ export const SectionWrapper = styled.section`
 
   &.our-perspective {
     color: white;
-    background-color: blue;
+    background-color: #2201fb;
     position: relative;
     z-index: 99;
     h1 {
