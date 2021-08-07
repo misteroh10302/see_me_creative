@@ -14,7 +14,7 @@ const Footer = (props: FooterProps) => {
       {props.bgm.file && props.bgm.file.contentType.includes('video') && <BackgroundMedia position="absolute" file={props.bgm.file}/>}
       <TextArea content={props.content} />
       {props.content.buttons.map(button => {
-        return <Button key={uuid()} href={button.link}>
+        return <Button key={uuid()} href={button.link} invert={props.textColor === "black" ? true : false}>
             {button.buttonText}
           </Button>
       })}

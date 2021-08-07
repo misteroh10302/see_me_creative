@@ -5,10 +5,10 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import styled from 'styled-components'
 
 const LargeScrolledText = styled.div`
-    font-size: 60rem;
+    font-size: 50rem;
     transform: rotate(-90deg);
     position: relative;
-    font-family: "Roboto", sans-serif;
+    font-family: "Druk", sans-serif;
     z-index: 0;
     color: white; /* Fallback */
     text-transform: uppercase;
@@ -20,10 +20,10 @@ const LargeScrolledText = styled.div`
 `
 
 const LargeScrolledRight = styled.div`
-    font-size: 60rem;
+    font-size: 50rem;
     transform: rotate(90deg);
     position: relative;
-    font-family: "Roboto", sans-serif;
+    font-family: "Druk", sans-serif;
     z-index: 0;
     color: white; /* Fallback */
     text-transform: uppercase;

@@ -6,9 +6,15 @@ import { BackgroundMediaWrapper } from "./backgroundMediaStyled"
 
 const BackgroundMedia = (props: BackgroundMediaProps) => {
   const { position } = props;
- 
+  let styles = {}
+  if (props.upsideDown) {
+    styles = {
+      transform: `translateY(-10rem) rotate(-180deg)`,
+      left: 0,
+    }
+  }
   return (
-    <BackgroundMediaWrapper position={position} key={uuid()}>
+    <BackgroundMediaWrapper position={position} key={uuid()} styles={styles}>
       {props.vimeoId ? (
         <div className="video-background">
           <iframe
@@ -48,12 +54,14 @@ interface BackgroundMediaProps {
   fluid?: object
   file?: object
   position?: string
+  upsideDown?: boolean
 }
 
 BackgroundMedia.defaultProps = {
   fluid: {},
   file: {},
   position: "relative",
+  upsideDown: false
 }
 
 export default BackgroundMedia

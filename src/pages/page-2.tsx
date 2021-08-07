@@ -31,45 +31,43 @@ const SecondPage = data => {
   const postContent = content.postContent || null
   const backgroundMedia = content.backgroundMedia || null
   const highlightColor = content.highlightColor || false
-  const headerDesktopVimeoVideoId =
-    content.headerDesktopVimeoVideoId || "336487034"
+  const headerDesktopVimeoVideoId = content.headerDesktopVimeoVideoId || null;
+  const bcgVideo ={
+      contentType: "video/mp4",
+      url: '//videos.ctfassets.net/ralvgwmdsf6z/1aY0IAne8uBTBLeH0biPcV/30399ec97ff95721bbcb68cf742a0e3f/Grid_Wave_1_-_WB.mp4'
+  }
 
   return (
     <ThemeProvider theme={theme}>
       <Layout>
         <SEO title={`Project ${slug}`} />
         <FullHeight>
-          <div className="video-background"
-              style={{
-                backgroundImage: `url(https://vumbnail.com/${headerDesktopVimeoVideoId}.jpg)`,
-                backgroundSize: "cover"
-              }}
-            >
-            <iframe
-              background={true}
-              autoPlay
-              muted={true}
-              frameborder="0" 
-              webkitallowfullscreen 
-              mozallowfullscreen 
-              allowfullscreen
-              src={`https://player.vimeo.com/video/${headerDesktopVimeoVideoId}?embedparameter=value&autoplay=1&loop=1&muted=1&controls=false`}
-            />
-  </div>
-            {/* {backgroundMedia.file.contentType &&
-          backgroundMedia.file.contentType.includes("video") ? (
-          <BackgroundMedia
-          title={backgroundMedia.title}
-          fluid={backgroundMedia.fluid}
-          file={backgroundMedia.file}
-        /> ) : 
-        <BackgroundImage
-        backgroundImage={backgroundMedia.fluid.src}
-      ></BackgroundImage>
-        } */}
+          {headerDesktopVimeoVideoId ? 
+            <div className="video-background"
+                style={{
+                  backgroundImage: `url(https://vumbnail.com/${headerDesktopVimeoVideoId}.jpg)`,
+                  backgroundSize: "cover"
+                }}
+              >
+              <iframe
+                background={true}
+                autoPlay
+                muted={true}
+                frameborder="0" 
+                webkitallowfullscreen 
+                mozallowfullscreen 
+                allowfullscreen
+                src={`https://player.vimeo.com/video/${headerDesktopVimeoVideoId}?embedparameter=value&autoplay=1&loop=1&muted=1&controls=false`}
+              />
+          </div>
+        :
+          <BackgroundImage backgroundImage={backgroundMedia.fluid.src}>
+          </BackgroundImage>    
+        }    
         </FullHeight>
         <ProjectWrapper>
-          <header>
+        <BackgroundMedia upsideDown position="absolute" file={bcgVideo}/>
+          <header style={{position: "relative"}}>
             <H1
               highlight={(highlightColor && highlightColor[0]) || false}
               className="title"
@@ -78,6 +76,7 @@ const SecondPage = data => {
             </H1>
             <h2 className="subtitle">{subTitle}</h2>
             <small>{tags && tags.join(", ")}</small>
+         
           </header>
           {postContent && (
             <section className="post-content">
@@ -100,8 +99,9 @@ const SecondPage = data => {
                 else if (
                   content.childContentfulTwoColumnTextLeftColRichTextNode
                 ) {
+                  const adjustPadding = !!content.adjustAlignmentIfNoHeaderInSecondColumn ? true : false;
                   return (
-                    <TwoColumnWrapper className="post-text-wrapper">
+                    <TwoColumnWrapper adjustPadding={adjustPadding} className="post-text-wrapper">
                       <TextArea
                         content={{
                           content:
@@ -167,7 +167,7 @@ const SecondPage = data => {
           )}
         </ProjectWrapper>
         {content.footer && content.footerBackground && (
-          <Footer content={content.footer} bgm={content.footerBackground} />
+          <Footer content={content.footer} textColor="black" bgm={content.footerBackground} />
         )}
       </Layout>
     </ThemeProvider>

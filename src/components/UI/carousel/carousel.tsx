@@ -30,14 +30,14 @@ const MyCarousel = (props: CarouselProps) => {
   })
 
   const updateMorePosts = () => {
-    if (numberOfPosts.buttonText === "SEE ALL WORK") {
+    // if (numberOfPosts.buttonText === "SEE ALL WORK") {
       window.location = "/our-work"
-    } else {
-      setNumberOPosts({
-        number: 6,
-        buttonText: "SEE ALL WORK",
-      })
-    }
+    // } else {
+    //   setNumberOPosts({
+    //     number: 6,
+    //     buttonText: "SEE ALL WORK",
+    //   })
+    // }
   }
 
   if (props.content.__typename === "ContentfulCarousel") {

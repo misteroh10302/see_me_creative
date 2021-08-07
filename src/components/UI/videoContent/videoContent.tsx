@@ -11,22 +11,15 @@ const VideoContent = (props: VideoContentProps) => {
         <div className="video-inner">
         <ReactPlayer
           url={url}
+          controls={true}
+          width="100%"
+          height="50vw"
           config={{
             vimeo: {
               playerVars: { showinfo: 1 }
             }
           }}
         />
-          <iframe
-           background={false}
-           muted={true}
-           frameborder="0" 
-           webkitallowfullscreen 
-           mozallowfullscreen 
-           allowfullscreen
-           width="100%"
-           src={`https://player.vimeo.com/video/${props.content.vimeoId}`}
-         />
        </div>
       </VideoContentWrapper>
     )

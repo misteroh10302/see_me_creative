@@ -1,3 +1,4 @@
+
 export const theme = {
    fontSize: '10px',
    zIndex: {
@@ -5,7 +6,8 @@ export const theme = {
    },
    font: {
        serif:  "Times NR Condensed",
-       sans: "Roboto"
+       sans: "Roboto",
+       seeSans: "Druk"
    },
    padding: {
        sectionVertical: "8rem",
@@ -14,7 +16,8 @@ export const theme = {
    colors: {
        green: "#92fe3b",
        orange: "#F18923",
-       yellow: "#F1CC23"
+       yellow: "#F1CC23",
+       blue: "aquamarine"
    },
    p: {
        fontSize: "3rem",

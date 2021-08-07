@@ -26,7 +26,7 @@ const ImageAndText = (props: ImageAndTextProps) => {
               playing={true}
               playsinline
               width={"800px"} 
-              height={"500px"} 
+              height={"500px"} la
               url={[
                 {src: image.file.url, type: 'video/mp4'}
               ]}

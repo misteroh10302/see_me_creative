@@ -16,6 +16,13 @@ import Footer from "../components/UI/footer/footer"
 import { BackgroundImage, OurWorkWrapper } from "../styled/layoutStyles"
 import BackgroundMedia from '../components/UI/backgroundMedia/backgroundMedia';
 import Masonry from "react-masonry-css"
+import styled from "styled-components"
+
+
+const H2Projects =  styled.h2`
+  font-size: 2rem !important;
+  margin-top: .5rem !important;
+`;
 
 const OurWorkQuery = graphql`
   query OurWorkQuery {
@@ -101,13 +108,12 @@ const OurWork = () => {
                               to={`/project/${mySlug(project.title)}`}
                               // style={{height: "600px" }}
                             >
-                              <h2>{project.title}</h2>
                             
                                 <Img 
                                   fluid={project.thumbnailMedia.fluid} 
                                   style={{ maxHeight: "550px" }}
                                   />
-                              
+                               <H2Projects>{project.title}</H2Projects>
                             </Link>
                           )
                         }

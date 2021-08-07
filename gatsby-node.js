@@ -72,6 +72,7 @@ exports.createPages = async function ({ actions, graphql }) {
             }
             ... on ContentfulTwoColumnText {
               id
+              adjustAlignmentIfNoHeaderInSecondColumn
               childContentfulTwoColumnTextLeftColRichTextNode {
                 json
               }
@@ -103,6 +104,14 @@ exports.createPages = async function ({ actions, graphql }) {
                   srcSet
                 }
               }
+            }
+          }
+          backgroundMedia {
+            fluid(maxWidth: 1600) {
+              sizes
+              aspectRatio
+              src
+              srcSet
             }
           }
           backgroundMediaMobile {

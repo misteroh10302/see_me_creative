@@ -22,9 +22,9 @@ export const Button = styled.a`
   max-width: 80%;
   width: 100%;
   border-radius: 40px;
-  background-color: transparent;
+  background-color: ${props => props.invert === true ? "black" : 'white'};;
   outline: 0;
-  color: white;
+  color: ${props => props.invert === true ? "white" : 'black'};
   border: 1px solid white;
   padding: 1.5rem 0rem;
   margin: 1rem auto;
@@ -113,7 +113,7 @@ export const ProjectWrapper = styled.section`
     @media ${device.tablet} {
       max-width: 840px;
       margin: 0 auto;
-      margin-bottom: 10rem;
+      margin-bottom: 0rem;
       padding-left:0;
       padding-right:0;
     }
@@ -252,7 +252,7 @@ export const SectionWrapper = styled.section`
     }
     a {
       &:visited {
-        color: white;
+        color: black;
         &:hover {
           color: black;
         }
@@ -334,6 +334,9 @@ export const SectionWrapper = styled.section`
   &.who-we-are {
     ${vertialAlign}
     color: white;
+    .text-area {
+      max-width: 600px;
+    }
     a,
     button {
       background-color: white;
@@ -473,8 +476,11 @@ export const TwoColumnWrapper = styled.div`
   grid-template-columns: 1fr;
   gap: 3.2rem;
   @media ${device.tablet} {
-    margin: 10rem 0;
+    margin: 6rem 0;
     grid-template-columns: 1fr 1fr;
+    div:nth-child(2){
+      margin-top: ${props => props.adjustPadding ? '4.2rem': '0'};
+    }
   }
 `;
 
@@ -485,7 +491,7 @@ export const GalleryWrapper = styled.div`
     grid-template-columns: 1fr 1fr;
     justify-content: center;
     gap: 3.2rem;
-    margin: 10rem 0;
+    margin: 3rem 0;
     div:nth-child(n + 3) {
       grid-column: 1/3;
     }
@@ -496,7 +502,7 @@ export const SingleGalleryWrapper = styled.div`
   margin: 3rem 0;
  
   @media ${device.tablet} {
-    margin: 10rem 0;
+    margin: 3rem 0;
     .landscape {
       max-width: 50vw;
       margin: 0 auto;
