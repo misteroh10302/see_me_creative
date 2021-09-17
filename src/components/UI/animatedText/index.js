@@ -5,7 +5,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import styled from 'styled-components'
 
 const LargeScrolledText = styled.div`
-    font-size: 50rem;
+    font-size: 25rem;
     transform: rotate(-90deg);
     position: relative;
     font-family: "Druk", sans-serif;
@@ -20,7 +20,7 @@ const LargeScrolledText = styled.div`
 `
 
 const LargeScrolledRight = styled.div`
-    font-size: 50rem;
+    font-size: 25rem;
     transform: rotate(90deg);
     position: relative;
     font-family: "Druk", sans-serif;
@@ -36,13 +36,13 @@ const LargeScrolledRight = styled.div`
 
 const LargeScrolledTextLeft = styled.div`
    top: 30vh;
-   left: -30rem;
+   left: -10rem;
    position: relative;
 `
 
 const LargeScrolledTextRight = styled.div`
    top: -200px;
-   left: 30rem;
+   left: 10rem;
    position: relative;
 
 `
@@ -82,10 +82,10 @@ export default function AnimatedText() {
     })
     return <div ref={section}>
         <LargeScrolledTextLeft ref={firstElement}>
-            <LargeScrolledText>SEE</LargeScrolledText>
+            <LargeScrolledText>SEE ME</LargeScrolledText>
         </LargeScrolledTextLeft>
         <LargeScrolledTextRight ref={secondElement}>
-            <LargeScrolledRight>Me</LargeScrolledRight>
+            <LargeScrolledRight>SEE ME</LargeScrolledRight>
         </LargeScrolledTextRight>
     </div>
 }

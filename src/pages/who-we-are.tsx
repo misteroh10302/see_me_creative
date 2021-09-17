@@ -8,7 +8,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import uuid from "react-uuid"
 
-import BackgroundMedia from "../components/UI/backgroundMedia/backgroundMedia"
+import BackgroundMedia from '../components/UI/backgroundMedia/backgroundMedia';
 import Section from "../components/section"
 import Footer from "../components/UI/footer/footer"
 
@@ -17,14 +17,9 @@ const whoWeAreQuery = graphql`
     allContentfulWhoWeArePage {
       nodes {
         title
-        backgroundMedia {
-          fluid {
-            ...GatsbyContentfulFluid
-          }
-          file {
-            url
-            contentType
-          }
+        background {
+          title
+          vimeoId
         }
         footer {
           content {
@@ -84,7 +79,6 @@ const WhoWeArePage = () => (
     render={data => {
       const { nodes } = data.allContentfulWhoWeArePage
       const { whoWeAreContent } = nodes[0]
-     
       return (
         <ThemeProvider theme={theme}>
           <Layout>
@@ -92,11 +86,9 @@ const WhoWeArePage = () => (
             {nodes && (
               <ProjectCollectionWrapper>
                 <FullHeight className="full-">
-                  <BackgroundMedia
-                    title={nodes[0].title}
-                    fluid={nodes[0].backgroundMedia.fluid}
-                    file={nodes[0].backgroundMedia.file}
-                  />
+                    <BackgroundMedia
+                        vimeoId={nodes[0].background.vimeoId}
+                    />
                 </FullHeight>
                 {whoWeAreContent &&
                   whoWeAreContent.map((section) => {

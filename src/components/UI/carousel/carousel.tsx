@@ -106,10 +106,10 @@ const MyCarousel = (props: CarouselProps) => {
                       <Img
                         fluid={project.thumbnailMedia.fluid}
                         objectFit="cover"
-                        style={{ maxHeight: "550px" }}
+                        style={{ maxHeight: "550px", marginBottom: "3rem" }}
                       />
                     )}
-                    <h4>{project.title}</h4>
+                    {/* <h4>{project.title}</h4> */}
                   </Link>
                 )
               }

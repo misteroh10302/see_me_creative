@@ -14,10 +14,10 @@ export const theme = {
        desktop: "3rem"
    },
    colors: {
-       green: "#92fe3b",
+       green: "#00FF00",
        orange: "#F18923",
-       yellow: "#F1CC23",
-       blue: "aquamarine"
+       yellow: "#FFFF00",
+       blue: "#00FFFF"
    },
    p: {
        fontSize: "3rem",

@@ -140,15 +140,15 @@ const SecondPage = data => {
                         if (aspectRatio <= 0.8) orientation = "portrait"
                         if (aspectRatio > 0.8 && aspectRatio < 1.2)
                           orientation = "square"
-                        return <Img backgroundColor="#eeeeee" fluid={img.fluid} className={orientation} />
+                        return <Img backgroundColor="#eeeeee" style={{maxHeight:"90vh"}} fluid={img.fluid} className={orientation} />
                       })}
                     </SingleGalleryWrapper>
                   )
                 } else if (content.imageLeft) {
                   return (
                     <GalleryWrapper className="gallery">
-                      <Img backgroundColor="#eeeeee" fluid={content.imageLeft.fluid} />
-                      <Img backgroundColor="#eeeeee" fluid={content.imageRight.fluid} />
+                      <Img style={{maxHeight:"90vh"}} backgroundColor="#eeeeee" fluid={content.imageLeft.fluid} />
+                      <Img style={{maxHeight:"90vh"}} backgroundColor="#eeeeee" fluid={content.imageRight.fluid} />
                     </GalleryWrapper>
                   )
                 } else if (content.mainImage) {
@@ -158,6 +158,7 @@ const SecondPage = data => {
                         fluid={content.mainImage.fluid}
                         className={mySlug(content.imageSize)}
                         backgroundColor="#eeeeee"
+                        style={{maxHeight:"90vh"}}
                       />
                     </SingleGalleryWrapper>
                   )
