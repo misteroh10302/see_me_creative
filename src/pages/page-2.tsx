@@ -61,7 +61,7 @@ const SecondPage = data => {
               />
           </div>
         :
-          <BackgroundImage backgroundImage={backgroundMedia.fluid.src}>
+          <BackgroundImage backgroundImage={backgroundMedia ? backgroundMedia.fluid.src : ''}>
           </BackgroundImage>    
         }    
         </FullHeight>
