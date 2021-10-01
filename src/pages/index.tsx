@@ -84,15 +84,6 @@ const homepageQuery = graphql`
         ... on ContentfulBackgroundMedia {
           id
           vimeoId
-          media {
-            fluid(maxWidth: 200, maxHeight: 500) {
-              ...GatsbyContentfulFluid
-            }
-            file {
-              fileName
-              contentType
-            }
-          }
         }
         ... on ContentfulSection {
           id
