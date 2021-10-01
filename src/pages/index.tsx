@@ -30,8 +30,7 @@ const IndexPage = () => (
                   return (
                     <BackgroundMedia
                       title={section.title}
-                      fluid={section.media.fluid}
-                      file={section.media.file}
+                    
                       vimeoId={section.vimeoId}
                       key={uuid()}
                     />
