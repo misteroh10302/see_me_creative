@@ -10,8 +10,9 @@ import { cleanTitle } from '../utils.js'
 const Section = (props: SectionProps) => {
     const { content,title } = props.content;
     const theCleanTitle = cleanTitle(title);
+    
     return (
-        <SectionWrapper className={theCleanTitle} backgroundImage={props.bgm ? props.bgm.file.url : ""}>
+        <SectionWrapper className={theCleanTitle} backgroundImage={props.bgm ? props.bgm.file.url + "?&fm=webp" : ""}>
             {theCleanTitle === "who-we-are" && <AnimatedText />}
             {content && content.map((content,i) =>{
                 if (content.__typename === "ContentfulTextArea") {

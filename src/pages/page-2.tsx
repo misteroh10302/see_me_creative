@@ -31,43 +31,99 @@ const SecondPage = data => {
   const postContent = content.postContent || null
   const backgroundMedia = content.backgroundMedia || null
   const highlightColor = content.highlightColor || false
-  const headerDesktopVimeoVideoId = content.headerDesktopVimeoVideoId || null;
-  const bcgVideo ={
-      contentType: "video/mp4",
-      url: '//videos.ctfassets.net/ralvgwmdsf6z/1aY0IAne8uBTBLeH0biPcV/30399ec97ff95721bbcb68cf742a0e3f/Grid_Wave_1_-_WB.mp4'
+  const headerDesktopVimeoVideoId = content.headerDesktopVimeoVideoId || null
+  const bcgVideo = {
+    contentType: "video/mp4",
+    url:
+      "http://videos.ctfassets.net/ralvgwmdsf6z/3ew8brUJKFZ5vuQ2vjgZLa/af57c51b0158c7cad8d49f8fb4c1e380/Grid_Wave_7_-_WB.mp4",
   }
 
+  const footerContent = {
+    content: {
+      json: {
+        data: {},
+        content: [
+          {
+            data: {},
+            content: [
+              {
+                data: {},
+                marks: [],
+                value: "144 Bowery, Suite 3A",
+                nodeType: "text",
+              },
+            ],
+            nodeType: "paragraph",
+          },
+          {
+            data: {},
+            content: [
+              {
+                data: {},
+                marks: [],
+                value: "New York, NY 10013",
+                nodeType: "text",
+              },
+            ],
+            nodeType: "paragraph",
+          },
+        ],
+        nodeType: "document",
+      },
+    },
+    buttons: [
+      {
+        link: "mailto:seemecreative@gmail.com",
+        buttonText: "Email Us",
+      },
+      {
+        link: "https://www.instagram.com/see.me.creative/",
+        buttonText: "Social",
+      },
+    ],
+  }
+
+  const footerBackground = {
+    "fluid": null,
+    "file": {
+        "contentType": "video/mp4",
+        "url": "//videos.ctfassets.net/ralvgwmdsf6z/1aY0IAne8uBTBLeH0biPcV/30399ec97ff95721bbcb68cf742a0e3f/Grid_Wave_1_-_WB.mp4"
+    }
+}
+ 
   return (
     <ThemeProvider theme={theme}>
       <Layout>
         <SEO title={`Project ${slug}`} />
         <FullHeight>
-          {headerDesktopVimeoVideoId ? 
-            <div className="video-background"
-                style={{
-                  backgroundImage: `url(https://vumbnail.com/${headerDesktopVimeoVideoId}.jpg)`,
-                  backgroundSize: "cover"
-                }}
-              >
+          {headerDesktopVimeoVideoId ? (
+            <div
+              className="video-background"
+              style={{
+                backgroundImage: `url(https://vumbnail.com/${headerDesktopVimeoVideoId}.jpg)`,
+                backgroundSize: "cover",
+              }}
+            >
               <iframe
                 background={true}
                 autoPlay
                 muted={true}
-                frameborder="0" 
-                webkitallowfullscreen 
-                mozallowfullscreen 
-                allowfullscreen
+                frameBorder="0"
+                webkitallowfullscreen
+                mozallowfullscreen
+                allowFullScreen
                 src={`https://player.vimeo.com/video/${headerDesktopVimeoVideoId}?embedparameter=value&autoplay=1&loop=1&muted=1&controls=false`}
               />
-          </div>
-        :
-          <BackgroundImage backgroundImage={backgroundMedia ? backgroundMedia.fluid.src : ''}>
-          </BackgroundImage>    
-        }    
+            </div>
+          ) : (
+            <BackgroundImage
+              backgroundImage={backgroundMedia ? backgroundMedia.fluid.src : ""}
+            ></BackgroundImage>
+          )}
         </FullHeight>
         <ProjectWrapper>
-        <BackgroundMedia upsideDown position="absolute" file={bcgVideo}/>
-          <header style={{position: "relative"}}>
+          <BackgroundMedia upsideDown position="absolute" file={bcgVideo} />
+          <header style={{ position: "relative" }}>
             <H1
               highlight={(highlightColor && highlightColor[0]) || false}
               className="title"
@@ -76,7 +132,6 @@ const SecondPage = data => {
             </H1>
             <h2 className="subtitle">{subTitle}</h2>
             <small>{tags && tags.join(", ")}</small>
-         
           </header>
           {postContent && (
             <section className="post-content">
@@ -88,7 +143,7 @@ const SecondPage = data => {
                       content={content}
                     />
                   )
-                  else if (content.vimeoId)
+                else if (content.vimeoId)
                   return (
                     <VideoContent
                       highlight={(highlightColor && highlightColor[0]) || false}
@@ -99,9 +154,14 @@ const SecondPage = data => {
                 else if (
                   content.childContentfulTwoColumnTextLeftColRichTextNode
                 ) {
-                  const adjustPadding = !!content.adjustAlignmentIfNoHeaderInSecondColumn ? true : false;
+                  const adjustPadding = content.adjustAlignmentIfNoHeaderInSecondColumn
+                    ? true
+                    : false
                   return (
-                    <TwoColumnWrapper adjustPadding={adjustPadding} className="post-text-wrapper">
+                    <TwoColumnWrapper
+                      adjustPadding={adjustPadding}
+                      className="post-text-wrapper"
+                    >
                       <TextArea
                         content={{
                           content:
@@ -140,15 +200,30 @@ const SecondPage = data => {
                         if (aspectRatio <= 0.8) orientation = "portrait"
                         if (aspectRatio > 0.8 && aspectRatio < 1.2)
                           orientation = "square"
-                        return <Img backgroundColor="#eeeeee" style={{maxHeight:"90vh"}} fluid={img.fluid} className={orientation} />
+                        return (
+                          <Img
+                            backgroundColor="#eeeeee"
+                            style={{ maxHeight: "90vh" }}
+                            fluid={img.fluid}
+                            className={orientation}
+                          />
+                        )
                       })}
                     </SingleGalleryWrapper>
                   )
                 } else if (content.imageLeft) {
                   return (
                     <GalleryWrapper className="gallery">
-                      <Img style={{maxHeight:"90vh"}} backgroundColor="#eeeeee" fluid={content.imageLeft.fluid} />
-                      <Img style={{maxHeight:"90vh"}} backgroundColor="#eeeeee" fluid={content.imageRight.fluid} />
+                      <Img
+                        style={{ maxHeight: "90vh" }}
+                        backgroundColor="#eeeeee"
+                        fluid={content.imageLeft.fluid}
+                      />
+                      <Img
+                        style={{ maxHeight: "90vh" }}
+                        backgroundColor="#eeeeee"
+                        fluid={content.imageRight.fluid}
+                      />
                     </GalleryWrapper>
                   )
                 } else if (content.mainImage) {
@@ -158,7 +233,7 @@ const SecondPage = data => {
                         fluid={content.mainImage.fluid}
                         className={mySlug(content.imageSize)}
                         backgroundColor="#eeeeee"
-                        style={{maxHeight:"90vh"}}
+                        style={{ maxHeight: "90vh" }}
                       />
                     </SingleGalleryWrapper>
                   )
@@ -167,9 +242,12 @@ const SecondPage = data => {
             </section>
           )}
         </ProjectWrapper>
-        {content.footer && content.footerBackground && (
-          <Footer content={content.footer} textColor="black" bgm={content.footerBackground} />
-        )}
+          <Footer
+            content={footerContent}
+            textColor="black"
+            bgm={footerBackground}
+          />
+        
       </Layout>
     </ThemeProvider>
   )

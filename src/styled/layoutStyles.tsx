@@ -456,16 +456,18 @@ export const SectionWrapper = styled.section`
         filter: sepia(100) hue-rotate(185deg);
       }
       .our-perspective-0,
+      .our-perspective-2,
       .our-perspective-4,
-      .our-perspective-10,
-      .our-perspective-14
+      .our-perspective-6,
+      .our-perspective-8
        {
         text-align: left;
       }
-      .our-perspective-2,
+      .our-perspective-1,
+      .our-perspective-3,
       .our-perspective-5,
-      .our-perspective-6,
-      .our-perspective-12 {
+      .our-perspective-7,
+      .our-perspective-9 {
         text-align: right;
       }
     }

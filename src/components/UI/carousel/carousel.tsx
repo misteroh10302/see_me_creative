@@ -25,7 +25,7 @@ const BackgroundFade = styled.div`
 
 const MyCarousel = (props: CarouselProps) => {
   const [numberOfPosts, setNumberOPosts] = useState({
-    number: 6,
+    number: 7,
     buttonText: "MORE",
   })
 
