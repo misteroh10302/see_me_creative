@@ -32,7 +32,7 @@ const OurWorkQuery = graphql`
           title
           thumbnailMedia {
             fluid(maxWidth: 200){
-              ...GatsbyContentfulFluid
+              ...GatsbyContentfulFluid_withWebp_noBase64
             }
           }
         }
@@ -43,7 +43,7 @@ const OurWorkQuery = graphql`
             contentType
           }
           fluid(maxWidth: 200){
-            ...GatsbyContentfulFluid
+            ...GatsbyContentfulFluid_withWebp_noBase64
           }
         }
         footer {
@@ -61,7 +61,7 @@ const OurWorkQuery = graphql`
             url
           }
           fluid {
-            ...GatsbyContentfulFluid
+            ...GatsbyContentfulFluid_withWebp_noBase64
           }
         }
       }
