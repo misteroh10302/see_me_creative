@@ -94,6 +94,7 @@ exports.createPages = async function ({ actions, graphql }) {
                   aspectRatio
                   src
                   srcSet
+                  srcWebp
                 }
               }
               imageRight {
@@ -102,6 +103,7 @@ exports.createPages = async function ({ actions, graphql }) {
                   aspectRatio
                   src
                   srcSet
+                  srcWebp
                 }
               }
             }
@@ -112,6 +114,7 @@ exports.createPages = async function ({ actions, graphql }) {
               aspectRatio
               src
               srcSet
+              srcWebp
             }
           }
           backgroundMediaMobile {
@@ -120,6 +123,7 @@ exports.createPages = async function ({ actions, graphql }) {
               aspectRatio
               src
               srcSet
+              srcWebp
             }
           }
           thumbnailMedia {
@@ -128,6 +132,7 @@ exports.createPages = async function ({ actions, graphql }) {
               aspectRatio
               src
               srcSet
+              srcWebp
             }
           }
         }
