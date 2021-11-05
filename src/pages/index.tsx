@@ -112,7 +112,7 @@ const homepageQuery = graphql`
                 tags
                 backgroundMedia {
                   fluid(maxWidth: 200) {
-                    ...GatsbyContentfulFluid_withWebp
+                    ...GatsbyContentfulFluid_withWebp_noBase64
                   }
                   file {
                     contentType
@@ -120,7 +120,7 @@ const homepageQuery = graphql`
                 }
                 thumbnailMedia {
                   fluid(maxWidth: 200) {
-                    ...GatsbyContentfulFluid_withWebp
+                    ...GatsbyContentfulFluid_withWebp_noBase64
                   }
                   file {
                     contentType
@@ -140,7 +140,7 @@ const homepageQuery = graphql`
                   src
                 }
                 fluid(maxWidth: 200, maxHeight: 500) {
-                  ...GatsbyContentfulFluid_withWebp
+                  ...GatsbyContentfulFluid_withWebp_noBase64
                 }
               }
             }
