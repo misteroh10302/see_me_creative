@@ -25,8 +25,8 @@ const ImageAndText = (props: ImageAndTextProps) => {
               loop={true}
               playing={true}
               playsinline
-              width={"800px"} 
-              height={"500px"} la
+              width={"100%"} 
+              height={"500px"} 
               url={[
                 {src: image.file.url, type: 'video/mp4'}
               ]}

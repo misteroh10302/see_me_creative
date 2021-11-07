@@ -84,18 +84,19 @@ const SecondPage = data => {
   }
 
   const footerBackground = {
-    "fluid": null,
-    "file": {
-        "contentType": "video/mp4",
-        "url": "//videos.ctfassets.net/ralvgwmdsf6z/1aY0IAne8uBTBLeH0biPcV/30399ec97ff95721bbcb68cf742a0e3f/Grid_Wave_1_-_WB.mp4"
-    }
-}
- 
+    fluid: null,
+    file: {
+      contentType: "video/mp4",
+      url:
+        "//videos.ctfassets.net/ralvgwmdsf6z/1aY0IAne8uBTBLeH0biPcV/30399ec97ff95721bbcb68cf742a0e3f/Grid_Wave_1_-_WB.mp4",
+    },
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <Layout>
         <SEO title={`Project ${slug}`} />
-        <FullHeight>
+        <FullHeight style={{ position: "relative", "z-index": 10 }}>
           {headerDesktopVimeoVideoId ? (
             <div
               className="video-background"
@@ -121,8 +122,13 @@ const SecondPage = data => {
             ></BackgroundImage>
           )}
         </FullHeight>
-        <ProjectWrapper>
-          <BackgroundMedia upsideDown position="absolute" file={bcgVideo} />
+        <ProjectWrapper style={{'position': "relative"}}>
+          <BackgroundMedia
+         
+            upsideDown
+            position="absolute"
+            file={bcgVideo}
+          />
           <header style={{ position: "relative" }}>
             <H1
               highlight={(highlightColor && highlightColor[0]) || false}
@@ -242,12 +248,11 @@ const SecondPage = data => {
             </section>
           )}
         </ProjectWrapper>
-          <Footer
-            content={footerContent}
-            textColor="black"
-            bgm={footerBackground}
-          />
-        
+        <Footer
+          content={footerContent}
+          textColor="black"
+          bgm={footerBackground}
+        />
       </Layout>
     </ThemeProvider>
   )

@@ -54,6 +54,7 @@ export const Button = styled.a`
 ----------------------------- */
 export const FullHeight = styled.div`
   min-height: 100vh;
+  z-index: 10;  
   .gatsby-image-wrapper {
     overflow: visible !important;
     position: initial !important;
@@ -84,7 +85,7 @@ export const FooterWrapper = styled.footer`
 
 export const OurWorkWrapper = styled.div`
   padding: ${props => props.theme.padding.sectionVertical} 0;
-  max-width: 1400px;
+  max-width: 100%;
   > div {
     color: white;
   }
@@ -228,6 +229,9 @@ export const SectionWrapper = styled.section`
   &.projects {
     padding: 0em 0 5rem;
     position: relative;
+    .my-masonry-grid {
+      padding:0 3rem;
+    }
   }
 
   @media screen and (min-width: 850px) {
@@ -334,6 +338,7 @@ export const SectionWrapper = styled.section`
   &.who-we-are {
     ${vertialAlign}
     color: white;
+    position: relative;
     .text-area {
       max-width: 600px;
     }
@@ -362,6 +367,10 @@ export const SectionWrapper = styled.section`
       font-weight: 100;
       letter-spacing: .75px;
       font-family: 'Times NR Condensed',serif;
+      font-size: 3.5rem;
+      @media ${device.tablet} {
+        font-size: 5rem;
+      }
     }
     div.image {
       position: absolute;

@@ -34,7 +34,7 @@ export const NavigationWrapper = styled.nav`
     margin: .5rem auto;
   }
   .main-navigation {
-    max-width: 1400px;
+    max-width: 100%;
     display:flex;
     justify-content: center;
     width: 100%;
@@ -82,6 +82,7 @@ export const HamburgerButton = styled.button`
   top: 6rem;
   z-index: 5;
   display: block;
+  padding:0;
   @media ${device.tablet} {
      display: none;
   }
@@ -122,10 +123,10 @@ export const MobileNavItems = styled.div`
     color: white;
     font-size: 3rem;
     line-height: 4rem;
-    font-family: ${theme.font.serif};
+    font-family: ${theme.font.seeSans};
     text-transform: uppercase;
     font-weight: 400;
-    letter-spacing: .5rem;
+    letter-spacing: .05rem;
   }
   @media ${device.tablet} {
      display: none;

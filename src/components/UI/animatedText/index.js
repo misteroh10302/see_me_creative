@@ -3,9 +3,10 @@ import { useEffect, useRef } from 'react';
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import styled from 'styled-components'
+import { device } from "../../../styled/theme"
 
 const LargeScrolledText = styled.div`
-    font-size: 25rem;
+    font-size: 25vw;
     transform: rotate(-90deg);
     position: relative;
     font-family: "Druk", sans-serif;
@@ -17,10 +18,14 @@ const LargeScrolledText = styled.div`
     -webkit-text-stroke-color: white;
     letter-spacing: 3px;
     text-stroke: 1px white; /* Future-proofing */
+    @media ${device.tablet} {
+        font-size: 25rem;
+    }
 `
 
 const LargeScrolledRight = styled.div`
-    font-size: 25rem;
+        font-size: 25vw;
+
     transform: rotate(90deg);
     position: relative;
     font-family: "Druk", sans-serif;
@@ -32,6 +37,9 @@ const LargeScrolledRight = styled.div`
     -webkit-text-stroke-color: white;
     letter-spacing: 3px;
     text-stroke: 1px white; /* Future-proofing */
+    @media ${device.tablet} {
+        font-size: 25rem;
+    }
 `
 
 const LargeScrolledTextLeft = styled.div`

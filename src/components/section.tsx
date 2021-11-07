@@ -12,7 +12,8 @@ const Section = (props: SectionProps) => {
     const theCleanTitle = cleanTitle(title);
     
     return (
-        <SectionWrapper className={theCleanTitle} backgroundImage={props.bgm ? props.bgm.file.url + "?&fm=webp" : ""}>
+        <SectionWrapper 
+        className={theCleanTitle} backgroundImage={props.bgm ? props.bgm.file.url + "?&fm=webp" : ""}>
             {theCleanTitle === "who-we-are" && <AnimatedText />}
             {content && content.map((content,i) =>{
                 if (content.__typename === "ContentfulTextArea") {
