@@ -23,8 +23,11 @@ export const NavigationWrapper = styled.nav`
   .logo {
     width: 124px;
     display: inline-block;
-    margin-top: 4rem;
-    filter: ${props => props.scrolled && props.currentPage.includes("project") ? "saturate(0) brightness(0)" : "saturate(0) brightness(100)"} 
+    margin-top: 2rem;
+    filter: ${props => props.scrolled && props.currentPage.includes("project") ? "saturate(0) brightness(0)" : "saturate(0) brightness(100)"};
+    @media ${device.tablet} {
+      margin-top: 4rem;
+    } 
   }
   hr {
     outline: 0;
@@ -79,12 +82,13 @@ export const HamburgerButton = styled.button`
   background-color: transparent;
   position: fixed;
   left: 3rem;
-  top: 6rem;
+  top: 4rem;
   z-index: 5;
   display: block;
   padding:0;
   @media ${device.tablet} {
      display: none;
+     top: 6rem;
   }
   span {
     height: 3px;

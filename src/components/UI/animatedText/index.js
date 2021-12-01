@@ -18,14 +18,16 @@ const LargeScrolledText = styled.div`
     -webkit-text-stroke-color: white;
     letter-spacing: 3px;
     text-stroke: 1px white; /* Future-proofing */
+    width:  100vh;
     @media ${device.tablet} {
         font-size: 25rem;
+        width:  160vh;
     }
 `
 
 const LargeScrolledRight = styled.div`
-        font-size: 25vw;
-
+    font-size: 25vw;
+    width:  100vh;
     transform: rotate(90deg);
     position: relative;
     font-family: "Druk", sans-serif;
@@ -39,6 +41,7 @@ const LargeScrolledRight = styled.div`
     text-stroke: 1px white; /* Future-proofing */
     @media ${device.tablet} {
         font-size: 25rem;
+        width:  160vh;
     }
 `
 

@@ -225,7 +225,11 @@ export const SectionWrapper = styled.section`
   min-height: 100vh;
   width: 100%;
   padding: ${props => props.theme.padding.sectionVertical}
+    2rem;
+    @media ${device.tablet} {
+      padding: ${props => props.theme.padding.sectionVertical}
     ${props => props.theme.padding.desktop};
+    }
   &.projects {
     padding: 0em 0 5rem;
     position: relative;
@@ -265,7 +269,7 @@ export const SectionWrapper = styled.section`
   }
   &.who-we-are-content-info {
     position: relative;
-  z-index: 99;
+    z-index: 99;
     p {
       text-align: left;
       margin: 0rem 0;
@@ -327,7 +331,7 @@ export const SectionWrapper = styled.section`
       .image-and-text {
         display: inline-block;
         width: 50%;
-        padding: 3rem;
+        padding: 10rem 3rem 3rem;
         box-sizing: border-box;
         p {
           text-align: left;

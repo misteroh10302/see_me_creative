@@ -10,8 +10,11 @@ const BackgroundMedia = (props: BackgroundMediaProps) => {
   if (props.upsideDown) {
     styles = {
       transform: `translateY(-10rem) rotate(-180deg)`,
-      left: '-50rem',
-      top: "-15rem",
+      left: '-30rem',
+      width:  '140vw',
+      height:  '150vh',
+      opacity:0.5,
+      top: "-40rem",
       zIndex: '0'
     }
   }
@@ -35,7 +38,7 @@ const BackgroundMedia = (props: BackgroundMediaProps) => {
           <video
             autoPlay
             muted={true}
-            style={{ width: "100vw", height: "100vh" }}
+            style={{ width: "100vw", height: "100vh", ...styles }}
             width="800"
             loop={true}
           >
