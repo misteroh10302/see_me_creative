@@ -32,6 +32,8 @@ const SecondPage = data => {
   const backgroundMedia = content.backgroundMedia || null
   const highlightColor = content.highlightColor || false
   const headerDesktopVimeoVideoId = content.headerDesktopVimeoVideoId || null
+  const headerMobileVimeoVideoId = content.headerMobileVimeoVideoId || null
+  const clientName =  content.clientName || null;
   const bcgVideo = {
     contentType: "video/mp4",
     url:
@@ -121,6 +123,30 @@ const SecondPage = data => {
               backgroundImage={backgroundMedia ? backgroundMedia.fluid.src : ""}
             ></BackgroundImage>
           )}
+          {headerMobileVimeoVideoId ? (
+            <div
+              className="video-background"
+              style={{
+                backgroundImage: `url(https://vumbnail.com/${headerMobileVimeoVideoId}.jpg)`,
+                backgroundSize: "cover",
+              }}
+            >
+              <iframe
+                background={true}
+                autoPlay
+                muted={true}
+                frameBorder="0"
+                webkitallowfullscreen
+                mozallowfullscreen
+                allowFullScreen
+                src={`https://player.vimeo.com/video/${headerMobileVimeoVideoId}?embedparameter=value&autoplay=1&loop=1&muted=1&controls=false`}
+              />
+            </div>
+          ) : (
+            <BackgroundImage
+              backgroundImage={backgroundMedia ? backgroundMedia.fluid.src : ""}
+            ></BackgroundImage>
+          )}
         </FullHeight>
         <ProjectWrapper style={{'position': "relative"}}>
           <BackgroundMedia
@@ -134,8 +160,9 @@ const SecondPage = data => {
               highlight={(highlightColor && highlightColor[0]) || false}
               className="title"
             >
-              {title}
+              {clientName}
             </H1>
+            <h2>{title}</h2>
             <h2 className="subtitle">{subTitle}</h2>
             <small>{tags && tags.join(", ")}</small>
           </header>

@@ -8,6 +8,7 @@ export const FooterWrapper = styled.nav`
   flex-direction: column;
   justify-content: center;
   position: relative;
+
   .mesh {
     position: absolute;
     bottom: -100%;
@@ -30,4 +31,5 @@ export const FooterWrapper = styled.nav`
       margin-bottom: 1rem;
     }
   }
+
 `

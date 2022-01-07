@@ -30,7 +30,6 @@ const IndexPage = () => (
                   return (
                     <BackgroundMedia
                       title={section.title}
-                    
                       vimeoId={section.vimeoId}
                       key={uuid()}
                     />
@@ -83,6 +82,7 @@ const homepageQuery = graphql`
         ... on ContentfulBackgroundMedia {
           id
           vimeoId
+          vimeoIdMobile
         }
         ... on ContentfulSection {
           id

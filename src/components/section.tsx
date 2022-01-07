@@ -14,7 +14,7 @@ const Section = (props: SectionProps) => {
     return (
         <SectionWrapper 
         className={theCleanTitle} backgroundImage={props.bgm ? props.bgm.file.url + "?&fm=webp" : ""}>
-            {theCleanTitle === "who-we-are" && <AnimatedText />}
+            {/* {theCleanTitle === "who-we-are" && <AnimatedText />} */}
             {content && content.map((content,i) =>{
                 if (content.__typename === "ContentfulTextArea") {
                     return <TextArea key={uuid()} title={theCleanTitle} content={content}/>;

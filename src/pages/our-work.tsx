@@ -30,6 +30,7 @@ const OurWorkQuery = graphql`
       nodes {
         projects {
           title
+          clientName
           thumbnailMedia {
             fluid(maxWidth: 200){
               ...GatsbyContentfulFluid_withWebp_noBase64
@@ -113,7 +114,7 @@ const OurWork = () => {
                                   fluid={project.thumbnailMedia.fluid} 
                                   style={{ maxHeight: "550px" }}
                                   />
-                               <H2Projects>{project.title}</H2Projects>
+                               <H2Projects>{project.clientName + ':' || ''} {project.title}</H2Projects>
                             </Link>
                           )
                         }

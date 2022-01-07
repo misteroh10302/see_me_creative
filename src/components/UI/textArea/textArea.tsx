@@ -7,7 +7,7 @@ import uuid from 'react-uuid'
 import Img from "gatsby-image"
 
 export const TextAreaWrapper = styled.div`
-  padding: 2rem 0rem 1rem;
+  padding: 0rem 0rem 0rem;
   p {
     text-align: center;
     font-family: ${props => props.theme.font.serif}, serif;

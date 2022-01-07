@@ -489,7 +489,7 @@ export const SectionWrapper = styled.section`
 export const TwoColumnWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  gap: 3.2rem;
+  gap: 0rem;
   @media ${device.tablet} {
     margin: 6rem 0;
     grid-template-columns: 1fr 1fr;
@@ -565,11 +565,12 @@ export const LayoutWrapper = styled.div`
     line-height: ${props => props.theme.p.lineHeight};
     letter-spacing: ${props => props.theme.p.letterSpacing};
     font-weight: 100;
-    margin-bottom: 5rem;
+    margin-bottom: 0rem;
     @media ${device.laptop} {
       font-size: 4.8rem;
       line-height: 5rem;
       letter-spacing: 0.-75px;
+      margin-bottom: 5rem;
     }
   }
 

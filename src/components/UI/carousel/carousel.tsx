@@ -18,9 +18,9 @@ const BackgroundFade = styled.div`
   width: 100%;
   /* transform: translateY(-100%); */
   background-image: linear-gradient(transparent, black);
-  padding: 10rem;
-  position: absolute;
-  bottom: 0;
+  padding: 13rem 0 4rem;
+    position: relative;
+    margin-top: -130px !important;
 `
 
 const MyCarousel = (props: CarouselProps) => {
