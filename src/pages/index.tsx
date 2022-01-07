@@ -82,7 +82,6 @@ const homepageQuery = graphql`
         ... on ContentfulBackgroundMedia {
           id
           vimeoId
-          vimeoIdMobile
         }
         ... on ContentfulSection {
           id
