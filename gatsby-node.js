@@ -24,7 +24,6 @@ exports.createPages = async function ({ actions, graphql }) {
           subTitle
           highlightColor
           headerDesktopVimeoVideoId
-          headerMobileVimeoVideoId
           footer {
             content {
               json
