@@ -147,7 +147,7 @@ exports.createPages = async function ({ actions, graphql }) {
 
     actions.createPage({
       path: "/project/" + parsedSlug,
-      component: require.resolve(`./src/pages/page-2.tsx`),
+      component: require.resolve(`./src/pages/project.tsx`),
       context: {
         slug: slug.title,
         content: edge,

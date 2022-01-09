@@ -654,3 +654,10 @@ body:-webkit-full-page-media {
   font-family: "Druk";
   src: url("../fonts/Druk\ Wide\ Medium.otf");
 }
+
+
+/* Custom Fonts */
+@font-face {
+  font-family: "TNR";
+  src: url("../fonts/Times-NR-Condensed.ttf");
+}

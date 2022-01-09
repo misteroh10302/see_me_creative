@@ -8,6 +8,7 @@ import Img from "gatsby-image"
 
 export const TextAreaWrapper = styled.div`
   padding: 0rem 0rem 0rem;
+
   p {
     text-align: center;
     font-family: ${props => props.theme.font.serif}, serif;
@@ -58,22 +59,16 @@ const TextArea = (props: TextAreaProps) => {
           {data.json.content.map((data, i) => {
             if (data.nodeType === "paragraph") {
               return (
-                // <Reveal 
-                //   key={uuid(i)} effect="fadeInUp">
                   <p
                    key={uuid(i)}
-                    // onMouseOver={()=> setHovered(true)} 
-                    // onMouseOut={()=> setHovered(false)} 
                     className={`our-perspective-p our-perspective-${i}`}>
                     <b>{data.content[0].value}</b>
                     {data.content[1] && data.content[1].value}
                   </p>
-                // </Reveal>
               )
             } else if (data.nodeType === "heading-1") {
               const isHovered = hovered ? 0 : 1;
               return (
-                // <Reveal key={uuid(i)} effect="fadeInUp">
                   <h1 
                     style={{
                       opacity: isHovered
@@ -81,7 +76,6 @@ const TextArea = (props: TextAreaProps) => {
                   >
                     {data.content[0].value}
                   </h1>
-                // </Reveal>
               )
             }
             else {
@@ -92,11 +86,6 @@ const TextArea = (props: TextAreaProps) => {
                           style={{ 
                               maxHeight: "550px"
                             }} src={data.data.target.fields.file["en-US"].url} />
-                        {/* <Img 
-                          objectFit="cover"
-                          style={{ maxHeight: "350px"}}
-                          src={data.data.target.fields.file["en-US"].url} 
-                        /> */}
                     </div>
                   </Reveal>
                 )

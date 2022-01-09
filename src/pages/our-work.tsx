@@ -109,7 +109,6 @@ const OurWork = () => {
                               to={`/project/${mySlug(project.title)}`}
                               // style={{height: "600px" }}
                             >
-                            
                                 <Img 
                                   fluid={project.thumbnailMedia.fluid} 
                                   style={{ maxHeight: "550px" }}

@@ -6,7 +6,7 @@ export const NavigationWrapper = styled.nav`
   top: ${props => props.hide < 50 || props.scrollDirection === "up" ? 0 : '-190px'};
   text-align: center;
   width: 100%;
-  padding: 2rem;
+  padding: 1rem 3rem;
   z-index: ${props => props.theme.zIndex.high};
   background-color: ${props => props.scrolled && props.currentPage.includes("project") ? "white" : "transparent"};
   transition: 400ms cubic-bezier(0, 0, 0.71, 0.79);
@@ -60,6 +60,7 @@ export const NavLeftnavRight = styled.div`
     font-weight: 400;
     letter-spacing: .065em;
     transition: color 250ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+   
     &:visited {
       color: ${props => props.scrolled && props.currentPage.includes("project") ? "black" : "white"};
     }
@@ -71,7 +72,16 @@ export const NavLeftnavRight = styled.div`
     }
   }
  
-
+  &.nav-left {
+      a:first-child {
+        margin-left: 0;
+      }
+  }
+  &.nav-right {
+    a:last-child {
+        margin-right: 0;
+      }
+  }
   @media ${device.tablet} {
      display: block;
   }

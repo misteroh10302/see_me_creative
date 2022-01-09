@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { device } from "./theme"
+import { theme, device } from "./theme"
 
 /* Layout Helpers
 ----------------------------- */
@@ -19,7 +19,7 @@ const grid = `
 /* Buttons
 ----------------------------- */
 export const Button = styled.a`
-  max-width: 80%;
+  max-width: 300px;
   width: 100%;
   border-radius: 40px;
   background-color: ${props => props.invert === true ? "black" : 'white'};;
@@ -58,6 +58,17 @@ export const FullHeight = styled.div`
   .gatsby-image-wrapper {
     overflow: visible !important;
     position: initial !important;
+  }
+  .header-mobile-video {
+    @media ${device.tablet} {
+      display: none;
+    }
+  }
+  .header-desktop-video {
+    display: none;
+    @media ${device.tablet} {
+      display: block;
+    }
   }
 `
 
@@ -107,9 +118,10 @@ export const ProjectWrapper = styled.section`
   background-size: cover;
   min-height: 100vh;
   width: 100%;
-  padding: ${props => props.theme.padding.sectionVertical}
-    3rem;
-
+  padding: ${props => props.theme.padding.sectionVertical} 3rem;
+  @media ${device.tablet} {
+    padding: ${props => props.theme.padding.sectionVerticalDesktop} 3rem;
+  }
   header {
     @media ${device.tablet} {
       max-width: 840px;
@@ -140,13 +152,17 @@ export const ProjectWrapper = styled.section`
   }
   section.post-content {
     .post-text-wrapper {
+      margin-bottom: 3rem;
+      &:first-child {
+        margin-bottom: 9.2rem;
+      }
       @media ${device.tablet} {
         max-width: 840px;
         margin-left:  auto;
         margin-right: auto;
+        gap: 3rem;
       }
     }
-    
     p {
       margin-bottom: 0rem;
       text-align: left;
@@ -194,7 +210,7 @@ export const ProjectWrapper = styled.section`
       }
     }
     @media ${device.tablet} {
- 
+
       > div {
         h3,
         p {
@@ -236,6 +252,53 @@ export const SectionWrapper = styled.section`
     .my-masonry-grid {
       padding:0 3rem;
     }
+    .my-masonry-grid_column {
+      a {
+        display: block;
+        position: relative;
+        .project-title h4{ 
+          font-family: ${props => props.theme.font.serif};
+          font-size: 2rem;
+        }
+        .gatsby-image-wrapper {
+          margin-bottom: 0 !important;
+          @media ${device.tablet} {
+            margin-bottom: 3rem !important;
+          }
+        }
+        &:hover {
+          @media ${device.tablet} {
+            .project-title {
+              background-color: #000000c4;
+              text-align: center;
+              h4 {
+                color: white;
+              } 
+            }
+          }
+        }
+      }
+    }
+    @media ${device.tablet} {
+      .project-title {
+        height: 100%;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        transition: background 250ms ease;
+        h4 {
+          text-align: center;
+          color: transparent;
+          width: 100%;
+          font-family: ${props => props.theme.font.serif};
+          font-size: 2rem;
+        }
+      }
+    }
   }
 
   @media screen and (min-width: 850px) {
@@ -270,45 +333,67 @@ export const SectionWrapper = styled.section`
   &.who-we-are-content-info {
     position: relative;
     z-index: 99;
+   
     p {
       text-align: left;
       margin: 0rem 0;
       color: white;
       font-weight: 300;
-   
     }
-
-    h1 {
+    h2 {
       color: white;
       padding: 0 0rem;
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
       @media ${device.laptop} {
-        padding: 3rem 0rem 0 17rem;
+        padding: 1rem 0rem 0 17rem;
       }
     }
-
-    .text-area {
+    h3 {
+      color: white;
+      @media ${device.laptop} {
+        padding: 0rem 0rem 0 17rem;
+      }
+    }
+    > .text-area {
       p {
-        font-size: 3.6rem;
-        line-height: 4.2rem;
+          font-size: 4rem !important;
+          line-height: 3.6rem;
+          letter-spacing: -0.66px;
+          text-align: center;
+          margin-bottom: 2rem;
+          @media ${device.laptop} {
+            font-size: 4.8rem;
+            line-height: 5rem;
+            letter-spacing: 0.-75px;
+            margin-bottom: 3rem;
+            margin-top: 6rem;
+          }
+        }
+    }
+    .text-area {
+      padding-top: 1rem;
+      padding-bottom: 3rem;
+      p {
+        font-size: ${theme.heading3.fontSize};
+        line-height: 3.6rem;
         letter-spacing: -0.66px;
       }
       @media ${device.laptop} {
         p {
-          font-size: 4.2rem;
-          line-height: 4.8rem;
+          font-size: ${theme.desktopP.fontSize};
+          line-height: 4.6rem;
+          margin-bottom: 3rem;
         }
       }
     }
-
     .image-and-text {
       vertical-align: top;
       > div {
         padding-top: 0;
       }
       p {
-        font-family: "Roboto", sans-serif;
-        margin-bottom: 0;
+        font-family: ${theme.font.sans}, sans-serif;
+        margin-bottom: 2rem;
         letter-spacing: 0;
         font-size: 1.6rem;
         line-height: 2.4rem;
@@ -331,7 +416,7 @@ export const SectionWrapper = styled.section`
       .image-and-text {
         display: inline-block;
         width: 50%;
-        padding: 10rem 3rem 3rem;
+        padding: 6.5rem 3rem 3rem;
         box-sizing: border-box;
         p {
           text-align: left;
@@ -356,7 +441,6 @@ export const SectionWrapper = styled.section`
       }
     }
   }
-
   &.our-perspective {
     color: white;
     background-color: #2201fb;
@@ -491,10 +575,10 @@ export const TwoColumnWrapper = styled.div`
   grid-template-columns: 1fr;
   gap: 0rem;
   @media ${device.tablet} {
-    margin: 6rem 0;
+    margin: 3rem 0;
     grid-template-columns: 1fr 1fr;
     div:nth-child(2){
-      margin-top: ${props => props.adjustPadding ? '4.2rem': '0'};
+      margin-top: ${props => props.adjustPadding ? '7rem': '0'};
     }
   }
 `;
@@ -537,6 +621,7 @@ export const LayoutWrapper = styled.div`
   body {
     overflow-x: hidden;
   }
+  
   h1 {
     color: black;
     font-family: ${props => props.theme.font.serif}, serif;
@@ -549,13 +634,18 @@ export const LayoutWrapper = styled.div`
     font-family: ${props => props.theme.font.serif}, serif;
     font-size: ${props => props.theme.heading2.fontSize};
     letter-spacing: ${props => props.theme.heading2.letterSpacing};
+    line-height: ${props => props.theme.heading2.lineHeight};
     font-weight: 100;
-    margin: 2rem 0;
+    margin: 3rem 0 1rem;
+    @media ${device.laptop} { 
+      font-size: ${props => props.theme.desktopHeading2.fontSize};
+      line-height: ${props => props.theme.desktopHeading2.lineHeight};
+    }
   }
   h4 {
     color: white;
     font-family: ${props => props.theme.font.serif}, serif;
-    font-size: ${props => props.theme.heading1.fontSize};
+    font-size: ${props => props.theme.heading3.fontSize};
     font-weight: 100;
     margin: 2rem 0;
   }
@@ -571,6 +661,16 @@ export const LayoutWrapper = styled.div`
       line-height: 5rem;
       letter-spacing: 0.-75px;
       margin-bottom: 5rem;
+    }
+  }
+  .homepage {
+    section:nth-child(1) {
+      .video-background {
+        height: 70vh;
+        @media ${device.laptop} {
+          height: 100vh;
+        }
+      }
     }
   }
 
@@ -593,7 +693,6 @@ export const LayoutWrapper = styled.div`
     top: 50%;
     left: 50%;
     width: 100vw;
-    height: 100vh;
     transform: translate(-50%, -50%);
   }
 
@@ -789,3 +888,5 @@ export const H1 = styled.h1`
     margin-bottom: 0;
   }
 `
+
+

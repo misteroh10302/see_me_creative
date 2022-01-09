@@ -30,14 +30,7 @@ const MyCarousel = (props: CarouselProps) => {
   })
 
   const updateMorePosts = () => {
-    // if (numberOfPosts.buttonText === "SEE ALL WORK") {
       window.location = "/our-work"
-    // } else {
-    //   setNumberOPosts({
-    //     number: 6,
-    //     buttonText: "SEE ALL WORK",
-    //   })
-    // }
   }
 
   if (props.content.__typename === "ContentfulCarousel") {
@@ -90,6 +83,7 @@ const MyCarousel = (props: CarouselProps) => {
               if (i < numberOfPosts.number) {
                 return (
                   <Link to={`/project/${mySlug(project.title)}`} key={uuid()}>
+                
                     {project.thumbnailMedia.file.contentType.includes(
                       "video"
                     ) ? (
@@ -101,15 +95,18 @@ const MyCarousel = (props: CarouselProps) => {
                           />
                           Your browser does not support the video tag.
                         </video>
+                        <div className="project-title"><h4>{project.title}</h4></div>
                       </>
                     ) : (
-                      <Img
-                        fluid={project.thumbnailMedia.fluid}
-                        objectFit="cover"
-                        style={{ maxHeight: "550px", marginBottom: "3rem" }}
-                      />
+                      <>
+                        <Img
+                          fluid={project.thumbnailMedia.fluid}
+                          objectFit="cover"
+                          style={{ maxHeight: "550px", marginBottom: "3rem" }}
+                        />
+                        <div className="project-title"><h4>{project.title}</h4></div>
+                      </>
                     )}
-                    {/* <h4>{project.title}</h4> */}
                   </Link>
                 )
               }

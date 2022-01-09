@@ -99,30 +99,33 @@ const SecondPage = data => {
       <Layout>
         <SEO title={`Project ${slug}`} />
         <FullHeight style={{ position: "relative", "z-index": 10 }}>
-          {headerDesktopVimeoVideoId ? (
-            <div
-              className="video-background"
-              style={{
-                backgroundImage: `url(https://vumbnail.com/${headerDesktopVimeoVideoId}.jpg)`,
-                backgroundSize: "cover",
-              }}
-            >
-              <iframe
-                background={true}
-                autoPlay
-                muted={true}
-                frameBorder="0"
-                webkitallowfullscreen
-                mozallowfullscreen
-                allowFullScreen
-                src={`https://player.vimeo.com/video/${headerDesktopVimeoVideoId}?embedparameter=value&autoplay=1&loop=1&muted=1&controls=false`}
-              />
-            </div>
-          ) : (
-            <BackgroundImage
-              backgroundImage={backgroundMedia ? backgroundMedia.fluid.src : ""}
-            ></BackgroundImage>
-          )}
+          <div className="header-desktop-video">
+            {headerDesktopVimeoVideoId ? (
+              <div
+                className="video-background"
+                style={{
+                  backgroundImage: `url(https://vumbnail.com/${headerDesktopVimeoVideoId}.jpg)`,
+                  backgroundSize: "cover",
+                }}
+              >
+                <iframe
+                  background={true}
+                  autoPlay
+                  muted={true}
+                  frameBorder="0"
+                  webkitallowfullscreen
+                  mozallowfullscreen
+                  allowFullScreen
+                  src={`https://player.vimeo.com/video/${headerDesktopVimeoVideoId}?embedparameter=value&autoplay=1&loop=1&muted=1&controls=false`}
+                />
+              </div>
+            ) : (
+              <BackgroundImage
+                backgroundImage={backgroundMedia ? backgroundMedia.fluid.src : ""}
+              ></BackgroundImage>
+            )}
+          </div>
+          <div className="header-mobile-video">
           {headerMobileVimeoVideoId ? (
             <div
               className="video-background"
@@ -147,6 +150,7 @@ const SecondPage = data => {
               backgroundImage={backgroundMedia ? backgroundMedia.fluid.src : ""}
             ></BackgroundImage>
           )}
+          </div>
         </FullHeight>
         <ProjectWrapper style={{'position': "relative"}}>
           <BackgroundMedia
@@ -162,7 +166,7 @@ const SecondPage = data => {
             >
               {clientName}
             </H1>
-            <h2>{title}</h2>
+            {/* <h2>{title}</h2> */}
             <h2 className="subtitle">{subTitle}</h2>
             <small>{tags && tags.join(", ")}</small>
           </header>

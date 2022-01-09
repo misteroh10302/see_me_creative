@@ -2,13 +2,16 @@ import styled from "styled-components"
 
 export const FooterWrapper = styled.nav`
   background-image: ${props => `url(${props.background})`};
-  height: 100vh;
+  height: 70vh;
   background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
-
+  overflow: hidden;
+  video{
+    height: 70vh;
+  }
   .mesh {
     position: absolute;
     bottom: -100%;

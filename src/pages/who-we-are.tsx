@@ -61,7 +61,7 @@ const whoWeAreQuery = graphql`
               }
               title
               images {
-                fluid {
+                fluid(maxHeight: 300, maxWidth: 300, quality: 100) {
                   ...GatsbyContentfulFluid
                 }
               }
@@ -92,6 +92,7 @@ const WhoWeArePage = () => (
                 </FullHeight>
                 {whoWeAreContent &&
                   whoWeAreContent.map((section) => {
+           
                     return (
                       <Section
                         key={uuid()}

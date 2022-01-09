@@ -46,7 +46,7 @@ const ImageAndText = (props: ImageAndTextProps) => {
       })}
       {content.title && (
         <Fade effect="fadeInUp">
-          <h1>{content.title}</h1>
+          <h2>{content.title}</h2>
         </Fade>
       )}
       {content.content && <TextArea content={content} />}

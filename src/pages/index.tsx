@@ -23,32 +23,34 @@ const IndexPage = () => (
       return (
         <ThemeProvider theme={theme}>
           <Layout page="home">
-            <SEO title="Home" />
-            {homepageContent &&
-              homepageContent.map((section, i) => {
-                if (section.__typename === "ContentfulBackgroundMedia") {
-                  return (
-                    <BackgroundMedia
-                      title={section.title}
-                      vimeoId={section.vimeoId}
-                      key={uuid()}
-                    />
-                  )
-                } else if (section.__typename === "ContentfulSection") {
-                  return (
-                    <Section
-                      title={section.title}
-                      bgm={section.backgroundMedia}
-                      content={section}
-                      key={uuid()}
-                    />
-                  )
-                }
-              })}
-            <Footer 
-              textColor="light" 
-              content={footer} 
-              bgm={footerBackground} />
+            <div className="homepage">
+              <SEO title="Home" />
+              {homepageContent &&
+                homepageContent.map((section, i) => {
+                  if (section.__typename === "ContentfulBackgroundMedia") {
+                    return (
+                      <BackgroundMedia
+                        title={section.title}
+                        vimeoId={section.vimeoId}
+                        key={uuid()}
+                      />
+                    )
+                  } else if (section.__typename === "ContentfulSection") {
+                    return (
+                      <Section
+                        title={section.title}
+                        bgm={section.backgroundMedia}
+                        content={section}
+                        key={uuid()}
+                      />
+                    )
+                  }
+                })}
+              <Footer 
+                textColor="light" 
+                content={footer} 
+                bgm={footerBackground} />
+              </div>
           </Layout>
         </ThemeProvider>
       )
