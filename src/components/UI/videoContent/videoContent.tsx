@@ -13,7 +13,7 @@ const VideoContent = (props: VideoContentProps) => {
           url={url}
           controls={true}
           width="100%"
-          height="50vw"
+          height="54vw"
           config={{
             vimeo: {
               playerVars: { showinfo: 1 }

@@ -95,6 +95,56 @@ export const FooterWrapper = styled.footer`
 `
 
 export const OurWorkWrapper = styled.div`
+  padding: 8rem 0;
+  max-width: 100%;
+  > div {
+    color: white;
+  }
+  a {
+    color: white;
+    text-decoration: none;
+    min-height: 514px;
+    overflow: hidden;
+  }
+`
+
+export const OurOfferingsWrapper = styled.div`
+  text-align: left;
+  h3 {
+    padding-left: 0 !important;
+    font-family: ${theme.font.serif};
+    font-size: 3rem;
+    font-weight: 100;
+    letter-spacing: ${theme.desktopHeading3.letterSpacing};
+  }
+  .text-area  {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    h3, p {
+      text-align: left !important;
+    }
+    p {
+      font-family: ${theme.font.sans};
+      text-transform: none;
+      font-size: 1.6rem !important;
+      letter-spacing: 0 !important;
+      padding-bottom: 0 !important;
+      line-height: 2.2rem !important;
+    }
+  }
+  > div {
+    padding-top: 3rem;
+    border-top: 1px solid white;
+  }
+  ${grid}
+  grid-column-gap: 10rem;
+  grid-template-columns: 1fr;
+  @media ${device.laptop} {
+    grid-template-columns: 1fr 1fr 1fr;
+  } 
+`
+
+export const WhoWeAreGrid = styled.div`
   padding: ${props => props.theme.padding.sectionVertical} 0;
   max-width: 100%;
   > div {
@@ -106,11 +156,11 @@ export const OurWorkWrapper = styled.div`
     min-height: 514px;
     overflow: hidden;
   }
-  /* ${grid}
+   ${grid}
   grid-template-columns: 1fr;
   @media ${device.laptop} {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-  } */
+    grid-template-columns: 1fr 1fr ;
+  } 
 `
 
 export const ProjectWrapper = styled.section`
@@ -154,7 +204,10 @@ export const ProjectWrapper = styled.section`
     .post-text-wrapper {
       margin-bottom: 3rem;
       &:first-child {
-        margin-bottom: 9.2rem;
+        margin-bottom: 3rem;
+        @media ${device.tablet} { 
+          margin-bottom: 9.2rem;
+        }
       }
       @media ${device.tablet} {
         max-width: 840px;
@@ -193,13 +246,17 @@ export const ProjectWrapper = styled.section`
       }
     }
     .video-content {
-      margin: 8rem 0 6rem;
+      margin: 3rem 0 0;
+      @media ${device.tablet} {
+        margin: 8rem 0 6rem;
+      }
     }
     .video-inner {
       position: relative;
-      padding-bottom: 50.25%; /*16:9*/
-      height: 0;
+      // padding-bottom: 50.25%; /*16:9*/
+      height: initial;
       overflow: hidden;
+     
       video {
         position: absolute;
         top: 0;
@@ -356,17 +413,18 @@ export const SectionWrapper = styled.section`
     }
     > .text-area {
       p {
-          font-size: 4rem !important;
+          font-size: ${theme.p.fontSize} !important;
           line-height: 3.6rem;
           letter-spacing: -0.66px;
-          text-align: center;
+          text-align: left;
           margin-bottom: 2rem;
           @media ${device.laptop} {
-            font-size: 4.8rem;
+            font-size: 4.8rem !important;
             line-height: 5rem;
             letter-spacing: 0.-75px;
             margin-bottom: 3rem;
             margin-top: 6rem;
+            text-align: center;
           }
         }
     }
@@ -411,12 +469,11 @@ export const SectionWrapper = styled.section`
         text-align: center;
       }
       div:first-child {
-        max-width: 840px;
+        max-width: 1000px;
       }
       .image-and-text {
         display: inline-block;
-        width: 50%;
-        padding: 6.5rem 3rem 3rem;
+        padding: 3em 0rem 3rem;
         box-sizing: border-box;
         p {
           text-align: left;
@@ -664,6 +721,13 @@ export const LayoutWrapper = styled.div`
     }
   }
   .homepage {
+    .about- {
+      padding-top: 5rem;
+      padding-bottom: 4.5rem;
+      @media ${device.laptop} {
+        padding-top: 9.4rem;
+      }
+    }
     section:nth-child(1) {
       .video-background {
         height: 70vh;

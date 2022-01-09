@@ -50,8 +50,10 @@ export const TextAreaWrapper = styled.div`
 const TextArea = (props: TextAreaProps) => {
   const [hovered, setHovered] = useState(false);
   const data = props.content.content;
+  if (!data || !data.json) return null;
   const title = props.title;
   const dataAsHtml = documentToReactComponents(data.json)
+
   if (title === "our-perspective") {
     return (
       <TextAreaWrapper className="text-area">

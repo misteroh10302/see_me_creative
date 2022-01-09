@@ -39,7 +39,7 @@ export const theme = {
        lineHeight: "4.6rem"
    },
    heading2: {
-        fontSize: "2rem",
+        fontSize: "3rem",
         letterSpacing: "-.37px",
         lineHeight: "2.6rem"
     },

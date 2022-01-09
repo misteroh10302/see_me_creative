@@ -48,10 +48,42 @@ const whoWeAreQuery = graphql`
             }
           }
           content {
+            ... on ContentfulOfferings {
+              ourOfferings {
+                title
+                content {
+                  json
+                }
+              }
+            }
             ... on ContentfulTextArea {
               id
               content {
                 json
+              }
+            }
+            ... on ContentfulTwoColumnGrid {
+              leftColumn {
+                content {
+                  json
+                }
+                title
+                images {
+                  fluid(maxHeight: 300, maxWidth: 300, quality: 100) {
+                    ...GatsbyContentfulFluid
+                  }
+                }
+              }
+              rightColumn {
+                content {
+                  json
+                }
+                title
+                images {
+                  fluid(maxHeight: 300, maxWidth: 300, quality: 100) {
+                    ...GatsbyContentfulFluid
+                  }
+                }
               }
             }
             ... on ContentfulImageGallery {
@@ -86,13 +118,11 @@ const WhoWeArePage = () => (
             {nodes && (
               <ProjectCollectionWrapper>
                 <FullHeight className="full-">
-                    <BackgroundMedia
-                        vimeoId={nodes[0].background.vimeoId}
-                    />
+                  <BackgroundMedia vimeoId={nodes[0].background.vimeoId} />
                 </FullHeight>
                 {whoWeAreContent &&
                   whoWeAreContent.map((section) => {
-           
+             
                     return (
                       <Section
                         key={uuid()}
