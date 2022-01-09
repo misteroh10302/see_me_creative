@@ -25,7 +25,7 @@ export const TextAreaWrapper = styled.div`
   }
   > * {
     opacity: 0;
-    transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: opacity 1s cubic-bezier(0.075, 0.82, 0.165, 1);
     transform: translateY(20px);
   }
   .fadeInUp {
