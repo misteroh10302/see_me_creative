@@ -18,7 +18,7 @@ const BackgroundFade = styled.div`
   width: 100%;
   /* transform: translateY(-100%); */
   background-image: linear-gradient(transparent, black);
-  padding: 13rem 0 4rem;
+  padding: 13rem 0 1.5rem;
     position: relative;
     margin-top: -130px !important;
 `
@@ -66,8 +66,8 @@ const MyCarousel = (props: CarouselProps) => {
 
     const breakpointColumnsObj = {
       default: 3,
-      1100: 1,
-      700: 1,
+      1100: 3,
+      700: 3,
       500: 1,
     }
 

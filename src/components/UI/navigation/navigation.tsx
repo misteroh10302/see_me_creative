@@ -98,7 +98,7 @@ const Navigation = (props: NavigationProps) => {
           }
           className="nav-right"
         >
-          <a target="_blank" href="mailto:seemecreative@gmail.com">Contact</a>
+          <a target="_blank" href="mailto:sayhello@seemecreative.com">Contact</a>
           <a target="_blank" href="https://www.instagram.com/see.me.creative">Social</a>
         </NavLeftnavRight>
       </div>

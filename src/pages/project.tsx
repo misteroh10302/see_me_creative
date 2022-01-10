@@ -15,6 +15,7 @@ import {
   SingleGalleryWrapper,
   H1,
   TwoColumnWrapper,
+  SingleColumnWrapper,
 } from "../styled/layoutStyles"
 import BackgroundMedia from "../components/UI/backgroundMedia/backgroundMedia"
 import TextArea from "../components/UI/textArea/textArea"
@@ -173,6 +174,7 @@ const SecondPage = data => {
           {postContent && (
             <section className="post-content">
               {postContent.map((content, i) => {
+                console.log(content)
                 if (content.videos)
                   return (
                     <VideoContent
@@ -217,15 +219,15 @@ const SecondPage = data => {
                   content.childContentfulSingleColumnTextSingleColumnTextRichTextNode
                 ) {
                   return (
-                    <TwoColumnWrapper className="post-text-wrapper">
+                    <SingleColumnWrapper>
                       <TextArea
                         content={{
                           content:
                             content.childContentfulSingleColumnTextSingleColumnTextRichTextNode,
                         }}
                       />
-                      <div></div>
-                    </TwoColumnWrapper>
+        
+                    </SingleColumnWrapper>
                   )
                 } else if (content.images) {
                   return (
@@ -281,7 +283,8 @@ const SecondPage = data => {
         </ProjectWrapper>
         <Footer
           content={footerContent}
-          textColor="black"
+          textColor="dark"
+          buttonColor="light"
           bgm={footerBackground}
         />
       </Layout>

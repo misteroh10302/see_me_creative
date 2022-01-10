@@ -9,8 +9,9 @@ import BackgroundMedia from '../backgroundMedia/backgroundMedia'
 
 
 const Footer = (props: FooterProps) => {
+  console.log(props)
   return (
-    <FooterWrapper textColor={props.textColor} background={props.bgm.fluid ? props.bgm.fluid.src : ""}>
+    <FooterWrapper buttonColor={props.buttonColor} textColor={props.textColor} background={props.bgm.fluid ? props.bgm.fluid.src : ""}>
       {props.bgm.file && props.bgm.file.contentType.includes('video') && <BackgroundMedia position="absolute" file={props.bgm.file}/>}
       <TextArea content={props.content} />
       {props.content.buttons.map(button => {
@@ -30,6 +31,7 @@ interface FooterProps {
       src: string
     }
   }
+  buttonColor: string
   textColor: string
 }
 

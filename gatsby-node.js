@@ -19,6 +19,7 @@ exports.createPages = async function ({ actions, graphql }) {
       allContentfulProjectTemplateOne {
         nodes {
           clientName
+         
           title
           tags
           subTitle

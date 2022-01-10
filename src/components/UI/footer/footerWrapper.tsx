@@ -22,11 +22,13 @@ export const FooterWrapper = styled.nav`
     font-weight: 400;
   }
   a {
-      color: ${props => props.textColor === "black" ? "white" : "black"};
-      border:  1px solid ${props => props.textColor === "light" ? "white" : "black"};
+      color: ${props => props.buttonColor === "light" ? "white" : "black"};
+      background-color: ${props => props.buttonColor === "light" ? "black" : "white"};
+      border: 1px solid ${props => props.buttonColor === "light" ? "black" : "white"};
       &:hover {
-        background-color: ${props => props.textColor === "light" ? "white" : "black"};
-        color: ${props => props.textColor === "light" ? "black" : "white"};
+        background-color: transparent;
+        color: ${props => props.buttonColor === "light" ? "black" : "white"};
+        border: 1px solid ${props => props.buttonColor === "light" ? "black" : "white"};
       }
   }
   > div {

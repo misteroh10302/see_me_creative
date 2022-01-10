@@ -47,7 +47,7 @@ const IndexPage = () => (
                   }
                 })}
               <Footer 
-                textColor="light" 
+                textColor="light"
                 content={footer} 
                 bgm={footerBackground} />
               </div>
@@ -111,6 +111,14 @@ const homepageQuery = graphql`
               projects {
                 title
                 tags
+                clientLogo {
+                  fluid(maxWidth: 300) {
+                    sizes
+                    aspectRatio
+                    src
+                    srcSet
+                  }
+                }
                 backgroundMedia {
                   fluid(maxWidth: 200) {
                     ...GatsbyContentfulFluid_withWebp_noBase64

@@ -40,8 +40,8 @@ export const Button = styled.a`
   text-decoration: none;
   position: relative;
   &:hover {
-    background-color: white;
-    color: black;
+    background-color: black;
+    color: white;
     border: 1px solid white;
   }
   @media ${device.tablet} {
@@ -158,8 +158,14 @@ export const WhoWeAreGrid = styled.div`
   }
    ${grid}
   grid-template-columns: 1fr;
+  h2 {
+    font-size: 3rem;
+  }
   @media ${device.laptop} {
-    grid-template-columns: 1fr 1fr ;
+    grid-template-columns: 1fr 1fr;
+    h2 {
+      font-size: ${props => props.theme.projectHeader.fontSize} !important;
+    }
   } 
 `
 
@@ -485,9 +491,7 @@ export const SectionWrapper = styled.section`
     ${vertialAlign}
     color: white;
     position: relative;
-    .text-area {
-      max-width: 600px;
-    }
+
     a,
     button {
       background-color: white;
@@ -640,6 +644,19 @@ export const TwoColumnWrapper = styled.div`
   }
 `;
 
+export const SingleColumnWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0rem;
+  @media ${device.tablet} {
+    margin: 3rem 0;
+    grid-template-columns: 1fr;
+    max-width: 840px;
+    margin-left:  auto;
+    margin-right: auto;
+  }
+`;
+
 export const GalleryWrapper = styled.div`
   display: grid;
   gap: 3.2rem;
@@ -669,6 +686,10 @@ export const SingleGalleryWrapper = styled.div`
     }
     .small {
       max-width: 780px;
+      margin: 4rem auto;
+    }
+    .medium {
+      max-width: 1024px;
       margin: 4rem auto;
     }
   }
@@ -714,7 +735,7 @@ export const LayoutWrapper = styled.div`
     font-weight: 100;
     margin-bottom: 0rem;
     @media ${device.laptop} {
-      font-size: 4.8rem;
+      font-size: ${props => props.theme.projectHeader.fontSize};
       line-height: 5rem;
       letter-spacing: 0.-75px;
       margin-bottom: 5rem;

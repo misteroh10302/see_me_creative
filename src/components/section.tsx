@@ -4,7 +4,6 @@ import { SectionWrapper, Button } from "../styled/layoutStyles"
 import TextArea from "./UI/textArea/textArea"
 import Carousel from './UI/carousel/carousel'
 import ImageAndText from './UI/imageandtext/imageAndText'
-import AnimatedText from './UI/animatedText';
 import { cleanTitle } from '../utils.js'
 import { OurOfferingsWrapper, WhoWeAreGrid } from '../styled/layoutStyles'
 
@@ -16,8 +15,6 @@ const Section = (props: SectionProps) => {
     return (
         <SectionWrapper 
         className={theCleanTitle} backgroundImage={props.bgm ? props.bgm.file.url + "?&fm=webp" : ""}>
-            {/* {theCleanTitle === "who-we-are" && <AnimatedText />} */}
-
             {content && content.map((content,i) =>{
                 if (content.__typename  === "ContentfulOfferings")  {
                     return (
