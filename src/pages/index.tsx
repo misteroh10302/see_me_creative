@@ -109,6 +109,7 @@ const homepageQuery = graphql`
             ... on ContentfulProjectCarousel {
               id
               projects {
+                clientName
                 title
                 tags
                 clientLogo {

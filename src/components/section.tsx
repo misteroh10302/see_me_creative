@@ -11,7 +11,7 @@ import { OurOfferingsWrapper, WhoWeAreGrid } from '../styled/layoutStyles'
 const Section = (props: SectionProps) => {
     const { content,title } = props.content;
     const theCleanTitle = cleanTitle(title);
-    
+    console.log(content)
     return (
         <SectionWrapper 
         className={theCleanTitle} backgroundImage={props.bgm ? props.bgm.file.url + "?&fm=webp" : ""}>
@@ -33,8 +33,22 @@ const Section = (props: SectionProps) => {
                 if (content.__typename  === "ContentfulTwoColumnGrid")  {
                     return (
                         <WhoWeAreGrid>
-                           <ImageAndText title={title} key={uuid()} content={content.leftColumn} />
-                           <ImageAndText title={title} key={uuid()} content={content.rightColumn} />
+                            {content.leftColumn &&
+                                <ImageAndText title={title} key={uuid()} content={content.leftColumn} />
+                            }
+                            {content.rightColumn &&
+                            <ImageAndText title={title} key={uuid()} content={content.rightColumn} />
+                            }
+                        </WhoWeAreGrid>
+                    )
+                }
+                if (content.__typename  === "ContentfulThreeColumnGrid")  {
+                    return (
+                        <WhoWeAreGrid>
+                            {content.imageGallery.map((entry)=> {
+                                return <ImageAndText title={title} key={uuid()} content={entry} />
+                            })}
+                           
                         </WhoWeAreGrid>
                     )
                 }

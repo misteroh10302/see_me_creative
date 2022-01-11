@@ -162,7 +162,7 @@ export const WhoWeAreGrid = styled.div`
     font-size: 3rem;
   }
   @media ${device.laptop} {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     h2 {
       font-size: ${props => props.theme.projectHeader.fontSize} !important;
     }
@@ -207,6 +207,12 @@ export const ProjectWrapper = styled.section`
     font-weight: 300;
   }
   section.post-content {
+    > div:first-child {
+      margin-bottom: 0rem;
+      @media ${device.tablet} { 
+        margin-bottom: 0rem;
+      }
+    }
     .post-text-wrapper {
       margin-bottom: 3rem;
       &:first-child {
@@ -312,13 +318,26 @@ export const SectionWrapper = styled.section`
   &.projects {
     padding: 0em 0 5rem;
     position: relative;
+    min-height: initial;
     .my-masonry-grid {
       padding:0 3rem;
     }
     .my-masonry-grid_column {
+      @media ${device.laptop} {
+        height: 55vw;
+        overflow: hidden;
+      }
       a {
         display: block;
         position: relative;
+        .project-title {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          img {
+            display: none;
+          }
+        }
         .project-title h4{ 
           font-family: ${props => props.theme.font.serif};
           font-size: 2rem;
@@ -332,16 +351,20 @@ export const SectionWrapper = styled.section`
         &:hover {
           @media ${device.tablet} {
             .project-title {
-              background-color: #000000c4;
+              background-color: #000000e6;
               text-align: center;
               h4 {
                 color: white;
               } 
+              img {
+                opacity: 1;
+              }
             }
           }
         }
       }
     }
+
     @media ${device.tablet} {
       .project-title {
         height: 100%;
@@ -359,6 +382,10 @@ export const SectionWrapper = styled.section`
           width: 100%;
           font-family: ${props => props.theme.font.serif};
           font-size: 2rem;
+        }
+        img {
+          opacity: 0;
+          display: block !important;
         }
       }
     }
@@ -408,13 +435,13 @@ export const SectionWrapper = styled.section`
       padding: 0 0rem;
       margin-bottom: 2rem;
       @media ${device.laptop} {
-        padding: 1rem 0rem 0 17rem;
+        padding: 1rem 0rem 0 0rem;
       }
     }
     h3 {
       color: white;
       @media ${device.laptop} {
-        padding: 0rem 0rem 0 17rem;
+        padding: 0rem 0rem 0 0rem;
       }
     }
     > .text-area {
@@ -462,7 +489,7 @@ export const SectionWrapper = styled.section`
         font-size: 1.6rem;
         line-height: 2.4rem;
         @media ${device.laptop} {
-          padding: 0rem 0rem 0 17rem;
+          padding: 0rem 0rem 0 0rem;
         }
       }
     }
@@ -491,7 +518,12 @@ export const SectionWrapper = styled.section`
     ${vertialAlign}
     color: white;
     position: relative;
-
+    @media ${device.laptop} {
+      background-position: 100% 35%;
+    }
+    p {
+      margin-bottom: 0;
+    }
     a,
     button {
       background-color: white;
@@ -501,6 +533,7 @@ export const SectionWrapper = styled.section`
         color: white;
       }
     }
+   
   }
   &.our-perspective {
     color: white;
@@ -739,6 +772,24 @@ export const LayoutWrapper = styled.div`
       line-height: 5rem;
       letter-spacing: 0.-75px;
       margin-bottom: 5rem;
+    }
+  }
+  .our-work {
+      > section {
+        z-index: 0;
+        position: relative;
+      }
+       nav {
+        overflow: visible;
+      }
+  }
+  .who-we-are-page {
+    main nav {
+      overflow: visible;
+    }
+    main > div {
+      z-index: 0;
+      position: relative;
     }
   }
   .homepage {

@@ -75,8 +75,8 @@ const OurWork = () => {
   const [numberOfPosts, setNumberOPosts] = useState(Infinity);
   const breakpointColumnsObj = {
     default: 4,
-    1100: 1,
-    700: 1,
+    1100: 3,
+    700: 2,
     500: 1,
   }
   return (
@@ -106,12 +106,13 @@ const OurWork = () => {
                           return (
                             <Link
                               key={uuid()}
-                              to={`/project/${mySlug(project.title)}`}
+                              to={`/project/${mySlug(project.clientName)}-${mySlug(project.title)}`}
                               // style={{height: "600px" }}
                             >
                                 <Img 
                                   fluid={project.thumbnailMedia.fluid} 
                                   style={{ maxHeight: "550px" }}
+                                  loading="eager"
                                   />
                                <H2Projects>{project.clientName + ':' || ''} {project.title}</H2Projects>
                             </Link>

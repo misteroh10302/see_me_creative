@@ -47,16 +47,11 @@ exports.createPages = async function ({ actions, graphql }) {
             }
           }
           postContent {
-            ... on ContentfulTextArea {
-              id
-              content {
-                id
-                json
-              }
-            }
             ... on ContentfulVideoGallery {
               id
               vimeoId
+              vimeoIdMobile
+              autoPlayVideo
               title
             }
             ... on ContentfulSingleImage {
@@ -145,9 +140,13 @@ exports.createPages = async function ({ actions, graphql }) {
   projects.data.allContentfulProjectTemplateOne.nodes.forEach(edge => {
     const slug = edge
     const parsedSlug = mySlug(slug.title.toLowerCase())
-
+    
+    const parsedClient = mySlug(
+      slug.clientName ? slug.clientName.toLowerCase() : ""
+    )
+ 
     actions.createPage({
-      path: "/project/" + parsedSlug,
+      path: "/project/" + parsedClient + "-" + parsedSlug,
       component: require.resolve(`./src/pages/project.tsx`),
       context: {
         slug: slug.title,

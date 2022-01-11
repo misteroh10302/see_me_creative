@@ -9,18 +9,17 @@ import { mySlug } from "../../../utils.js"
 import { CarouselWrapper } from "./carouselWrapper.tsx"
 import "react-responsive-carousel/lib/styles/carousel.min.css" // requires a loader
 import { Carousel } from "react-responsive-carousel"
-import Swiper from "react-id-swiper"
-import { SwiperWrapper } from "../../../styled/layoutStyles"
 import Masonry from "react-masonry-css"
 import { Button } from "../../../styled/layoutStyles"
+import { device } from "../../../styled/theme"
 
 const BackgroundFade = styled.div`
   width: 100%;
-  /* transform: translateY(-100%); */
   background-image: linear-gradient(transparent, black);
-  padding: 13rem 0 1.5rem;
-    position: relative;
-    margin-top: -130px !important;
+  padding: 1.5rem 0rem 0;
+  @media ${device.laptop} {
+    padding: 4.5rem 0 1.5rem;
+  }
 `
 
 const MyCarousel = (props: CarouselProps) => {
@@ -29,9 +28,6 @@ const MyCarousel = (props: CarouselProps) => {
     buttonText: "MORE",
   })
 
-  const updateMorePosts = () => {
-      window.location = "/our-work"
-  }
 
   if (props.content.__typename === "ContentfulCarousel") {
     const { carouselMedia } = props.content
@@ -80,9 +76,10 @@ const MyCarousel = (props: CarouselProps) => {
         >
           {projects &&
             projects.map((project, i) => {
+              const { clientLogo, clientName } = project;
               if (i < numberOfPosts.number) {
                 return (
-                  <Link to={`/project/${mySlug(project.title)}`} key={uuid()}>
+                  <Link to={`/project/${mySlug(project.clientName)}-${mySlug(project.title)}`} key={uuid()}>
                 
                     {project.thumbnailMedia.file.contentType.includes(
                       "video"
@@ -95,7 +92,12 @@ const MyCarousel = (props: CarouselProps) => {
                           />
                           Your browser does not support the video tag.
                         </video>
-                        <div className="project-title"><h4>{project.title}</h4></div>
+                        <div className="project-title">
+                            {clientLogo && (
+                              <img src={clientLogo.fluid.src} width={150} alt={`Logo for ${clientName}`}/>
+                            )}
+                          <h4>{project.title}</h4>
+                        </div>
                       </>
                     ) : (
                       <>
@@ -104,7 +106,12 @@ const MyCarousel = (props: CarouselProps) => {
                           objectFit="cover"
                           style={{ maxHeight: "550px", marginBottom: "3rem" }}
                         />
-                        <div className="project-title"><h4>{project.title}</h4></div>
+                        <div className="project-title">
+                            {clientLogo && (
+                              <img src={clientLogo.fluid.src} width={150} alt={`Logo for ${clientName}`}/>
+                            )}
+                            <h4>{project.title}</h4>
+                        </div>
                       </>
                     )}
                   </Link>
@@ -113,7 +120,7 @@ const MyCarousel = (props: CarouselProps) => {
             })}
         </Masonry>
         <BackgroundFade>
-          <Button onClick={updateMorePosts}>{numberOfPosts.buttonText}</Button>
+          <Button href="/our-work">{numberOfPosts.buttonText}</Button>
         </BackgroundFade>
       </>
     )

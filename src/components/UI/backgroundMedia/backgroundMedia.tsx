@@ -30,6 +30,7 @@ const BackgroundMedia = (props: BackgroundMediaProps) => {
             webkitallowfullscreen
             mozallowfullscreen
             allowFullScreen
+            playsInline
             src={`https://player.vimeo.com/video/${props.vimeoId}?embedparameter=value&autoplay=1&loop=1&muted=1&controls=false&transparent=false`}
           />
         </div>
@@ -41,6 +42,7 @@ const BackgroundMedia = (props: BackgroundMediaProps) => {
             style={{ width: "100vw", height: "100vh", ...styles }}
             width="800"
             loop={true}
+            playsInline
           >
             <source src={props.file.url} type="video/mp4" />
             Sorry, your browser doesn't support embedded videos.

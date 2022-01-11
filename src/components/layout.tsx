@@ -24,10 +24,11 @@ const Layout = (props: LayoutProps) => (
         }
       }
     `}
+ 
     render={data => (
       <LayoutWrapper>
         <Header siteTitle={data.site.siteMetadata.title} />
-        <div className={data.site.siteMetadata.title}>
+        <div className={`${data.site.siteMetadata.title} ${props.className}`}>
           <main>{props.children}</main>
         </div>
       </LayoutWrapper>
@@ -36,7 +37,8 @@ const Layout = (props: LayoutProps) => (
 )
 
 interface LayoutProps {
-  children: any
+  children: any;
+  className: string
 }
 
 export default Layout

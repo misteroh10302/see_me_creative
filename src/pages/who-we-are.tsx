@@ -62,23 +62,15 @@ const whoWeAreQuery = graphql`
                 json
               }
             }
-            ... on ContentfulTwoColumnGrid {
-              leftColumn {
+            ... on ContentfulThreeColumnGrid {
+              id
+              imageGallery {
+                id
+                title
                 content {
+                  id
                   json
                 }
-                title
-                images {
-                  fluid(maxHeight: 300, maxWidth: 300, quality: 100) {
-                    ...GatsbyContentfulFluid
-                  }
-                }
-              }
-              rightColumn {
-                content {
-                  json
-                }
-                title
                 images {
                   fluid(maxHeight: 300, maxWidth: 300, quality: 100) {
                     ...GatsbyContentfulFluid
@@ -113,7 +105,7 @@ const WhoWeArePage = () => (
       const { whoWeAreContent } = nodes[0]
       return (
         <ThemeProvider theme={theme}>
-          <Layout>
+          <Layout className="who-we-are-page">
             <SEO title="Who We Are" />
             {nodes && (
               <ProjectCollectionWrapper>
