@@ -19,12 +19,12 @@ exports.createPages = async function ({ actions, graphql }) {
       allContentfulProjectTemplateOne {
         nodes {
           clientName
-         
           title
           tags
           subTitle
           highlightColor
           headerDesktopVimeoVideoId
+          headerMobileVimeoVideoId
           footer {
             content {
               json

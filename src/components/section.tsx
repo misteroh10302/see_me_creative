@@ -11,7 +11,7 @@ import { OurOfferingsWrapper, WhoWeAreGrid } from '../styled/layoutStyles'
 const Section = (props: SectionProps) => {
     const { content,title } = props.content;
     const theCleanTitle = cleanTitle(title);
-    console.log(content)
+
     return (
         <SectionWrapper 
         className={theCleanTitle} backgroundImage={props.bgm ? props.bgm.file.url + "?&fm=webp" : ""}>
