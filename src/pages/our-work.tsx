@@ -29,11 +29,13 @@ const OurWorkQuery = graphql`
     allContentfulOurWork {
       nodes {
         projects {
-          title
-          clientName
-          thumbnailMedia {
-            fluid(maxWidth: 200){
-              ...GatsbyContentfulFluid_withWebp_noBase64
+          ... on ContentfulProjectTemplateOne {
+            title
+            clientName
+            thumbnailMedia {
+              fluid(maxWidth: 200){
+                ...GatsbyContentfulFluid_withWebp_noBase64
+              }
             }
           }
         }
@@ -101,22 +103,25 @@ const OurWork = () => {
                       >
                     {projects &&
                       projects.map((project, i) => {
-
-                        if (i < numberOfPosts) {
-                          return (
-                            <Link
-                              key={uuid()}
-                              to={`/project/${mySlug(project.clientName)}-${mySlug(project.title)}`}
-                              // style={{height: "600px" }}
-                            >
-                                <Img 
-                                  fluid={project.thumbnailMedia.fluid} 
-                                  style={{ maxHeight: "550px" }}
-                                  loading="eager"
-                                  />
-                               <H2Projects>{project.clientName + ':' || ''} {project.title}</H2Projects>
-                            </Link>
-                          )
+                          if (
+                            project.__typename ===
+                            "ContentfulProjectTemplateOne"
+                          ) {
+                          if (i < numberOfPosts) {
+                            return (
+                              <Link
+                                key={uuid()}
+                                to={`/project/${mySlug(project.clientName)}-${mySlug(project.title)}`}
+                              >
+                                  <Img 
+                                    fluid={project.thumbnailMedia.fluid} 
+                                    style={{ maxHeight: "550px" }}
+                                    loading="eager"
+                                    />
+                                <H2Projects>{project.clientName + ':' || ''} {project.title}</H2Projects>
+                              </Link>
+                            )
+                          }
                         }
                       })}
                       </Masonry>
