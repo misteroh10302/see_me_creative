@@ -100,7 +100,7 @@ const SecondPage = data => {
     <ThemeProvider theme={theme}>
       <Layout>
         <SEO title={`Project ${slug}`} />
-        <FullHeight style={{ position: "relative", "z-index": 10 }}>
+        <FullHeight style={{ position: "relative", "z-index": 10 }} className="project-header">
           <div className="header-desktop-video">
             {headerDesktopVimeoVideoId ? (
               <div
@@ -141,7 +141,6 @@ const SecondPage = data => {
                 style={{
                   backgroundImage:  `url(${backgroundMediaMobile ? backgroundMediaMobile.fluid.src : ''}`,
                   backgroundSize: "cover",
-                  backgroundColor: "rgb(238, 238, 238)"
                 }}
               >
                  <ReactPlayer

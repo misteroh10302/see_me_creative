@@ -59,7 +59,29 @@ export const FullHeight = styled.div`
     overflow: visible !important;
     position: initial !important;
   }
+  &.project-header {
+    min-height: initial;
+    @media ${device.tablet} {
+      min-height: 100vh;
+    }
+    .header-mobile-video {
+      .video-background {
+        height: initial !important;
+        > div {
+          height: initial !important;
+          > div {
+            overflow: hidden;
+            padding-bottom: 125%;
+          }
+        }
+      }
+    }
+  }
   .header-mobile-video {
+
+    > section {
+      min-height: 517.5px;
+    }
     @media ${device.tablet} {
       display: none;
     }
