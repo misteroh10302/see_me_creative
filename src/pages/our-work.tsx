@@ -14,28 +14,25 @@ import { mySlug } from "../utils.js"
 
 import Footer from "../components/UI/footer/footer"
 import { BackgroundImage, OurWorkWrapper } from "../styled/layoutStyles"
-import BackgroundMedia from '../components/UI/backgroundMedia/backgroundMedia';
+import BackgroundMedia from "../components/UI/backgroundMedia/backgroundMedia"
 import Masonry from "react-masonry-css"
 import styled from "styled-components"
 
-
-const H2Projects =  styled.h2`
+const H2Projects = styled.h2`
   font-size: 2rem !important;
-  margin-top: .5rem !important;
-`;
+  margin-top: 0.5rem !important;
+`
 
 const OurWorkQuery = graphql`
   query OurWorkQuery {
     allContentfulOurWork {
       nodes {
         projects {
-          ... on ContentfulProjectTemplateOne {
-            title
-            clientName
-            thumbnailMedia {
-              fluid(maxWidth: 200){
-                ...GatsbyContentfulFluid_withWebp_noBase64
-              }
+          title
+          clientName
+          thumbnailMedia {
+            fluid(maxWidth: 200) {
+              ...GatsbyContentfulFluid_withWebp_noBase64
             }
           }
         }
@@ -45,7 +42,7 @@ const OurWorkQuery = graphql`
             url
             contentType
           }
-          fluid(maxWidth: 200){
+          fluid(maxWidth: 200) {
             ...GatsbyContentfulFluid_withWebp_noBase64
           }
         }
@@ -72,9 +69,8 @@ const OurWorkQuery = graphql`
   }
 `
 
-
 const OurWork = () => {
-  const [numberOfPosts, setNumberOPosts] = useState(Infinity);
+  const [numberOfPosts, setNumberOPosts] = useState(Infinity)
   const breakpointColumnsObj = {
     default: 4,
     1100: 3,
@@ -85,46 +81,50 @@ const OurWork = () => {
     <StaticQuery
       query={OurWorkQuery}
       render={data => {
-        const { nodes } = data.allContentfulOurWork;
-        const { projects } = nodes[0];
+        const { nodes } = data.allContentfulOurWork
+        const { projects } = nodes[0]
         return (
           <ThemeProvider theme={theme}>
             <Layout>
               <div className="our-work">
                 <SEO title="Our Work" />
                 <BackgroundImage
-                  backgroundImage={nodes[0].backgroundMedia.fluid && nodes[0].backgroundMedia.fluid.src}
+                  backgroundImage={
+                    nodes[0].backgroundMedia.fluid &&
+                    nodes[0].backgroundMedia.fluid.src
+                  }
                 >
-                  <OurWorkWrapper> 
+                  <OurWorkWrapper>
                     <Masonry
-                        breakpointCols={breakpointColumnsObj}
-                        className="my-masonry-grid"
-                        columnClassName="my-masonry-grid_column"
-                      >
-                    {projects &&
-                      projects.map((project, i) => {
-                          if (
-                            project.__typename ===
-                            "ContentfulProjectTemplateOne"
-                          ) {
+                      breakpointCols={breakpointColumnsObj}
+                      className="my-masonry-grid"
+                      columnClassName="my-masonry-grid_column"
+                    >
+                      {projects &&
+                        projects.map((project, i) => {
                           if (i < numberOfPosts) {
+                            if (!project.thumbnailMedia) return null
                             return (
                               <Link
                                 key={uuid()}
-                                to={`/project/${mySlug(project.clientName)}-${mySlug(project.title)}`}
+                                to={`/project/${mySlug(
+                                  project.clientName
+                                )}-${mySlug(project.title)}`}
                               >
-                                  <Img 
-                                    fluid={project.thumbnailMedia.fluid} 
-                                    style={{ maxHeight: "550px" }}
-                                    loading="eager"
-                                    />
-                                <H2Projects>{project.clientName + ':' || ''} {project.title}</H2Projects>
+                                <Img
+                                  fluid={project.thumbnailMedia.fluid}
+                                  style={{ maxHeight: "550px" }}
+                                  loading="eager"
+                                />
+                                <H2Projects>
+                                  {project.clientName + ":" || ""}{" "}
+                                  {project.title}
+                                </H2Projects>
                               </Link>
                             )
                           }
-                        }
-                      })}
-                      </Masonry>
+                        })}
+                    </Masonry>
                   </OurWorkWrapper>
                 </BackgroundImage>
                 <Footer

@@ -34,7 +34,7 @@ const SecondPage = data => {
   const highlightColor = content.highlightColor || false
   const headerDesktopVimeoVideoId = content.headerDesktopVimeoVideoId || null
   const headerMobileVimeoVideoId = content.headerMobileVimeoVideoId || null
-  const clientName =  content.clientName || null;
+  const clientName = content.clientName || null
   const bcgVideo = {
     contentType: "video/mp4",
     url:
@@ -122,44 +122,43 @@ const SecondPage = data => {
               </div>
             ) : (
               <BackgroundImage
-                backgroundImage={backgroundMedia ? backgroundMedia.fluid.src : ""}
+                backgroundImage={
+                  backgroundMedia ? backgroundMedia.fluid.src : ""
+                }
               ></BackgroundImage>
             )}
           </div>
           <div className="header-mobile-video">
-          {headerMobileVimeoVideoId ? (
-            <div
-              className="video-background"
-              style={{
-                backgroundImage: `url(https://vumbnail.com/${headerMobileVimeoVideoId}.jpg)`,
-                backgroundSize: "cover",
-              }}
-            >
-              <iframe
-                background={true}
-                autoPlay
-                muted={true}
-                frameBorder="0"
-                webkitallowfullscreen
-                mozallowfullscreen
-                allowFullScreen
-                src={`https://player.vimeo.com/video/${headerMobileVimeoVideoId}?embedparameter=value&autoplay=1&loop=1&muted=1&controls=false`}
-              />
-            </div>
-          ) : (
-            <BackgroundImage
-              backgroundImage={backgroundMedia ? backgroundMedia.fluid.src : ""}
-            ></BackgroundImage>
-          )}
+            {headerMobileVimeoVideoId ? (
+              <div
+                className="video-background"
+                style={{
+                  backgroundImage: `url(https://vumbnail.com/${headerMobileVimeoVideoId}.jpg)`,
+                  backgroundSize: "cover",
+                }}
+              >
+                <iframe
+                  background={true}
+                  autoPlay
+                  muted={true}
+                  frameBorder="0"
+                  webkitallowfullscreen
+                  mozallowfullscreen
+                  allowFullScreen
+                  src={`https://player.vimeo.com/video/${headerMobileVimeoVideoId}?embedparameter=value&autoplay=1&loop=1&muted=1&controls=false`}
+                />
+              </div>
+            ) : (
+              <BackgroundImage
+                backgroundImage={
+                  backgroundMedia ? backgroundMedia.fluid.src : ""
+                }
+              ></BackgroundImage>
+            )}
           </div>
         </FullHeight>
-        <ProjectWrapper style={{'position': "relative"}}>
-          <BackgroundMedia
-         
-            upsideDown
-            position="absolute"
-            file={bcgVideo}
-          />
+        <ProjectWrapper style={{ position: "relative" }}>
+          <BackgroundMedia upsideDown position="absolute" file={bcgVideo} />
           <header style={{ position: "relative" }}>
             <H1
               highlight={(highlightColor && highlightColor[0]) || false}
@@ -225,7 +224,6 @@ const SecondPage = data => {
                             content.childContentfulSingleColumnTextSingleColumnTextRichTextNode,
                         }}
                       />
-        
                     </SingleColumnWrapper>
                   )
                 } else if (content.images) {

@@ -21,6 +21,7 @@ const VideoContent = (props: VideoContentProps) => {
           height="54vw"
           playing={autoPlay}
           muted={autoPlay}
+          loop={autoPlay}
           controls={!autoPlay}
           config={{
             vimeo: {
@@ -41,6 +42,7 @@ const VideoContent = (props: VideoContentProps) => {
           width="100%"
           height="54vw"
           playing={autoPlay}
+          loop={autoPlay}
           muted={autoPlay}
           controls={!autoPlay}
           config={{
