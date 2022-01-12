@@ -31,6 +31,7 @@ const SecondPage = data => {
   const tags = content.tags || null
   const postContent = content.postContent || null
   const backgroundMedia = content.backgroundMedia || null
+  const backgroundMediaMobile = content.backgroundMediaMobile || null;
   const highlightColor = content.highlightColor || false
   const headerDesktopVimeoVideoId = content.headerDesktopVimeoVideoId || null
   const headerMobileVimeoVideoId = content.headerMobileVimeoVideoId || null
@@ -105,7 +106,7 @@ const SecondPage = data => {
               <div
                 className="video-background"
                 style={{
-                  backgroundImage: `url(https://vumbnail.com/${headerDesktopVimeoVideoId}.jpg)`,
+                  backgroundImage:  `url(${backgroundMedia ? backgroundMedia.fluid.src : ''}`,
                   backgroundSize: "cover",
                   backgroundColor: "rgb(238, 238, 238)"
                 }}
@@ -138,7 +139,7 @@ const SecondPage = data => {
               <div
                 className="video-background"
                 style={{
-                  backgroundImage: `url(https://vumbnail.com/${headerMobileVimeoVideoId}.jpg)`,
+                  backgroundImage:  `url(${backgroundMediaMobile ? backgroundMediaMobile.fluid.src : ''}`,
                   backgroundSize: "cover",
                   backgroundColor: "rgb(238, 238, 238)"
                 }}
@@ -153,7 +154,12 @@ const SecondPage = data => {
                   loop
                   config={{
                     vimeo: {
-                      playerVars: { showinfo: 1 }
+                      playerVars: { 
+                        showinfo: 1
+                      },
+                      playerOptions: { 
+                        playsinline: 1
+                      }
                     }
                   }}
                 />
@@ -162,7 +168,7 @@ const SecondPage = data => {
             ) : (
               <BackgroundImage
                 backgroundImage={
-                  backgroundMedia ? backgroundMedia.fluid.src : ""
+                  backgroundMediaMobile ? backgroundMediaMobile.fluid.src : ""
                 }
               ></BackgroundImage>
             )}
