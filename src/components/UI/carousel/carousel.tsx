@@ -3,7 +3,8 @@ import { Link } from "gatsby"
 import * as React from "react"
 import { useState } from "react"
 import uuid from "react-uuid"
-import Img from "gatsby-image"
+// import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import { mySlug } from "../../../utils.js"
 
@@ -47,7 +48,7 @@ const MyCarousel = (props: CarouselProps) => {
             carouselMedia.map((image, i) => {
               return (
                 <div key={uuid()}>
-                  <Img
+                  <GatsbyImage
                     fluid={image.fluid}
                     objectFit="contain"
                     objectPosition="top center"
@@ -101,7 +102,7 @@ const MyCarousel = (props: CarouselProps) => {
                       </>
                     ) : (
                       <>
-                        <Img
+                        <GatsbyImage
                           fluid={project.thumbnailMedia.fluid}
                           objectFit="cover"
                           loading="lazy"
