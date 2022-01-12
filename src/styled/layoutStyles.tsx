@@ -372,6 +372,7 @@ export const SectionWrapper = styled.section`
           justify-content: center;
           img {
             display: none;
+            margin-bottom: 0;
           }
         }
         .project-title h4{ 
