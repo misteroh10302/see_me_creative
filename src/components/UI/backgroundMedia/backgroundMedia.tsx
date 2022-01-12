@@ -31,6 +31,7 @@ const BackgroundMedia = (props: BackgroundMediaProps) => {
             mozallowfullscreen
             allowFullScreen
             playsInline
+            loop={true}
             src={`https://player.vimeo.com/video/${props.vimeoId}?embedparameter=value&autoplay=1&loop=1&muted=1&controls=false&transparent=false`}
           />
         </div>

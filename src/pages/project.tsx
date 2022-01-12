@@ -149,6 +149,7 @@ const SecondPage = data => {
                   height="100vh"
                   playing={true}
                   muted={true}
+                  playsinline={true}
                   loop
                   config={{
                     vimeo: {
@@ -176,13 +177,13 @@ const SecondPage = data => {
             >
               {clientName}
             </H1>
-            {/* <h2>{title}</h2> */}
             <h2 className="subtitle">{subTitle}</h2>
             <small>{tags && tags.join(", ")}</small>
           </header>
           {postContent && (
             <section className="post-content">
               {postContent.map((content, i) => {
+              
                 if (content.videos)
                   return (
                     <VideoContent

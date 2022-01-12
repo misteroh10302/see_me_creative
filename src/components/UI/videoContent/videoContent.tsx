@@ -8,27 +8,28 @@ const VideoContent = (props: VideoContentProps) => {
   const url = `https://player.vimeo.com/video/${props.content.vimeoId}`
   let desktopClass = ''
   let mobileVideo = null;
-  const autoPlay = autoPlayVideo === null ? false : true;
-
+  const autoPlay = autoPlayVideo === null ||  autoPlayVideo === false ? false : true;
+  
   if (vimeoId) {
     if (vimeoIdMobile) {
       desktopClass = "video-content-desktop"
        mobileVideo = <VideoContentWrapper highlight={props.highlight} className="video-content video-content-mobile">
         <div className="video-inner">
-        <ReactPlayer
-          url={`https://player.vimeo.com/video/${vimeoIdMobile}`}
-          width="100%"
-          height="54vw"
-          playing={autoPlay}
-          muted={autoPlay}
-          loop={autoPlay}
-          controls={!autoPlay}
-          config={{
-            vimeo: {
-              playerVars: { showinfo: 1 }
-            }
-          }}
-        />
+          <ReactPlayer
+            url={`https://player.vimeo.com/video/${vimeoIdMobile}`}
+            width="100%"
+            height="54vw"
+            playing={true}
+            muted={true}
+            loop={autoPlay}
+            controls={!autoPlay}
+            playsinline={true}
+            config={{
+              vimeo: {
+                playerVars: { showinfo: 1 }
+              }
+            }}
+          />
       </div>
       </VideoContentWrapper>
     }
@@ -45,7 +46,7 @@ const VideoContent = (props: VideoContentProps) => {
           loop={autoPlay}
           muted={autoPlay}
           controls={!autoPlay}
-
+        
           config={{
             vimeo: {
               playerVars: { showinfo: 1 }
