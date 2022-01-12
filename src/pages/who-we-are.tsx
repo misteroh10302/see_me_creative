@@ -72,7 +72,7 @@ const whoWeAreQuery = graphql`
                   json
                 }
                 images {
-                  fluid(maxHeight: 300, maxWidth: 300, quality: 100) {
+                  fluid(maxHeight: 400, maxWidth: 400, quality: 100) {
                     ...GatsbyContentfulFluid
                   }
                 }

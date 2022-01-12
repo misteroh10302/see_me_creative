@@ -59,30 +59,27 @@ export const FullHeight = styled.div`
     overflow: visible !important;
     position: initial !important;
   }
+  .header-mobile-video {
+  .video-background {
+    position: relative;
+    padding-top: 125%; /* 720 / 1280 = 0.5625 */
+    height: 100% !important;
+    width: 100% !important;
+    .react-player {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+}
   &.project-header {
     min-height: initial;
     @media ${device.tablet} {
       min-height: 100vh;
     }
-    .header-mobile-video {
-      .video-background {
-        iframe {
-          height: 100vh !important;
-        }
-        height: initial !important;
-        > div {
-          height: initial !important;
-          > div {
-            overflow: hidden;
-            padding-bottom: 150%;
-            
-          }
-        }
-      }
-    }
   }
   .header-mobile-video {
-
+  
     > section {
       min-height: 517.5px;
     }

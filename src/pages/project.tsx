@@ -151,11 +151,12 @@ const SecondPage = data => {
               >
                 <ReactPlayer
                   url={`https://player.vimeo.com/video/${headerMobileVimeoVideoId}`}
-                  width="100vw"
-                  height="100vh"
+                  width="100%"
+                  height="100%"
                   playing={true}
                   muted={true}
                   playsinline={true}
+                  className="react-player"
                   loop
                   config={{
                     vimeo: {
