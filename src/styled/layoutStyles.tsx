@@ -66,12 +66,16 @@ export const FullHeight = styled.div`
     }
     .header-mobile-video {
       .video-background {
+        iframe {
+          height: 100vh !important;
+        }
         height: initial !important;
         > div {
           height: initial !important;
           > div {
             overflow: hidden;
-            padding-bottom: 125%;
+            padding-bottom: 150%;
+            
           }
         }
       }
@@ -202,6 +206,7 @@ export const ProjectWrapper = styled.section`
   min-height: 100vh;
   width: 100%;
   padding: ${props => props.theme.padding.sectionVertical} 3rem;
+
   @media ${device.tablet} {
     padding: ${props => props.theme.padding.sectionVerticalDesktop} 3rem;
   }

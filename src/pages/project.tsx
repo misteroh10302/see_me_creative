@@ -5,7 +5,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Img from "gatsby-image"
 import { mySlug } from "../utils.js"
-import uuid from 'react-uuid'
+import uuid from "react-uuid"
 import { theme } from "../styled/theme"
 import {
   FullHeight,
@@ -31,7 +31,7 @@ const SecondPage = data => {
   const tags = content.tags || null
   const postContent = content.postContent || null
   const backgroundMedia = content.backgroundMedia || null
-  const backgroundMediaMobile = content.backgroundMediaMobile || null;
+  const backgroundMediaMobile = content.backgroundMediaMobile || null
   const highlightColor = content.highlightColor || false
   const headerDesktopVimeoVideoId = content.headerDesktopVimeoVideoId || null
   const headerMobileVimeoVideoId = content.headerMobileVimeoVideoId || null
@@ -100,31 +100,35 @@ const SecondPage = data => {
     <ThemeProvider theme={theme}>
       <Layout>
         <SEO title={`Project ${slug}`} />
-        <FullHeight style={{ position: "relative", "z-index": 10 }} className="project-header">
+        <FullHeight
+          style={{ position: "relative", "z-index": 10 }}
+          className="project-header"
+        >
           <div className="header-desktop-video">
             {headerDesktopVimeoVideoId ? (
               <div
                 className="video-background"
                 style={{
-                  backgroundImage:  `url(${backgroundMedia ? backgroundMedia.fluid.src : ''}`,
+                  backgroundImage: `url(${
+                    backgroundMedia ? backgroundMedia.fluid.src : ""
+                  }`,
                   backgroundSize: "cover",
-                  backgroundColor: "rgb(238, 238, 238)"
+                  backgroundColor: "rgb(238, 238, 238)",
                 }}
               >
-                  <ReactPlayer
-                    url={`https://player.vimeo.com/video/${headerDesktopVimeoVideoId}`}
-                    width="100vw"
-                    height="auto"
-                    playing={true}
-                    muted={true}
-                    loop
-                    config={{
-                      vimeo: {
-                        playerVars: { showinfo: 1 }
-                      }
-                    }}
+                <ReactPlayer
+                  url={`https://player.vimeo.com/video/${headerDesktopVimeoVideoId}`}
+                  width="100vw"
+                  height="auto"
+                  playing={true}
+                  muted={true}
+                  loop
+                  config={{
+                    vimeo: {
+                      playerVars: { showinfo: 1 },
+                    },
+                  }}
                 />
-                
               </div>
             ) : (
               <BackgroundImage
@@ -139,11 +143,13 @@ const SecondPage = data => {
               <div
                 className="video-background"
                 style={{
-                  backgroundImage:  `url(${backgroundMediaMobile ? backgroundMediaMobile.fluid.src : ''}`,
+                  backgroundImage: `url(${
+                    backgroundMediaMobile ? backgroundMediaMobile.fluid.src : ""
+                  }`,
                   backgroundSize: "cover",
                 }}
               >
-                 <ReactPlayer
+                <ReactPlayer
                   url={`https://player.vimeo.com/video/${headerMobileVimeoVideoId}`}
                   width="100vw"
                   height="100vh"
@@ -153,17 +159,16 @@ const SecondPage = data => {
                   loop
                   config={{
                     vimeo: {
-                      playerVars: { 
-                        showinfo: 1
+                      playerVars: {
+                        showinfo: 1,
                       },
-                      playerOptions: { 
-                        playsinline: 1
-                      }
-                    }
+                      playerOptions: {
+                        playsinline: 1,
+                      },
+                    },
                   }}
                 />
               </div>
-            
             ) : (
               <BackgroundImage
                 backgroundImage={
@@ -173,7 +178,10 @@ const SecondPage = data => {
             )}
           </div>
         </FullHeight>
-        <ProjectWrapper style={{ position: "relative" }}>
+        <ProjectWrapper
+          className={headerMobileVimeoVideoId && "has-mobile-video-header"}
+          style={{ position: "relative" }}
+        >
           <BackgroundMedia upsideDown position="absolute" file={bcgVideo} />
           <header style={{ position: "relative" }}>
             <H1
@@ -188,7 +196,6 @@ const SecondPage = data => {
           {postContent && (
             <section className="post-content">
               {postContent.map((content, i) => {
-              
                 if (content.videos)
                   return (
                     <VideoContent
@@ -254,7 +261,7 @@ const SecondPage = data => {
                           orientation = "square"
                         return (
                           <Img
-                          key={uuid()}
+                            key={uuid()}
                             backgroundColor="#eeeeee"
                             style={{ maxHeight: "90vh" }}
                             fluid={img.fluid}
