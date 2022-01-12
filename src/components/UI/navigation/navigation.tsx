@@ -61,10 +61,12 @@ const Navigation = (props: NavigationProps) => {
         <span></span>
       </HamburgerButton>
       <MobileNavItems open={open}>
-        <Link to="/who-we-are">About</Link>
-        <Link to="/our-work">Our Work</Link>
-        <a target="_blank" href="mailto:seemecreative@gmail.com">Contact</a>
-        <a target="_blank" href="https://www.instagram.com/see.me.creative">Social</a>
+        <ul>
+          <li><Link activeClassName="active" to="/who-we-are">About</Link></li>
+          <li><Link activeClassName="active" to="/our-work">Our Work</Link></li>
+          <li><a target="_blank" href="mailto:seemecreative@gmail.com">Contact</a></li>
+          <li><a target="_blank" href="https://www.instagram.com/see.me.creative">Social</a></li>
+        </ul>
       </MobileNavItems>
       <div className="main-navigation">
         <NavLeftnavRight

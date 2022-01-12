@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Link } from "gatsby"
 import * as React from "react"
 import { useState } from "react"
@@ -80,7 +81,6 @@ const MyCarousel = (props: CarouselProps) => {
               if (i < numberOfPosts.number) {
                 return (
                   <Link to={`/project/${mySlug(project.clientName)}-${mySlug(project.title)}`} key={uuid()}>
-                
                     {project.thumbnailMedia.file.contentType.includes(
                       "video"
                     ) ? (
@@ -94,9 +94,9 @@ const MyCarousel = (props: CarouselProps) => {
                         </video>
                         <div className="project-title">
                             {clientLogo && (
-                              <img src={clientLogo.fluid.src} width={150} alt={`Logo for ${clientName}`}/>
+                              <img src={clientLogo.fluid.src} width={90} alt={`Logo for ${clientName}`}/>
                             )}
-                          <h4>{project.title}</h4>
+                          <h4><span className="client-name-mobile">{clientName}: </span>{project.title}</h4>
                         </div>
                       </>
                     ) : (
@@ -104,13 +104,14 @@ const MyCarousel = (props: CarouselProps) => {
                         <Img
                           fluid={project.thumbnailMedia.fluid}
                           objectFit="cover"
+                          loading="lazy"
                           style={{ maxHeight: "550px", marginBottom: "3rem" }}
                         />
                         <div className="project-title">
                             {clientLogo && (
-                              <img src={clientLogo.fluid.src} width={150} alt={`Logo for ${clientName}`}/>
+                              <img src={clientLogo.fluid.src} width={90} alt={`Logo for ${clientName}`}/>
                             )}
-                            <h4>{project.title}</h4>
+                            <h4><span className="client-name-mobile">{clientName}: </span>{project.title}</h4>
                         </div>
                       </>
                     )}

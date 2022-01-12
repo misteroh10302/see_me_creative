@@ -156,6 +156,11 @@ export const WhoWeAreGrid = styled.div`
     min-height: 514px;
     overflow: hidden;
   }
+  div..image-and-text {
+    .text-area {
+      padding-bottom: 0;
+    }
+  }
    ${grid}
   grid-template-columns: 1fr;
   h2 {
@@ -164,7 +169,7 @@ export const WhoWeAreGrid = styled.div`
   @media ${device.laptop} {
     grid-template-columns: 1fr 1fr 1fr;
     h2 {
-      font-size: ${props => props.theme.projectHeader.fontSize} !important;
+      font-size: ${props => props.theme.heading2.fontSize} !important;
     }
   } 
 `
@@ -213,6 +218,7 @@ export const ProjectWrapper = styled.section`
         margin-bottom: 0rem;
       }
     }
+   
     .post-text-wrapper {
       margin-bottom: 3rem;
       &:first-child {
@@ -268,7 +274,7 @@ export const ProjectWrapper = styled.section`
       // padding-bottom: 50.25%; /*16:9*/
       height: initial;
       overflow: hidden;
-     
+      
       video {
         position: absolute;
         top: 0;
@@ -322,11 +328,17 @@ export const SectionWrapper = styled.section`
     .my-masonry-grid {
       padding:0 3rem;
     }
+    .client-name-mobile {
+      @media ${device.tablet} {
+          display: none;
+      }
+    }
     .my-masonry-grid_column {
       @media ${device.laptop} {
         height: 55vw;
         overflow: hidden;
       }
+      
       a {
         display: block;
         position: relative;
@@ -780,12 +792,17 @@ export const LayoutWrapper = styled.div`
         position: relative;
       }
        nav {
-        overflow: visible;
+         height: 80vh;
+        margin-top: 0rem;
+        section {
+          top: 5rem
+        }
       }
   }
   .who-we-are-page {
     main nav {
-      overflow: visible;
+      height: 100vh;
+      margin-top: -13rem;
     }
     main > div {
       z-index: 0;
@@ -832,18 +849,18 @@ export const LayoutWrapper = styled.div`
     transform: translate(-50%, -50%);
   }
 
-  @media (min-aspect-ratio: 16/9) {
-  .video-background iframe {
-    /* height = 100 * (9 / 16) = 56.25 */
-    height: 56.25vw;
-  }
-}
-@media (max-aspect-ratio: 16/9) {
-  .video-background iframe {
-    /* width = 100 / (9 / 16) = 177.777777 */
-    width: 177.78vh;
-  }
-}
+      @media (min-aspect-ratio: 16/9) {
+      .video-background iframe {
+        /* height = 100 * (9 / 16) = 56.25 */
+        height: 56.25vw !important;
+      }
+    }
+    @media (max-aspect-ratio: 16/9) {
+      .video-background iframe {
+        /* width = 100 / (9 / 16) = 177.777777 */
+        width: 177.78vh !important;
+      }
+    }
 
   .our-work {
     background-color: black;

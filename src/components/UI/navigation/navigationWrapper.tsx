@@ -17,8 +17,9 @@ export const NavigationWrapper = styled.nav`
     text-decoration: none;
     font-weight: 400;
     &:visited {
-        color: ${props => props.theme.colors.green};
+        color: white;
     }
+    
   }
   .logo {
     width: 124px;
@@ -92,7 +93,7 @@ export const HamburgerButton = styled.button`
   background-color: transparent;
   position: fixed;
   left: 3rem;
-  top: 4rem;
+  top: 3rem;
   z-index: 5;
   display: block;
   padding:0;
@@ -126,21 +127,36 @@ export const MobileNavItems = styled.div`
   width: 100vw;
   background-color: black;
   color: white;
-  display: flex;
-  justify-content: center;
+  display: block;
+  justify-content: start;
   flex-direction: column;
+  padding-top: 8rem;
   top: 0;
   left: 0;
   z-index: 1;
-  display: ${props => props.open ? "flex" : "none"};
+  display: ${props => props.open ? "block" : "none"};
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+  }
   a {
     color: white;
     font-size: 3rem;
     line-height: 4rem;
-    font-family: ${theme.font.seeSans};
-    text-transform: uppercase;
+    font-family: ${theme.font.serif};
     font-weight: 400;
     letter-spacing: .05rem;
+    padding-bottom: 5px;
+    border-bottom: 1px solid transparent;
+    display: inline;
+    &.active {
+      border-bottom: 1px solid white;
+    }
   }
   @media ${device.tablet} {
      display: none;

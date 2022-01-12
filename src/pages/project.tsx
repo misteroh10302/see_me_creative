@@ -5,7 +5,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Img from "gatsby-image"
 import { mySlug } from "../utils.js"
-
+import uuid from 'react-uuid'
 import { theme } from "../styled/theme"
 import {
   FullHeight,
@@ -107,18 +107,23 @@ const SecondPage = data => {
                 style={{
                   backgroundImage: `url(https://vumbnail.com/${headerDesktopVimeoVideoId}.jpg)`,
                   backgroundSize: "cover",
+                  backgroundColor: "rgb(238, 238, 238)"
                 }}
               >
-                <iframe
-                  background={true}
-                  autoPlay
-                  muted={true}
-                  frameBorder="0"
-                  webkitallowfullscreen
-                  mozallowfullscreen
-                  allowFullScreen
-                  src={`https://player.vimeo.com/video/${headerDesktopVimeoVideoId}?embedparameter=value&autoplay=1&loop=1&muted=1&controls=false`}
+                  <ReactPlayer
+                    url={`https://player.vimeo.com/video/${headerDesktopVimeoVideoId}`}
+                    width="100vw"
+                    height="auto"
+                    playing={true}
+                    muted={true}
+                    loop
+                    config={{
+                      vimeo: {
+                        playerVars: { showinfo: 1 }
+                      }
+                    }}
                 />
+                
               </div>
             ) : (
               <BackgroundImage
@@ -135,19 +140,24 @@ const SecondPage = data => {
                 style={{
                   backgroundImage: `url(https://vumbnail.com/${headerMobileVimeoVideoId}.jpg)`,
                   backgroundSize: "cover",
+                  backgroundColor: "rgb(238, 238, 238)"
                 }}
               >
-                <iframe
-                  background={true}
-                  autoPlay
+                 <ReactPlayer
+                  url={`https://player.vimeo.com/video/${headerMobileVimeoVideoId}`}
+                  width="100vw"
+                  height="100vh"
+                  playing={true}
                   muted={true}
-                  frameBorder="0"
-                  webkitallowfullscreen
-                  mozallowfullscreen
-                  allowFullScreen
-                  src={`https://player.vimeo.com/video/${headerMobileVimeoVideoId}?embedparameter=value&autoplay=1&loop=1&muted=1&controls=false`}
+                  loop
+                  config={{
+                    vimeo: {
+                      playerVars: { showinfo: 1 }
+                    }
+                  }}
                 />
               </div>
+            
             ) : (
               <BackgroundImage
                 backgroundImage={
@@ -238,6 +248,7 @@ const SecondPage = data => {
                           orientation = "square"
                         return (
                           <Img
+                          key={uuid()}
                             backgroundColor="#eeeeee"
                             style={{ maxHeight: "90vh" }}
                             fluid={img.fluid}

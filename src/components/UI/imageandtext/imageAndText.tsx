@@ -37,7 +37,7 @@ const ImageAndText = (props: ImageAndTextProps) => {
         return (
           <Fade key={uuid()} effect="fadeInUp">
             <Img 
-              objectFit="cover"
+              loading="lazy"
               style={{ maxHeight: title ? "380px": "initial" }}
               fluid={image.fluid} 
             />

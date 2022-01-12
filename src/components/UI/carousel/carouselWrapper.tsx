@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { device } from "../../../styled/theme"
 
 export const CarouselWrapper = styled.div`
     text-align: center;
@@ -65,4 +66,5 @@ export const CarouselWrapper = styled.div`
         right:0;
         border:0;
     }
+    
 `

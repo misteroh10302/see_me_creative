@@ -45,6 +45,7 @@ const VideoContent = (props: VideoContentProps) => {
           loop={autoPlay}
           muted={autoPlay}
           controls={!autoPlay}
+
           config={{
             vimeo: {
               playerVars: { showinfo: 1 }
