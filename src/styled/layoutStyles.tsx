@@ -60,18 +60,18 @@ export const FullHeight = styled.div`
     position: initial !important;
   }
   .header-mobile-video {
-  .video-background {
-    position: relative;
-    padding-top: 125%; /* 720 / 1280 = 0.5625 */
-    height: 100% !important;
-    width: 100% !important;
-    .react-player {
-      position: absolute;
-      top: 0;
-      left: 0;
+    .video-background {
+      position: relative;
+      padding-top: 125%; /* 720 / 1280 = 0.5625 */
+      height: 100% !important;
+      width: 100% !important;
+      .react-player {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
     }
   }
-}
   &.project-header {
     min-height: initial;
     @media ${device.tablet} {
@@ -305,7 +305,7 @@ export const ProjectWrapper = styled.section`
         left: 0;
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: fill;
       }
     }
     @media ${device.tablet} {
@@ -852,7 +852,7 @@ export const LayoutWrapper = styled.div`
   }
 
   video,iframe{
-    object-fit: cover;
+    object-fit: fill;
     object-position: center;
     height: 100vh;
     width:100vw;
