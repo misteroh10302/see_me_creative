@@ -7,7 +7,6 @@ import ReactPlayer from "react-player"
 
 const BackgroundMedia = (props: BackgroundMediaProps) => {
   const { position, vimeoId, vimeoIdMobile } = props
-  console.log(props.file.url)
   let styles = {}
   if (props.upsideDown) {
     styles = {
