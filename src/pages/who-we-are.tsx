@@ -8,7 +8,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import uuid from "react-uuid"
 
-import BackgroundMedia from '../components/UI/backgroundMedia/backgroundMedia';
+import BackgroundMedia from "../components/UI/backgroundMedia/backgroundMedia"
 import Section from "../components/section"
 import Footer from "../components/UI/footer/footer"
 
@@ -113,8 +113,7 @@ const WhoWeArePage = () => (
                   <BackgroundMedia vimeoId={nodes[0].background.vimeoId} />
                 </FullHeight>
                 {whoWeAreContent &&
-                  whoWeAreContent.map((section) => {
-             
+                  whoWeAreContent.map((section: any) => {
                     return (
                       <Section
                         key={uuid()}
@@ -126,10 +125,11 @@ const WhoWeArePage = () => (
                   })}
               </ProjectCollectionWrapper>
             )}
-            <Footer 
-            textColor="light"
-            content={nodes[0].footer} 
-            bgm={nodes[0].footerBackground} />
+            <Footer
+              textColor="light"
+              content={nodes[0].footer}
+              bgm={nodes[0].footerBackground}
+            />
           </Layout>
         </ThemeProvider>
       )

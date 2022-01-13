@@ -7,6 +7,7 @@ import ReactPlayer from "react-player"
 
 const BackgroundMedia = (props: BackgroundMediaProps) => {
   const { position, vimeoId, vimeoIdMobile } = props
+  console.log(props.file.url)
   let styles = {}
   if (props.upsideDown) {
     styles = {
@@ -69,7 +70,7 @@ const BackgroundMedia = (props: BackgroundMediaProps) => {
             loop={true}
             playsInline={true}
           >
-            <source src={props.file.url} type="video/mp4" />
+            <source src={`https:${props.file.url}`} type="video/mp4" />
             Sorry, your browser doesn't support embedded videos.
           </video>
         </div>

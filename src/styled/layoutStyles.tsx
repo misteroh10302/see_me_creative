@@ -836,6 +836,9 @@ export const LayoutWrapper = styled.div`
   }
   .homepage {
     .video-background {
+      background-color: black;
+    }
+    .video-background {
       @media screen and (max-width: 768px) {
         height: initial !important;
         .mobile-video-background {

@@ -17,7 +17,7 @@ const Section = (props: SectionProps) => {
       backgroundImage={props.bgm ? props.bgm.file.url + "?&fm=webp" : ""}
     >
       {content &&
-        content.map((content, i) => {
+        content.map((content, i: number) => {
           if (content.__typename === "ContentfulOfferings") {
             return (
               <OurOfferingsWrapper>

@@ -38,7 +38,7 @@ const homepageQueryFragment = graphql`
             backgroundMedia {
             file {
                 url
-            }
+             }
             }
             content {
             ... on ContentfulButton {
@@ -60,7 +60,7 @@ const homepageQueryFragment = graphql`
                 tags
                 backgroundMedia {
                     fluid(maxWidth: 200) {
-                    ...GatsbyContentfulFluid
+                        ...GatsbyContentfulFluid_withWebp_noBase64
                     }
                     file {
                     contentType

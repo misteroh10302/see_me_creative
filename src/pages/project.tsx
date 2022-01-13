@@ -39,7 +39,7 @@ const SecondPage = data => {
   const bcgVideo = {
     contentType: "video/mp4",
     url:
-      "http://videos.ctfassets.net/ralvgwmdsf6z/3ew8brUJKFZ5vuQ2vjgZLa/af57c51b0158c7cad8d49f8fb4c1e380/Grid_Wave_7_-_WB.mp4",
+      "//videos.ctfassets.net/ralvgwmdsf6z/3ew8brUJKFZ5vuQ2vjgZLa/af57c51b0158c7cad8d49f8fb4c1e380/Grid_Wave_7_-_WB.mp4",
   }
 
   const footerContent = {
