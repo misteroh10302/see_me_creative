@@ -45,7 +45,7 @@ function SEO(props: SEOProps) {
         },
         {
           property: `og:image`,
-          content: 'http://images.ctfassets.net/ralvgwmdsf6z/6cIYaKuSK3xgoXAYYzdhzj/cf1e3407b93839e8bac9d39c08a82068/MCM-01.png?w=2400&h=1350&q=50',
+          content: 'https://images.ctfassets.net/ralvgwmdsf6z/2VAgS1DcydSSePrLn8YfBX/684b55e05011c3a04c74e937a9b717c1/DRAFT_01.jpeg',
         },
         {
           property: `og:type`,
