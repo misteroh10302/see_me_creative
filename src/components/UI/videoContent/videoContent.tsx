@@ -38,21 +38,21 @@ const VideoContent = (props: VideoContentProps) => {
       {mobileVideo}
       <VideoContentWrapper highlight={props.highlight} className={`video-content ${desktopClass}`}>
         <div className="video-inner">
-        <ReactPlayer
-          url={url}
-          width="100%"
-          height="54vw"
-          playing={autoPlay}
-          loop={autoPlay}
-          muted={autoPlay}
-          controls={!autoPlay}
-        
-          config={{
-            vimeo: {
-              playerVars: { showinfo: 1 }
-            }
-          }}
-        />
+          <ReactPlayer
+            url={url}
+            width="100%"
+            height="54vw"
+            playing={autoPlay}
+            loop={autoPlay}
+            muted={autoPlay}
+            controls={!autoPlay}
+          
+            config={{
+              vimeo: {
+                playerVars: { showinfo: 1 }
+              }
+            }}
+          />
        </div>
       </VideoContentWrapper>
       </>

@@ -62,7 +62,7 @@ export const FullHeight = styled.div`
   .header-mobile-video {
     .video-background {
       position: relative;
-      padding-top: 125%; /* 720 / 1280 = 0.5625 */
+      padding-top: 138%; /* 6 / 4 = 0.5625 */
       height: 100% !important;
       width: 100% !important;
       .react-player {
@@ -835,6 +835,14 @@ export const LayoutWrapper = styled.div`
     }
   }
   .homepage {
+    .video-background {
+      @media screen and (max-width: 768px) {
+        height: initial !important;
+        .mobile-video-background {
+          padding-top: 128%;
+        }
+      }
+    }
     .about- {
       padding-top: 5rem;
       padding-bottom: 4.5rem;
@@ -844,7 +852,7 @@ export const LayoutWrapper = styled.div`
     }
     section:nth-child(1) {
       .video-background {
-        height: 70vh;
+        height: 100vh;
         @media ${device.laptop} {
           height: 100vh;
         }
@@ -878,8 +886,17 @@ export const LayoutWrapper = styled.div`
       .video-background iframe {
         /* height = 100 * (9 / 16) = 56.25 */
         height: 56.25vw !important;
+     
       }
     }
+    @media only screen
+                   and (max-device-width: 640px) 
+                   and (orientation: landscape) {
+                    .video-background iframe {
+                      top: -2rem !important;
+                      height: 100% !important;
+                    }
+      }
     @media (max-aspect-ratio: 16/9) {
       .video-background iframe {
         /* width = 100 / (9 / 16) = 177.777777 */

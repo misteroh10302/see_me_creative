@@ -26,12 +26,13 @@ const IndexPage = () => (
             <div className="homepage">
               <SEO title="Home" />
               {homepageContent &&
-                homepageContent.map((section, i) => {
+                homepageContent.map((section: any, i: number) => {
                   if (section.__typename === "ContentfulBackgroundMedia") {
                     return (
                       <BackgroundMedia
                         title={section.title}
                         vimeoId={section.vimeoId}
+                        vimeoIdMobile={section.vimeoIdMobile}
                         key={uuid()}
                       />
                     )
@@ -46,11 +47,12 @@ const IndexPage = () => (
                     )
                   }
                 })}
-              <Footer 
+              <Footer
                 textColor="light"
-                content={footer} 
-                bgm={footerBackground} />
-              </div>
+                content={footer}
+                bgm={footerBackground}
+              />
+            </div>
           </Layout>
         </ThemeProvider>
       )
@@ -84,6 +86,8 @@ const homepageQuery = graphql`
         ... on ContentfulBackgroundMedia {
           id
           vimeoId
+          vimeoIdMobile
+          title
         }
         ... on ContentfulSection {
           id

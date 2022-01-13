@@ -1,10 +1,19 @@
 import styled from "styled-components"
+import { device } from "../../../styled/theme"
 
 export const BackgroundMediaWrapper = styled.section`
-    /* height: 100vh; */
-    position: ${props=> props.position};
-    ${props => ({...props.styles})};
-    > div {
-        /* height: 100vh; */
+  position: ${props => props.position};
+  ${props => ({ ...props.styles })};
+
+  .desktop-video-background {
+    display: none;
+  }
+  @media ${device.tablet} {
+    .mobile-video-background {
+      display: none;
     }
+    .desktop-video-background {
+      display: block;
+    }
+  }
 `
