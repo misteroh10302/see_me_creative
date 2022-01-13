@@ -836,7 +836,12 @@ export const LayoutWrapper = styled.div`
       padding-top: 151.5%;
     }
   }
-  .homepage {
+  .homepage, .who-we-are-page {
+    .who-we-are-header-wrapper {
+      @media screen and (max-width: 768px) {
+        min-height: initial !important;
+      }
+    }
     .video-background {
       background-color: black;
     }

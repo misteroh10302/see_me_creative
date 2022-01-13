@@ -20,6 +20,7 @@ const whoWeAreQuery = graphql`
         background {
           title
           vimeoId
+          vimeoIdMobile
         }
         footer {
           content {
@@ -109,8 +110,8 @@ const WhoWeArePage = () => (
             <SEO title="Who We Are" />
             {nodes && (
               <ProjectCollectionWrapper>
-                <FullHeight className="full-">
-                  <BackgroundMedia vimeoId={nodes[0].background.vimeoId} />
+                <FullHeight className="full- who-we-are-header-wrapper">
+                  <BackgroundMedia vimeoIdMobile={nodes[0].background.vimeoId} vimeoId={nodes[0].background.vimeoId} />
                 </FullHeight>
                 {whoWeAreContent &&
                   whoWeAreContent.map((section: any) => {
