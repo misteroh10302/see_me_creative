@@ -98,7 +98,7 @@ const SecondPage = data => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Layout className={mySlug(slug + '-' + clientName)}>
+      <Layout className={mySlug(slug + "-" + clientName)}>
         <SEO title={`Project ${slug}`} />
         <FullHeight
           style={{ position: "relative", "z-index": 10 }}
@@ -109,9 +109,7 @@ const SecondPage = data => {
               <div
                 className="video-background"
                 style={{
-                  backgroundImage: `url(${
-                    backgroundMedia ? backgroundMedia.fluid.src : ""
-                  }`,
+                  backgroundImage: `url(${backgroundMedia ? backgroundMedia.fluid.src : ""}`,
                   backgroundSize: "cover",
                   backgroundColor: "rgb(238, 238, 238)",
                 }}
@@ -143,9 +141,7 @@ const SecondPage = data => {
               <div
                 className="video-background"
                 style={{
-                  backgroundImage: `url(${
-                    backgroundMediaMobile ? backgroundMediaMobile.fluid.src : ""
-                  }`,
+                  backgroundImage: `url(${backgroundMediaMobile ? backgroundMediaMobile.fluid.src : ""}`,
                   backgroundSize: "cover",
                 }}
               >

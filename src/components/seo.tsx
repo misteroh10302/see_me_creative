@@ -44,6 +44,10 @@ function SEO(props: SEOProps) {
           content: metaDescription,
         },
         {
+          property: `og:image`,
+          content: 'http://images.ctfassets.net/ralvgwmdsf6z/6cIYaKuSK3xgoXAYYzdhzj/cf1e3407b93839e8bac9d39c08a82068/MCM-01.png?w=2400&h=1350&q=50',
+        },
+        {
           property: `og:type`,
           content: `website`,
         },

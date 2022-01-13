@@ -11,7 +11,7 @@ import { StaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import "./layout.css"
 
-import { LayoutWrapper, FooterWrapper } from '../styled/layoutStyles';
+import { LayoutWrapper, FooterWrapper } from "../styled/layoutStyles"
 
 const Layout = (props: LayoutProps) => (
   <StaticQuery
@@ -24,7 +24,6 @@ const Layout = (props: LayoutProps) => (
         }
       }
     `}
- 
     render={data => (
       <LayoutWrapper>
         <Header siteTitle={data.site.siteMetadata.title} />
@@ -37,7 +36,7 @@ const Layout = (props: LayoutProps) => (
 )
 
 interface LayoutProps {
-  children: any;
+  children: any
   className: string
 }
 

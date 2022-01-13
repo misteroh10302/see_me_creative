@@ -112,11 +112,9 @@ const OurWork = () => {
                                 )}-${mySlug(project.title)}`}
                               >
                                 <Img
-                                              objectFit="cover"
-
+                                  objectFit="cover"
                                   fluid={project.thumbnailMedia.fluid}
                                   style={{ maxHeight: "550px" }}
-                                  
                                 />
                                 <H2Projects>
                                   {project.clientName + ":" || ""}{" "}

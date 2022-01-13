@@ -1,7 +1,7 @@
 import * as React from "react"
 
 // eslint-disable-next-line prettier/prettier
-import  Navigation  from "./UI/navigation/navigation"
+import Navigation from "./UI/navigation/navigation"
 
 const Header = (props: HeaderProps) => (
   <header>

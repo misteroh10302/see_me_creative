@@ -22,9 +22,10 @@ export const Button = styled.a`
   max-width: 300px;
   width: 100%;
   border-radius: 40px;
-  background-color: ${props => props.invert === true ? "black" : 'white'};;
+  background-color: ${(props: any) =>
+    props.invert === true ? "black" : "white"};
   outline: 0;
-  color: ${props => props.invert === true ? "white" : 'black'};
+  color: ${(props: any) => (props.invert === true ? "white" : "black")};
   border: 1px solid white;
   padding: 1.5rem 0rem;
   margin: 1rem auto;
@@ -54,7 +55,7 @@ export const Button = styled.a`
 ----------------------------- */
 export const FullHeight = styled.div`
   min-height: 100vh;
-  z-index: 10;  
+  z-index: 10;
   .gatsby-image-wrapper {
     overflow: visible !important;
     position: initial !important;
@@ -79,7 +80,6 @@ export const FullHeight = styled.div`
     }
   }
   .header-mobile-video {
-  
     > section {
       min-height: 517.5px;
     }
@@ -105,16 +105,17 @@ export const HalfHeight = styled.div`
 
 export const BackgroundImage = styled.section`
   min-height: 100vh;
-  background: ${props => `url(${props.backgroundImage}) no-repeat center`};
+  background: ${(props: any) =>
+    `url(${props.backgroundImage}) no-repeat center`};
   background-size: cover;
-  padding: ${props => props.theme.padding.sectionVertical}
-    ${props => props.theme.padding.desktop};
+  padding: ${(props: any) => props.theme.padding.sectionVertical}
+    ${(props: any) => props.theme.padding.desktop};
 `
 
 export const FooterWrapper = styled.footer`
   min-height: 100vh;
   ${vertialAlign}
-  background-color: ${props => props.theme.colors.green};
+  background-color: ${(props: any) => props.theme.colors.green};
 `
 
 export const OurWorkWrapper = styled.div`
@@ -140,10 +141,11 @@ export const OurOfferingsWrapper = styled.div`
     font-weight: 100;
     letter-spacing: ${theme.desktopHeading3.letterSpacing};
   }
-  .text-area  {
+  .text-area {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
-    h3, p {
+    h3,
+    p {
       text-align: left !important;
     }
     p {
@@ -164,11 +166,11 @@ export const OurOfferingsWrapper = styled.div`
   grid-template-columns: 1fr;
   @media ${device.laptop} {
     grid-template-columns: 1fr 1fr 1fr;
-  } 
+  }
 `
 
 export const WhoWeAreGrid = styled.div`
-  padding: ${props => props.theme.padding.sectionVertical} 0;
+  padding: ${(props: any) => props.theme.padding.sectionVertical} 0;
   max-width: 100%;
   > div {
     color: white;
@@ -184,7 +186,7 @@ export const WhoWeAreGrid = styled.div`
       padding-bottom: 0;
     }
   }
-   ${grid}
+  ${grid}
   grid-template-columns: 1fr;
   h2 {
     font-size: 3rem;
@@ -192,36 +194,37 @@ export const WhoWeAreGrid = styled.div`
   @media ${device.laptop} {
     grid-template-columns: 1fr 1fr 1fr;
     h2 {
-      font-size: ${props => props.theme.heading2.fontSize} !important;
+      font-size: ${(props: any) => props.theme.heading2.fontSize} !important;
     }
-  } 
+  }
 `
 
 export const ProjectWrapper = styled.section`
-  background: ${props => `url(${props.backgroundImage}) no-repeat center`};
+  background: ${(props: any) =>
+    `url(${props.backgroundImage}) no-repeat center`};
   background-size: cover;
   min-height: 100vh;
   width: 100%;
-  padding: ${props => props.theme.padding.sectionVertical} 3rem;
+  padding: ${(props: any) => props.theme.padding.sectionVertical} 3rem;
 
   @media ${device.tablet} {
-    padding: ${props => props.theme.padding.sectionVerticalDesktop} 3rem;
+    padding: ${(props: any) => props.theme.padding.sectionVerticalDesktop} 3rem;
   }
   header {
     @media ${device.tablet} {
       max-width: 840px;
       margin: 0 auto;
       margin-bottom: 0rem;
-      padding-left:0;
-      padding-right:0;
+      padding-left: 0;
+      padding-right: 0;
     }
   }
 
   h2.subtitle {
     color: black;
-    font-family: ${props => props.theme.font.serif}, serif;
-    font-size: ${props => props.theme.heading1.fontSize};
-    letter-spacing: ${props => props.theme.heading1.letterSpacing};
+    font-family: ${(props: any) => props.theme.font.serif}, serif;
+    font-size: ${(props: any) => props.theme.heading1.fontSize};
+    letter-spacing: ${(props: any) => props.theme.heading1.letterSpacing};
     font-weight: 100;
     margin: 2rem 0;
   }
@@ -238,22 +241,22 @@ export const ProjectWrapper = styled.section`
   section.post-content {
     > div:first-child {
       margin-bottom: 0rem;
-      @media ${device.tablet} { 
+      @media ${device.tablet} {
         margin-bottom: 0rem;
       }
     }
-   
+
     .post-text-wrapper {
       margin-bottom: 3rem;
       &:first-child {
         margin-bottom: 3rem;
-        @media ${device.tablet} { 
+        @media ${device.tablet} {
           margin-bottom: 9.2rem;
         }
       }
       @media ${device.tablet} {
         max-width: 840px;
-        margin-left:  auto;
+        margin-left: auto;
         margin-right: auto;
         gap: 3rem;
       }
@@ -270,7 +273,7 @@ export const ProjectWrapper = styled.section`
         text-decoration: none;
       }
       b {
-        font-family: ${props => props.theme.font.serif}, serif;
+        font-family: ${(props: any) => props.theme.font.serif}, serif;
         font-size: 2rem;
         letter-spacing: -0.035rem;
         font-weight: 500;
@@ -298,7 +301,7 @@ export const ProjectWrapper = styled.section`
       // padding-bottom: 50.25%; /*16:9*/
       height: initial;
       overflow: hidden;
-      
+
       video {
         position: absolute;
         top: 0;
@@ -309,7 +312,6 @@ export const ProjectWrapper = styled.section`
       }
     }
     @media ${device.tablet} {
-
       > div {
         h3,
         p {
@@ -324,7 +326,6 @@ export const ProjectWrapper = styled.section`
             line-height: 3.2rem;
           }
         }
-       
       }
     }
   }
@@ -335,26 +336,26 @@ export const ProjectCollectionWrapper = styled.div`
 `
 
 export const SectionWrapper = styled.section`
-  background: black ${props => `url(${props.backgroundImage}) no-repeat center`};
+  background: black
+    ${(props: any) => `url(${props.backgroundImage}) no-repeat center`};
   background-size: cover;
   min-height: 100vh;
   width: 100%;
-  padding: ${props => props.theme.padding.sectionVertical}
-    2rem;
-    @media ${device.tablet} {
-      padding: ${props => props.theme.padding.sectionVertical}
-    ${props => props.theme.padding.desktop};
-    }
+  padding: ${(props: any) => props.theme.padding.sectionVertical} 2rem;
+  @media ${device.tablet} {
+    padding: ${(props: any) => props.theme.padding.sectionVertical}
+      ${(props: any) => props.theme.padding.desktop};
+  }
   &.projects {
     padding: 0em 0 5rem;
     position: relative;
     min-height: initial;
     .my-masonry-grid {
-      padding:0 3rem;
+      padding: 0 3rem;
     }
     .client-name-mobile {
       @media ${device.tablet} {
-          display: none;
+        display: none;
       }
     }
     .my-masonry-grid_column {
@@ -362,7 +363,7 @@ export const SectionWrapper = styled.section`
         height: 55vw;
         overflow: hidden;
       }
-      
+
       a {
         display: block;
         position: relative;
@@ -375,8 +376,8 @@ export const SectionWrapper = styled.section`
             margin-bottom: 0;
           }
         }
-        .project-title h4{ 
-          font-family: ${props => props.theme.font.serif};
+        .project-title h4 {
+          font-family: ${(props: any) => props.theme.font.serif};
           font-size: 2rem;
         }
         .gatsby-image-wrapper {
@@ -392,7 +393,7 @@ export const SectionWrapper = styled.section`
               text-align: center;
               h4 {
                 color: white;
-              } 
+              }
               img {
                 opacity: 1;
               }
@@ -417,7 +418,7 @@ export const SectionWrapper = styled.section`
           text-align: center;
           color: transparent;
           width: 100%;
-          font-family: ${props => props.theme.font.serif};
+          font-family: ${(props: any) => props.theme.font.serif};
           font-size: 2rem;
         }
         img {
@@ -433,8 +434,7 @@ export const SectionWrapper = styled.section`
       margin: 0 auto;
     }
     &.about-,
-    &.our-perspective
-    {
+    &.our-perspective {
       > div {
         max-width: 900px;
       }
@@ -460,7 +460,7 @@ export const SectionWrapper = styled.section`
   &.who-we-are-content-info {
     position: relative;
     z-index: 99;
-   
+
     p {
       text-align: left;
       margin: 0rem 0;
@@ -483,20 +483,20 @@ export const SectionWrapper = styled.section`
     }
     > .text-area {
       p {
-          font-size: ${theme.p.fontSize} !important;
-          line-height: 3.6rem;
-          letter-spacing: -0.66px;
-          text-align: left;
-          margin-bottom: 2rem;
-          @media ${device.laptop} {
-            font-size: 4.8rem !important;
-            line-height: 5rem;
-            letter-spacing: 0.-75px;
-            margin-bottom: 3rem;
-            margin-top: 6rem;
-            text-align: center;
-          }
+        font-size: ${theme.p.fontSize} !important;
+        line-height: 3.6rem;
+        letter-spacing: -0.66px;
+        text-align: left;
+        margin-bottom: 2rem;
+        @media ${device.laptop} {
+          font-size: 4.8rem !important;
+          line-height: 5rem;
+          letter-spacing: 0-75px;
+          margin-bottom: 3rem;
+          margin-top: 6rem;
+          text-align: center;
         }
+      }
     }
     .text-area {
       padding-top: 1rem;
@@ -570,7 +570,6 @@ export const SectionWrapper = styled.section`
         color: white;
       }
     }
-   
   }
   &.our-perspective {
     color: white;
@@ -584,8 +583,8 @@ export const SectionWrapper = styled.section`
       position: relative;
       z-index: 2;
       font-weight: 100;
-      letter-spacing: .75px;
-      font-family: 'Times NR Condensed',serif;
+      letter-spacing: 0.75px;
+      font-family: "Times NR Condensed", serif;
       font-size: 3.5rem;
       @media ${device.tablet} {
         font-size: 5rem;
@@ -645,7 +644,7 @@ export const SectionWrapper = styled.section`
 
       p {
         margin-bottom: 0;
-        font-family: "Roboto",sans-serif; 
+        font-family: "Roboto", sans-serif;
         font-weight: 300;
         b {
           display: block;
@@ -668,11 +667,10 @@ export const SectionWrapper = styled.section`
 
       p {
         font-size: 1.6rem;
-        letter-spacing: -.15px;
+        letter-spacing: -0.15px;
         font-family: "Roboto", sans-serif;
         font-weight: 300;
         line-height: 2.5rem;
-        
       }
       .our-perspective-p {
         opacity: 1 !important;
@@ -687,8 +685,7 @@ export const SectionWrapper = styled.section`
       .our-perspective-2,
       .our-perspective-4,
       .our-perspective-6,
-      .our-perspective-8
-       {
+      .our-perspective-8 {
         text-align: left;
       }
       .our-perspective-1,
@@ -708,11 +705,11 @@ export const TwoColumnWrapper = styled.div`
   @media ${device.tablet} {
     margin: 3rem 0;
     grid-template-columns: 1fr 1fr;
-    div:nth-child(2){
-      margin-top: ${props => props.adjustPadding ? '7rem': '0'};
+    div:nth-child(2) {
+      margin-top: ${(props: any) => (props.adjustPadding ? "7rem" : "0")};
     }
   }
-`;
+`
 
 export const SingleColumnWrapper = styled.div`
   display: grid;
@@ -722,10 +719,10 @@ export const SingleColumnWrapper = styled.div`
     margin: 3rem 0;
     grid-template-columns: 1fr;
     max-width: 840px;
-    margin-left:  auto;
+    margin-left: auto;
     margin-right: auto;
   }
-`;
+`
 
 export const GalleryWrapper = styled.div`
   display: grid;
@@ -743,7 +740,7 @@ export const GalleryWrapper = styled.div`
 
 export const SingleGalleryWrapper = styled.div`
   margin: 3rem 0;
- 
+
   @media ${device.tablet} {
     margin: 3rem 0;
     .landscape {
@@ -769,60 +766,60 @@ export const LayoutWrapper = styled.div`
   body {
     overflow-x: hidden;
   }
-  
+
   h1 {
     color: black;
-    font-family: ${props => props.theme.font.serif}, serif;
-    font-size: ${props => props.theme.projectHeader.fontSize};
-    letter-spacing: ${props => props.theme.projectHeader.letterSpacing};
+    font-family: ${(props: any) => props.theme.font.serif}, serif;
+    font-size: ${(props: any) => props.theme.projectHeader.fontSize};
+    letter-spacing: ${(props: any) => props.theme.projectHeader.letterSpacing};
     font-weight: 100;
     margin: 2rem 0;
   }
   h2 {
-    font-family: ${props => props.theme.font.serif}, serif;
-    font-size: ${props => props.theme.heading2.fontSize};
-    letter-spacing: ${props => props.theme.heading2.letterSpacing};
-    line-height: ${props => props.theme.heading2.lineHeight};
+    font-family: ${(props: any) => props.theme.font.serif}, serif;
+    font-size: ${(props: any) => props.theme.heading2.fontSize};
+    letter-spacing: ${(props: any) => props.theme.heading2.letterSpacing};
+    line-height: ${(props: any) => props.theme.heading2.lineHeight};
     font-weight: 100;
     margin: 3rem 0 1rem;
-    @media ${device.laptop} { 
-      font-size: ${props => props.theme.desktopHeading2.fontSize};
-      line-height: ${props => props.theme.desktopHeading2.lineHeight};
+    @media ${device.laptop} {
+      font-size: ${(props: any) => props.theme.desktopHeading2.fontSize};
+      line-height: ${(props: any) => props.theme.desktopHeading2.lineHeight};
     }
   }
   h4 {
     color: white;
-    font-family: ${props => props.theme.font.serif}, serif;
-    font-size: ${props => props.theme.heading3.fontSize};
+    font-family: ${(props: any) => props.theme.font.serif}, serif;
+    font-size: ${(props: any) => props.theme.heading3.fontSize};
     font-weight: 100;
     margin: 2rem 0;
   }
   p {
-    font-family: ${props => props.theme.font.sans}, serif;
-    font-size: ${props => props.theme.p.fontSize};
-    line-height: ${props => props.theme.p.lineHeight};
-    letter-spacing: ${props => props.theme.p.letterSpacing};
+    font-family: ${(props: any) => props.theme.font.sans}, serif;
+    font-size: ${(props: any) => props.theme.p.fontSize};
+    line-height: ${(props: any) => props.theme.p.lineHeight};
+    letter-spacing: ${(props: any) => props.theme.p.letterSpacing};
     font-weight: 100;
     margin-bottom: 0rem;
     @media ${device.laptop} {
-      font-size: ${props => props.theme.projectHeader.fontSize};
+      font-size: ${(props: any) => props.theme.projectHeader.fontSize};
       line-height: 5rem;
-      letter-spacing: 0.-75px;
+      letter-spacing: 0-75px;
       margin-bottom: 5rem;
     }
   }
   .our-work {
-      > section {
-        z-index: 0;
-        position: relative;
+    > section {
+      z-index: 0;
+      position: relative;
+    }
+    nav {
+      height: 80vh;
+      margin-top: 0rem;
+      section {
+        top: 5rem;
       }
-       nav {
-         height: 80vh;
-        margin-top: 0rem;
-        section {
-          top: 5rem
-        }
-      }
+    }
   }
   .who-we-are-page {
     main nav {
@@ -868,11 +865,12 @@ export const LayoutWrapper = styled.div`
     }
   }
 
-  video,iframe{
+  video,
+  iframe {
     object-fit: fill;
     object-position: center;
     height: 100vh;
-    width:100vw;
+    width: 100vw;
   }
 
   .video-background {
@@ -890,34 +888,30 @@ export const LayoutWrapper = styled.div`
     transform: translate(-50%, -50%);
   }
 
-      @media (min-aspect-ratio: 16/9) {
-      .video-background iframe {
-        /* height = 100 * (9 / 16) = 56.25 */
-        height: 56.25vw !important;
-     
-      }
+  @media (min-aspect-ratio: 16/9) {
+    .video-background iframe {
+      /* height = 100 * (9 / 16) = 56.25 */
+      height: 56.25vw !important;
     }
-    @media only screen
-                   and (max-device-width: 640px) 
-                   and (orientation: landscape) {
-                    .video-background iframe {
-                      top: -2rem !important;
-                      height: 100% !important;
-                    }
-      }
-    @media (max-aspect-ratio: 16/9) {
-      .video-background iframe {
-        /* width = 100 / (9 / 16) = 177.777777 */
-        width: 177.78vh !important;
-      }
+  }
+  @media only screen and (max-device-width: 640px) and (orientation: landscape) {
+    .video-background iframe {
+      top: -2rem !important;
+      height: 100% !important;
     }
+  }
+  @media (max-aspect-ratio: 16/9) {
+    .video-background iframe {
+      /* width = 100 / (9 / 16) = 177.777777 */
+      width: 177.78vh !important;
+    }
+  }
 
   .our-work {
     background-color: black;
     section > div {
       max-width: calc(100%);
       width: calc(100%);
-      
     }
   }
 `
@@ -1079,7 +1073,7 @@ export const SwiperWrapper = styled.div`
 
 export const H1 = styled.h1`
   &.title {
-    background-color: ${props =>
+    background-color: ${(props: any) =>
       props.highlight
         ? props.theme.colors[props.highlight]
         : props.theme.colors.green};
@@ -1091,5 +1085,3 @@ export const H1 = styled.h1`
     margin-bottom: 0;
   }
 `
-
-
