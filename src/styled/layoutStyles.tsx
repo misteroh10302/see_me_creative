@@ -834,6 +834,11 @@ export const LayoutWrapper = styled.div`
       position: relative;
     }
   }
+  .mcm-suited {
+    .header-mobile-video .video-background {
+      padding-top: 150%;
+    }
+  }
   .homepage {
     .video-background {
       background-color: black;

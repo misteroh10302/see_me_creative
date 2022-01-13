@@ -98,7 +98,7 @@ const SecondPage = data => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Layout>
+      <Layout className={mySlug(slug + '-' + clientName)}>
         <SEO title={`Project ${slug}`} />
         <FullHeight
           style={{ position: "relative", "z-index": 10 }}
