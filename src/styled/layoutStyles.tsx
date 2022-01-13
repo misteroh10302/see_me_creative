@@ -836,7 +836,7 @@ export const LayoutWrapper = styled.div`
   }
   .mcm-suited {
     .header-mobile-video .video-background {
-      padding-top: 150%;
+      padding-top: 151.5%;
     }
   }
   .homepage {
