@@ -29,3 +29,23 @@ export const VideoContentWrapper = styled.div`
     }
 
 `
+
+export const PlayButtonWrapper = styled.button`
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+    display: inline-block;
+    border: 0px solid white;
+    cursor: pointer;
+    background-color: ${props => theme.colors[props.highlight] || 'transparent' };
+    transition: all 250ms ease;
+    span {
+        font-size: 6rem;
+        transform: translateY(90%) translateX(10%);
+        display: inline-block;
+        color: white;
+    }
+    &:hover {
+        background-color: black;
+    }
+`

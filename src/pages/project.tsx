@@ -36,6 +36,8 @@ const SecondPage = data => {
   const headerDesktopVimeoVideoId = content.headerDesktopVimeoVideoId || null
   const headerMobileVimeoVideoId = content.headerMobileVimeoVideoId || null
   const clientName = content.clientName || null
+
+  console.log(highlightColor)
   const bcgVideo = {
     contentType: "video/mp4",
     url:
@@ -198,6 +200,7 @@ const SecondPage = data => {
                     <VideoContent
                       highlight={(highlightColor && highlightColor[0]) || false}
                       content={content}
+                      playbutton={true}
                     />
                   )
                 else if (content.vimeoId)
@@ -205,6 +208,7 @@ const SecondPage = data => {
                     <VideoContent
                       highlight={(highlightColor && highlightColor[0]) || false}
                       content={content}
+                      playbutton={true}
                     />
                   )
                 else if (content.content) return <TextArea content={content} />

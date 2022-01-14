@@ -8,6 +8,33 @@ module.exports = {
     `gatsby-plugin-netlify`,
     `gatsby-plugin-react-helmet`,
     {
+      resolve: `gatsby-plugin-netlify`,
+      options: {
+        headers: {
+          "/**/*.html": [
+            "cache-control: public",
+            "cache-control: max-age=0",
+            "cache-control: must-revalidate",
+          ],
+          "/page-data/*.json": [
+            "cache-control: public",
+            "cache-control: max-age=0",
+            "cache-control: must-revalidate",
+          ],
+          "/app-data.json": [
+            "cache-control: public",
+            "cache-control: max-age=0",
+            "cache-control: must-revalidate",
+          ],
+          "/static/*": [
+            "cache-control: public",
+            "cache-control: max-age=31536000",
+            "cache-control: immutable",
+          ],
+        },
+      },
+    },
+    {
       resolve: `gatsby-source-contentful`,
       options: {
         spaceId: `ralvgwmdsf6z`,

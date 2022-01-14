@@ -1,15 +1,22 @@
 import * as React from "react"
-import { VideoContentWrapper } from "./videoContentWrapper"
+import { VideoContentWrapper, PlayButtonWrapper } from "./videoContentWrapper"
 import ReactPlayer from "react-player"
 
+const PlayButton = ({highlight}) => {
+  return (
+    <PlayButtonWrapper highlight={highlight}>
+      <span>&#9658;</span>
+    </PlayButtonWrapper>
+  )
+}
 const VideoContent = (props: VideoContentProps) => {
-  const { autoPlayVideo, vimeoId, vimeoIdMobile} = props.content;
+  
+  const { autoPlayVideo, vimeoId, vimeoIdMobile, playbutton } = props.content;
   const image = <img src="http://simpleicon.com/wp-content/uploads/play1.png" />;
   const url = `https://player.vimeo.com/video/${props.content.vimeoId}`
   let desktopClass = ''
   let mobileVideo = null;
   const autoPlay = autoPlayVideo === null ||  autoPlayVideo === false ? false : true;
-  
   if (vimeoId) {
     if (vimeoIdMobile) {
       desktopClass = "video-content-desktop"
@@ -42,14 +49,15 @@ const VideoContent = (props: VideoContentProps) => {
             url={url}
             width="100%"
             height="54vw"
-            playing={autoPlay}
+            playing={true}
             loop={autoPlay}
-            muted={autoPlay}
+            muted={true}
             controls={!autoPlay}
-          
+            light={true}
+            playIcon={<PlayButton highlight={props.highlight}/>}
             config={{
               vimeo: {
-                playerVars: { showinfo: 1 }
+                playerVars: { showinfo: 0 }
               }
             }}
           />
