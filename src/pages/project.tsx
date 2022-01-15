@@ -21,12 +21,14 @@ import {
 import BackgroundMedia from "../components/UI/backgroundMedia/backgroundMedia"
 import TextArea from "../components/UI/textArea/textArea"
 import Footer from "../components/UI/footer/footer"
-import VideoContent, { VideoContentRegular } from "../components/UI/videoContent/videoContent"
+import VideoContent, {
+  VideoContentRegular,
+} from "../components/UI/videoContent/videoContent"
 import ReactPlayer from "react-player"
 
 const TwoColumnGridItem = ({ data }: { data: any }) => {
   const { image, richTextContent, vimeoId, vimeoIdMobile } = data
-  console.log(data)
+
   if (image) {
     return (
       <Img

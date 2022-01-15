@@ -118,12 +118,6 @@ export const FooterWrapper = styled.footer`
   background-color: ${(props: any) => props.theme.colors.green};
 `
 
-export const ThumbnailVideoWrapper = styled.div`
-    > iframe, > video {
-      height: auto !important;
-      width: 100% !important;
-    }
-`
 export const OurWorkWrapper = styled.div`
   padding: 8rem 0;
   max-width: 100%;
@@ -135,6 +129,13 @@ export const OurWorkWrapper = styled.div`
     text-decoration: none;
     min-height: 514px;
     overflow: hidden;
+  }
+`
+
+export const ThumbnailVideoWrapper = styled.div`
+  iframe, video {
+    height: 100% !important;
+    width: 100% !important;
   }
 `
 
@@ -252,13 +253,15 @@ export const ProjectWrapper = styled.section`
         margin-bottom: 5.5rem;
       }
     }
-    h2 {
-      margin-top: 0;
-      b {
-        font-weight: 500;
+
+    @media ${device.tablet} {
+      h2 {
+        margin-top: 0;
+        b {
+          font-weight: 500;
+        }
       }
     }
-  
     .post-text-wrapper {
       margin-bottom: 3rem;
       &:first-child {
