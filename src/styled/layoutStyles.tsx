@@ -118,6 +118,12 @@ export const FooterWrapper = styled.footer`
   background-color: ${(props: any) => props.theme.colors.green};
 `
 
+export const ThumbnailVideoWrapper = styled.div`
+    > iframe, > video {
+      height: auto !important;
+      width: 100% !important;
+    }
+`
 export const OurWorkWrapper = styled.div`
   padding: 8rem 0;
   max-width: 100%;

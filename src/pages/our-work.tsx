@@ -13,7 +13,7 @@ import uuid from "react-uuid"
 import { mySlug } from "../utils.js"
 
 import Footer from "../components/UI/footer/footer"
-import { BackgroundImage, OurWorkWrapper } from "../styled/layoutStyles"
+import { BackgroundImage, OurWorkWrapper, ThumbnailVideoWrapper } from "../styled/layoutStyles"
 import BackgroundMedia from "../components/UI/backgroundMedia/backgroundMedia"
 import Masonry from "react-masonry-css"
 import styled from "styled-components"
@@ -31,6 +31,10 @@ const OurWorkQuery = graphql`
           title
           clientName
           thumbnailMedia {
+            file {
+              contentType
+              url
+            }
             fluid(maxWidth: 200) {
               ...GatsbyContentfulFluid_withWebp_noBase64
             }
@@ -102,8 +106,9 @@ const OurWork = () => {
                     >
                       {projects &&
                         projects.map((project, i) => {
+                          const { thumbnailMedia } = project;
                           if (i < numberOfPosts) {
-                            if (!project.thumbnailMedia) return null
+                            if (!thumbnailMedia) return null
                             return (
                               <Link
                                 key={uuid()}
@@ -111,11 +116,23 @@ const OurWork = () => {
                                   project.clientName
                                 )}-${mySlug(project.title)}`}
                               >
-                                <Img
-                                  objectFit="cover"
-                                  fluid={project.thumbnailMedia.fluid}
-                                  style={{ maxHeight: "550px" }}
-                                />
+                                 {thumbnailMedia.file.contentType.includes("video") ? (
+                                      <ThumbnailVideoWrapper>
+                                        <video width="100%" height="auto" muted autoPlay loop>
+                                          <source
+                                            src={project.thumbnailMedia.file.url}
+                                            type="video/mp4"
+                                          />
+                                          Your browser does not support the video tag.
+                                        </video>
+                                      </ThumbnailVideoWrapper>
+                                    ) : (
+                                    <Img
+                                      objectFit="cover"
+                                      fluid={project.thumbnailMedia.fluid}
+                                      style={{ maxHeight: "550px" }}
+                                    />
+                                )}
                                 <H2Projects>
                                   {project.clientName + ":" || ""}{" "}
                                   {project.title}
