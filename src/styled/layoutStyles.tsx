@@ -248,10 +248,17 @@ export const ProjectWrapper = styled.section`
     > div:first-child {
       margin-bottom: 0rem;
       @media ${device.tablet} {
-        margin-bottom: 0rem;
+        margin-top: 6rem;
+        margin-bottom: 5.5rem;
       }
     }
-
+    h2 {
+      margin-top: 0;
+      b {
+        font-weight: 500;
+      }
+    }
+  
     .post-text-wrapper {
       margin-bottom: 3rem;
       &:first-child {
@@ -300,7 +307,7 @@ export const ProjectWrapper = styled.section`
       margin: 3rem 0 0;
       background-color: rgb(238, 238, 238);
       @media ${device.tablet} {
-        margin: 8rem 0 6rem;
+        margin: 3rem 0 3rem;
       }
     }
     .video-inner {
@@ -714,7 +721,7 @@ export const TwoColumnWrapper = styled.div`
     margin: 3rem 0;
     grid-template-columns: 1fr 1fr;
     div:nth-child(2) {
-      margin-top: ${(props: any) => (props.adjustPadding ? "7rem" : "0")};
+      margin-top: ${(props: any) => (props.adjustPadding ? "4rem" : "0")};
     }
   }
 `
