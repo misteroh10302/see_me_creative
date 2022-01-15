@@ -11,7 +11,7 @@ import { CarouselWrapper } from "./carouselWrapper.tsx"
 import "react-responsive-carousel/lib/styles/carousel.min.css" // requires a loader
 import { Carousel } from "react-responsive-carousel"
 import Masonry from "react-masonry-css"
-import { Button } from "../../../styled/layoutStyles"
+import { Button, ThumbnailVideoWrapper } from "../../../styled/layoutStyles"
 import { device } from "../../../styled/theme"
 
 const BackgroundFade = styled.div`
@@ -84,8 +84,8 @@ const MyCarousel = (props: CarouselProps) => {
                     {project.thumbnailMedia.file.contentType.includes(
                       "video"
                     ) ? (
-                      <>
-                        <video width="100%" height="700px" muted autoPlay>
+                      <ThumbnailVideoWrapper style={{ marginBottom: '26px'}}>
+                        <video width="100%" height="100%" muted autoPlay loop>
                           <source
                             src={project.thumbnailMedia.file.url}
                             type="video/mp4"
@@ -98,7 +98,7 @@ const MyCarousel = (props: CarouselProps) => {
                             )}
                           <h4><span className="client-name-mobile">{clientName}: </span>{project.title}</h4>
                         </div>
-                      </>
+                      </ThumbnailVideoWrapper>
                     ) : (
                       <>
                         <Img

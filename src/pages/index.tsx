@@ -84,12 +84,14 @@ const homepageQuery = graphql`
       }
       homepageContent {
         ... on ContentfulBackgroundMedia {
+          __typename
           id
           vimeoId
           vimeoIdMobile
           title
         }
         ... on ContentfulSection {
+          __typename
           id
           title
           backgroundMedia {
@@ -98,6 +100,7 @@ const homepageQuery = graphql`
             }
           }
           content {
+            __typename
             ... on ContentfulButton {
               id
               buttonText
@@ -109,7 +112,6 @@ const homepageQuery = graphql`
                 json
               }
             }
-
             ... on ContentfulProjectCarousel {
               id
               projects {
@@ -138,6 +140,7 @@ const homepageQuery = graphql`
                   }
                   file {
                     contentType
+                    url
                   }
                 }
               }
