@@ -16,12 +16,33 @@ import {
   H1,
   TwoColumnWrapper,
   SingleColumnWrapper,
+  TwoColumnMediaWrapper,
 } from "../styled/layoutStyles"
 import BackgroundMedia from "../components/UI/backgroundMedia/backgroundMedia"
 import TextArea from "../components/UI/textArea/textArea"
 import Footer from "../components/UI/footer/footer"
-import VideoContent from "../components/UI/videoContent/videoContent"
+import VideoContent, { VideoContentRegular } from "../components/UI/videoContent/videoContent"
 import ReactPlayer from "react-player"
+
+const TwoColumnGridItem = ({ data }: { data: any }) => {
+  const { image, richTextContent, vimeoId, vimeoIdMobile } = data
+  console.log(data)
+  if (image) {
+    return (
+      <Img
+        backgroundColor="#eeeeee"
+        style={{ maxHeight: "90vh" }}
+        fluid={image.fluid}
+      />
+    )
+  } else if (richTextContent) {
+    const textContent = { content: richTextContent }
+    return <TextArea content={textContent} />
+  } else if (vimeoId) {
+    return <VideoContentRegular content={data} playbutton={true} />
+  }
+  return null
+}
 
 const SecondPage = data => {
   const { slug, content } = data.pageContext
@@ -36,8 +57,6 @@ const SecondPage = data => {
   const headerDesktopVimeoVideoId = content.headerDesktopVimeoVideoId || null
   const headerMobileVimeoVideoId = content.headerMobileVimeoVideoId || null
   const clientName = content.clientName || null
-
-  console.log(highlightColor)
   const bcgVideo = {
     contentType: "video/mp4",
     url:
@@ -111,7 +130,9 @@ const SecondPage = data => {
               <div
                 className="video-background"
                 style={{
-                  backgroundImage: `url(${backgroundMedia ? backgroundMedia.fluid.src : ""}`,
+                  backgroundImage: `url(${
+                    backgroundMedia ? backgroundMedia.fluid.src : ""
+                  }`,
                   backgroundSize: "cover",
                   backgroundColor: "rgb(238, 238, 238)",
                 }}
@@ -143,7 +164,9 @@ const SecondPage = data => {
               <div
                 className="video-background"
                 style={{
-                  backgroundImage: `url(${backgroundMediaMobile ? backgroundMediaMobile.fluid.src : ""}`,
+                  backgroundImage: `url(${
+                    backgroundMediaMobile ? backgroundMediaMobile.fluid.src : ""
+                  }`,
                   backgroundSize: "cover",
                 }}
               >
@@ -211,7 +234,19 @@ const SecondPage = data => {
                       playbutton={true}
                     />
                   )
-                else if (content.content) return <TextArea content={content} />
+                else if (
+                  content.sys &&
+                  content.sys.contentType.sys.id === "twoColumnGrid"
+                ) {
+                  const { rightColumn, leftColumn } = content
+                  return (
+                    <TwoColumnMediaWrapper>
+                      <TwoColumnGridItem data={leftColumn} />
+                      <TwoColumnGridItem data={rightColumn} />
+                    </TwoColumnMediaWrapper>
+                  )
+                } else if (content.content)
+                  return <TextArea content={content} />
                 else if (
                   content.childContentfulTwoColumnTextLeftColRichTextNode
                 ) {

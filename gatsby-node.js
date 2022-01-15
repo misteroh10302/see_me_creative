@@ -47,6 +47,50 @@ exports.createPages = async function ({ actions, graphql }) {
             }
           }
           postContent {
+            ... on ContentfulTwoColumnGrid {
+              id
+              sys {
+                contentType {
+                  sys {
+                    id
+                  }
+                }
+              }
+              rightColumn {
+                ... on ContentfulMedaOrTextGridItem {
+                  id
+                  vimeoId
+                  richTextContent {
+                    json
+                  }
+                  image {
+                    fluid(maxWidth: 1600) {
+                      sizes
+                      aspectRatio
+                      src
+                      srcSet
+                    }
+                  }
+                }
+              }
+              leftColumn {
+                ... on ContentfulMedaOrTextGridItem {
+                  id
+                  vimeoId
+                  richTextContent {
+                    json
+                  }
+                  image {
+                    fluid(maxWidth: 1600) {
+                      sizes
+                      aspectRatio
+                      src
+                      srcSet
+                    }
+                  }
+                }
+              }
+            }
             ... on ContentfulVideoGallery {
               id
               vimeoId

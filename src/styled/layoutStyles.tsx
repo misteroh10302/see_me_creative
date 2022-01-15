@@ -703,6 +703,21 @@ export const TwoColumnWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   gap: 0rem;
+
+  @media ${device.tablet} {
+    margin: 3rem 0;
+    grid-template-columns: 1fr 1fr;
+    div:nth-child(2) {
+      margin-top: ${(props: any) => (props.adjustPadding ? "7rem" : "0")};
+    }
+  }
+`
+
+export const TwoColumnMediaWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
   @media ${device.tablet} {
     margin: 3rem 0;
     grid-template-columns: 1fr 1fr;

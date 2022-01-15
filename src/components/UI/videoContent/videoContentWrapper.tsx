@@ -1,6 +1,13 @@
 import styled from "styled-components"
 import {theme, device } from "../../../styled/theme"
 
+export const RegularVideo = styled.div`
+    height: initial;
+    @media ${device.tablet} {
+        height: 100vh;
+    }
+
+`
 export const VideoContentWrapper = styled.div`
     padding: 0rem;
     &.video-content-desktop {

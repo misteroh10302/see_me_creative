@@ -39,6 +39,7 @@ module.exports = {
       options: {
         spaceId: `ralvgwmdsf6z`,
         accessToken: `h0-0NY-h1c805I_V3oA63X7qZcW4kbbv0ZSGLZcIHA0`,
+        environment: "staging",
       },
     },
     {
