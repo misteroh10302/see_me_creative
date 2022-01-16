@@ -62,7 +62,7 @@ const SecondPage = data => {
   const bcgVideo = {
     contentType: "video/mp4",
     url:
-      "//videos.ctfassets.net/ralvgwmdsf6z/3ew8brUJKFZ5vuQ2vjgZLa/af57c51b0158c7cad8d49f8fb4c1e380/Grid_Wave_7_-_WB.mp4",
+      "//videos.ctfassets.net/ralvgwmdsf6z/5ajzuG5O5JcyEhU40e55Gy/5e05c2757a22bfac0bef24087a3898fc/Grid_Wave_8_16x9_50_White.mp4",
   }
 
   const footerContent = {
@@ -115,7 +115,7 @@ const SecondPage = data => {
     file: {
       contentType: "video/mp4",
       url:
-        "//videos.ctfassets.net/ralvgwmdsf6z/1aY0IAne8uBTBLeH0biPcV/30399ec97ff95721bbcb68cf742a0e3f/Grid_Wave_1_-_WB.mp4",
+        "//videos.ctfassets.net/ralvgwmdsf6z/3lnbcwuHBW2Hf9fOLofUaM/8c23fc6e721f326911868742fb0d88f1/Grid_Wave_1_16x9_50_White.mp4",
     },
   }
 
