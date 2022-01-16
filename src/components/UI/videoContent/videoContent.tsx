@@ -6,8 +6,7 @@ import {
   CenterItem,
 } from "./videoContentWrapper"
 import ReactPlayer from "react-player"
-import { useRef, useState } from "react"
-import { useEffect } from "react"
+import { useState } from "react"
 
 const PlayButton = ({ highlight }) => {
   return (
@@ -39,6 +38,9 @@ export const VideoContentRegular = (props: any) => {
 }
 const VideoContent = (props: VideoContentProps) => {
   const [paused, setPaused] = useState(false)
+
+  const [pausedMobile, setPausedMobile] = useState(false)
+  
   const { autoPlayVideo, vimeoId, vimeoIdMobile, playbutton } = props.content
   const image = <img src="http://simpleicon.com/wp-content/uploads/play1.png" />
   const url = `https://player.vimeo.com/video/${props.content.vimeoId}`
@@ -57,6 +59,17 @@ const VideoContent = (props: VideoContentProps) => {
     setPaused(true)
   }
 
+
+  const [playingMobile, setPlayingMobile] = React.useState(true)
+	const playMobile = () => {
+    setPlayingMobile(true)
+    setPausedMobile(false)
+  }
+  const pauseMobile = () =>{ 
+    setPlayingMobile(false)
+    setPausedMobile(true)
+  }
+
   if (vimeoId) {
     if (vimeoIdMobile) {
       desktopClass = "video-content-desktop"
@@ -70,16 +83,16 @@ const VideoContent = (props: VideoContentProps) => {
               url={`https://player.vimeo.com/video/${vimeoIdMobile}`}
               width="100%"
               height="54vw"
-              playing={playing}
+              playing={playingMobile}
               muted={true}
               loop={autoPlay}
               light={true}
               controls={!autoPlay}
               playsinline={true}
-              onPlay={() => setPaused(false)}
-              onPause={() => setPaused(true)}
+              onPlay={playMobile}
+              onPause={pauseMobile}
               playIcon={<PlayButton highlight={props.highlight} />}
-              ref={player}
+           
               config={{
                 vimeo: {
                   playerVars: { showinfo: 1 },
@@ -134,10 +147,8 @@ const VideoContent = (props: VideoContentProps) => {
                 <CenterItem
                   style={{ height: "100% !important" }}
                   onClick={play}
-                  
                 >
                   <PlayButton
-
                     highlight={props.highlight}
                   />
                 </CenterItem>
