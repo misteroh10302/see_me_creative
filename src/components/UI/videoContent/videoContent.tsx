@@ -1,6 +1,13 @@
 import * as React from "react"
-import { VideoContentWrapper, PlayButtonWrapper, RegularVideo } from "./videoContentWrapper"
+import {
+  VideoContentWrapper,
+  PlayButtonWrapper,
+  RegularVideo,
+  CenterItem,
+} from "./videoContentWrapper"
 import ReactPlayer from "react-player"
+import { useRef, useState } from "react"
+import { useEffect } from "react"
 
 const PlayButton = ({ highlight }) => {
   return (
@@ -31,6 +38,7 @@ export const VideoContentRegular = (props: any) => {
   )
 }
 const VideoContent = (props: VideoContentProps) => {
+  const [paused, setPaused] = useState(false)
   const { autoPlayVideo, vimeoId, vimeoIdMobile, playbutton } = props.content
   const image = <img src="http://simpleicon.com/wp-content/uploads/play1.png" />
   const url = `https://player.vimeo.com/video/${props.content.vimeoId}`
@@ -38,6 +46,17 @@ const VideoContent = (props: VideoContentProps) => {
   let mobileVideo = null
   const autoPlay =
     autoPlayVideo === null || autoPlayVideo === false ? false : true
+
+  const [playing, setPlaying] = React.useState(true)
+	const play = () => {
+    setPlaying(true)
+    setPaused(false)
+  }
+  const pause = () =>{ 
+    setPlaying(false)
+    setPaused(true)
+  }
+
   if (vimeoId) {
     if (vimeoIdMobile) {
       desktopClass = "video-content-desktop"
@@ -51,19 +70,35 @@ const VideoContent = (props: VideoContentProps) => {
               url={`https://player.vimeo.com/video/${vimeoIdMobile}`}
               width="100%"
               height="54vw"
-              playing={true}
+              playing={playing}
               muted={true}
               loop={autoPlay}
               light={true}
               controls={!autoPlay}
               playsinline={true}
+              onPlay={() => setPaused(false)}
+              onPause={() => setPaused(true)}
               playIcon={<PlayButton highlight={props.highlight} />}
+              ref={player}
               config={{
                 vimeo: {
                   playerVars: { showinfo: 1 },
                 },
               }}
             />
+            {paused && (
+              <span>
+                <CenterItem
+                  style={{ height: "100% !important" }}
+                  onClick={() => console.log('hello')}
+                >
+                  <PlayButton
+                   
+                    highlight={props.highlight}
+                  />
+                </CenterItem>
+              </span>
+            )}
           </div>
         </VideoContentWrapper>
       )
@@ -80,18 +115,34 @@ const VideoContent = (props: VideoContentProps) => {
               url={url}
               width="100%"
               height="54vw"
-              playing={true}
+              playing={playing}
               loop={autoPlay}
               muted={true}
               controls={!autoPlay}
               light={true}
               playIcon={<PlayButton highlight={props.highlight} />}
+              onPlay={play}
+              onPause={pause}
               config={{
                 vimeo: {
                   playerVars: { showinfo: 0 },
                 },
               }}
             />
+            {paused && (
+              <span>
+                <CenterItem
+                  style={{ height: "100% !important" }}
+                  onClick={play}
+                  
+                >
+                  <PlayButton
+
+                    highlight={props.highlight}
+                  />
+                </CenterItem>
+              </span>
+            )}
           </div>
         </VideoContentWrapper>
       </>

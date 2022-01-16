@@ -8,6 +8,17 @@ export const RegularVideo = styled.div`
     }
 
 `
+
+export const CenterItem = styled.div`
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    text-align: center;
+    height: initial !important;
+`
 export const VideoContentWrapper = styled.div`
     padding: 0rem;
     &.video-content-desktop {
