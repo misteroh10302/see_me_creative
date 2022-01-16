@@ -6,16 +6,25 @@ import Carousel from "./UI/carousel/carousel"
 import ImageAndText from "./UI/imageandtext/imageAndText"
 import { cleanTitle } from "../utils.js"
 import { OurOfferingsWrapper, WhoWeAreGrid } from "../styled/layoutStyles"
+import BackgroundMedia from "./UI/backgroundMedia/backgroundMedia"
+
+
+
 
 const Section = (props: SectionProps) => {
+  const bcgVideo = props;
   const { content, title } = props.content
   const theCleanTitle = cleanTitle(title)
 
   return (
     <SectionWrapper
       className={theCleanTitle}
-      backgroundImage={props.bgm ? props.bgm.file.url + "?&fm=webp" : ""}
+      backgroundImage={props.bgm && props.bgm.file ? props.bgm.file.url + "?&fm=webp" : ""}
+      style={{
+        position: bcgVideo ? 'relative' : 'initial'
+      }}
     >
+      <BackgroundMedia overrideStyle={{top: '-30rem'}} upsideDown position="absolute" file={bcgVideo} />
       {content &&
         content.map((content, i: number) => {
           if (content.__typename === "ContentfulOfferings") {

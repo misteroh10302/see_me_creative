@@ -6,8 +6,8 @@ import { BackgroundMediaWrapper } from "./backgroundMediaStyled"
 import ReactPlayer from "react-player"
 
 const BackgroundMedia = (props: BackgroundMediaProps) => {
-  const { position, vimeoId, vimeoIdMobile } = props
-  let styles = {}
+  const { position, vimeoId, vimeoIdMobile, overrideStyle } = props
+  let styles = {...(overrideStyle && { ...overrideStyle })}
   if (props.upsideDown) {
     styles = {
       transform: `translateY(-10rem) rotate(-180deg)`,
@@ -17,6 +17,7 @@ const BackgroundMedia = (props: BackgroundMediaProps) => {
       opacity: 1,
       top: "-30rem",
       zIndex: "0",
+      ...(overrideStyle && { ...overrideStyle }),
     }
   }
 
@@ -25,38 +26,38 @@ const BackgroundMedia = (props: BackgroundMediaProps) => {
       {vimeoId ? (
         <div className={`video-background`}>
           <ReactPlayer
-              url={`https://player.vimeo.com/video/${vimeoId}`}
+            url={`https://player.vimeo.com/video/${vimeoId}`}
+            width="100%"
+            height="54vw"
+            loop={true}
+            playsInline
+            playing={true}
+            muted={true}
+            controls={false}
+            className={vimeoIdMobile && "desktop-video-background"}
+            config={{
+              vimeo: {
+                playerVars: { showinfo: 1 },
+              },
+            }}
+          />
+          {vimeoIdMobile && (
+            <ReactPlayer
+              url={`https://player.vimeo.com/video/${vimeoIdMobile}`}
               width="100%"
               height="54vw"
               loop={true}
-              playsInline
+              playsinline
               playing={true}
               muted={true}
               controls={false}
-              className={vimeoIdMobile && "desktop-video-background"}
+              className={vimeoIdMobile && "mobile-video-background"}
               config={{
                 vimeo: {
-                  playerVars: { showinfo: 1 }
-                }
+                  playerVars: { showinfo: 1 },
+                },
               }}
-        />
-          {vimeoIdMobile && (
-            <ReactPlayer
-                url={`https://player.vimeo.com/video/${vimeoIdMobile}`}
-                width="100%"
-                height="54vw"
-                loop={true}
-                playsinline
-                playing={true}
-                muted={true}
-                controls={false}
-                className={vimeoIdMobile && "mobile-video-background"}
-                config={{
-                  vimeo: {
-                    playerVars: { showinfo: 1 }
-                  }
-                }}
-          />
+            />
           )}
         </div>
       ) : props.file.contentType && props.file.contentType.includes("video") ? (
@@ -88,6 +89,7 @@ interface BackgroundMediaProps {
   position?: string
   upsideDown?: boolean
   title: string
+  overrideStyle?: any
 }
 
 BackgroundMedia.defaultProps = {

@@ -56,6 +56,7 @@ export const Button = styled.a`
 export const FullHeight = styled.div`
   min-height: 100vh;
   z-index: 10;
+  position: relative;
   .gatsby-image-wrapper {
     overflow: visible !important;
     position: initial !important;
@@ -141,6 +142,8 @@ export const ThumbnailVideoWrapper = styled.div`
 
 export const OurOfferingsWrapper = styled.div`
   text-align: left;
+  position: relative;
+  z-index: 1;
   h3 {
     padding-left: 0 !important;
     font-family: ${theme.font.serif};
@@ -179,6 +182,8 @@ export const OurOfferingsWrapper = styled.div`
 export const WhoWeAreGrid = styled.div`
   padding: ${(props: any) => props.theme.padding.sectionVertical} 0;
   max-width: 100%;
+  position: relative;
+  z-index: 1;
   > div {
     color: white;
   }
@@ -353,8 +358,9 @@ export const ProjectCollectionWrapper = styled.div`
 `
 
 export const SectionWrapper = styled.section`
-  background: black
+  background: transparent
     ${(props: any) => `url(${props.backgroundImage}) no-repeat center`};
+  
   background-size: cover;
   min-height: 100vh;
   width: 100%;
@@ -499,6 +505,9 @@ export const SectionWrapper = styled.section`
       }
     }
     > .text-area {
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
       p {
         font-size: ${theme.p.fontSize} !important;
         line-height: 3.6rem;
@@ -555,9 +564,7 @@ export const SectionWrapper = styled.section`
       p {
         text-align: center;
       }
-      div:first-child {
-        max-width: 1000px;
-      }
+     
       .image-and-text {
         display: inline-block;
         padding: 3em 0rem 3rem;
@@ -867,6 +874,9 @@ export const LayoutWrapper = styled.div`
     .header-mobile-video .video-background {
       padding-top: 151.5%;
     }
+  }
+  .homepage {
+    background-color: black;
   }
   .homepage, .who-we-are-page {
     .who-we-are-header-wrapper {
