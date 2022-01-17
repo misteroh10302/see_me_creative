@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import * as React from "react"
 import { Link } from "gatsby"
 import { ThemeProvider } from "styled-components"
@@ -26,10 +27,16 @@ import VideoContent, {
 } from "../components/UI/videoContent/videoContent"
 import ReactPlayer from "react-player"
 
-const TwoColumnGridItem = ({ data }: { data: any }) => {
-  const { image, richTextContent, vimeoId, vimeoIdMobile } = data
+const TwoColumnGridItem = ({ data, highlight }: { data: any, highlight: string }) => {
 
-  if (image) {
+  const { image, richTextContent, vimeoId, vimeoIdMobile, autoPlayVideo, videoDimensions } = data
+  const dimensions = videoDimensions ? videoDimensions[0] : '9x16';
+  
+  if (vimeoId) {
+    return (
+      <VideoContentRegular dimensions={dimensions} highlight={highlight} content={data} playbutton={true} />
+    )
+  } else if (image) {
     return (
       <Img
         backgroundColor="#eeeeee"
@@ -39,9 +46,18 @@ const TwoColumnGridItem = ({ data }: { data: any }) => {
     )
   } else if (richTextContent) {
     const textContent = { content: richTextContent }
-    return <TextArea content={textContent} />
-  } else if (vimeoId) {
-    return <VideoContentRegular content={data} playbutton={true} />
+    return (
+      <TextArea
+        customClass={"two-media-col"}
+        overrideStyles={{
+          display: "flex",
+          justifyContent: "center",
+          flexDirection: "column",
+          textAlign: "left !important",
+        }}
+        content={textContent}
+      />
+    )
   }
   return null
 }
@@ -243,8 +259,18 @@ const SecondPage = data => {
                   const { rightColumn, leftColumn } = content
                   return (
                     <TwoColumnMediaWrapper>
-                      <TwoColumnGridItem data={leftColumn} />
-                      <TwoColumnGridItem data={rightColumn} />
+                      <TwoColumnGridItem
+                        highlight={
+                          (highlightColor && highlightColor[0]) || false
+                        }
+                        data={leftColumn}
+                      />
+                      <TwoColumnGridItem
+                        highlight={
+                          (highlightColor && highlightColor[0]) || false
+                        }
+                        data={rightColumn}
+                      />
                     </TwoColumnMediaWrapper>
                   )
                 } else if (content.content)

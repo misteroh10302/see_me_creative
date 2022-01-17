@@ -13,6 +13,7 @@ const mySlug = str => {
     .toLowerCase()
 }
 
+
 exports.createPages = async function ({ actions, graphql }) {
   let projects = await graphql(`
     {
@@ -60,6 +61,8 @@ exports.createPages = async function ({ actions, graphql }) {
                 ... on ContentfulMedaOrTextGridItem {
                   id
                   vimeoId
+                  autoPlayVideo
+                  videoDimensions
                   richTextContent {
                     json
                   }

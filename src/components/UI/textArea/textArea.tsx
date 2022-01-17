@@ -5,6 +5,7 @@ import styled from "styled-components"
 import Reveal from 'react-reveal/Reveal';
 import uuid from 'react-uuid'
 import Img from "gatsby-image"
+import { device } from "../../../styled/theme";
 
 export const TextAreaWrapper = styled.div`
   padding: 0rem 0rem 0rem;
@@ -45,18 +46,29 @@ export const TextAreaWrapper = styled.div`
     transform: translateY(-50%);
     transition: opacity 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
   }
+  &.two-media-col {
+    padding: 0;
+    @media  ${device.tablet} {
+      padding: 0 12rem;
+    }
+    p {
+      margin: 0 !important;
+    }
+  }
 `
 
 const TextArea = (props: TextAreaProps) => {
   const [hovered, setHovered] = useState(false);
   const data = props.content.content;
+  const overrideStyles = props.overrideStyles;
   if (!data || !data.json) return null;
   const title = props.title;
   const dataAsHtml = documentToReactComponents(data.json)
+  const customClass = props.customClass || '';
 
   if (title === "our-perspective") {
     return (
-      <TextAreaWrapper className="text-area">
+      <TextAreaWrapper style={{...overrideStyles}}  className="text-area">
         <>
           {data.json.content.map((data, i) => {
             if (data.nodeType === "paragraph") {
@@ -98,7 +110,7 @@ const TextArea = (props: TextAreaProps) => {
     )
   }
   return (
-    <TextAreaWrapper className="text-area">
+    <TextAreaWrapper style={{...overrideStyles}} className={`text-area ${customClass}`}>
       <>
         {dataAsHtml.map((data, i) => {
           return (

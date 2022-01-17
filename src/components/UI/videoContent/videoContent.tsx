@@ -18,21 +18,50 @@ const PlayButton = ({ highlight }) => {
 
 export const VideoContentRegular = (props: any) => {
   const { autoPlayVideo, vimeoId, playbutton } = props.content
+  const { highlight, dimensions } = props
+  const autoPlay =
+    autoPlayVideo === null || autoPlayVideo === false ? false : true
+
+  const [paused, setPaused] = useState(true)
+
+  const [playing, setPlaying] = React.useState(false)
+
+  const play = () => {
+    setPlaying(true)
+    setPaused(false)
+  }
+  const pause = () => {
+    setPlaying(false)
+    setPaused(true)
+  }
+
   return (
-    <RegularVideo>
+    <RegularVideo dimensions={dimensions}>
       <ReactPlayer
         url={`https://player.vimeo.com/video/${vimeoId}`}
         width="100%"
         height="100%"
-        playing={true}
-        muted={true}
+        playing={playing}
+        muted={playing}
         playsinline={true}
+        onClickPreview={pause}
+        loop
+        controls
+        onPlay={play}
+        onPause={pause}
         config={{
           vimeo: {
-            playerVars: { showinfo: 1 },
+            playerVars: { showinfo: 0 },
           },
         }}
       />
+      {paused && (
+        <span>
+          <CenterItem onClick={play}>
+            <PlayButton highlight={props.highlight} />
+          </CenterItem>
+        </span>
+      )}
     </RegularVideo>
   )
 }
@@ -40,7 +69,7 @@ const VideoContent = (props: VideoContentProps) => {
   const [paused, setPaused] = useState(false)
 
   const [pausedMobile, setPausedMobile] = useState(false)
-  
+
   const { autoPlayVideo, vimeoId, vimeoIdMobile, playbutton } = props.content
   const image = <img src="http://simpleicon.com/wp-content/uploads/play1.png" />
   const url = `https://player.vimeo.com/video/${props.content.vimeoId}`
@@ -50,22 +79,21 @@ const VideoContent = (props: VideoContentProps) => {
     autoPlayVideo === null || autoPlayVideo === false ? false : true
 
   const [playing, setPlaying] = React.useState(true)
-	const play = () => {
+  const play = () => {
     setPlaying(true)
     setPaused(false)
   }
-  const pause = () =>{ 
+  const pause = () => {
     setPlaying(false)
     setPaused(true)
   }
 
-
   const [playingMobile, setPlayingMobile] = React.useState(true)
-	const playMobile = () => {
+  const playMobile = () => {
     setPlayingMobile(true)
     setPausedMobile(false)
   }
-  const pauseMobile = () =>{ 
+  const pauseMobile = () => {
     setPlayingMobile(false)
     setPausedMobile(true)
   }
@@ -102,12 +130,9 @@ const VideoContent = (props: VideoContentProps) => {
               <span>
                 <CenterItem
                   style={{ height: "100% !important" }}
-                  onClick={() => console.log('hello')}
+                  onClick={playMobile}
                 >
-                  <PlayButton
-                   
-                    highlight={props.highlight}
-                  />
+                  <PlayButton highlight={props.highlight} />
                 </CenterItem>
               </span>
             )}
@@ -147,9 +172,7 @@ const VideoContent = (props: VideoContentProps) => {
                   style={{ height: "100% !important" }}
                   onClick={play}
                 >
-                  <PlayButton
-                    highlight={props.highlight}
-                  />
+                  <PlayButton highlight={props.highlight} />
                 </CenterItem>
               </span>
             )}

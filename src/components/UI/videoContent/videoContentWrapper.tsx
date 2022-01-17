@@ -3,6 +3,32 @@ import {theme, device } from "../../../styled/theme"
 
 export const RegularVideo = styled.div`
     height: initial;
+    position: relative;
+    .player .vp-title {
+        display: none !important;
+    }
+    // responsive video
+    > div > div {
+        position: relative;
+        display: block;
+        height: 0;
+        padding: 0;
+        overflow: hidden;
+        padding-bottom: ${props => props.dimensions === "4x5" ? '125%' : '200%'};
+         @media ${device.tablet} {
+                padding-bottom: 100%;
+         }
+        iframe {
+            height: 100%;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            height: 100%;
+            width: 100%;
+            border: 0;
+            position: absolute;
+        }
+    }
     @media ${device.tablet} {
         height: 100vh;
     }
