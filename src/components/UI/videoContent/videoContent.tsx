@@ -24,7 +24,7 @@ export const VideoContentRegular = (props: any) => {
 
   const [paused, setPaused] = useState(true)
 
-  const [playing, setPlaying] = React.useState(false)
+  const [playing, setPlaying] = React.useState(autoPlay)
 
   const play = () => {
     setPlaying(true)
