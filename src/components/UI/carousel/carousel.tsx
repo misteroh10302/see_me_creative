@@ -29,7 +29,6 @@ const MyCarousel = (props: CarouselProps) => {
     buttonText: "MORE",
   })
 
-
   if (props.content.__typename === "ContentfulCarousel") {
     const { carouselMedia } = props.content
     return (
@@ -76,7 +75,7 @@ const MyCarousel = (props: CarouselProps) => {
           columnClassName="my-masonry-grid_column"
         >
           {projects &&
-            projects.map((project, i) => {
+            projects.map((project: any, i: number) => {
               const { clientLogo, clientName } = project;
               if (i < numberOfPosts.number) {
                 return (

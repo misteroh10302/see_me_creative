@@ -17,6 +17,7 @@ import { BackgroundImage, OurWorkWrapper, ThumbnailVideoWrapper } from "../style
 import BackgroundMedia from "../components/UI/backgroundMedia/backgroundMedia"
 import Masonry from "react-masonry-css"
 import styled from "styled-components"
+import { useWindowSize } from '../components/utils'
 
 const H2Projects = styled.h2`
   font-size: 2rem !important;
@@ -81,6 +82,8 @@ const OurWork = () => {
     700: 2,
     500: 1,
   }
+  const isMobile = useWindowSize();
+
   return (
     <StaticQuery
       query={OurWorkQuery}
@@ -99,6 +102,58 @@ const OurWork = () => {
                   }
                 >
                   <OurWorkWrapper>
+                    {isMobile.width < 768 && (
+                      <div>
+                         {projects &&
+                        projects.map((project, i) => {
+                          if (i < numberOfPosts) {
+                            if (!project.thumbnailMedia) return null
+                            return (
+                              <Link
+                                key={uuid()}
+                                to={`/project/${mySlug(
+                                  project.clientName
+                                )}-${mySlug(project.title)}`}
+                              >
+                                {project.thumbnailMedia.file.contentType.includes(
+                                  "video"
+                                ) ? (
+                                  <ThumbnailVideoWrapper
+x                                  >
+                                    <video
+                                      width="100%"
+                                      height="100%"
+                                      muted
+                                      autoPlay
+                                      loop
+                                      playsInline
+                                    >
+                                      <source
+                                        src={project.thumbnailMedia.file.url}
+                                        type="video/mp4"
+                                      />
+                                      Your browser does not support the video
+                                      tag.
+                                    </video>
+                                  </ThumbnailVideoWrapper>
+                                ) : (
+                                  <Img
+                                    objectFit="cover"
+                                    fluid={project.thumbnailMedia.fluid}
+                                    style={{ maxHeight: "550px" }}
+                                  />
+                                )}
+                                <H2Projects>
+                                  {project.clientName + ":" || ""}{" "}
+                                  {project.title}
+                                </H2Projects>
+                              </Link>
+                            )
+                          }
+                        })}
+                      </div>
+                    )}
+                    {isMobile.width > 768 && 
                     <Masonry
                       breakpointCols={breakpointColumnsObj}
                       className="my-masonry-grid"
@@ -152,6 +207,7 @@ x                                  >
                           }
                         })}
                     </Masonry>
+                    }
                   </OurWorkWrapper>
                 </BackgroundImage>
                 <Footer
