@@ -126,6 +126,7 @@ x                                  >
                                       muted
                                       autoPlay
                                       loop
+                                      playsInline
                                     >
                                       <source
                                         src={project.thumbnailMedia.file.url}

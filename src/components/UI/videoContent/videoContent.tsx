@@ -92,7 +92,6 @@ const VideoContent = (props: VideoContentProps) => {
               onPlay={playMobile}
               onPause={pauseMobile}
               playIcon={<PlayButton highlight={props.highlight} />}
-          
               config={{
                 vimeo: {
                   playerVars: { showinfo: 1 },
