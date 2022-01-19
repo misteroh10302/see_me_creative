@@ -13,10 +13,15 @@ import uuid from "react-uuid"
 import { mySlug } from "../utils.js"
 
 import Footer from "../components/UI/footer/footer"
-import { BackgroundImage, OurWorkWrapper } from "../styled/layoutStyles"
+import {
+  BackgroundImage,
+  OurWorkWrapper,
+  ThumbnailVideoWrapper,
+} from "../styled/layoutStyles"
 import BackgroundMedia from "../components/UI/backgroundMedia/backgroundMedia"
 import Masonry from "react-masonry-css"
 import styled from "styled-components"
+import { useWindowSize } from "../components/utils"
 
 const H2Projects = styled.h2`
   font-size: 2rem !important;
@@ -31,8 +36,21 @@ const OurWorkQuery = graphql`
           title
           clientName
           thumbnailMedia {
+            file {
+              url
+              contentType
+            }
             fluid(maxWidth: 200) {
               ...GatsbyContentfulFluid_withWebp_noBase64
+            }
+          }
+          thumbnailMediaBackgroundImage {
+            fluid(maxWidth: 200) {
+              sizes
+              aspectRatio
+              src
+              srcSet
+              srcWebp
             }
           }
         }
@@ -77,6 +95,8 @@ const OurWork = () => {
     700: 2,
     500: 1,
   }
+  const isMobile = useWindowSize()
+
   return (
     <StaticQuery
       query={OurWorkQuery}
@@ -95,36 +115,130 @@ const OurWork = () => {
                   }
                 >
                   <OurWorkWrapper>
-                    <Masonry
-                      breakpointCols={breakpointColumnsObj}
-                      className="my-masonry-grid"
-                      columnClassName="my-masonry-grid_column"
-                    >
-                      {projects &&
-                        projects.map((project, i) => {
-                          if (i < numberOfPosts) {
-                            if (!project.thumbnailMedia) return null
-                            return (
-                              <Link
-                                key={uuid()}
-                                to={`/project/${mySlug(
-                                  project.clientName
-                                )}-${mySlug(project.title)}`}
-                              >
-                                <Img
-                                  objectFit="cover"
-                                  fluid={project.thumbnailMedia.fluid}
-                                  style={{ maxHeight: "550px" }}
-                                />
-                                <H2Projects>
-                                  {project.clientName + ":" || ""}{" "}
-                                  {project.title}
-                                </H2Projects>
-                              </Link>
-                            )
-                          }
-                        })}
-                    </Masonry>
+                    {isMobile.width < 768 && (
+                      <div>
+                        {projects &&
+                          projects.map((project, i) => {
+                            if (i < numberOfPosts) {
+                              if (!project.thumbnailMedia) return null
+                              return (
+                                <Link
+                                  key={uuid()}
+                                  to={`/project/${mySlug(
+                                    project.clientName
+                                  )}-${mySlug(project.title)}`}
+                                >
+                                  {project.thumbnailMedia.file.contentType.includes(
+                                    "video"
+                                  ) ? (
+                                    <ThumbnailVideoWrapper>
+                                      <div className="thumbnail-vid-outer">
+                                        <video
+                                          width="100%"
+                                          height="100%"
+                                          muted
+                                          autoPlay
+                                          loop
+                                          playsInline
+                                          poster={
+                                            project.thumbnailMediaBackgroundImage
+                                              ? project
+                                                  .thumbnailMediaBackgroundImage
+                                                  .fluid.src
+                                              : ""
+                                          }
+                                        >
+                                          <source
+                                            src={
+                                              project.thumbnailMedia.file.url
+                                            }
+                                            type="video/mp4"
+                                          />
+                                          Your browser does not support the
+                                          video tag.
+                                        </video>
+                                      </div>
+                                    </ThumbnailVideoWrapper>
+                                  ) : (
+                                    <Img
+                                      objectFit="cover"
+                                      fluid={project.thumbnailMedia.fluid}
+                                    />
+                                  )}
+                                  <H2Projects>
+                                    {project.clientName + ":" || ""}{" "}
+                                    {project.title}
+                                  </H2Projects>
+                                </Link>
+                              )
+                            }
+                          })}
+                      </div>
+                    )}
+                    {isMobile.width > 768 && (
+                      <Masonry
+                        breakpointCols={breakpointColumnsObj}
+                        className="my-masonry-grid"
+                        columnClassName="my-masonry-grid_column"
+                      >
+                        {projects &&
+                          projects.map((project, i) => {
+                            if (i < numberOfPosts) {
+                              if (!project.thumbnailMedia) return null
+                              return (
+                                <Link
+                                  key={uuid()}
+                                  to={`/project/${mySlug(
+                                    project.clientName
+                                  )}-${mySlug(project.title)}`}
+                                >
+                                  {project.thumbnailMedia.file.contentType.includes(
+                                    "video"
+                                  ) ? (
+                                    <ThumbnailVideoWrapper>
+                                      <div className="thumbnail-vid-outer">
+                                        <video
+                                          width="100%"
+                                          height="100%"
+                                          muted
+                                          autoPlay
+                                          loop
+                                          playsInline
+                                          poster={
+                                            project.thumbnailMediaBackgroundImage
+                                              ? project
+                                                  .thumbnailMediaBackgroundImage
+                                                  .fluid.src
+                                              : ""
+                                          }
+                                        >
+                                          <source
+                                            src={
+                                              project.thumbnailMedia.file.url
+                                            }
+                                            type="video/mp4"
+                                          />
+                                          Your browser does not support the
+                                          video tag.
+                                        </video>
+                                      </div>
+                                    </ThumbnailVideoWrapper>
+                                  ) : (
+                                    <Img
+                                      objectFit="cover"
+                                      fluid={project.thumbnailMedia.fluid}
+                                    />
+                                  )}
+                                  <H2Projects>
+                                    {project.clientName + ":" || ""}{" "}
+                                    {project.title}
+                                  </H2Projects>
+                                </Link>
+                              )
+                            }
+                          })}
+                      </Masonry>
+                    )}
                   </OurWorkWrapper>
                 </BackgroundImage>
                 <Footer

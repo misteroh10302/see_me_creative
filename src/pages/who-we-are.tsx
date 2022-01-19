@@ -98,6 +98,21 @@ const whoWeAreQuery = graphql`
   }
 `
 
+const BackgroundWhoWeAre = (props) =>{
+  return (
+    <div style={{position: 'relative', zIndex: 0}}>
+      <BackgroundMedia overrideStyle={{top: '-30rem'}} upsideDown position="absolute" file={bcgVideo} />
+      {props.children}
+    </div>
+  )
+}
+
+const bcgVideo = {
+  contentType: "video/mp4",
+  url:
+    "//videos.ctfassets.net/ralvgwmdsf6z/4NnAubF1a6PaKqu4eQkNUO/fd2909cb5b9a4b0292acfb158c67a9bf/Grid_Wave_2_16x9_50_Black.mp4",
+}
+
 const WhoWeArePage = () => (
   <StaticQuery
     query={whoWeAreQuery}
@@ -111,19 +126,25 @@ const WhoWeArePage = () => (
             {nodes && (
               <ProjectCollectionWrapper>
                 <FullHeight className="full- who-we-are-header-wrapper">
-                  <BackgroundMedia vimeoIdMobile={nodes[0].background.vimeoId} vimeoId={nodes[0].background.vimeoId} />
+                  <BackgroundMedia
+                    vimeoIdMobile={nodes[0].background.vimeoId}
+                    vimeoId={nodes[0].background.vimeoId}
+                  />
                 </FullHeight>
-                {whoWeAreContent &&
-                  whoWeAreContent.map((section: any) => {
-                    return (
-                      <Section
-                        key={uuid()}
-                        title={section.title}
-                        bgm={section.backgroundMedia}
-                        content={section}
-                      />
-                    )
-                  })}
+                <BackgroundWhoWeAre>
+                    {whoWeAreContent &&
+                      whoWeAreContent.map((section: any, index: number) => {
+                        return (
+                          <Section
+                            key={uuid()}
+                            title={section.title}
+                            bcgVideo={bcgVideo}
+                            bgm={section.backgroundMedia}
+                            content={section}
+                          />
+                        ) 
+                      })}
+                </BackgroundWhoWeAre>
               </ProjectCollectionWrapper>
             )}
             <Footer

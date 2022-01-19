@@ -56,6 +56,7 @@ export const Button = styled.a`
 export const FullHeight = styled.div`
   min-height: 100vh;
   z-index: 10;
+  position: relative;
   .gatsby-image-wrapper {
     overflow: visible !important;
     position: initial !important;
@@ -127,13 +128,28 @@ export const OurWorkWrapper = styled.div`
   a {
     color: white;
     text-decoration: none;
-    min-height: 514px;
     overflow: hidden;
+  }
+`
+
+export const ThumbnailVideoWrapper = styled.div`
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  video, iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
   }
 `
 
 export const OurOfferingsWrapper = styled.div`
   text-align: left;
+  position: relative;
+  z-index: 1;
   h3 {
     padding-left: 0 !important;
     font-family: ${theme.font.serif};
@@ -172,13 +188,45 @@ export const OurOfferingsWrapper = styled.div`
 export const WhoWeAreGrid = styled.div`
   padding: ${(props: any) => props.theme.padding.sectionVertical} 0;
   max-width: 100%;
+  position: relative;
+  z-index: 1;
   > div {
     color: white;
+  }
+  .who-we-are {
+    .image-wraper {
+      position: relative;
+      display: block;
+      > div {
+        transition: opacity 500ms ease !important;
+         animation-name: unset !important;
+      }
+      &:hover {
+        > div:nth-child(1) {
+          opacity: 0 !important;
+         
+        }
+        div:nth-child(2) {
+          opacity: 1 !important;
+        }
+      }
+      > div:nth-child(1) {
+          position: relative;
+          z-index: 1;
+          
+        }
+      > div:nth-child(2) {
+        position: absolute !important;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0 !important;
+      }
+    }
   }
   a {
     color: white;
     text-decoration: none;
-    min-height: 514px;
     overflow: hidden;
   }
   div..image-and-text {
@@ -227,6 +275,9 @@ export const ProjectWrapper = styled.section`
     letter-spacing: ${(props: any) => props.theme.heading1.letterSpacing};
     font-weight: 100;
     margin: 2rem 0;
+    @media screen and (max-width: 768px) {
+      line-height: 3.8rem;
+    }
   }
 
   small {
@@ -242,10 +293,19 @@ export const ProjectWrapper = styled.section`
     > div:first-child {
       margin-bottom: 0rem;
       @media ${device.tablet} {
-        margin-bottom: 0rem;
+        margin-top: 6rem;
+        margin-bottom: 5.5rem;
       }
     }
 
+    @media ${device.tablet} {
+      h2 {
+        margin-top: 0;
+        b {
+          font-weight: 500;
+        }
+      }
+    }
     .post-text-wrapper {
       margin-bottom: 3rem;
       &:first-child {
@@ -292,8 +352,9 @@ export const ProjectWrapper = styled.section`
     }
     .video-content {
       margin: 3rem 0 0;
+      background-color: rgb(238, 238, 238);
       @media ${device.tablet} {
-        margin: 8rem 0 6rem;
+        margin: 3rem 0 3rem;
       }
     }
     .video-inner {
@@ -336,8 +397,9 @@ export const ProjectCollectionWrapper = styled.div`
 `
 
 export const SectionWrapper = styled.section`
-  background: black
+  background: transparent
     ${(props: any) => `url(${props.backgroundImage}) no-repeat center`};
+  
   background-size: cover;
   min-height: 100vh;
   width: 100%;
@@ -482,6 +544,9 @@ export const SectionWrapper = styled.section`
       }
     }
     > .text-area {
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
       p {
         font-size: ${theme.p.fontSize} !important;
         line-height: 3.6rem;
@@ -538,9 +603,7 @@ export const SectionWrapper = styled.section`
       p {
         text-align: center;
       }
-      div:first-child {
-        max-width: 1000px;
-      }
+     
       .image-and-text {
         display: inline-block;
         padding: 3em 0rem 3rem;
@@ -556,7 +619,7 @@ export const SectionWrapper = styled.section`
     color: white;
     position: relative;
     @media ${device.laptop} {
-      background-position: 100% 35%;
+      background-position: 100% -30vw;
     }
     p {
       margin-bottom: 0;
@@ -702,6 +765,21 @@ export const TwoColumnWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   gap: 0rem;
+
+  @media ${device.tablet} {
+    margin: 3rem 0;
+    grid-template-columns: 1fr 1fr;
+    div:nth-child(2) {
+      margin-top: ${(props: any) => (props.adjustPadding ? "4rem" : "0")};
+    }
+  }
+`
+
+export const TwoColumnMediaWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
   @media ${device.tablet} {
     margin: 3rem 0;
     grid-template-columns: 1fr 1fr;
@@ -835,6 +913,9 @@ export const LayoutWrapper = styled.div`
     .header-mobile-video .video-background {
       padding-top: 151.5%;
     }
+  }
+  .homepage {
+    background-color: black;
   }
   .homepage, .who-we-are-page {
     .who-we-are-header-wrapper {

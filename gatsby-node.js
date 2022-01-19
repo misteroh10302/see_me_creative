@@ -13,6 +13,7 @@ const mySlug = str => {
     .toLowerCase()
 }
 
+
 exports.createPages = async function ({ actions, graphql }) {
   let projects = await graphql(`
     {
@@ -47,6 +48,52 @@ exports.createPages = async function ({ actions, graphql }) {
             }
           }
           postContent {
+            ... on ContentfulTwoColumnGrid {
+              id
+              sys {
+                contentType {
+                  sys {
+                    id
+                  }
+                }
+              }
+              rightColumn {
+                ... on ContentfulMedaOrTextGridItem {
+                  id
+                  vimeoId
+                  autoPlayVideo
+                  videoDimensions
+                  richTextContent {
+                    json
+                  }
+                  image {
+                    fluid(maxWidth: 1600) {
+                      sizes
+                      aspectRatio
+                      src
+                      srcSet
+                    }
+                  }
+                }
+              }
+              leftColumn {
+                ... on ContentfulMedaOrTextGridItem {
+                  id
+                  vimeoId
+                  richTextContent {
+                    json
+                  }
+                  image {
+                    fluid(maxWidth: 1600) {
+                      sizes
+                      aspectRatio
+                      src
+                      srcSet
+                    }
+                  }
+                }
+              }
+            }
             ... on ContentfulVideoGallery {
               id
               vimeoId
@@ -132,6 +179,7 @@ exports.createPages = async function ({ actions, graphql }) {
               srcWebp
             }
           }
+         
         }
       }
     }

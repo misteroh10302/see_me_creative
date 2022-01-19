@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import * as React from "react"
 import { Link } from "gatsby"
 import { ThemeProvider } from "styled-components"
@@ -16,12 +17,50 @@ import {
   H1,
   TwoColumnWrapper,
   SingleColumnWrapper,
+  TwoColumnMediaWrapper,
 } from "../styled/layoutStyles"
 import BackgroundMedia from "../components/UI/backgroundMedia/backgroundMedia"
 import TextArea from "../components/UI/textArea/textArea"
 import Footer from "../components/UI/footer/footer"
-import VideoContent from "../components/UI/videoContent/videoContent"
+import VideoContent, {
+  VideoContentRegular,
+} from "../components/UI/videoContent/videoContent"
 import ReactPlayer from "react-player"
+
+const TwoColumnGridItem = ({ data, highlight }: { data: any, highlight: string }) => {
+
+  const { image, richTextContent, vimeoId, vimeoIdMobile, autoPlayVideo, videoDimensions } = data
+  const dimensions = videoDimensions ? videoDimensions[0] : '9x16';
+  
+  if (vimeoId) {
+    return (
+      <VideoContentRegular dimensions={dimensions} highlight={highlight} content={data} playbutton={true} />
+    )
+  } else if (image) {
+    return (
+      <Img
+        backgroundColor="#eeeeee"
+        style={{ maxHeight: "90vh" }}
+        fluid={image.fluid}
+      />
+    )
+  } else if (richTextContent) {
+    const textContent = { content: richTextContent }
+    return (
+      <TextArea
+        customClass={"two-media-col"}
+        overrideStyles={{
+          display: "flex",
+          justifyContent: "center",
+          flexDirection: "column",
+          textAlign: "left !important",
+        }}
+        content={textContent}
+      />
+    )
+  }
+  return null
+}
 
 const SecondPage = data => {
   const { slug, content } = data.pageContext
@@ -39,7 +78,7 @@ const SecondPage = data => {
   const bcgVideo = {
     contentType: "video/mp4",
     url:
-      "//videos.ctfassets.net/ralvgwmdsf6z/3ew8brUJKFZ5vuQ2vjgZLa/af57c51b0158c7cad8d49f8fb4c1e380/Grid_Wave_7_-_WB.mp4",
+      "//videos.ctfassets.net/ralvgwmdsf6z/5ajzuG5O5JcyEhU40e55Gy/5e05c2757a22bfac0bef24087a3898fc/Grid_Wave_8_16x9_50_White.mp4",
   }
 
   const footerContent = {
@@ -92,7 +131,7 @@ const SecondPage = data => {
     file: {
       contentType: "video/mp4",
       url:
-        "//videos.ctfassets.net/ralvgwmdsf6z/1aY0IAne8uBTBLeH0biPcV/30399ec97ff95721bbcb68cf742a0e3f/Grid_Wave_1_-_WB.mp4",
+        "//videos.ctfassets.net/ralvgwmdsf6z/3lnbcwuHBW2Hf9fOLofUaM/8c23fc6e721f326911868742fb0d88f1/Grid_Wave_1_16x9_50_White.mp4",
     },
   }
 
@@ -109,7 +148,9 @@ const SecondPage = data => {
               <div
                 className="video-background"
                 style={{
-                  backgroundImage: `url(${backgroundMedia ? backgroundMedia.fluid.src : ""}`,
+                  backgroundImage: `url(${
+                    backgroundMedia ? backgroundMedia.fluid.src : ""
+                  }`,
                   backgroundSize: "cover",
                   backgroundColor: "rgb(238, 238, 238)",
                 }}
@@ -141,7 +182,9 @@ const SecondPage = data => {
               <div
                 className="video-background"
                 style={{
-                  backgroundImage: `url(${backgroundMediaMobile ? backgroundMediaMobile.fluid.src : ""}`,
+                  backgroundImage: `url(${
+                    backgroundMediaMobile ? backgroundMediaMobile.fluid.src : ""
+                  }`,
                   backgroundSize: "cover",
                 }}
               >
@@ -198,6 +241,7 @@ const SecondPage = data => {
                     <VideoContent
                       highlight={(highlightColor && highlightColor[0]) || false}
                       content={content}
+                      playbutton={true}
                     />
                   )
                 else if (content.vimeoId)
@@ -205,9 +249,32 @@ const SecondPage = data => {
                     <VideoContent
                       highlight={(highlightColor && highlightColor[0]) || false}
                       content={content}
+                      playbutton={true}
                     />
                   )
-                else if (content.content) return <TextArea content={content} />
+                else if (
+                  content.sys &&
+                  content.sys.contentType.sys.id === "twoColumnGrid"
+                ) {
+                  const { rightColumn, leftColumn } = content
+                  return (
+                    <TwoColumnMediaWrapper>
+                      <TwoColumnGridItem
+                        highlight={
+                          (highlightColor && highlightColor[0]) || false
+                        }
+                        data={leftColumn}
+                      />
+                      <TwoColumnGridItem
+                        highlight={
+                          (highlightColor && highlightColor[0]) || false
+                        }
+                        data={rightColumn}
+                      />
+                    </TwoColumnMediaWrapper>
+                  )
+                } else if (content.content)
+                  return <TextArea content={content} />
                 else if (
                   content.childContentfulTwoColumnTextLeftColRichTextNode
                 ) {

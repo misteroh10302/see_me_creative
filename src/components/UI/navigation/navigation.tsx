@@ -85,6 +85,7 @@ const Navigation = (props: NavigationProps) => {
           <Link to="/">
             <img
               width="124"
+              height="auto"
               className="logo"
               src={"/logo.svg"}
               alt="See Me Creative Logo"

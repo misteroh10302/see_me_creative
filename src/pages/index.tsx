@@ -11,6 +11,21 @@ import Section from "../components/section"
 import Footer from "../components/UI/footer/footer"
 import uuid from "react-uuid"
 
+const bcgVideo = {
+  contentType: "video/mp4",
+  url:
+    "//videos.ctfassets.net/ralvgwmdsf6z/3myntUCnK3BxiIbHvDfkD5/7be81623bf919629c2376d207d9abade/Grid_Wave_8_16x9_50_Black.mp4",
+}
+
+const BackgroundIndex = (props) =>{
+  return (
+    <div style={{position: 'relative', zIndex: 0}}>
+      {/* <BackgroundMedia overrideStyle={{top: '-30rem'}} upsideDown position="absolute" file={bcgVideo} /> */}
+      {props.children}
+    </div>
+  )
+}
+
 const IndexPage = () => (
   <StaticQuery
     query={homepageQuery}
@@ -20,6 +35,8 @@ const IndexPage = () => (
         footer,
         footerBackground,
       } = data.contentfulHomepage
+
+      const sections = homepageContent.filter((entry) => entry.__typename === "ContentfulSection");
       return (
         <ThemeProvider theme={theme}>
           <Layout page="home">
@@ -34,19 +51,24 @@ const IndexPage = () => (
                         vimeoId={section.vimeoId}
                         vimeoIdMobile={section.vimeoIdMobile}
                         key={uuid()}
+                        overrideStyle={{zIndex: 1}}
                       />
                     )
-                  } else if (section.__typename === "ContentfulSection") {
-                    return (
-                      <Section
-                        title={section.title}
-                        bgm={section.backgroundMedia}
-                        content={section}
-                        key={uuid()}
-                      />
-                    )
-                  }
+                  } 
                 })}
+                <BackgroundIndex>
+                  {sections && sections.map((section: any, i: number) => {
+                      return (
+                        <Section
+                          title={section.title}
+                          bgm={section.backgroundMedia}
+                          content={section}
+                          key={uuid()}
+                        />
+                      )
+                    }
+                  )}
+                </BackgroundIndex>
               <Footer
                 textColor="light"
                 content={footer}
@@ -84,12 +106,14 @@ const homepageQuery = graphql`
       }
       homepageContent {
         ... on ContentfulBackgroundMedia {
+          __typename
           id
           vimeoId
           vimeoIdMobile
           title
         }
         ... on ContentfulSection {
+          __typename
           id
           title
           backgroundMedia {
@@ -98,6 +122,7 @@ const homepageQuery = graphql`
             }
           }
           content {
+            __typename
             ... on ContentfulButton {
               id
               buttonText
@@ -109,7 +134,6 @@ const homepageQuery = graphql`
                 json
               }
             }
-
             ... on ContentfulProjectCarousel {
               id
               projects {
@@ -138,6 +162,16 @@ const homepageQuery = graphql`
                   }
                   file {
                     contentType
+                    url
+                  }
+                }
+                 thumbnailMediaBackgroundImage {
+                  fluid(maxWidth: 1600) {
+                    sizes
+                    aspectRatio
+                    src
+                    srcSet
+                    srcWebp
                   }
                 }
               }

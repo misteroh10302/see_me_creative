@@ -11,7 +11,7 @@ import { CarouselWrapper } from "./carouselWrapper.tsx"
 import "react-responsive-carousel/lib/styles/carousel.min.css" // requires a loader
 import { Carousel } from "react-responsive-carousel"
 import Masonry from "react-masonry-css"
-import { Button } from "../../../styled/layoutStyles"
+import { Button, ThumbnailVideoWrapper } from "../../../styled/layoutStyles"
 import { device } from "../../../styled/theme"
 
 const BackgroundFade = styled.div`
@@ -28,7 +28,6 @@ const MyCarousel = (props: CarouselProps) => {
     number: 7,
     buttonText: "MORE",
   })
-
 
   if (props.content.__typename === "ContentfulCarousel") {
     const { carouselMedia } = props.content
@@ -60,7 +59,7 @@ const MyCarousel = (props: CarouselProps) => {
     )
   } else {
     const { projects } = props.content
-
+    
     const breakpointColumnsObj = {
       default: 3,
       1100: 3,
@@ -76,36 +75,41 @@ const MyCarousel = (props: CarouselProps) => {
           columnClassName="my-masonry-grid_column"
         >
           {projects &&
-            projects.map((project, i) => {
-              const { clientLogo, clientName } = project;
+            projects.map((project: any, i: number) => {
+              const { clientLogo, clientName, thumbnailMediaBackgroundImage } = project;
+              
               if (i < numberOfPosts.number) {
                 return (
                   <Link to={`/project/${mySlug(project.clientName)}-${mySlug(project.title)}`} key={uuid()}>
                     {project.thumbnailMedia.file.contentType.includes(
                       "video"
                     ) ? (
-                      <>
-                        <video width="100%" height="700px" muted autoPlay>
-                          <source
-                            src={project.thumbnailMedia.file.url}
-                            type="video/mp4"
-                          />
-                          Your browser does not support the video tag.
-                        </video>
+                      <ThumbnailVideoWrapper
+                      style={{ marginBottom: '26px'}}>
+                        <div className="thumbnail-vid-outer">
+                          <video width="100%" height="100%" muted autoPlay loop playsInline poster={thumbnailMediaBackgroundImage ? thumbnailMediaBackgroundImage.fluid.src : ''}>
+                            <source
+                              src={project.thumbnailMedia.file.url}
+                              type="video/mp4"
+                          
+                            />
+                            Your browser does not support the video tag.
+                          </video>
+                        </div>
                         <div className="project-title">
                             {clientLogo && (
                               <img src={clientLogo.fluid.src} width={90} alt={`Logo for ${clientName}`}/>
                             )}
                           <h4><span className="client-name-mobile">{clientName}: </span>{project.title}</h4>
                         </div>
-                      </>
+                      </ThumbnailVideoWrapper>
                     ) : (
                       <>
                         <Img
                           fluid={project.thumbnailMedia.fluid}
                           objectFit="cover"
                           loading="lazy"
-                          style={{ maxHeight: "550px", marginBottom: "3rem" }}
+                          style={{ marginBottom: "3rem" }}
                         />
                         <div className="project-title">
                             {clientLogo && (
