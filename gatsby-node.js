@@ -58,7 +58,7 @@ exports.createPages = async function ({ actions, graphql }) {
                 }
               }
               rightColumn {
-                ... on ContentfulMedaOrTextGridItem {
+                ... on ContentfulMediaOrTextGridItem {
                   id
                   vimeoId
                   autoPlayVideo
@@ -77,7 +77,7 @@ exports.createPages = async function ({ actions, graphql }) {
                 }
               }
               leftColumn {
-                ... on ContentfulMedaOrTextGridItem {
+                ... on ContentfulMediaOrTextGridItem {
                   id
                   vimeoId
                   richTextContent {
