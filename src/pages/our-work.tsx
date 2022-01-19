@@ -131,30 +131,33 @@ const OurWork = () => {
                                   {project.thumbnailMedia.file.contentType.includes(
                                     "video"
                                   ) ? (
-                                    <ThumbnailVideoWrapper
-                                      backgroundImage={
-                                        pproject.thumbnailMediaBackgroundImage
-                                          ? project
-                                              .thumbnailMediaBackgroundImage
-                                              .fluid.src
-                                          : ""
-                                      }
-                                    >
-                                      <video
-                                        width="100%"
-                                        height="100%"
-                                        muted
-                                        autoPlay
-                                        loop
-                                        playsInline
-                                      >
-                                        <source
-                                          src={project.thumbnailMedia.file.url}
-                                          type="video/mp4"
-                                        />
-                                        Your browser does not support the video
-                                        tag.
-                                      </video>
+                                    <ThumbnailVideoWrapper>
+                                      <div className="thumbnail-vid-outer">
+                                        <video
+                                          width="100%"
+                                          height="100%"
+                                          muted
+                                          autoPlay
+                                          loop
+                                          playsInline
+                                          poster={
+                                            project.thumbnailMediaBackgroundImage
+                                              ? project
+                                                  .thumbnailMediaBackgroundImage
+                                                  .fluid.src
+                                              : ""
+                                          }
+                                        >
+                                          <source
+                                            src={
+                                              project.thumbnailMedia.file.url
+                                            }
+                                            type="video/mp4"
+                                          />
+                                          Your browser does not support the
+                                          video tag.
+                                        </video>
+                                      </div>
                                     </ThumbnailVideoWrapper>
                                   ) : (
                                     <Img
@@ -180,7 +183,6 @@ const OurWork = () => {
                       >
                         {projects &&
                           projects.map((project, i) => {
-
                             if (i < numberOfPosts) {
                               if (!project.thumbnailMedia) return null
                               return (
@@ -193,30 +195,33 @@ const OurWork = () => {
                                   {project.thumbnailMedia.file.contentType.includes(
                                     "video"
                                   ) ? (
-                                    <ThumbnailVideoWrapper
-                                      backgroundImage={
-                                        project.thumbnailMediaBackgroundImage
-                                          ? project
-                                              .thumbnailMediaBackgroundImage
-                                              .fluid.src
-                                          : ""
-                                      }
-                                    >
-                                      <video
-                                        width="100%"
-                                        height="100%"
-                                        muted
-                                        autoPlay
-                                        loop
-                                        playsInline
-                                      >
-                                        <source
-                                          src={project.thumbnailMedia.file.url}
-                                          type="video/mp4"
-                                        />
-                                        Your browser does not support the video
-                                        tag.
-                                      </video>
+                                    <ThumbnailVideoWrapper>
+                                      <div className="thumbnail-vid-outer">
+                                        <video
+                                          width="100%"
+                                          height="100%"
+                                          muted
+                                          autoPlay
+                                          loop
+                                          playsInline
+                                          poster={
+                                            project.thumbnailMediaBackgroundImage
+                                              ? project
+                                                  .thumbnailMediaBackgroundImage
+                                                  .fluid.src
+                                              : ""
+                                          }
+                                        >
+                                          <source
+                                            src={
+                                              project.thumbnailMedia.file.url
+                                            }
+                                            type="video/mp4"
+                                          />
+                                          Your browser does not support the
+                                          video tag.
+                                        </video>
+                                      </div>
                                     </ThumbnailVideoWrapper>
                                   ) : (
                                     <Img

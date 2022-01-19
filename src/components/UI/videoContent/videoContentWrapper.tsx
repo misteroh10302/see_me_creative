@@ -75,17 +75,25 @@ export const VideoContentWrapper = styled.div`
 `
 
 export const PlayButtonWrapper = styled.button`
-    height: 100px;
-    width: 100px;
+    height: 80px;
+    width: 80px;
     border-radius: 100%;
     display: inline-block;
     border: 0px solid white;
     cursor: pointer;
     background-color: ${props => theme.colors[props.highlight] || 'transparent' };
     transition: all 250ms ease;
+     @media ${device.tablet} {
+            height: 100px;
+            width: 100px;
+    }
     span {
-        font-size: 6rem;
-        transform: translateY(90%) translateX(10%);
+        font-size: 5rem;
+        transform: translateY(50%) translateX(10%);
+        @media ${device.tablet} {
+            font-size: 6rem;
+            transform: translateY(90%) translateX(10%);
+        }
         display: inline-block;
         color: white;
     }

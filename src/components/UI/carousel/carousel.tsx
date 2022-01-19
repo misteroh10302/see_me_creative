@@ -77,6 +77,7 @@ const MyCarousel = (props: CarouselProps) => {
           {projects &&
             projects.map((project: any, i: number) => {
               const { clientLogo, clientName, thumbnailMediaBackgroundImage } = project;
+              console.log(thumbnailMediaBackgroundImage)
               if (i < numberOfPosts.number) {
                 return (
                   <Link to={`/project/${mySlug(project.clientName)}-${mySlug(project.title)}`} key={uuid()}>
@@ -84,16 +85,17 @@ const MyCarousel = (props: CarouselProps) => {
                       "video"
                     ) ? (
                       <ThumbnailVideoWrapper
-                      backgroundImage={thumbnailMediaBackgroundImage ? thumbnailMediaBackgroundImage.fluid.src : ''} 
                       style={{ marginBottom: '26px'}}>
-                        <video width="100%" height="200px" muted autoPlay loop playsInline >
-                          <source
-                            src={project.thumbnailMedia.file.url}
-                            type="video/mp4"
-                            
-                          />
-                          Your browser does not support the video tag.
-                        </video>
+                        <div className="thumbnail-vid-outer">
+                          <video width="100%" height="100%" muted autoPlay loop playsInline poster={thumbnailMediaBackgroundImage ? thumbnailMediaBackgroundImage.fluid.src : ''}>
+                            <source
+                              src={project.thumbnailMedia.file.url}
+                              type="video/mp4"
+                          
+                            />
+                            Your browser does not support the video tag.
+                          </video>
+                        </div>
                         <div className="project-title">
                             {clientLogo && (
                               <img src={clientLogo.fluid.src} width={90} alt={`Logo for ${clientName}`}/>

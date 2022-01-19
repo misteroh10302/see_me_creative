@@ -133,19 +133,16 @@ export const OurWorkWrapper = styled.div`
 `
 
 export const ThumbnailVideoWrapper = styled.div`
-  background-image: url(${props => props.backgroundImage});
-  background-size: cover;
-  background-position: center;
-  line-height: 0;
-  iframe {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  video, iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
     height: 100% !important;
-    width: 100% !important;
-  }
-  video {
     object-fit: cover !important;
-
-    height: auto !important;
-    width: 100% !important;
   }
 `
 
