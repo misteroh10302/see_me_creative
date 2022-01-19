@@ -128,14 +128,23 @@ export const OurWorkWrapper = styled.div`
   a {
     color: white;
     text-decoration: none;
-    min-height: 514px;
     overflow: hidden;
   }
 `
 
 export const ThumbnailVideoWrapper = styled.div`
-  iframe, video {
+  background-image: url(${props => props.backgroundImage});
+  background-size: cover;
+  background-position: center;
+  line-height: 0;
+  iframe {
     height: 100% !important;
+    width: 100% !important;
+  }
+  video {
+    object-fit: cover !important;
+
+    height: auto !important;
     width: 100% !important;
   }
 `
@@ -187,10 +196,40 @@ export const WhoWeAreGrid = styled.div`
   > div {
     color: white;
   }
+  .who-we-are {
+    .image-wraper {
+      position: relative;
+      display: block;
+      > div {
+        transition: opacity 500ms ease !important;
+         animation-name: unset !important;
+      }
+      &:hover {
+        > div:nth-child(1) {
+          opacity: 0 !important;
+         
+        }
+        div:nth-child(2) {
+          opacity: 1 !important;
+        }
+      }
+      > div:nth-child(1) {
+          position: relative;
+          z-index: 1;
+          
+        }
+      > div:nth-child(2) {
+        position: absolute !important;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0 !important;
+      }
+    }
+  }
   a {
     color: white;
     text-decoration: none;
-    min-height: 514px;
     overflow: hidden;
   }
   div..image-and-text {
@@ -239,6 +278,9 @@ export const ProjectWrapper = styled.section`
     letter-spacing: ${(props: any) => props.theme.heading1.letterSpacing};
     font-weight: 100;
     margin: 2rem 0;
+    @media screen and (max-width: 768px) {
+      line-height: 3.8rem;
+    }
   }
 
   small {
@@ -580,7 +622,7 @@ export const SectionWrapper = styled.section`
     color: white;
     position: relative;
     @media ${device.laptop} {
-      background-position: 100% 35%;
+      background-position: 100% -30vw;
     }
     p {
       margin-bottom: 0;

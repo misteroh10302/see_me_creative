@@ -70,7 +70,7 @@ const Section = (props: SectionProps) => {
               <WhoWeAreGrid>
                 {content.imageGallery.map(entry => {
                   return (
-                    <ImageAndText title={title} key={uuid()} content={entry} />
+                    <ImageAndText page="who-we-are" title={title} key={uuid()} content={entry} />
                   )
                 })}
               </WhoWeAreGrid>

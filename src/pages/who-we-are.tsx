@@ -125,7 +125,6 @@ const WhoWeArePage = () => (
             <SEO title="Who We Are" />
             {nodes && (
               <ProjectCollectionWrapper>
-        
                 <FullHeight className="full- who-we-are-header-wrapper">
                   <BackgroundMedia
                     vimeoIdMobile={nodes[0].background.vimeoId}

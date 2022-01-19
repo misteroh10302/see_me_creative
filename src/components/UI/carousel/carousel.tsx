@@ -59,7 +59,7 @@ const MyCarousel = (props: CarouselProps) => {
     )
   } else {
     const { projects } = props.content
-
+    
     const breakpointColumnsObj = {
       default: 3,
       1100: 3,
@@ -76,18 +76,21 @@ const MyCarousel = (props: CarouselProps) => {
         >
           {projects &&
             projects.map((project: any, i: number) => {
-              const { clientLogo, clientName } = project;
+              const { clientLogo, clientName, thumbnailMediaBackgroundImage } = project;
               if (i < numberOfPosts.number) {
                 return (
                   <Link to={`/project/${mySlug(project.clientName)}-${mySlug(project.title)}`} key={uuid()}>
                     {project.thumbnailMedia.file.contentType.includes(
                       "video"
                     ) ? (
-                      <ThumbnailVideoWrapper style={{ marginBottom: '26px'}}>
-                        <video width="100%" height="100%" muted autoPlay loop playsInline>
+                      <ThumbnailVideoWrapper
+                      backgroundImage={thumbnailMediaBackgroundImage ? thumbnailMediaBackgroundImage.fluid.src : ''} 
+                      style={{ marginBottom: '26px'}}>
+                        <video width="100%" height="200px" muted autoPlay loop playsInline >
                           <source
                             src={project.thumbnailMedia.file.url}
                             type="video/mp4"
+                            
                           />
                           Your browser does not support the video tag.
                         </video>
@@ -104,7 +107,7 @@ const MyCarousel = (props: CarouselProps) => {
                           fluid={project.thumbnailMedia.fluid}
                           objectFit="cover"
                           loading="lazy"
-                          style={{ maxHeight: "550px", marginBottom: "3rem" }}
+                          style={{ marginBottom: "3rem" }}
                         />
                         <div className="project-title">
                             {clientLogo && (

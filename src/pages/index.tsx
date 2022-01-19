@@ -20,7 +20,7 @@ const bcgVideo = {
 const BackgroundIndex = (props) =>{
   return (
     <div style={{position: 'relative', zIndex: 0}}>
-      <BackgroundMedia overrideStyle={{top: '-30rem'}} upsideDown position="absolute" file={bcgVideo} />
+      {/* <BackgroundMedia overrideStyle={{top: '-30rem'}} upsideDown position="absolute" file={bcgVideo} /> */}
       {props.children}
     </div>
   )
@@ -163,6 +163,15 @@ const homepageQuery = graphql`
                   file {
                     contentType
                     url
+                  }
+                }
+                 thumbnailMediaBackgroundImage {
+                  fluid(maxWidth: 1600) {
+                    sizes
+                    aspectRatio
+                    src
+                    srcSet
+                    srcWebp
                   }
                 }
               }
