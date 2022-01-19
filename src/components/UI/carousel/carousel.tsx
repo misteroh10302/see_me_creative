@@ -77,7 +77,7 @@ const MyCarousel = (props: CarouselProps) => {
           {projects &&
             projects.map((project: any, i: number) => {
               const { clientLogo, clientName, thumbnailMediaBackgroundImage } = project;
-              console.log(thumbnailMediaBackgroundImage)
+              
               if (i < numberOfPosts.number) {
                 return (
                   <Link to={`/project/${mySlug(project.clientName)}-${mySlug(project.title)}`} key={uuid()}>
