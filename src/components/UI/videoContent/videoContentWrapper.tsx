@@ -28,9 +28,14 @@ export const RegularVideo = styled.div`
             border: 0;
             position: absolute;
         }
-    }
+    }   
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center'';
+    justify-content: center;
     @media ${device.tablet} {
-        height: 100vh;
+        
     }
 
 `
