@@ -40,7 +40,7 @@ const TwoColumnGridItem = ({ data, highlight }: { data: any, highlight: string }
     return (
       <Img
         backgroundColor="#eeeeee"
-        style={{ maxHeight: "90vh" }}
+        
         fluid={image.fluid}
       />
     )
@@ -339,12 +339,11 @@ const SecondPage = data => {
                   return (
                     <GalleryWrapper className="gallery">
                       <Img
-                        style={{ maxHeight: "90vh" }}
+                       
                         backgroundColor="#eeeeee"
                         fluid={content.imageLeft.fluid}
                       />
                       <Img
-                        style={{ maxHeight: "90vh" }}
                         backgroundColor="#eeeeee"
                         fluid={content.imageRight.fluid}
                       />
