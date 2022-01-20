@@ -781,7 +781,7 @@ export const TwoColumnMediaWrapper = styled.div`
   grid-template-columns: 1fr;
   gap: 2rem;
   margin-bottom: 2rem;
-    align-items: center;
+  align-items: center;
   @media ${device.tablet} {
     margin: 3rem 0;
     grid-template-columns: 1fr 1fr;
