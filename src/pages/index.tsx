@@ -14,13 +14,13 @@ import uuid from "react-uuid"
 const bcgVideo = {
   contentType: "video/mp4",
   url:
-    "//videos.ctfassets.net/ralvgwmdsf6z/3myntUCnK3BxiIbHvDfkD5/7be81623bf919629c2376d207d9abade/Grid_Wave_8_16x9_50_Black.mp4",
+    "//videos.ctfassets.net/ralvgwmdsf6z/5IRFps2RQKIAmxiJfoJJ5A/819610403892cd2b5bd5035a60da7c8d/Black_Grid_A.mp4",
 }
 
 const BackgroundIndex = (props) =>{
   return (
     <div style={{position: 'relative', zIndex: 0}}>
-      {/* <BackgroundMedia overrideStyle={{top: '-30rem'}} upsideDown position="absolute" file={bcgVideo} /> */}
+      <BackgroundMedia overrideStyle={{top: '0'}} upsideDown position="absolute" file={bcgVideo} />
       {props.children}
     </div>
   )
