@@ -18,9 +18,9 @@ const PlayButton = ({ highlight }) => {
 
 export const VideoContentRegular = (props: any) => {
   const { autoPlayVideo, vimeoId, playbutton } = props.content
-  const { highlight, dimensions } = props
+  const { dimensions } = props
   const autoPlay =
-    autoPlayVideo === null || autoPlayVideo === false ? false : true
+    autoPlayVideo === undefined || autoPlayVideo === false ? false : true
 
   const [paused, setPaused] = useState(true)
 
