@@ -84,6 +84,7 @@ const MyCarousel = (props: CarouselProps) => {
                     {project.thumbnailMedia.file.contentType.includes(
                       "video"
                     ) ? (
+                      <>
                       <ThumbnailVideoWrapper
                       style={{ marginBottom: '26px'}}>
                         <div className="thumbnail-vid-outer">
@@ -103,6 +104,8 @@ const MyCarousel = (props: CarouselProps) => {
                           <h4><span className="client-name-mobile">{clientName}: </span>{project.title}</h4>
                         </div>
                       </ThumbnailVideoWrapper>
+                       <h4 className="video-project-name-mobile"><span className="client-name-mobile">{clientName}: </span>{project.title}</h4>
+                      </>
                     ) : (
                       <>
                         <Img

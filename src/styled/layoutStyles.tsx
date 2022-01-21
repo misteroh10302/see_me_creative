@@ -415,11 +415,12 @@ export const SectionWrapper = styled.section`
     .my-masonry-grid {
       padding: 0 3rem;
     }
-    .client-name-mobile {
+    .client-name-mobile, .video-project-name-mobile {
       @media ${device.tablet} {
         display: none;
       }
     }
+
     .my-masonry-grid_column {
       @media ${device.laptop} {
         height: 55vw;
