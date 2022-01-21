@@ -162,9 +162,15 @@ const SecondPage = data => {
                   playing={true}
                   muted={true}
                   loop
+                  volume={0}
                   config={{
                     vimeo: {
-                      playerVars: { showinfo: 1 },
+                      playerOptions: {
+                        playsinline: 1,
+                        keyboard: false,
+                        showinfo: 1,
+                        title: true
+                      },
                     },
                   }}
                 />
@@ -197,6 +203,7 @@ const SecondPage = data => {
                   playsinline={true}
                   className="react-player"
                   loop
+                  volume={0}
                   config={{
                     vimeo: {
                       playerVars: {
@@ -204,6 +211,8 @@ const SecondPage = data => {
                       },
                       playerOptions: {
                         playsinline: 1,
+                        keyboard: false,
+                        showinfo: 1,
                       },
                     },
                   }}
