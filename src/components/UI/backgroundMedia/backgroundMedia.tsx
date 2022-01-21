@@ -11,11 +11,11 @@ const BackgroundMedia = (props: BackgroundMediaProps) => {
   if (props.upsideDown) {
     styles = {
       transform: `translateY(-10rem) rotate(-180deg)`,
-      left: "-25rem",
+      left: "0",
       width: "100%",
       height: "initial",
       opacity: 1,
-      top: "-30rem",
+      top: "0",
       zIndex: "0",
       ...(overrideStyle && { ...overrideStyle }),
     }

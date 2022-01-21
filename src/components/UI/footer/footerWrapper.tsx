@@ -11,6 +11,8 @@ export const FooterWrapper = styled.nav`
   overflow: hidden;
   video{
     height: 70vh;
+    position: ${props => props.page === "project" ? 'relative': 'initial' };
+     top: ${props => props.page === "project" ? '5rem': 'initial' };
   }
   .mesh {
     position: absolute;

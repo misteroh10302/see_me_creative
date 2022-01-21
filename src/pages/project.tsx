@@ -78,7 +78,7 @@ const SecondPage = data => {
   const bcgVideo = {
     contentType: "video/mp4",
     url:
-      "//videos.ctfassets.net/ralvgwmdsf6z/5ajzuG5O5JcyEhU40e55Gy/5e05c2757a22bfac0bef24087a3898fc/Grid_Wave_8_16x9_50_White.mp4",
+      "//videos.ctfassets.net/ralvgwmdsf6z/6mtkCPZoHyF4ZQLMoCkdmb/e4210802c5096790d7b743c59ee98663/White_Grid_A.mp4",
   }
 
   const footerContent = {
@@ -131,7 +131,7 @@ const SecondPage = data => {
     file: {
       contentType: "video/mp4",
       url:
-        "//videos.ctfassets.net/ralvgwmdsf6z/3lnbcwuHBW2Hf9fOLofUaM/8c23fc6e721f326911868742fb0d88f1/Grid_Wave_1_16x9_50_White.mp4",
+        "//videos.ctfassets.net/ralvgwmdsf6z/3zfO0CsoBnbTK4AT8Isy58/1981f5aee9a402fa85280c8c09f3a1ca/White_Grid_B.mp4",
     },
   }
 
@@ -378,6 +378,7 @@ const SecondPage = data => {
           content={footerContent}
           textColor="dark"
           buttonColor="light"
+          page="project"
           bgm={footerBackground}
         />
       </Layout>
