@@ -247,7 +247,7 @@ const SecondPage = data => {
           {postContent && (
             <section className="post-content">
               {postContent.map((content, i) => {
-              
+            
                 if (content.videos)
                   return (
                     <VideoContent

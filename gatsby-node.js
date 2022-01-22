@@ -80,6 +80,8 @@ exports.createPages = async function ({ actions, graphql }) {
                 ... on ContentfulMediaOrTextGridItem {
                   id
                   vimeoId
+                  autoPlayVideo
+                  videoDimensions
                   richTextContent {
                     json
                   }
