@@ -11,16 +11,11 @@ import Section from "../components/section"
 import Footer from "../components/UI/footer/footer"
 import uuid from "react-uuid"
 
-const bcgVideo = {
-  contentType: "video/mp4",
-  url:
-    "//videos.ctfassets.net/ralvgwmdsf6z/5IRFps2RQKIAmxiJfoJJ5A/819610403892cd2b5bd5035a60da7c8d/Black_Grid_A.mp4",
-}
 
 const BackgroundIndex = (props) =>{
   return (
     <div style={{position: 'relative', zIndex: 0}}>
-      <BackgroundMedia overrideStyle={{top: '0'}} upsideDown position="absolute" file={bcgVideo} />
+      <BackgroundMedia overrideStyle={{top: '0'}} upsideDown position="absolute" file={props.bcgVideo.file} />
       {props.children}
     </div>
   )
@@ -35,7 +30,7 @@ const IndexPage = () => (
         footer,
         footerBackground,
       } = data.contentfulHomepage
-
+      const { meshGridTop, meshGridBottom } = data.allContentfulBlackPageMeshGrids.nodes[0]
       const sections = homepageContent.filter((entry) => entry.__typename === "ContentfulSection");
       return (
         <ThemeProvider theme={theme}>
@@ -56,7 +51,7 @@ const IndexPage = () => (
                     )
                   } 
                 })}
-                <BackgroundIndex>
+                <BackgroundIndex bcgVideo={meshGridTop}>
                   {sections && sections.map((section: any, i: number) => {
                       return (
                         <Section
@@ -72,7 +67,7 @@ const IndexPage = () => (
               <Footer
                 textColor="light"
                 content={footer}
-                bgm={footerBackground}
+                bgm={meshGridBottom}
               />
             </div>
           </Layout>
@@ -84,6 +79,23 @@ const IndexPage = () => (
 
 const homepageQuery = graphql`
   query MyQuery {
+     allContentfulBlackPageMeshGrids {
+      nodes {
+        meshGridTop {
+          file {
+            contentType
+            url
+          }
+        }
+        meshGridBottom {
+          
+          file {
+            contentType
+            url
+          }
+        }
+      }
+    }
     contentfulHomepage {
       id
       footer {

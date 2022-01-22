@@ -19,8 +19,9 @@ const PlayButton = ({ highlight }) => {
 export const VideoContentRegular = (props: any) => {
   const { autoPlayVideo, vimeoId, playbutton } = props.content
   const { dimensions } = props
+ 
   const autoPlay =
-    autoPlayVideo === undefined || autoPlayVideo === false ? false : true
+    autoPlayVideo === null || autoPlayVideo === false ? false : true
 
   const [paused, setPaused] = useState(true)
 
@@ -34,7 +35,7 @@ export const VideoContentRegular = (props: any) => {
     setPlaying(false)
     setPaused(true)
   }
-
+ 
   return (
     <RegularVideo dimensions={dimensions}>
       <ReactPlayer
@@ -113,8 +114,8 @@ const VideoContent = (props: VideoContentProps) => {
               height="54vw"
               playing={playingMobile}
               muted={true}
-              loop={autoPlay}
-              light={true}
+              loop={true}
+              light={!autoPlay ? true : false }
               controls={!autoPlay}
               playsinline={true}
               onPlay={playMobile}
@@ -153,10 +154,10 @@ const VideoContent = (props: VideoContentProps) => {
               width="100%"
               height="54vw"
               playing={playing}
-              loop={autoPlay}
+              loop={true}
               muted={true}
               controls={!autoPlay}
-              light={true}
+              light={!autoPlay ? true : false }
               playIcon={<PlayButton highlight={props.highlight} />}
               onPlay={play}
               onPause={pause}

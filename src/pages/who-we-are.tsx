@@ -14,6 +14,23 @@ import Footer from "../components/UI/footer/footer"
 
 const whoWeAreQuery = graphql`
   query whoWeAreQuery {
+     allContentfulBlackPageMeshGrids {
+      nodes {
+        meshGridTop {
+          file {
+            contentType
+            url
+          }
+        }
+        meshGridBottom {
+          
+          file {
+            contentType
+            url
+          }
+        }
+      }
+    }
     allContentfulWhoWeArePage {
       nodes {
         title
@@ -50,6 +67,11 @@ const whoWeAreQuery = graphql`
           }
           content {
             ... on ContentfulOfferings {
+              headerImage {
+                 fluid( maxWidth: 600) {
+                  ...GatsbyContentfulFluid_withWebp_noBase64
+                }
+              }
               ourOfferings {
                 title
                 content {
@@ -65,6 +87,11 @@ const whoWeAreQuery = graphql`
             }
             ... on ContentfulThreeColumnGrid {
               id
+              headerImage {
+                fluid( maxWidth: 600) {
+                  ...GatsbyContentfulFluid_withWebp_noBase64
+                }
+              }
               imageGallery {
                 id
                 title
@@ -99,12 +126,6 @@ const whoWeAreQuery = graphql`
 `
 
 
-const bcgVideo = {
-  contentType: "video/mp4",
-  url:
-    "//videos.ctfassets.net/ralvgwmdsf6z/5IRFps2RQKIAmxiJfoJJ5A/819610403892cd2b5bd5035a60da7c8d/Black_Grid_A.mp4",
-}
-
 const BackgroundWhoWeAre = (props: any) => {
   return (
     <div style={{ position: "relative", zIndex: 0 }}>
@@ -112,7 +133,7 @@ const BackgroundWhoWeAre = (props: any) => {
         overrideStyle={{ top: "0rem" }}
         upsideDown
         position="absolute"
-        file={bcgVideo}
+        file={props.bcgVideo.file}
       />
       {props.children}
     </div>
@@ -125,6 +146,8 @@ const WhoWeArePage = () => (
     render={data => {
       const { nodes } = data.allContentfulWhoWeArePage
       const { whoWeAreContent } = nodes[0]
+      const { meshGridTop, meshGridBottom } = data.allContentfulBlackPageMeshGrids.nodes[0]
+
       return (
         <ThemeProvider theme={theme}>
           <Layout className="who-we-are-page">
@@ -137,14 +160,13 @@ const WhoWeArePage = () => (
                     vimeoId={nodes[0].background.vimeoId}
                   />
                 </FullHeight>
-                <BackgroundWhoWeAre>
+                <BackgroundWhoWeAre bcgVideo={meshGridTop}>
                   {whoWeAreContent &&
                     whoWeAreContent.map((section: any, index: number) => {
                       return (
                         <Section
                           key={uuid()}
                           title={section.title}
-                          bcgVideo={bcgVideo}
                           bgm={section.backgroundMedia}
                           content={section}
                         />
@@ -156,7 +178,7 @@ const WhoWeArePage = () => (
             <Footer
               textColor="light"
               content={nodes[0].footer}
-              bgm={nodes[0].footerBackground}
+              bgm={meshGridBottom}
             />
           </Layout>
         </ThemeProvider>
