@@ -34,7 +34,7 @@ const TwoColumnGridItem = ({ data, highlight }: { data: any, highlight: string }
 
   if (vimeoId) {
     return (
-      <VideoContentRegular dimensions={dimensions} highlight={highlight} content={data} playbutton={true} />
+      <VideoContentRegular autoPlayVideo={autoPlayVideo} dimensions={dimensions} highlight={highlight} content={data} playbutton={true} />
     )
   } else if (image) {
     return (

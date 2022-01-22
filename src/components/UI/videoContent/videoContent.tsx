@@ -21,7 +21,7 @@ export const VideoContentRegular = (props: any) => {
   const { dimensions } = props
  
   const autoPlay =
-    autoPlayVideo === null || autoPlayVideo === false ? false : true
+    !autoPlayVideo || autoPlayVideo === false ? false : true
 
   const [paused, setPaused] = useState(true)
 
