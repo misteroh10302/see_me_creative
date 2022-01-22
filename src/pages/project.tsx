@@ -34,7 +34,7 @@ const TwoColumnGridItem = ({ data, highlight }: { data: any, highlight: string }
 
   if (vimeoId) {
     return (
-      <VideoContentRegular autoPlayVideo={autoPlayVideo} dimensions={dimensions} highlight={highlight} content={data} playbutton={true} />
+      <VideoContentRegular dimensions={dimensions} highlight={highlight} content={data} playbutton={true} />
     )
   } else if (image) {
     return (
@@ -247,7 +247,7 @@ const SecondPage = data => {
           {postContent && (
             <section className="post-content">
               {postContent.map((content, i) => {
-              
+            
                 if (content.videos)
                   return (
                     <VideoContent
