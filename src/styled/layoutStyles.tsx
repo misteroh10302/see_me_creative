@@ -150,6 +150,7 @@ export const OurOfferingsWrapper = styled.div`
   text-align: left;
   position: relative;
   z-index: 1;
+  margin-bottom: 4rem !important;
   h3 {
     padding-left: 0 !important;
     font-family: ${theme.font.serif};
@@ -187,6 +188,7 @@ export const OurOfferingsWrapper = styled.div`
 
 export const WhoWeAreGrid = styled.div`
   padding: ${(props: any) => props.theme.padding.sectionVertical} 0;
+  padding-top: 0;
   max-width: 100%;
   position: relative;
   z-index: 1;

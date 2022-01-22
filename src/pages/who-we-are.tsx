@@ -67,6 +67,11 @@ const whoWeAreQuery = graphql`
           }
           content {
             ... on ContentfulOfferings {
+              headerImage {
+                 fluid( maxWidth: 600) {
+                  ...GatsbyContentfulFluid_withWebp_noBase64
+                }
+              }
               ourOfferings {
                 title
                 content {
@@ -82,6 +87,11 @@ const whoWeAreQuery = graphql`
             }
             ... on ContentfulThreeColumnGrid {
               id
+              headerImage {
+                fluid( maxWidth: 600) {
+                  ...GatsbyContentfulFluid_withWebp_noBase64
+                }
+              }
               imageGallery {
                 id
                 title
@@ -137,6 +147,7 @@ const WhoWeArePage = () => (
       const { nodes } = data.allContentfulWhoWeArePage
       const { whoWeAreContent } = nodes[0]
       const { meshGridTop, meshGridBottom } = data.allContentfulBlackPageMeshGrids.nodes[0]
+
       return (
         <ThemeProvider theme={theme}>
           <Layout className="who-we-are-page">
@@ -156,7 +167,6 @@ const WhoWeArePage = () => (
                         <Section
                           key={uuid()}
                           title={section.title}
-                         
                           bgm={section.backgroundMedia}
                           content={section}
                         />

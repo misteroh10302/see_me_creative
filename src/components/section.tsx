@@ -9,40 +9,54 @@ import { OurOfferingsWrapper, WhoWeAreGrid } from "../styled/layoutStyles"
 import BackgroundMedia from "./UI/backgroundMedia/backgroundMedia"
 
 
-
-
 const Section = (props: SectionProps) => {
-  const bcgVideo = props;
+  const bcgVideo = props
   const { content, title } = props.content
   const theCleanTitle = cleanTitle(title)
 
   return (
     <SectionWrapper
       className={theCleanTitle}
-      backgroundImage={props.bgm && props.bgm.file ? props.bgm.file.url + "?&fm=webp" : ""}
+      backgroundImage={
+        props.bgm && props.bgm.file ? props.bgm.file.url + "?&fm=webp" : ""
+      }
       style={{
-        position: bcgVideo ? 'relative' : 'initial'
+        position: bcgVideo ? "relative" : "initial",
       }}
     >
-      <BackgroundMedia overrideStyle={{top: '-30rem'}} upsideDown position="absolute" file={bcgVideo} />
+      <BackgroundMedia
+        overrideStyle={{ top: "-30rem" }}
+        upsideDown
+        position="absolute"
+        file={bcgVideo}
+      />
       {content &&
         content.map((content, i: number) => {
           if (content.__typename === "ContentfulOfferings") {
+            const { headerImage, ourOfferings } = content
             return (
-              <OurOfferingsWrapper>
-                {content.ourOfferings.map(entry => {
-                  return (
-                    <div>
-                      <h3>{entry.title}</h3>
-                      <TextArea
-                        key={uuid()}
-                        title={entry.title}
-                        content={entry}
-                      />
-                    </div>
-                  )
-                })}
-              </OurOfferingsWrapper>
+              <>
+                <div>
+                  <img
+                    src={headerImage.fluid.src}
+                    alt="Offerings"
+                  />
+                  </div>
+                <OurOfferingsWrapper>
+                  {ourOfferings.map(entry => {
+                    return (
+                      <div>
+                        <h3>{entry.title}</h3>
+                        <TextArea
+                          key={uuid()}
+                          title={entry.title}
+                          content={entry}
+                        />
+                      </div>
+                    )
+                  })}
+                </OurOfferingsWrapper>
+              </>
             )
           }
           if (content.__typename === "ContentfulTwoColumnGrid") {
@@ -66,14 +80,27 @@ const Section = (props: SectionProps) => {
             )
           }
           if (content.__typename === "ContentfulThreeColumnGrid") {
+            const { headerImage,  } = content
+           
             return (
-              <WhoWeAreGrid>
-                {content.imageGallery.map(entry => {
-                  return (
-                    <ImageAndText page="who-we-are" title={title} key={uuid()} content={entry} />
-                  )
-                })}
-              </WhoWeAreGrid>
+               <div>
+                  <img
+                    src={headerImage.fluid.src}
+                    alt="Offerings"
+                  />
+                <WhoWeAreGrid>
+                  {content.imageGallery.map(entry => {
+                    return (
+                      <ImageAndText
+                        page="who-we-are"
+                        title={title}
+                        key={uuid()}
+                        content={entry}
+                      />
+                    )
+                  })}
+                </WhoWeAreGrid>
+              </div>
             )
           }
           if (content.__typename === "ContentfulTextArea") {
