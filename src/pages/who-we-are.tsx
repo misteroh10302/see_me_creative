@@ -130,8 +130,9 @@ const BackgroundWhoWeAre = (props: any) => {
   return (
     <div style={{ position: "relative", zIndex: 0 }}>
       <BackgroundMedia
-        overrideStyle={{ top: "0rem" }}
+        overrideStyle={{ top: "0rem", objectFit: 'cover' }}
         upsideDown
+        className="who-are-header"
         position="absolute"
         file={props.bcgVideo.file}
       />

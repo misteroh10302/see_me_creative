@@ -6,8 +6,8 @@ import { BackgroundMediaWrapper } from "./backgroundMediaStyled"
 import ReactPlayer from "react-player"
 
 const BackgroundMedia = (props: BackgroundMediaProps) => {
-  const { position, vimeoId, vimeoIdMobile, overrideStyle } = props
-  let styles = {...(overrideStyle && { ...overrideStyle })}
+  const { position, vimeoId, vimeoIdMobile, overrideStyle, className } = props
+  let styles = { ...(overrideStyle && { ...overrideStyle }) }
   if (props.upsideDown) {
     styles = {
       transform: `translateY(-10rem) rotate(-180deg)`,
@@ -22,7 +22,12 @@ const BackgroundMedia = (props: BackgroundMediaProps) => {
   }
 
   return (
-    <BackgroundMediaWrapper position={position} key={uuid()} styles={styles}>
+    <BackgroundMediaWrapper
+      position={position}
+      className={className}
+      key={uuid()}
+      styles={styles}
+    >
       {vimeoId ? (
         <div className={`video-background`}>
           <ReactPlayer
