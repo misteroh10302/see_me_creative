@@ -74,10 +74,20 @@ const SecondPage = data => {
   const headerDesktopVimeoVideoId = content.headerDesktopVimeoVideoId || null
   const headerMobileVimeoVideoId = content.headerMobileVimeoVideoId || null
   const clientName = content.clientName || null
+  const meshGrids = content.meshGrids;
+
   const bcgVideo = {
     contentType: "video/mp4",
-    url:
+    url: meshGrids.data.allContentfulProjectMeshGrids.nodes[0].meshGridTop.file.url || 
       "//videos.ctfassets.net/ralvgwmdsf6z/6mtkCPZoHyF4ZQLMoCkdmb/e4210802c5096790d7b743c59ee98663/White_Grid_A.mp4",
+  }
+
+  const footerBackground = {
+    file: {
+      contentType: "video/mp4",
+      url: meshGrids.data.allContentfulProjectMeshGrids.nodes[0].meshGridFooter.file.url || 
+        "//videos.ctfassets.net/ralvgwmdsf6z/3zfO0CsoBnbTK4AT8Isy58/1981f5aee9a402fa85280c8c09f3a1ca/White_Grid_B.mp4",
+    },
   }
 
   const footerContent = {
@@ -125,15 +135,8 @@ const SecondPage = data => {
     ],
   }
 
-  const footerBackground = {
-    fluid: null,
-    file: {
-      contentType: "video/mp4",
-      url:
-        "//videos.ctfassets.net/ralvgwmdsf6z/3zfO0CsoBnbTK4AT8Isy58/1981f5aee9a402fa85280c8c09f3a1ca/White_Grid_B.mp4",
-    },
-  }
 
+  
   return (
     <ThemeProvider theme={theme}>
       <Layout className={mySlug(slug + "-" + clientName)}>

@@ -185,6 +185,25 @@ exports.createPages = async function ({ actions, graphql }) {
     }
   `)
 
+   let meshGrids = await graphql(`
+    {
+      allContentfulProjectMeshGrids {
+        nodes {
+          meshGridTop {
+            file {
+              url
+            }
+          }
+          meshGridFooter {
+            file {
+              url
+            }
+          }
+        }
+      }
+    }
+   `);
+
   projects.data.allContentfulProjectTemplateOne.nodes.forEach(edge => {
     const slug = edge
     const parsedSlug = mySlug(slug.title.toLowerCase())
@@ -192,7 +211,9 @@ exports.createPages = async function ({ actions, graphql }) {
     const parsedClient = mySlug(
       slug.clientName ? slug.clientName.toLowerCase() : ""
     )
- 
+    
+    edge.meshGrids = meshGrids;
+
     actions.createPage({
       path: "/project/" + parsedClient + "-" + parsedSlug,
       component: require.resolve(`./src/pages/project.tsx`),
