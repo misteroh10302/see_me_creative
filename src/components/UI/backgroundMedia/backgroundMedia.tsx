@@ -66,7 +66,7 @@ const BackgroundMedia = (props: BackgroundMediaProps) => {
           )}
         </div>
       ) : props.file.contentType && props.file.contentType.includes("video") ? (
-        <div key={uuid()}>
+        <div key={uuid()} className="bcg-video">
           <video
             autoPlay={true}
             muted={true}
@@ -74,6 +74,7 @@ const BackgroundMedia = (props: BackgroundMediaProps) => {
             width="800"
             loop={true}
             playsInline={true}
+            controls={false}
           >
             <source src={`https:${props.file.url}`} type="video/mp4" />
             Sorry, your browser doesn't support embedded videos.
