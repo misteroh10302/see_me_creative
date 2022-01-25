@@ -9,6 +9,9 @@ export const BackgroundMediaWrapper = styled.section`
       object-fit: contain !important;
     }
   }
+  video::-webkit-media-controls {
+      opacity: 0 !important;
+  }
   .desktop-video-background {
     display: none;
   }
