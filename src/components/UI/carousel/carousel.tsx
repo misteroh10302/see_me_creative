@@ -88,7 +88,7 @@ const MyCarousel = (props: CarouselProps) => {
                       <ThumbnailVideoWrapper
                       style={{ marginBottom: '26px'}}>
                         <div className="thumbnail-vid-outer">
-                          <video width="100%" height="100%" muted autoPlay loop playsInline poster={thumbnailMediaBackgroundImage ? thumbnailMediaBackgroundImage.fluid.src : ''}>
+                          <video width="100%" height="100%" preload="none" muted autoPlay loop playsInline poster={thumbnailMediaBackgroundImage ? thumbnailMediaBackgroundImage.fluid.src : ''}>
                             <source
                               src={project.thumbnailMedia.file.url}
                               type="video/mp4"
@@ -111,7 +111,7 @@ const MyCarousel = (props: CarouselProps) => {
                         <Img
                           fluid={project.thumbnailMedia.fluid}
                           objectFit="cover"
-                          loading="lazy"
+                          loading="eager"
                           style={{ marginBottom: "3rem" }}
                         />
                         <div className="project-title">

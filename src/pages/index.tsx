@@ -39,6 +39,7 @@ const IndexPage = () => (
               <SEO title="Home" />
               {homepageContent &&
                 homepageContent.map((section: any, i: number) => {
+                  console.log(section)
                   if (section.__typename === "ContentfulBackgroundMedia") {
                     return (
                       <BackgroundMedia
@@ -47,6 +48,7 @@ const IndexPage = () => (
                         vimeoIdMobile={section.vimeoIdMobile}
                         key={uuid()}
                         overrideStyle={{zIndex: 1}}
+                        file={section.media.file}
                       />
                     )
                   } 
@@ -88,7 +90,6 @@ const homepageQuery = graphql`
           }
         }
         meshGridBottom {
-          
           file {
             contentType
             url
@@ -123,6 +124,16 @@ const homepageQuery = graphql`
           vimeoId
           vimeoIdMobile
           title
+          media {
+            fluid(maxWidth: 200, maxHeight: 500) {
+              ...GatsbyContentfulFluid
+            }
+            file {
+              fileName
+              contentType
+              url
+            }
+          }
         }
         ... on ContentfulSection {
           __typename
