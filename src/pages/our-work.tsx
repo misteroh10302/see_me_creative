@@ -25,7 +25,7 @@ import { useWindowSize } from "../components/utils"
 
 const H2Projects = styled.h2`
   font-size: 2rem !important;
-  margin-top: 0.5rem !important;
+  margin-top: 1rem !important;
 `
 
 const OurWorkQuery = graphql`

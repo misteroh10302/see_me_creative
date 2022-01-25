@@ -129,6 +129,8 @@ export const OurWorkWrapper = styled.div`
     color: white;
     text-decoration: none;
     overflow: hidden;
+    display: block;
+    margin-bottom: 20px;
   }
 `
 
@@ -417,6 +419,9 @@ export const SectionWrapper = styled.section`
     .my-masonry-grid {
       padding: 0 3rem;
     }
+    h4 {
+      margin: 0;
+    }
     .client-name-mobile, .video-project-name-mobile {
       @media ${device.tablet} {
         display: none;
@@ -428,10 +433,13 @@ export const SectionWrapper = styled.section`
         height: 55vw;
         overflow: hidden;
       }
-
+      h4 {
+        margin-top: 1rem;
+      }
       a {
         display: block;
         position: relative;
+        margin-bottom: 37px;
         .project-title {
           display: flex;
           flex-direction: column;

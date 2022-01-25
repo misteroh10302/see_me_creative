@@ -17,7 +17,7 @@ export const CarouselWrapper = styled.div`
         font-family: ${props => props.theme.font.serif}, serif;
         font-size: ${props => props.theme.heading1.fontSize};
         font-weight: 100;
-        margin: 2rem 0;
+        margin: .5rem 0;
     }
     p {
         color: white;

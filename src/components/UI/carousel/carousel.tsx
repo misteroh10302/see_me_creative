@@ -85,8 +85,7 @@ const MyCarousel = (props: CarouselProps) => {
                       "video"
                     ) ? (
                       <>
-                      <ThumbnailVideoWrapper
-                      style={{ marginBottom: '26px'}}>
+                      <ThumbnailVideoWrapper>
                         <div className="thumbnail-vid-outer">
                           <video width="100%" height="100%" preload="none" muted autoPlay loop playsInline poster={thumbnailMediaBackgroundImage ? thumbnailMediaBackgroundImage.fluid.src : ''}>
                             <source
