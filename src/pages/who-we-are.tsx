@@ -68,7 +68,7 @@ const whoWeAreQuery = graphql`
           content {
             ... on ContentfulOfferings {
               headerImage {
-                 fluid( maxWidth: 600) {
+                 fluid(maxWidth: 300) {
                   ...GatsbyContentfulFluid_withWebp_noBase64
                 }
               }
@@ -88,7 +88,7 @@ const whoWeAreQuery = graphql`
             ... on ContentfulThreeColumnGrid {
               id
               headerImage {
-                fluid( maxWidth: 600) {
+                fluid(maxWidth: 350) {
                   ...GatsbyContentfulFluid_withWebp_noBase64
                 }
               }

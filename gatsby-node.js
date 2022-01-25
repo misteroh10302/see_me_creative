@@ -102,6 +102,18 @@ exports.createPages = async function ({ actions, graphql }) {
               vimeoIdMobile
               autoPlayVideo
               title
+              vimeoBackgroundPlaceholderDesktop {
+                fluid(maxWidth: 1600) {
+                  src
+                  srcSet
+                }
+              }
+              vimeoBackgroundPlaceholderMobile {
+                fluid(maxWidth: 1600) {
+                  src
+                  srcSet
+                }
+              }
             }
             ... on ContentfulSingleImage {
               id
