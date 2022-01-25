@@ -150,7 +150,7 @@ export const MobileNavItems = styled.div`
     line-height: 4rem;
     font-family: ${theme.font.serif};
     font-weight: 400;
-    letter-spacing: .05rem;
+    letter-spacing: -0.55px;
     padding-bottom: 5px;
     border-bottom: 1px solid transparent;
     display: inline;

@@ -405,7 +405,7 @@ export const SectionWrapper = styled.section`
   background-size: cover;
   min-height: 100vh;
   width: 100%;
-  padding: ${(props: any) => props.theme.padding.sectionVertical} 2rem;
+  padding: ${(props: any) => props.theme.padding.sectionVertical};
   @media ${device.tablet} {
     padding: ${(props: any) => props.theme.padding.sectionVertical}
       ${(props: any) => props.theme.padding.desktop};

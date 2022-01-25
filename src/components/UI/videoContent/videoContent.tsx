@@ -66,18 +66,18 @@ export const VideoContentRegular = (props: any) => {
   )
 }
 const VideoContent = (props: VideoContentProps) => {
+
   const [paused, setPaused] = useState(false)
 
   const [pausedMobile, setPausedMobile] = useState(false)
 
-  const { autoPlayVideo, vimeoId, vimeoIdMobile, playbutton } = props.content
+  const { autoPlayVideo, vimeoId, vimeoIdMobile, playbutton, vimeoBackgroundPlaceholderDesktop, vimeoBackgroundPlaceholderMobile } = props.content
   const image = <img src="http://simpleicon.com/wp-content/uploads/play1.png" />
   const url = `https://player.vimeo.com/video/${props.content.vimeoId}`
   let desktopClass = ""
   let mobileVideo = null
   const autoPlay =
     autoPlayVideo === null || autoPlayVideo === false ? false : true
-
   const [playing, setPlaying] = React.useState(true)
   const play = () => {
     setPlaying(true)
@@ -98,6 +98,16 @@ const VideoContent = (props: VideoContentProps) => {
     setPausedMobile(true)
   }
 
+
+    const determineLightBackgroundMobile = () => {
+      if (!autoPlay) {
+        if (vimeoBackgroundPlaceholderMobile) {
+          return vimeoBackgroundPlaceholderMobile.fluid.src;
+        }
+        return false;
+      }
+    }
+
   if (vimeoId) {
     if (vimeoIdMobile) {
       desktopClass = "video-content-desktop"
@@ -114,12 +124,13 @@ const VideoContent = (props: VideoContentProps) => {
               playing={playingMobile}
               muted={true}
               loop={true}
-              light={!autoPlay ? true : false }
+              light={determineLightBackgroundMobile()}
               controls={!autoPlay}
               playsinline={true}
               onPlay={playMobile}
               onPause={pauseMobile}
               playIcon={<PlayButton highlight={props.highlight} />}
+             
               config={{
                 vimeo: {
                   playerVars: { showinfo: 1 },
@@ -140,6 +151,16 @@ const VideoContent = (props: VideoContentProps) => {
         </VideoContentWrapper>
       )
     }
+
+    const determineLightBackground = () => {
+      if (!autoPlay) {
+        if (vimeoBackgroundPlaceholderDesktop) {
+          return vimeoBackgroundPlaceholderDesktop.fluid.src;
+        }
+        return false;
+      }
+    }
+
     return (
       <>
         {mobileVideo}
@@ -156,10 +177,10 @@ const VideoContent = (props: VideoContentProps) => {
               loop={true}
               muted={true}
               controls={!autoPlay}
-              light={!autoPlay ? true : false }
               playIcon={<PlayButton highlight={props.highlight} />}
               onPlay={play}
               onPause={pause}
+              light={determineLightBackground()}
               config={{
                 vimeo: {
                   playerVars: { showinfo: 0 },
