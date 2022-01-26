@@ -38,6 +38,12 @@ const whoWeAreQuery = graphql`
           title
           vimeoId
           vimeoIdMobile
+          videoBackgroundDesktop {
+            fluid {
+              src
+              srcSet
+            }
+          }
         }
         footer {
           content {
@@ -148,7 +154,6 @@ const WhoWeArePage = () => (
       const { nodes } = data.allContentfulWhoWeArePage
       const { whoWeAreContent } = nodes[0]
       const { meshGridTop, meshGridBottom } = data.allContentfulBlackPageMeshGrids.nodes[0]
-
       return (
         <ThemeProvider theme={theme}>
           <Layout className="who-we-are-page">
@@ -159,6 +164,7 @@ const WhoWeArePage = () => (
                   <BackgroundMedia
                     vimeoIdMobile={nodes[0].background.vimeoId}
                     vimeoId={nodes[0].background.vimeoId}
+                    poster={nodes[0].background.videoBackgroundDesktop ? nodes[0].background.videoBackgroundDesktop : null}
                   />
                 </FullHeight>
                 <BackgroundWhoWeAre bcgVideo={meshGridTop}>

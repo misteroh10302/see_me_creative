@@ -356,7 +356,7 @@ export const ProjectWrapper = styled.section`
     }
     .video-content {
       margin: 3rem 0 0;
-      background-color: rgb(238, 238, 238);
+   
       @media ${device.tablet} {
         margin: 3rem 0 3rem;
       }

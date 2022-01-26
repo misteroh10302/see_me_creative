@@ -65,11 +65,141 @@ export const VideoContentRegular = (props: any) => {
     </RegularVideo>
   )
 }
-const VideoContent = (props: VideoContentProps) => {
-  const [paused, setPaused] = useState(false)
+
+const VideoContentMobile = props => {
+  const { autoPlay, vimeoBackgroundPlaceholderMobile } = props
 
   const [pausedMobile, setPausedMobile] = useState(false)
 
+  const [playingMobile, setPlayMobile] = useState(false)
+
+  const playMobile = () => {
+    setPlayMobile(true)
+    setPausedMobile(false)
+  }
+  const pauseMobile = () => {
+    setPlayMobile(false)
+    setPausedMobile(true)
+  }
+
+  return (
+    <VideoContentWrapper
+      highlight={props.highlight}
+      className="video-content video-content-mobile"
+    >
+      <div className="video-inner">
+        <ReactPlayer
+          url={`https://player.vimeo.com/video/${vimeoIdMobile}`}
+          width="100%"
+          height="54vw"
+          playing={playingMobile}
+          muted={autoPlay}
+          loop={true}
+          light={
+            !autoPlay && vimeoBackgroundPlaceholderMobile
+              ? vimeoBackgroundPlaceholderMobile.fluid.src
+              : !autoPlay
+              ? true
+              : false
+          }
+          controls={!autoPlay}
+          playsinline={true}
+          onPlay={playMobile}
+          onPause={pauseMobile}
+          playIcon={<PlayButton highlight={props.highlight} />}
+          config={{
+            vimeo: {
+              playerVars: { showinfo: 1 },
+            },
+          }}
+        />
+        {pausedMobile && (
+          <span>
+            <CenterItem
+              style={{ height: "100% !important" }}
+              onClick={playMobile}
+            >
+              <PlayButton highlight={props.highlight} />
+            </CenterItem>
+          </span>
+        )}
+      </div>
+    </VideoContentWrapper>
+  )
+}
+
+const VideoContentDesktop = props => {
+  const {
+    highlight,
+    desktopClass,
+    url,
+    autoPlay,
+    vimeoBackgroundPlaceholderDesktop,
+  } = props
+
+  const [playing, setPlaying] = React.useState(true)
+  const [paused, setPaused] = useState(false)
+  const [hasLoaded, setHasLoaded] = useState(false)
+
+  const play = () => {
+    setPlaying(true)
+    setPaused(false)
+  }
+  const pause = () => {
+    setPlaying(false)
+    setPaused(true)
+  }
+
+  return (
+    <VideoContentWrapper
+      highlight={highlight}
+      className={`video-content ${desktopClass} video-is-${
+        hasLoaded ? "playing" : "paused"
+      }`}
+    >
+      <div className="video-inner">
+        <ReactPlayer
+          url={url}
+          width="100%"
+          height="54vw"
+          playing={playing}
+          loop={true}
+          muted={autoPlay}
+          controls={!autoPlay}
+          playIcon={<PlayButton highlight={highlight} />}
+          onPlay={play}
+          onPause={pause}
+          onReady={() =>
+            setTimeout(() => {
+              setHasLoaded(true)
+            }, 1000)
+          }
+          light={
+            !autoPlay && vimeoBackgroundPlaceholderDesktop
+              ? vimeoBackgroundPlaceholderDesktop.fluid.src
+              : !autoPlay
+              ? true
+              : false
+          }
+          config={{
+            vimeo: {
+              playerVars: { showinfo: 0 },
+            },
+          }}
+        />
+        {paused && (
+          <span>
+            <CenterItem style={{ height: "100% !important" }} onClick={play}>
+              <PlayButton highlight={props.highlight} />
+            </CenterItem>
+          </span>
+        )}
+      </div>
+    </VideoContentWrapper>
+  )
+}
+
+const VideoContent = (props: VideoContentProps) => {
   const {
     autoPlayVideo,
     vimeoId,
@@ -82,123 +212,31 @@ const VideoContent = (props: VideoContentProps) => {
   const url = `https://player.vimeo.com/video/${props.content.vimeoId}`
   let desktopClass = ""
   let mobileVideo = null
+
   const autoPlay =
     autoPlayVideo === null || autoPlayVideo === false ? false : true
-
-  const [playingMobile, setPlayingMobile] = React.useState(true)
-
-  const playMobile = () => {
-    setPlayingMobile(true)
-    setPausedMobile(false)
-  }
-  const pauseMobile = () => {
-    setPlayingMobile(false)
-    setPausedMobile(true)
-  }
 
   if (vimeoId) {
     if (vimeoIdMobile) {
       desktopClass = "video-content-desktop"
       mobileVideo = (
-        <VideoContentWrapper
+        <VideoContentMobile
+          vimeoBackgroundPlaceholderMobile={vimeoBackgroundPlaceholderMobile}
           highlight={props.highlight}
-          className="video-content video-content-mobile"
-        >
-          <div className="video-inner">
-            <ReactPlayer
-              url={`https://player.vimeo.com/video/${vimeoIdMobile}`}
-              width="100%"
-              height="54vw"
-              playing={playingMobile}
-              muted={autoPlay}
-              loop={true}
-              light={
-                !autoPlay && vimeoBackgroundPlaceholderMobile
-                  ? vimeoBackgroundPlaceholderMobile.fluid.src : !autoPlay ? true
-                  : false
-              }
-              controls={!autoPlay}
-              playsinline={true}
-              onPlay={playMobile}
-              onPause={pauseMobile}
-              playIcon={<PlayButton highlight={props.highlight} />}
-              config={{
-                vimeo: {
-                  playerVars: { showinfo: 1 },
-                },
-              }}
-            />
-            {paused && (
-              <span>
-                <CenterItem
-                  style={{ height: "100% !important" }}
-                  onClick={playMobile}
-                >
-                  <PlayButton highlight={props.highlight} />
-                </CenterItem>
-              </span>
-            )}
-          </div>
-        </VideoContentWrapper>
+          autoPlay={autoPlay}
+        />
       )
     }
 
-    const [playing, setPlaying] = React.useState(true)
-
-    const play = () => {
-      setPlaying(true)
-      setPaused(false)
-    }
-    const pause = () => {
-      setPlaying(false)
-      setPaused(true)
-    }
-
-    console.log(autoPlay)
     return (
       <>
         {mobileVideo}
-        <VideoContentWrapper
+        <VideoContentDesktop
+          vimeoBackgroundPlaceholderDesktop={vimeoBackgroundPlaceholderDesktop}
+          autoPlay={autoPlay}
           highlight={props.highlight}
-          className={`video-content ${desktopClass}`}
-        >
-          <div className="video-inner">
-            <ReactPlayer
-              url={url}
-              width="100%"
-              height="54vw"
-              playing={playing}
-              loop={true}
-              muted={autoPlay}
-              controls={!autoPlay}
-              playIcon={<PlayButton highlight={props.highlight} />}
-              onPlay={play}
-              onPause={pause}
-              light={
-                !autoPlay && vimeoBackgroundPlaceholderDesktop
-                  ? vimeoBackgroundPlaceholderDesktop.fluid.src
-                  : !autoPlay
-                  ? true
-                  : false
-              }
-              config={{
-                vimeo: {
-                  playerVars: { showinfo: 0 },
-                },
-              }}
-            />
-            {paused && (
-              <span>
-                <CenterItem
-                  style={{ height: "100% !important" }}
-                  onClick={play}
-                >
-                  <PlayButton highlight={props.highlight} />
-                </CenterItem>
-              </span>
-            )}
-          </div>
-        </VideoContentWrapper>
+          url={url}
+        />
       </>
     )
   }

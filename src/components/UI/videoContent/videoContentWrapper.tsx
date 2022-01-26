@@ -60,7 +60,10 @@ export const VideoContentWrapper = styled.div`
     }
     video,iframe {
         object-fit: contain !important;
-    }   
+    }  
+    &.video-content.video-is-paused  {
+        background-color: rgb(238, 238, 238);
+    } 
     @media ${device.tablet} {
         .video-inner > div {
             height: 54vw !important;
