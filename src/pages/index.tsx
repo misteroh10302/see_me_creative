@@ -40,11 +40,13 @@ const IndexPage = () => (
               {homepageContent &&
                 homepageContent.map((section: any, i: number) => {
                   if (section.__typename === "ContentfulBackgroundMedia") {
+                    const { title, vimeoId, vimeoIdMobile, videoBackgroundDesktop } = section
                     return (
                       <BackgroundMedia
-                        title={section.title}
-                        vimeoId={section.vimeoId}
-                        vimeoIdMobile={section.vimeoIdMobile}
+                        title={title}
+                        vimeoId={vimeoId}
+                        vimeoIdMobile={vimeoIdMobile}
+                        poster={videoBackgroundDesktop ? videoBackgroundDesktop : null}
                         key={uuid()}
                         overrideStyle={{zIndex: 1}}
                         file={section.media ? section.media.file :  ''}
@@ -123,6 +125,12 @@ const homepageQuery = graphql`
           vimeoId
           vimeoIdMobile
           title
+          videoBackgroundDesktop {
+            fluid {
+              srcSet
+              src
+            }
+          }
         }
         ... on ContentfulSection {
           __typename
