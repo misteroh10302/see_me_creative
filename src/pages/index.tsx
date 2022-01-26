@@ -153,9 +153,8 @@ const homepageQuery = graphql`
                 title
                 tags
                 clientLogo {
-                  fluid(maxWidth: 300) {
+                  fluid(maxWidth: 180) {
                     sizes
-                    aspectRatio
                     src
                     srcSet
                   }
@@ -178,7 +177,7 @@ const homepageQuery = graphql`
                   }
                 }
                  thumbnailMediaBackgroundImage {
-                  fluid(maxWidth: 1600) {
+                  fluid(maxWidth: 300) {
                     sizes
                     aspectRatio
                     src

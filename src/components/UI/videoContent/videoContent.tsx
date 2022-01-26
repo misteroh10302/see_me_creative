@@ -114,7 +114,7 @@ const VideoContent = (props: VideoContentProps) => {
               loop={true}
               light={
                 !autoPlay && vimeoBackgroundPlaceholderMobile
-                  ? vimeoBackgroundPlaceholderMobile.fluid.src
+                  ? vimeoBackgroundPlaceholderMobile.fluid.src : !autoPlay ? true
                   : false
               }
               controls={!autoPlay}
@@ -143,7 +143,6 @@ const VideoContent = (props: VideoContentProps) => {
       )
     }
 
-
     const [playing, setPlaying] = React.useState(true)
 
     const play = () => {
@@ -155,6 +154,7 @@ const VideoContent = (props: VideoContentProps) => {
       setPaused(true)
     }
 
+    console.log(autoPlay)
     return (
       <>
         {mobileVideo}
@@ -177,6 +177,8 @@ const VideoContent = (props: VideoContentProps) => {
               light={
                 !autoPlay && vimeoBackgroundPlaceholderDesktop
                   ? vimeoBackgroundPlaceholderDesktop.fluid.src
+                  : !autoPlay
+                  ? true
                   : false
               }
               config={{

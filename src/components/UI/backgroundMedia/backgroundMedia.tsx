@@ -40,6 +40,7 @@ const BackgroundMedia = (props: BackgroundMediaProps) => {
             muted={true}
             controls={false}
             className={vimeoIdMobile && "desktop-video-background"}
+        
             config={{
               vimeo: {
                 playerVars: { showinfo: 1 },

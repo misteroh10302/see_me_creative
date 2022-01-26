@@ -66,7 +66,7 @@ export const VideoContentWrapper = styled.div`
             height: 54vw !important;
         }
         video,iframe {
-            object-fit: cover !important;
+            object-fit: contain !important;
         }  
         padding:0;
         &.video-content-mobile {
