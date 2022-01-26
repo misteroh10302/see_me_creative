@@ -18,7 +18,7 @@ const Section = (props: SectionProps) => {
     <SectionWrapper
       className={theCleanTitle}
       backgroundImage={
-        props.bgm && props.bgm.file ? props.bgm.file.url + "?&fm=webp" : ""
+        props.bgm && props.bgm.file ? props.bgm.file.url : ""
       }
       style={{
         position: bcgVideo ? "relative" : "initial",

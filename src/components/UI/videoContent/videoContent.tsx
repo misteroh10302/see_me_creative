@@ -99,15 +99,6 @@ const VideoContent = (props: VideoContentProps) => {
   }
 
 
-    const determineLightBackgroundMobile = () => {
-      if (!autoPlay) {
-        if (vimeoBackgroundPlaceholderMobile) {
-          return vimeoBackgroundPlaceholderMobile.fluid.src;
-        }
-        return false;
-      }
-    }
-
   if (vimeoId) {
     if (vimeoIdMobile) {
       desktopClass = "video-content-desktop"
@@ -122,15 +113,14 @@ const VideoContent = (props: VideoContentProps) => {
               width="100%"
               height="54vw"
               playing={playingMobile}
-              muted={true}
+              muted={false}
               loop={true}
-              light={determineLightBackgroundMobile()}
+              light={!autoPlay && vimeoBackgroundPlaceholderMobile ? vimeoBackgroundPlaceholderMobile.fluid.src : false}
               controls={!autoPlay}
               playsinline={true}
               onPlay={playMobile}
               onPause={pauseMobile}
               playIcon={<PlayButton highlight={props.highlight} />}
-             
               config={{
                 vimeo: {
                   playerVars: { showinfo: 1 },
@@ -152,15 +142,6 @@ const VideoContent = (props: VideoContentProps) => {
       )
     }
 
-    const determineLightBackground = () => {
-      if (!autoPlay) {
-        if (vimeoBackgroundPlaceholderDesktop) {
-          return vimeoBackgroundPlaceholderDesktop.fluid.src;
-        }
-        return false;
-      }
-    }
-
     return (
       <>
         {mobileVideo}
@@ -175,12 +156,12 @@ const VideoContent = (props: VideoContentProps) => {
               height="54vw"
               playing={playing}
               loop={true}
-              muted={true}
+              muted={false}
               controls={!autoPlay}
               playIcon={<PlayButton highlight={props.highlight} />}
               onPlay={play}
               onPause={pause}
-              light={determineLightBackground()}
+              light={!autoPlay && vimeoBackgroundPlaceholderDesktop ? vimeoBackgroundPlaceholderDesktop.fluid.src : false}
               config={{
                 vimeo: {
                   playerVars: { showinfo: 0 },
