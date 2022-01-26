@@ -966,7 +966,7 @@ export const LayoutWrapper = styled.div`
   video,
   iframe {
     object-fit: fill;
-    object-position: center;
+    object-position: top;
     height: 100vh;
     width: 100vw;
   }
