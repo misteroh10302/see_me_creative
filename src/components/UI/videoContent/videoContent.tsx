@@ -34,7 +34,7 @@ export const VideoContentRegular = (props: any) => {
     setPlaying(false)
     setPaused(true)
   }
- 
+
   return (
     <RegularVideo dimensions={dimensions}>
       <ReactPlayer
@@ -42,7 +42,7 @@ export const VideoContentRegular = (props: any) => {
         width="100%"
         height="100%"
         playing={playing}
-        muted={playing}
+        muted={autoPlay}
         playsinline={true}
         onClickPreview={pause}
         loop
@@ -66,29 +66,27 @@ export const VideoContentRegular = (props: any) => {
   )
 }
 const VideoContent = (props: VideoContentProps) => {
-
   const [paused, setPaused] = useState(false)
 
   const [pausedMobile, setPausedMobile] = useState(false)
 
-  const { autoPlayVideo, vimeoId, vimeoIdMobile, playbutton, vimeoBackgroundPlaceholderDesktop, vimeoBackgroundPlaceholderMobile } = props.content
+  const {
+    autoPlayVideo,
+    vimeoId,
+    vimeoIdMobile,
+    playbutton,
+    vimeoBackgroundPlaceholderDesktop,
+    vimeoBackgroundPlaceholderMobile,
+  } = props.content
   const image = <img src="http://simpleicon.com/wp-content/uploads/play1.png" />
   const url = `https://player.vimeo.com/video/${props.content.vimeoId}`
   let desktopClass = ""
   let mobileVideo = null
   const autoPlay =
     autoPlayVideo === null || autoPlayVideo === false ? false : true
-  const [playing, setPlaying] = React.useState(true)
-  const play = () => {
-    setPlaying(true)
-    setPaused(false)
-  }
-  const pause = () => {
-    setPlaying(false)
-    setPaused(true)
-  }
 
   const [playingMobile, setPlayingMobile] = React.useState(true)
+
   const playMobile = () => {
     setPlayingMobile(true)
     setPausedMobile(false)
@@ -97,7 +95,6 @@ const VideoContent = (props: VideoContentProps) => {
     setPlayingMobile(false)
     setPausedMobile(true)
   }
-
 
   if (vimeoId) {
     if (vimeoIdMobile) {
@@ -113,9 +110,13 @@ const VideoContent = (props: VideoContentProps) => {
               width="100%"
               height="54vw"
               playing={playingMobile}
-              muted={false}
+              muted={autoPlay}
               loop={true}
-              light={!autoPlay && vimeoBackgroundPlaceholderMobile ? vimeoBackgroundPlaceholderMobile.fluid.src : false}
+              light={
+                !autoPlay && vimeoBackgroundPlaceholderMobile
+                  ? vimeoBackgroundPlaceholderMobile.fluid.src
+                  : false
+              }
               controls={!autoPlay}
               playsinline={true}
               onPlay={playMobile}
@@ -142,6 +143,18 @@ const VideoContent = (props: VideoContentProps) => {
       )
     }
 
+
+    const [playing, setPlaying] = React.useState(true)
+
+    const play = () => {
+      setPlaying(true)
+      setPaused(false)
+    }
+    const pause = () => {
+      setPlaying(false)
+      setPaused(true)
+    }
+
     return (
       <>
         {mobileVideo}
@@ -156,12 +169,16 @@ const VideoContent = (props: VideoContentProps) => {
               height="54vw"
               playing={playing}
               loop={true}
-              muted={false}
+              muted={autoPlay}
               controls={!autoPlay}
               playIcon={<PlayButton highlight={props.highlight} />}
               onPlay={play}
               onPause={pause}
-              light={!autoPlay && vimeoBackgroundPlaceholderDesktop ? vimeoBackgroundPlaceholderDesktop.fluid.src : false}
+              light={
+                !autoPlay && vimeoBackgroundPlaceholderDesktop
+                  ? vimeoBackgroundPlaceholderDesktop.fluid.src
+                  : false
+              }
               config={{
                 vimeo: {
                   playerVars: { showinfo: 0 },

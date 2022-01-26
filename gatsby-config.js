@@ -7,6 +7,7 @@ module.exports = {
   plugins: [
     `gatsby-plugin-netlify`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-polyfill-io`,
     {
       resolve: `gatsby-plugin-netlify`,
       options: {
