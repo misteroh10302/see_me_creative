@@ -31,8 +31,7 @@ const TwoColumnGridItem = ({ data, highlight }: { data: any, highlight: string }
 
   const { image, richTextContent, vimeoId, vimeoIdMobile, autoPlayVideo, videoDimensions } = data
   const dimensions = videoDimensions ? videoDimensions[0] : '9x16';
-
-  if (vimeoId) {
+  if (vimeoId || image && image.file && image.file.contentType && image.file.contentType.includes('video')) {
     return (
       <VideoContentRegular dimensions={dimensions} highlight={highlight} content={data} playbutton={true} />
     )
@@ -247,7 +246,7 @@ const SecondPage = data => {
           {postContent && (
             <section className="post-content">
               {postContent.map((content, i) => {
-            
+               
                 if (content.videos)
                   return (
                     <VideoContent

@@ -17,11 +17,13 @@ const PlayButton = ({ highlight }) => {
 }
 
 export const VideoContentRegular = (props: any) => {
-  const { autoPlayVideo, vimeoId, playbutton } = props.content
+  
+  const { autoPlayVideo, vimeoId, playbutton, image } = props.content
   const { dimensions } = props
+ 
   const autoPlay =
     !!autoPlayVideo === false || autoPlayVideo === false ? false : true
-
+ 
   const [paused, setPaused] = useState(true)
 
   const [playing, setPlaying] = React.useState(autoPlay)
@@ -35,10 +37,17 @@ export const VideoContentRegular = (props: any) => {
     setPaused(true)
   }
 
+  let url = ''
+  if (vimeoId) {
+    url = `https://player.vimeo.com/video/${vimeoId}`;
+  } else if (image) {
+    url = image.file.url;
+  }
+  
   return (
     <RegularVideo dimensions={dimensions}>
-      <ReactPlayer
-        url={`https://player.vimeo.com/video/${vimeoId}`}
+      {vimeoId ? (<ReactPlayer
+        url={url}
         width="100%"
         height="100%"
         playing={playing}
@@ -46,7 +55,25 @@ export const VideoContentRegular = (props: any) => {
         playsinline={true}
         onClickPreview={pause}
         loop
-        controls
+        controls={image ? false : true}
+        onPlay={play}
+        onPause={pause}
+        config={{
+          vimeo: {
+            playerVars: { showinfo: 0 },
+          },
+        }}
+      />)
+      : (<ReactPlayer
+        url={url}
+        width="100%"
+        height="100%"
+        playing={true}
+        muted={true}
+        playsinline={true}
+        onClickPreview={pause}
+        loop
+        controls={image ? false : true}
         onPlay={play}
         onPause={pause}
         config={{
@@ -55,6 +82,8 @@ export const VideoContentRegular = (props: any) => {
           },
         }}
       />
+  )}
+      
       {paused && (
         <span>
           <CenterItem onClick={play}>
@@ -67,7 +96,7 @@ export const VideoContentRegular = (props: any) => {
 }
 
 const VideoContentMobile = props => {
-  const { autoPlay, vimeoBackgroundPlaceholderMobile } = props
+  const { autoPlay, vimeoBackgroundPlaceholderMobile, vimeoIdMobile } = props
 
   const [pausedMobile, setPausedMobile] = useState(false)
 
@@ -224,6 +253,7 @@ const VideoContent = (props: VideoContentProps) => {
           vimeoBackgroundPlaceholderMobile={vimeoBackgroundPlaceholderMobile}
           highlight={props.highlight}
           autoPlay={autoPlay}
+          vimeoIdMobile={vimeoIdMobile}
         />
       )
     }

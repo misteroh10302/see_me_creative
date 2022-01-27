@@ -66,12 +66,17 @@ exports.createPages = async function ({ actions, graphql }) {
                   richTextContent {
                     json
                   }
+                  
                   image {
                     fluid(maxWidth: 1600) {
                       sizes
                       aspectRatio
                       src
                       srcSet
+                    }
+                    file {
+                      url 
+                      contentType
                     }
                   }
                 }
@@ -86,6 +91,10 @@ exports.createPages = async function ({ actions, graphql }) {
                     json
                   }
                   image {
+                    file {
+                      url 
+                      contentType
+                    }
                     fluid(maxWidth: 1600) {
                       sizes
                       aspectRatio
