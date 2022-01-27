@@ -99,7 +99,6 @@ const BackgroundMedia = (props: BackgroundMediaProps) => {
         </div>
       ) : (
         <img src={props.fluid.src} srcSet={props.fluid.srcset} />
-        // <Img fluid={props.fluid} />
       )}
 
       {props.children}

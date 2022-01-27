@@ -141,7 +141,7 @@ const SecondPage = data => {
       <Layout className={mySlug(slug + "-" + clientName)}>
         <SEO title={`Project ${slug}`} />
         <FullHeight
-          style={{ position: "relative", "z-index": 10 }}
+          style={{ position: "relative", "zIndex": 10 }}
           className="project-header"
         >
           <div className="header-desktop-video">
@@ -253,6 +253,7 @@ const SecondPage = data => {
                       highlight={(highlightColor && highlightColor[0]) || false}
                       content={content}
                       playbutton={true}
+                      key={uuid()}
                     />
                   )
                 else if (content.vimeoId)
@@ -260,6 +261,7 @@ const SecondPage = data => {
                     <VideoContent
                       highlight={(highlightColor && highlightColor[0]) || false}
                       content={content}
+                      key={uuid()}
                       playbutton={true}
                     />
                   )
@@ -268,8 +270,9 @@ const SecondPage = data => {
                   content.sys.contentType.sys.id === "twoColumnGrid"
                 ) {
                   const { rightColumn, leftColumn } = content
+             
                   return (
-                    <TwoColumnMediaWrapper>
+                    <TwoColumnMediaWrapper key={uuid()}>
                       <TwoColumnGridItem
                         highlight={
                           (highlightColor && highlightColor[0]) || false
@@ -285,7 +288,7 @@ const SecondPage = data => {
                     </TwoColumnMediaWrapper>
                   )
                 } else if (content.content)
-                  return <TextArea content={content} />
+                  return <TextArea key={uuid()} content={content} />
                 else if (
                   content.childContentfulTwoColumnTextLeftColRichTextNode
                 ) {
@@ -296,6 +299,7 @@ const SecondPage = data => {
                     <TwoColumnWrapper
                       adjustPadding={adjustPadding}
                       className="post-text-wrapper"
+                      key={uuid()}
                     >
                       <TextArea
                         content={{
@@ -315,7 +319,7 @@ const SecondPage = data => {
                   content.childContentfulSingleColumnTextSingleColumnTextRichTextNode
                 ) {
                   return (
-                    <SingleColumnWrapper>
+                    <SingleColumnWrapper key={uuid()}>
                       <TextArea
                         content={{
                           content:
@@ -326,7 +330,7 @@ const SecondPage = data => {
                   )
                 } else if (content.images) {
                   return (
-                    <SingleGalleryWrapper className="gallery">
+                    <SingleGalleryWrapper key={uuid()} className="gallery">
                       {content.images.map((img, i) => {
                         let orientation
                         let { aspectRatio } = img.fluid

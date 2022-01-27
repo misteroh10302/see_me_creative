@@ -64,24 +64,23 @@ export const VideoContentRegular = (props: any) => {
           },
         }}
       />)
-      : (<ReactPlayer
-        url={url}
-        width="100%"
-        height="100%"
-        playing={true}
-        muted={true}
-        playsinline={true}
-        onClickPreview={pause}
-        loop
-        controls={image ? false : true}
-        onPlay={play}
-        onPause={pause}
-        config={{
-          vimeo: {
-            playerVars: { showinfo: 0 },
-          },
-        }}
+      : (
+      <div style={{"width":' 100%', height: '100%'}}>
+        <ReactPlayer
+          url={url}
+          width="auto"
+          height="100%"
+          playing={true}
+          muted={true}
+          playsinline={true}
+          className={`custom-video-player-wrapper vid-${dimensions}`}
+          loop
+          controls={image ? false : true}
+          onPlay={play}
+          onPause={pause}
+        
       />
+      </div>
   )}
       
       {paused && (

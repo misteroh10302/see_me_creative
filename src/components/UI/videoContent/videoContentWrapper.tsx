@@ -7,6 +7,14 @@ export const RegularVideo = styled.div`
     .player .vp-title {
         display: none !important;
     }
+    .custom-video-player-wrapper {
+        &.vid-9x16 {
+            video {
+                right: 0;
+                margin: 0 auto;
+            }
+        }
+    }
     // responsive video
     > div > div {
         position: relative;
@@ -18,7 +26,7 @@ export const RegularVideo = styled.div`
          @media ${device.tablet} {
                 padding-bottom: 100%;
          }
-        iframe {
+        iframe, video {
             height: 100%;
             top: 0;
             left: 0;
