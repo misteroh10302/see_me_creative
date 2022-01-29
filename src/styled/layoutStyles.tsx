@@ -978,7 +978,7 @@ export const LayoutWrapper = styled.div`
     height: 100vh;
   }
 
-  .video-background iframe {
+  .video-background iframe,   .video-background video {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -987,13 +987,13 @@ export const LayoutWrapper = styled.div`
   }
 
   @media (min-aspect-ratio: 16/9) {
-    .video-background iframe {
+    .video-background iframe,   .video-background video  {
       /* height = 100 * (9 / 16) = 56.25 */
       height: 56.25vw !important;
     }
   }
   @media only screen and (max-device-width: 640px) and (orientation: landscape) {
-    .video-background iframe {
+    .video-background iframe,   .video-background video  {
       top: -2rem !important;
       height: 100% !important;
     }

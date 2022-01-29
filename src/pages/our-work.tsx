@@ -18,7 +18,6 @@ import {
   OurWorkWrapper,
   ThumbnailVideoWrapper,
 } from "../styled/layoutStyles"
-import BackgroundMedia from "../components/UI/backgroundMedia/backgroundMedia"
 import Masonry from "react-masonry-css"
 import styled from "styled-components"
 import { useWindowSize } from "../components/utils"

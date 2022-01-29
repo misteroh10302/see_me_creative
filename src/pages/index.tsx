@@ -11,11 +11,15 @@ import Section from "../components/section"
 import Footer from "../components/UI/footer/footer"
 import uuid from "react-uuid"
 
-
-const BackgroundIndex = (props) =>{
+const BackgroundIndex = props => {
   return (
-    <div style={{position: 'relative', zIndex: 0}}>
-      <BackgroundMedia overrideStyle={{top: '0'}} upsideDown position="absolute" file={props.bcgVideo.file} />
+    <div style={{ position: "relative", zIndex: 0 }}>
+      <BackgroundMedia
+        overrideStyle={{ top: "0" }}
+        upsideDown
+        position="absolute"
+        file={props.bcgVideo.file}
+      />
       {props.children}
     </div>
   )
@@ -30,8 +34,13 @@ const IndexPage = () => (
         footer,
         footerBackground,
       } = data.contentfulHomepage
-      const { meshGridTop, meshGridBottom } = data.allContentfulBlackPageMeshGrids.nodes[0]
-      const sections = homepageContent.filter((entry) => entry.__typename === "ContentfulSection");
+      const {
+        meshGridTop,
+        meshGridBottom,
+      } = data.allContentfulBlackPageMeshGrids.nodes[0]
+      const sections = homepageContent.filter(
+        entry => entry.__typename === "ContentfulSection"
+      )
       return (
         <ThemeProvider theme={theme}>
           <Layout page="home">
@@ -40,38 +49,52 @@ const IndexPage = () => (
               {homepageContent &&
                 homepageContent.map((section: any, i: number) => {
                   if (section.__typename === "ContentfulBackgroundMedia") {
-                    const { title, vimeoId, vimeoIdMobile, videoBackgroundDesktop } = section
+                    const {
+                      title,
+                      vimeoId,
+                      vimeoIdMobile,
+                      videoBackgroundDesktop,
+                      videoBackgroundMobile,
+                      regularBackgroundVideoDesktop,
+                      regularBackgroundVideoMobile
+                    } = section
+                    const poster = {
+                      desktop: videoBackgroundDesktop
+                        ? videoBackgroundDesktop
+                        : null,
+                      mobile: videoBackgroundMobile
+                        ? videoBackgroundMobile
+                        : null,
+                    }
                     return (
                       <BackgroundMedia
                         title={title}
                         vimeoId={vimeoId}
+                        regularBackgroundVideoDesktop={regularBackgroundVideoDesktop}
+                        regularBackgroundVideoMobile={regularBackgroundVideoMobile}
                         vimeoIdMobile={vimeoIdMobile}
-                        poster={videoBackgroundDesktop ? videoBackgroundDesktop : null}
+                        poster={poster}
                         key={uuid()}
-                        overrideStyle={{zIndex: 1}}
-                        file={section.media ? section.media.file :  ''}
+                        overrideStyle={{ zIndex: 1 }}
+                        file={section.media ? section.media.file : ""}
                       />
                     )
-                  } 
+                  }
                 })}
-                <BackgroundIndex bcgVideo={meshGridTop}>
-                  {sections && sections.map((section: any, i: number) => {
-                      return (
-                        <Section
-                          title={section.title}
-                          bgm={section.backgroundMedia}
-                          content={section}
-                          key={uuid()}
-                        />
-                      )
-                    }
-                  )}
-                </BackgroundIndex>
-              <Footer
-                textColor="light"
-                content={footer}
-                bgm={meshGridBottom}
-              />
+              <BackgroundIndex bcgVideo={meshGridTop}>
+                {sections &&
+                  sections.map((section: any, i: number) => {
+                    return (
+                      <Section
+                        title={section.title}
+                        bgm={section.backgroundMedia}
+                        content={section}
+                        key={uuid()}
+                      />
+                    )
+                  })}
+              </BackgroundIndex>
+              <Footer textColor="light" content={footer} bgm={meshGridBottom} />
             </div>
           </Layout>
         </ThemeProvider>
@@ -82,7 +105,7 @@ const IndexPage = () => (
 
 const homepageQuery = graphql`
   query MyQuery {
-     allContentfulBlackPageMeshGrids {
+    allContentfulBlackPageMeshGrids {
       nodes {
         meshGridTop {
           file {
@@ -125,7 +148,25 @@ const homepageQuery = graphql`
           vimeoId
           vimeoIdMobile
           title
+          regularBackgroundVideoDesktop {
+            file {
+              contentType
+              url
+            }
+          }
+          regularBackgroundVideoMobile {
+            file {
+              contentType
+              url
+            }
+          }
           videoBackgroundDesktop {
+            fluid {
+              srcSet
+              src
+            }
+          }
+          videoBackgroundMobile {
             fluid {
               srcSet
               src
@@ -184,7 +225,7 @@ const homepageQuery = graphql`
                     url
                   }
                 }
-                 thumbnailMediaBackgroundImage {
+                thumbnailMediaBackgroundImage {
                   fluid(maxWidth: 300) {
                     sizes
                     aspectRatio

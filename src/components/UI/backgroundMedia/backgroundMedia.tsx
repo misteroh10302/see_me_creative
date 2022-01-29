@@ -4,6 +4,7 @@ import uuid from "react-uuid"
 
 import { BackgroundMediaWrapper } from "./backgroundMediaStyled"
 import ReactPlayer from "react-player"
+import { useWindowSize } from "../../utils"
 
 const BackgroundMedia = (props: BackgroundMediaProps) => {
   const {
@@ -12,6 +13,8 @@ const BackgroundMedia = (props: BackgroundMediaProps) => {
     vimeoIdMobile,
     overrideStyle,
     className,
+    regularBackgroundVideoMobile,
+    regularBackgroundVideoDesktop,
     poster,
   } = props
 
@@ -30,6 +33,29 @@ const BackgroundMedia = (props: BackgroundMediaProps) => {
       ...(overrideStyle && { ...overrideStyle }),
     }
   }
+  const isMobile = useWindowSize()
+
+  let thePosterImage = poster
+
+  if (poster && poster.desktop) {
+    thePosterImage = isMobile.width < 768 ? poster.mobile : poster.desktop
+  }
+
+  let regularVideo = {}
+  if (regularBackgroundVideoDesktop) {
+    regularVideo.desktop = regularBackgroundVideoDesktop
+  }
+
+  if (regularBackgroundVideoMobile) {
+    regularVideo.mobile = regularBackgroundVideoMobile
+  }
+
+  let regularBCGImage =
+    isMobile.width < 768 && regularBackgroundVideoMobile
+      ? regularVideo.mobile.file.url
+      : regularBackgroundVideoDesktop
+      ? regularVideo.desktop.file.url
+      : null
 
   return (
     <BackgroundMediaWrapper
@@ -38,12 +64,38 @@ const BackgroundMedia = (props: BackgroundMediaProps) => {
       key={uuid()}
       styles={styles}
     >
-      {vimeoId ? (
+      {regularBackgroundVideoDesktop && (
         <div
           className={`video-background`}
           style={{
-            backgroundImage: `url(${poster ? poster.fluid.src : ""})`,
+            backgroundImage: `url(${thePosterImage.fluid.src})`,
             backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          <div className={`${isMobile.width < 768 ? 'mobile': 'desktop'}-video-background`} >
+            <video
+              autoPlay={true}
+              muted={true}
+              style={{ width: "100vw", height: "100vh", ...styles }}
+              width="800"
+              loop={true}
+              playsInline={true}
+              controls={false}
+            >
+              <source src={`https:${regularBCGImage}`} type="video/mp4" />
+              Sorry, your browser doesn't support embedded videos.
+            </video>
+          </div>
+        </div>
+      )}
+      {!regularBackgroundVideoDesktop && vimeoId ? (
+        <div
+          className={`video-background`}
+          style={{
+            backgroundImage: `url(${thePosterImage.fluid.src})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
           }}
         >
           <ReactPlayer
@@ -73,7 +125,6 @@ const BackgroundMedia = (props: BackgroundMediaProps) => {
               muted={true}
               controls={false}
               className={vimeoIdMobile && "mobile-video-background"}
-              light={poster ? poster.fluid.src : false}
               config={{
                 vimeo: {
                   playerVars: { showinfo: 1 },
