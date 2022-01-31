@@ -15,6 +15,11 @@ export const BackgroundMediaWrapper = styled.section`
   .desktop-video-background {
     display: none;
   }
+  .mobile-video-background {
+    video {
+      height: initial !important;
+    }
+  }
   @media ${device.tablet} {
     .mobile-video-background {
       display: none;

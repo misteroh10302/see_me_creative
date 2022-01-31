@@ -56,7 +56,7 @@ const BackgroundMedia = (props: BackgroundMediaProps) => {
       : regularBackgroundVideoDesktop
       ? regularVideo.desktop.file.url
       : null
-
+ 
   return (
     <BackgroundMediaWrapper
       position={position}
@@ -73,11 +73,19 @@ const BackgroundMedia = (props: BackgroundMediaProps) => {
             backgroundPosition: "center",
           }}
         >
-          <div className={`${isMobile.width < 768 ? 'mobile': 'desktop'}-video-background`} >
+          <div
+            className={`${
+              isMobile.width < 768 ? "mobile" : "desktop"
+            }-video-background`}
+          >
             <video
               autoPlay={true}
               muted={true}
-              style={{ width: "100vw", height: isMobile.width < 768 ? 'initial': '100vh', ...styles }}
+              style={{
+                width: "100vw",
+                height: isMobile.width < 768 ? "initial" : "100vh",
+                ...styles,
+              }}
               width="800"
               loop={true}
               playsInline={true}
