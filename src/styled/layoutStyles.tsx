@@ -928,6 +928,15 @@ export const LayoutWrapper = styled.div`
   }
   .homepage {
     background-color: black;
+    > div {
+      section:nth-child(1) {
+        video {
+
+              transform: translateY(-8rem) rotate(-180deg) !important;
+
+        }
+      }
+    }
   }
   .homepage, .who-we-are-page {
     .who-we-are-header-wrapper {

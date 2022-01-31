@@ -75,7 +75,7 @@ const IndexPage = () => (
                         vimeoIdMobile={vimeoIdMobile}
                         poster={poster}
                         key={uuid()}
-                        overrideStyle={{ zIndex: 1 }}
+                        overrideStyle={{ zIndex: 1}}
                         file={section.media ? section.media.file : ""}
                       />
                     )

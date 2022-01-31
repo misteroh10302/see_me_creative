@@ -17,7 +17,7 @@ const BackgroundMedia = (props: BackgroundMediaProps) => {
     regularBackgroundVideoDesktop,
     poster,
   } = props
-
+  console.log(overrideStyle)
   let styles = {
     ...(overrideStyle && { ...overrideStyle }),
   }
