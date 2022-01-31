@@ -942,7 +942,7 @@ export const LayoutWrapper = styled.div`
       @media screen and (max-width: 768px) {
         height: initial !important;
         .mobile-video-background {
-          padding-top: 128%;
+          padding-top: 125%;
         }
       }
     }
