@@ -16,8 +16,9 @@ const BackgroundMedia = (props: BackgroundMediaProps) => {
     regularBackgroundVideoMobile,
     regularBackgroundVideoDesktop,
     poster,
+    mobileFile,
   } = props
-  console.log(overrideStyle)
+
   let styles = {
     ...(overrideStyle && { ...overrideStyle }),
   }
@@ -56,7 +57,7 @@ const BackgroundMedia = (props: BackgroundMediaProps) => {
       : regularBackgroundVideoDesktop
       ? regularVideo.desktop.file.url
       : null
- 
+
   return (
     <BackgroundMediaWrapper
       position={position}
@@ -143,6 +144,14 @@ const BackgroundMedia = (props: BackgroundMediaProps) => {
         </div>
       ) : props.file.contentType && props.file.contentType.includes("video") ? (
         <div key={uuid()} className="bcg-video">
+          {mobileFile && mobileFile.file.contentType.includes("image") && (
+            <div className="bcg-video-mobile-image">
+              <img
+                style={{ width: "100vw", height: "100vh", ...styles}}
+                src={mobileFile.file.url}
+              />
+            </div>
+          )}
           <video
             autoPlay={true}
             muted={true}
@@ -151,6 +160,9 @@ const BackgroundMedia = (props: BackgroundMediaProps) => {
             loop={true}
             playsInline={true}
             controls={false}
+            className={
+              mobileFile ? "bcg-video-desktop-asset" : "bcg-video-asset"
+            }
           >
             <source src={`https:${props.file.url}`} type="video/mp4" />
             Sorry, your browser doesn't support embedded videos.

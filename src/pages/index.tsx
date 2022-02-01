@@ -18,6 +18,7 @@ const BackgroundIndex = props => {
         overrideStyle={{ top: "0" }}
         upsideDown
         position="absolute"
+        mobileFile={props.mobileBcgMedia}
         file={props.bcgVideo.file}
       />
       {props.children}
@@ -37,6 +38,8 @@ const IndexPage = () => (
       const {
         meshGridTop,
         meshGridBottom,
+        meshTopGridMobile,
+        meshGridBottomMobile,
       } = data.allContentfulBlackPageMeshGrids.nodes[0]
       const sections = homepageContent.filter(
         entry => entry.__typename === "ContentfulSection"
@@ -56,7 +59,7 @@ const IndexPage = () => (
                       videoBackgroundDesktop,
                       videoBackgroundMobile,
                       regularBackgroundVideoDesktop,
-                      regularBackgroundVideoMobile
+                      regularBackgroundVideoMobile,
                     } = section
                     const poster = {
                       desktop: videoBackgroundDesktop
@@ -70,18 +73,25 @@ const IndexPage = () => (
                       <BackgroundMedia
                         title={title}
                         vimeoId={vimeoId}
-                        regularBackgroundVideoDesktop={regularBackgroundVideoDesktop}
-                        regularBackgroundVideoMobile={regularBackgroundVideoMobile}
+                        regularBackgroundVideoDesktop={
+                          regularBackgroundVideoDesktop
+                        }
+                        regularBackgroundVideoMobile={
+                          regularBackgroundVideoMobile
+                        }
                         vimeoIdMobile={vimeoIdMobile}
                         poster={poster}
                         key={uuid()}
-                        overrideStyle={{ zIndex: 1}}
+                        overrideStyle={{ zIndex: 1 }}
                         file={section.media ? section.media.file : ""}
                       />
                     )
                   }
                 })}
-              <BackgroundIndex bcgVideo={meshGridTop}>
+              <BackgroundIndex
+                mobileBcgMedia={meshTopGridMobile}
+                bcgVideo={meshGridTop}
+              >
                 {sections &&
                   sections.map((section: any, i: number) => {
                     return (
@@ -94,7 +104,12 @@ const IndexPage = () => (
                     )
                   })}
               </BackgroundIndex>
-              <Footer textColor="light" content={footer} bgm={meshGridBottom} />
+              <Footer
+                textColor="light"
+                content={footer}
+                mobileBgm={meshGridBottomMobile}
+                bgm={meshGridBottom}
+              />
             </div>
           </Layout>
         </ThemeProvider>
@@ -111,6 +126,20 @@ const homepageQuery = graphql`
           file {
             contentType
             url
+          }
+        }
+        meshTopGridMobile {
+          file {
+            url
+            fileName
+            contentType
+          }
+        }
+        meshGridBottomMobile {
+          file {
+            fileName
+            url
+            contentType
           }
         }
         meshGridBottom {

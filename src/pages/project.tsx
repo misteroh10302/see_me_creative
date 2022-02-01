@@ -73,21 +73,23 @@ const SecondPage = data => {
   const headerDesktopVimeoVideoId = content.headerDesktopVimeoVideoId || null
   const headerMobileVimeoVideoId = content.headerMobileVimeoVideoId || null
   const clientName = content.clientName || null
-  const meshGrids = content.meshGrids;
+  const meshGrids = content.meshGrids.data.allContentfulProjectMeshGrids.nodes[0];
+  
 
   const bcgVideo = {
     contentType: "video/mp4",
-    url: meshGrids.data.allContentfulProjectMeshGrids.nodes[0].meshGridTop.file.url || 
+    url: meshGrids.meshGridTop.file.url || 
       "//videos.ctfassets.net/ralvgwmdsf6z/6mtkCPZoHyF4ZQLMoCkdmb/e4210802c5096790d7b743c59ee98663/White_Grid_A.mp4",
   }
 
   const footerBackground = {
     file: {
       contentType: "video/mp4",
-      url: meshGrids.data.allContentfulProjectMeshGrids.nodes[0].meshGridFooter.file.url || 
+      url: meshGrids.meshGridFooter.file.url || 
         "//videos.ctfassets.net/ralvgwmdsf6z/3zfO0CsoBnbTK4AT8Isy58/1981f5aee9a402fa85280c8c09f3a1ca/White_Grid_B.mp4",
     },
   }
+
 
   const footerContent = {
     content: {
@@ -229,10 +231,10 @@ const SecondPage = data => {
           </div>
         </FullHeight>
         <ProjectWrapper
-          className={headerMobileVimeoVideoId && "has-mobile-video-header"}
+          className={`project-wrapper ${headerMobileVimeoVideoId && "has-mobile-video-header"}`}
           style={{ position: "relative" }}
         >
-          <BackgroundMedia upsideDown position="absolute" file={bcgVideo} />
+          <BackgroundMedia upsideDown position="absolute" file={bcgVideo} mobileFile={meshGrids.meshGridTopMobile}/>
           <header style={{ position: "relative" }}>
             <H1
               highlight={(highlightColor && highlightColor[0]) || false}
@@ -386,6 +388,7 @@ const SecondPage = data => {
           buttonColor="light"
           page="project"
           bgm={footerBackground}
+          mobileBgm={meshGrids.meshGridFooterMobile}
         />
       </Layout>
     </ThemeProvider>

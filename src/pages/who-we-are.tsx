@@ -14,7 +14,7 @@ import Footer from "../components/UI/footer/footer"
 
 const whoWeAreQuery = graphql`
   query whoWeAreQuery {
-     allContentfulBlackPageMeshGrids {
+    allContentfulBlackPageMeshGrids {
       nodes {
         meshGridTop {
           file {
@@ -22,8 +22,21 @@ const whoWeAreQuery = graphql`
             url
           }
         }
+        meshTopGridMobile {
+          file {
+            url
+            fileName
+            contentType
+          }
+        }
+        meshGridBottomMobile {
+          file {
+            fileName
+            url
+            contentType
+          }
+        }
         meshGridBottom {
-          
           file {
             contentType
             url
@@ -74,7 +87,7 @@ const whoWeAreQuery = graphql`
           content {
             ... on ContentfulOfferings {
               headerImage {
-                 fluid(maxWidth: 300) {
+                fluid(maxWidth: 300) {
                   ...GatsbyContentfulFluid_withWebp_noBase64
                 }
               }
@@ -131,15 +144,15 @@ const whoWeAreQuery = graphql`
   }
 `
 
-
 const BackgroundWhoWeAre = (props: any) => {
   return (
     <div style={{ position: "relative", zIndex: 0 }}>
       <BackgroundMedia
-        overrideStyle={{ top: "0rem", objectFit: 'cover' }}
+        overrideStyle={{ top: "0rem", objectFit: "cover" }}
         upsideDown
         className="who-are-header"
         position="absolute"
+        mobileFile={props.mobileBcgMedia}
         file={props.bcgVideo.file}
       />
       {props.children}
@@ -153,7 +166,12 @@ const WhoWeArePage = () => (
     render={data => {
       const { nodes } = data.allContentfulWhoWeArePage
       const { whoWeAreContent } = nodes[0]
-      const { meshGridTop, meshGridBottom } = data.allContentfulBlackPageMeshGrids.nodes[0]
+      const {
+        meshGridTop,
+        meshGridBottom,
+        meshTopGridMobile,
+        meshGridBottomMobile,
+      } = data.allContentfulBlackPageMeshGrids.nodes[0]
       return (
         <ThemeProvider theme={theme}>
           <Layout className="who-we-are-page">
@@ -164,10 +182,17 @@ const WhoWeArePage = () => (
                   <BackgroundMedia
                     vimeoIdMobile={nodes[0].background.vimeoId}
                     vimeoId={nodes[0].background.vimeoId}
-                    poster={nodes[0].background.videoBackgroundDesktop ? nodes[0].background.videoBackgroundDesktop : null}
+                    poster={
+                      nodes[0].background.videoBackgroundDesktop
+                        ? nodes[0].background.videoBackgroundDesktop
+                        : null
+                    }
                   />
                 </FullHeight>
-                <BackgroundWhoWeAre bcgVideo={meshGridTop}>
+                <BackgroundWhoWeAre
+                  mobileBcgMedia={meshTopGridMobile}
+                  bcgVideo={meshGridTop}
+                >
                   {whoWeAreContent &&
                     whoWeAreContent.map((section: any, index: number) => {
                       return (
@@ -185,6 +210,7 @@ const WhoWeArePage = () => (
             <Footer
               textColor="light"
               content={nodes[0].footer}
+              mobileBgm={meshGridBottomMobile}
               bgm={meshGridBottom}
             />
           </Layout>

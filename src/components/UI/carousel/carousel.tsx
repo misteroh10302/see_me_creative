@@ -87,14 +87,29 @@ const MyCarousel = (props: CarouselProps) => {
                       <>
                       <ThumbnailVideoWrapper>
                         <div className="thumbnail-vid-outer">
-                          <video width="100%" height="100%" preload="none" muted autoPlay loop playsInline poster={thumbnailMediaBackgroundImage ? thumbnailMediaBackgroundImage.fluid.src : ''}>
-                            <source
-                              src={project.thumbnailMedia.file.url}
-                              type="video/mp4"
-                          
-                            />
-                            Your browser does not support the video tag.
-                          </video>
+                          <span className="thumbnail-vid-desktop">
+                            <video 
+                              width="100%" 
+                              height="100%" 
+                              preload="none" 
+                              muted 
+                              autoPlay 
+                              loop 
+                              playsInline 
+                              poster={thumbnailMediaBackgroundImage ? thumbnailMediaBackgroundImage.fluid.src : ''}>
+                              <source
+                                src={project.thumbnailMedia.file.url}
+                                type="video/mp4"
+                            
+                              />
+                              Your browser does not support the video tag.
+                            </video>
+                          </span>
+                           <span className="thumbnail-vid-mobile">
+                                {thumbnailMediaBackgroundImage &&
+                                  <img src={ thumbnailMediaBackgroundImage.fluid.src}  />
+                                }
+                           </span>
                         </div>
                         <div className="project-title">
                             {clientLogo && (

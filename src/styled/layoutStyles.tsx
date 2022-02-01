@@ -138,13 +138,26 @@ export const ThumbnailVideoWrapper = styled.div`
   position: relative;
   padding-bottom: 56.25%; /* 16:9 */
   height: 0;
-  video, iframe {
+  video,
+  iframe,
+  .thumbnail-vid-mobile img {
     position: absolute;
     top: 0;
     left: 0;
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
+  }
+  .thumbnail-vid-desktop {
+    display: none;
+  }
+  @media ${device.tablet} {
+    .thumbnail-vid-mobile {
+      display: none;
+    }
+    .thumbnail-vid-desktop {
+      display: block;
+    }
   }
 `
 
@@ -203,22 +216,20 @@ export const WhoWeAreGrid = styled.div`
       display: block;
       > div {
         transition: opacity 500ms ease !important;
-         animation-name: unset !important;
+        animation-name: unset !important;
       }
       &:hover {
         > div:nth-child(1) {
           opacity: 0 !important;
-         
         }
         div:nth-child(2) {
           opacity: 1 !important;
         }
       }
       > div:nth-child(1) {
-          position: relative;
-          z-index: 1;
-          
-        }
+        position: relative;
+        z-index: 1;
+      }
       > div:nth-child(2) {
         position: absolute !important;
         top: 0;
@@ -356,7 +367,7 @@ export const ProjectWrapper = styled.section`
     }
     .video-content {
       margin: 3rem 0 0;
-   
+
       @media ${device.tablet} {
         margin: 3rem 0 3rem;
       }
@@ -403,7 +414,7 @@ export const ProjectCollectionWrapper = styled.div`
 export const SectionWrapper = styled.section`
   background: transparent
     ${(props: any) => `url(${props.backgroundImage}) no-repeat center`};
-  
+
   background-size: cover;
   min-height: 100vh;
   width: 100%;
@@ -422,7 +433,8 @@ export const SectionWrapper = styled.section`
     h4 {
       margin: 0;
     }
-    .client-name-mobile, .video-project-name-mobile {
+    .client-name-mobile,
+    .video-project-name-mobile {
       @media ${device.tablet} {
         display: none;
       }
@@ -530,6 +542,7 @@ export const SectionWrapper = styled.section`
       }
     }
   }
+  
   &.who-we-are-content-info {
     position: relative;
     z-index: 99;
@@ -614,7 +627,7 @@ export const SectionWrapper = styled.section`
       p {
         text-align: center;
       }
-     
+
       .image-and-text {
         display: inline-block;
         padding: 3em 0rem 3rem;
@@ -931,14 +944,22 @@ export const LayoutWrapper = styled.div`
     > div {
       section:nth-child(1) {
         video {
-
-              transform: translateY(-8rem) rotate(-180deg) !important;
-
+          transform: translateY(-8rem) rotate(-180deg) !important;
+        }
+        img {
+          transform: translateY(-6rem) rotate(-180deg) !important;
         }
       }
     }
   }
-  .homepage, .who-we-are-page {
+  .who-are-header, .project-wrapper {
+    .bcg-video-mobile-image img{
+      transform: translateY(-8rem) rotate(-180deg) !important;
+    }
+  }
+
+  .homepage,
+  .who-we-are-page {
     .who-we-are-header-wrapper {
       @media screen and (max-width: 768px) {
         min-height: initial !important;
@@ -987,7 +1008,8 @@ export const LayoutWrapper = styled.div`
     height: 100vh;
   }
 
-  .video-background iframe,   .video-background video {
+  .video-background iframe,
+  .video-background video {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -996,13 +1018,15 @@ export const LayoutWrapper = styled.div`
   }
 
   @media (min-aspect-ratio: 16/9) {
-    .video-background iframe,   .video-background video  {
+    .video-background iframe,
+    .video-background video {
       /* height = 100 * (9 / 16) = 56.25 */
       height: 56.25vw !important;
     }
   }
   @media only screen and (max-device-width: 640px) and (orientation: landscape) {
-    .video-background iframe,   .video-background video  {
+    .video-background iframe,
+    .video-background video {
       top: -2rem !important;
       height: 100% !important;
     }

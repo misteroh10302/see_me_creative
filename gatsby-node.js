@@ -217,6 +217,20 @@ exports.createPages = async function ({ actions, graphql }) {
               url
             }
           }
+          meshGridTopMobile {
+              file {
+                url
+                fileName
+                contentType
+              }
+          }
+          meshGridFooterMobile {
+            file {
+              fileName
+              url
+              contentType
+            }
+          }
           meshGridFooter {
             file {
               url

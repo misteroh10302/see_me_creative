@@ -29,6 +29,23 @@ const H2Projects = styled.h2`
 
 const OurWorkQuery = graphql`
   query OurWorkQuery {
+    allContentfulBlackPageMeshGrids {
+      nodes {
+        meshGridBottomMobile {
+          file {
+            fileName
+            url
+            contentType
+          }
+        }
+        meshGridBottom {
+          file {
+            contentType
+            url
+          }
+        }
+      }
+    }
     allContentfulOurWork {
       nodes {
         projects {
@@ -102,6 +119,10 @@ const OurWork = () => {
       render={data => {
         const { nodes } = data.allContentfulOurWork
         const { projects } = nodes[0]
+        const {
+          meshGridBottom,
+          meshGridBottomMobile,
+        } = data.allContentfulBlackPageMeshGrids.nodes[0]
         return (
           <ThemeProvider theme={theme}>
             <Layout>
@@ -132,30 +153,43 @@ const OurWork = () => {
                                   ) ? (
                                     <ThumbnailVideoWrapper>
                                       <div className="thumbnail-vid-outer">
-                                        <video
-                                          width="100%"
-                                          height="100%"
-                                          muted
-                                          autoPlay
-                                          loop
-                                          playsInline
-                                          poster={
-                                            project.thumbnailMediaBackgroundImage
-                                              ? project
+                                         <span className="thumbnail-vid-desktop">
+                                          <video
+                                            width="100%"
+                                            height="100%"
+                                            muted
+                                            autoPlay
+                                            loop
+                                            playsInline
+                                            poster={
+                                              project.thumbnailMediaBackgroundImage
+                                                ? project
+                                                    .thumbnailMediaBackgroundImage
+                                                    .fluid.src
+                                                : ""
+                                            }
+                                          >
+                                            <source
+                                              src={
+                                                project.thumbnailMedia.file.url
+                                              }
+                                              type="video/mp4"
+                                            />
+                                            Your browser does not support the
+                                            video tag.
+                                          </video>
+                                        </span>
+                                        <span className="thumbnail-vid-mobile">
+                                          {project.thumbnailMediaBackgroundImage && (
+                                            <img
+                                              src={
+                                                project
                                                   .thumbnailMediaBackgroundImage
                                                   .fluid.src
-                                              : ""
-                                          }
-                                        >
-                                          <source
-                                            src={
-                                              project.thumbnailMedia.file.url
-                                            }
-                                            type="video/mp4"
-                                          />
-                                          Your browser does not support the
-                                          video tag.
-                                        </video>
+                                              }
+                                            />
+                                          )}
+                                        </span>
                                       </div>
                                     </ThumbnailVideoWrapper>
                                   ) : (
@@ -243,7 +277,8 @@ const OurWork = () => {
                 <Footer
                   textColor="light"
                   content={nodes[0].footer}
-                  bgm={nodes[0].footerBackground}
+                  mobileBgm={meshGridBottomMobile}
+                  bgm={meshGridBottom}
                 />
               </div>
             </Layout>
