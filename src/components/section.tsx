@@ -86,7 +86,7 @@ const Section = (props: SectionProps) => {
                <div>
                   <img
                     src={headerImage.fluid.src}
-                    alt="Offerings"
+                    alt="The Team"
                   />
                 <WhoWeAreGrid>
                   {content.imageGallery.map(entry => {

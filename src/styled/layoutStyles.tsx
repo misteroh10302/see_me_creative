@@ -927,7 +927,7 @@ export const LayoutWrapper = styled.div`
   .who-we-are-page {
     main nav {
       height: 100vh;
-      margin-top: -13rem;
+      margin-top: -10rem;
     }
     main > div {
       z-index: 0;
