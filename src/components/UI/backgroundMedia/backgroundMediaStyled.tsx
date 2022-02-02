@@ -21,6 +21,12 @@ export const BackgroundMediaWrapper = styled.section`
       height: initial !important;
     }
   }
+  .bcg-video-mobile-image {
+    line-height: 0;
+    img {
+      margin-bottom: 0;
+    }
+  }
  
   .bcg-video-desktop-asset {
     display: none;
