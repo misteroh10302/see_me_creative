@@ -61,7 +61,9 @@ const MyCarousel = (props: CarouselProps) => {
     const { projects } = props.content
     
     const breakpointColumnsObj = {
-      default: 3,
+      default: 1,
+      4000: 3,
+      1800: 3,
       1100: 3,
       700: 3,
       500: 1,
@@ -77,7 +79,6 @@ const MyCarousel = (props: CarouselProps) => {
           {projects &&
             projects.map((project: any, i: number) => {
               const { clientLogo, clientName, thumbnailMediaBackgroundImage } = project;
-          
               if (i < numberOfPosts.number) {
                 return (
                   <Link to={`/project/${mySlug(project.clientName)}-${mySlug(project.title)}`} key={uuid()}>
