@@ -65,7 +65,7 @@ const Navigation = (props: NavigationProps) => {
           <li><Link activeClassName="active" to="/who-we-are">About</Link></li>
           <li><Link activeClassName="active" to="/our-work">Our Work</Link></li>
           <li><a target="_blank" href="mailto:seemecreative@gmail.com">Contact</a></li>
-          <li><a target="_blank" href="https://www.instagram.com/see.me.creative">Social</a></li>
+          <li><Link activeClassName="active" to="/reel">Reel</Link></li>
         </ul>
       </MobileNavItems>
       <div className="main-navigation">
@@ -102,7 +102,7 @@ const Navigation = (props: NavigationProps) => {
           className="nav-right"
         >
           <a target="_blank" href="mailto:sayhello@seemecreative.com">Contact</a>
-          <a target="_blank" href="https://www.instagram.com/see.me.creative">Social</a>
+          <a href="/reel">Reel</a>
         </NavLeftnavRight>
       </div>
     </NavigationWrapper>
