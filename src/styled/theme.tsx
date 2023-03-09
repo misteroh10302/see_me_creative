@@ -18,6 +18,7 @@ export const theme = {
     orange: "#F18923",
     yellow: "#FFFF00",
     blue: "#00FFFF",
+    black: "hsla(0, 0%, 0%, 1)",
   },
   p: {
     fontSize: "3rem",

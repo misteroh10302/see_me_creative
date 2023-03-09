@@ -162,7 +162,7 @@ const OurWork = () => {
                                             loop
                                             playsInline
                                             poster={
-                                              project.thumbnailMediaBackgroundImage
+                                              project.thumbnailMediaBackgroundImage && project.thumbnailMediaBackgroundImage.fluid
                                                 ? project
                                                     .thumbnailMediaBackgroundImage
                                                     .fluid.src
