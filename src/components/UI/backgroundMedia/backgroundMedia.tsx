@@ -69,7 +69,7 @@ const BackgroundMedia = (props: BackgroundMediaProps) => {
         <div
           className={`video-background`}
           style={{
-            backgroundImage: `url(${thePosterImage.fluid.src})`,
+            backgroundImage: `url(${thePosterImage ?? thePosterImage.fluid.src})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -102,9 +102,10 @@ const BackgroundMedia = (props: BackgroundMediaProps) => {
         <div
           className={`video-background`}
           style={{
-            backgroundImage: `url(${thePosterImage.fluid.src})`,
+            backgroundImage: `url(${thePosterImage && thePosterImage.fluid.src})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
+            backgroundColor: !thePosterImage ? "black" : "transparent"
           }}
         >
           <ReactPlayer

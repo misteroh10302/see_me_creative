@@ -542,7 +542,7 @@ export const SectionWrapper = styled.section`
       }
     }
   }
-  
+
   &.who-we-are-content-info {
     position: relative;
     z-index: 99;
@@ -952,8 +952,9 @@ export const LayoutWrapper = styled.div`
       }
     }
   }
-  .who-are-header, .project-wrapper {
-    .bcg-video-mobile-image img{
+  .who-are-header,
+  .project-wrapper {
+    .bcg-video-mobile-image img {
       transform: translateY(-8rem) rotate(-180deg) !important;
     }
   }
@@ -1195,6 +1196,17 @@ export const SwiperWrapper = styled.div`
   p {
     color: white;
     font-size: 1.3rem;
+  }
+`
+
+export const ReelWrapper = styled.div`
+  background-color: ${(props: any) => props.theme.colors.black};
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  iframe {
+    height: 70vh;
   }
 `
 

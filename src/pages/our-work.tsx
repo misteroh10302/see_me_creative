@@ -56,12 +56,12 @@ const OurWorkQuery = graphql`
               url
               contentType
             }
-            fluid(maxWidth: 200) {
+            fluid(maxWidth: 600) {
               ...GatsbyContentfulFluid_withWebp_noBase64
             }
           }
           thumbnailMediaBackgroundImage {
-            fluid(maxWidth: 200) {
+            fluid(maxWidth: 600) {
               sizes
               aspectRatio
               src
@@ -76,7 +76,7 @@ const OurWorkQuery = graphql`
             url
             contentType
           }
-          fluid(maxWidth: 200) {
+          fluid(maxWidth: 600) {
             ...GatsbyContentfulFluid_withWebp_noBase64
           }
         }
@@ -162,7 +162,7 @@ const OurWork = () => {
                                             loop
                                             playsInline
                                             poster={
-                                              project.thumbnailMediaBackgroundImage
+                                              project.thumbnailMediaBackgroundImage && project.thumbnailMediaBackgroundImage.fluid
                                                 ? project
                                                     .thumbnailMediaBackgroundImage
                                                     .fluid.src
