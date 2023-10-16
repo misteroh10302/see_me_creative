@@ -102,7 +102,7 @@ const Navigation = (props: NavigationProps) => {
           className="nav-right"
         >
           <a target="_blank" href="mailto:sayhello@seemecreative.com">Contact</a>
-          <a href="/reel">Reel</a>
+          <Link to="/reel">Reel</Link>
         </NavLeftnavRight>
       </div>
     </NavigationWrapper>

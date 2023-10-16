@@ -66,6 +66,7 @@ const whoWeAreQuery = graphql`
             link
             buttonText
           }
+          newsletterUrl
         }
         footerBackground {
           file {

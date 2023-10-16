@@ -160,6 +160,7 @@ const homepageQuery = graphql`
           buttonText
           link
         }
+        newsletterUrl
       }
       footerBackground {
         file {

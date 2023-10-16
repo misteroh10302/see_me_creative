@@ -11,6 +11,7 @@ const homepageQueryFragment = graphql`
         buttonText
         link
       }
+      newsletterUrl
     }
     footerBackground {
       fluid {
