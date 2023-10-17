@@ -25,6 +25,7 @@ const reelQuery = graphql`
             link
             buttonText
           }
+          newsletterUrl
         }
         footerBackground {
           file {

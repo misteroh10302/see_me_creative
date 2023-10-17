@@ -34,6 +34,7 @@ exports.createPages = async function ({ actions, graphql }) {
               link
               buttonText
             }
+            newsletterUrl
           }
           footerBackground {
             fluid(maxWidth: 1600) {

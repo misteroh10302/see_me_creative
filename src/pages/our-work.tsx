@@ -88,6 +88,7 @@ const OurWorkQuery = graphql`
             link
             buttonText
           }
+          newsletterUrl
         }
         footerBackground {
           file {

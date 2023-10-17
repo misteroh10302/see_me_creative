@@ -3,6 +3,7 @@ import * as React from "react"
 import uuid from "react-uuid"
 
 import { FooterWrapper } from "./footerWrapper"
+import NewsletterForm from "./newsletterForm"
 import TextArea from "../textArea/textArea"
 import { Button } from "../../../styled/layoutStyles"
 import BackgroundMedia from "../backgroundMedia/backgroundMedia"
@@ -30,13 +31,20 @@ const Footer = (props: FooterProps) => {
           </Button>
         )
       })}
+      {props.content?.newsletterUrl && (
+        <NewsletterForm url={props.content?.newsletterUrl} />
+      )}
     </FooterWrapper>
   )
 }
 
+type FooterContent = {
+  newsletterUrl?: string
+}
+
 interface FooterProps {
   siteTitle?: string
-  content?: object
+  content?: FooterContent
   bgm: {
     fluid: {
       src: string

@@ -14,7 +14,7 @@ const ImageAndText = (props: ImageAndTextProps) => {
         content.images.length > 1 &&
         `images-2 ${page}`}`}
     >
-      <span class="image-wraper">
+      <span className="image-wraper">
         {content.images.map((image, i: number) => {
           if (image.file && image.file.contentType.includes("video")) {
             return (
@@ -38,6 +38,7 @@ const ImageAndText = (props: ImageAndTextProps) => {
           if (i === 1 && page === "who-we-are") {
               return (
                 <Img 
+                key={i}
                 loading="lazy"
                 fluid={image.fluid} 
               />
